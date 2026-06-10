@@ -10,38 +10,40 @@ var HEADERS = {
 
 // --- Terminal X: Direct API ---
 async function scrapeTerminalX(targetUrl) {
-  // Step 1: Fetch the HTML page to extract categoryId
-  var htmlRes = await fetch(targetUrl, { headers: HEADERS });
-  var html = await htmlRes.text();
+  var urlObj = new URL(targetUrl);
 
-  // Extract categoryId from HTML — try multiple patterns
-  var catMatch = html.match(/"categoryId"\s*:\s*"(\d+)"/)
-    || html.match(/categoryId"\s*:\s*"(\d+)"/)
-    || html.match(/categoryId=(\d+)/)
-    || html.match(/category_id"\s*:\s*"(\d+)"/)
-    || html.match(/category_id[=:](\d+)/)
-    || html.match(/"id"\s*:\s*"?(\d{4,6})"?\s*,\s*"name"/);
-  if (!catMatch) {
-    // Fallback to HTML scraping if categoryId not found
-    var $ = cheerio.load(html);
-    var products = [], seen = {};
-    $('li[class*="listing-product"]').each(function() {
-      var p = extractProduct($(this), $);
-      if (p && p.name && !seen[p.name]) {
-        seen[p.name] = true;
-        if (p.url && !p.url.startsWith('http')) try { p.url = new URL(p.url, targetUrl).toString(); } catch(e) {}
-        if (p.image && !p.image.startsWith('http')) try { p.image = new URL(p.image, targetUrl).toString(); } catch(e) {}
-        products.push(p);
-      }
+  // Step 1: Resolve URL path to categoryId via GraphQL
+  var urlPath = urlObj.pathname.replace(/^\//, '').replace(/\/$/, '');
+  var categoryId = null;
+
+  try {
+    var gqlRes = await fetch('https://www.terminalx.com/graphql', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json', 'User-Agent': HEADERS['User-Agent'] },
+      body: JSON.stringify({ query: '{ urlResolver(url: "' + urlPath + '") { id type } }' })
     });
-    products.forEach(function(p, i) { p.id = i + 1; });
-    return { products: products, site: 'Terminal X', total: products.length, perPage: products.length };
+    var gqlData = await gqlRes.json();
+    if (gqlData.data && gqlData.data.urlResolver && gqlData.data.urlResolver.id) {
+      categoryId = String(gqlData.data.urlResolver.id);
+    }
+  } catch(e) {}
+
+  // Fallback: try extracting from HTML
+  if (!categoryId) {
+    try {
+      var htmlRes = await fetch(targetUrl, { headers: HEADERS });
+      var html = await htmlRes.text();
+      var catMatch = html.match(/categoryId["\s:]+["']?(\d{4,6})["']?/)
+        || html.match(/category_id["\s:]+["']?(\d{4,6})["']?/);
+      if (catMatch) categoryId = catMatch[1];
+    } catch(e) {}
   }
 
-  var categoryId = catMatch[1];
+  if (!categoryId) {
+    return { products: [], site: 'Terminal X', total: 0, error: 'Could not resolve category' };
+  }
 
-  // Build filter from URL query params
-  var urlObj = new URL(targetUrl);
+  // Step 2: Build filter from URL query params
   var filter = { category_id: { eq: categoryId } };
   urlObj.searchParams.forEach(function(value, key) {
     if (key === 'p' || key === 'product_list_order') return;
