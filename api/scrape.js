@@ -222,8 +222,9 @@ module.exports = async function handler(req, res) {
     var perPage = allProducts.length || (siteConfig ? siteConfig.perPage : 20);
 
     // Fetch remaining pages if there are more
-    if (totalHint && allProducts.length < totalHint && perPage > 0) {
-      var totalPages = Math.min(Math.ceil(totalHint / perPage), 15);
+    var shouldFetchMore = (totalHint && allProducts.length < totalHint) || (!totalHint && allProducts.length >= 3);
+    if (shouldFetchMore && perPage > 0) {
+      var totalPages = totalHint ? Math.min(Math.ceil(totalHint / perPage), 15) : 10;
       var pagParam = (siteConfig && siteConfig.paginationParam) || 'page';
       var fetches = [];
 
