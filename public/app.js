@@ -65,14 +65,14 @@ goBtn.addEventListener('click', function() {
       var seen = {};
       allProducts.forEach(function(p) { seen[p.name] = true; });
 
-      // Step 2: Fetch more pages in parallel
+      // If there are more pages (non-API sites), fetch them in parallel
       var totalHint = data.totalHint;
       var perPage = data.perPage || allProducts.length;
       var totalPages = 1;
 
-      if (totalHint && perPage > 0) {
+      if (totalHint && perPage > 0 && allProducts.length < totalHint) {
         totalPages = Math.min(Math.ceil(totalHint / perPage), 15);
-      } else if (allProducts.length >= 3) {
+      } else if (!totalHint && allProducts.length >= 3 && data.perPage) {
         totalPages = 10;
       }
 

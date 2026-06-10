@@ -1,10 +1,119 @@
-// Choosy API — Scrapes product listing pages and returns product data as JSON.
-// Supports single-page mode (?url=...&p=3) for parallel fetching from frontend.
+// Choosy API — Scrapes products via site APIs or HTML parsing.
 
 var cheerio = require('cheerio');
 
+var HEADERS = {
+  'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+  'Accept': 'text/html,application/xhtml+xml,application/json',
+  'Accept-Language': 'he-IL,he;q=0.9,en;q=0.8'
+};
+
+// --- Terminal X: Direct API ---
+async function scrapeTerminalX(targetUrl) {
+  // Step 1: Fetch the HTML page to extract categoryId
+  var htmlRes = await fetch(targetUrl, { headers: HEADERS });
+  var html = await htmlRes.text();
+
+  // Extract categoryId from HTML
+  var catMatch = html.match(/"categoryId"\s*:\s*"(\d+)"/);
+  if (!catMatch) catMatch = html.match(/category_id["\s:]+["'](\d+)["']/);
+  if (!catMatch) return { products: [], site: 'Terminal X', total: 0, error: 'Could not find categoryId' };
+
+  var categoryId = catMatch[1];
+
+  // Build filter from URL query params
+  var urlObj = new URL(targetUrl);
+  var filter = { category_id: { eq: categoryId } };
+  urlObj.searchParams.forEach(function(value, key) {
+    if (key === 'p' || key === 'product_list_order') return;
+    var values = value.split('_');
+    if (values.length > 1) {
+      filter[key] = { in: values };
+    } else {
+      filter[key] = { eq: value };
+    }
+  });
+
+  // Step 2: Call the API with large pageSize to get everything
+  var apiRes = await fetch('https://www.terminalx.com/a/listingSearch', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json',
+      'User-Agent': HEADERS['User-Agent']
+    },
+    body: JSON.stringify({
+      listingSearchQuery: {
+        categoryId: categoryId,
+        filter: filter,
+        pageSize: 500,
+        currentPage: 1,
+        sort: { default: true },
+        includeAggregations: false
+      },
+      listingSearchOptions: { myBagSkus: [] }
+    })
+  });
+
+  var apiData = await apiRes.json();
+
+  // Extract products from response
+  var items = findItemsArray(apiData);
+  var products = [];
+
+  items.forEach(function(item, i) {
+    var name = item.name || '';
+    if (!name) return;
+
+    var image = '';
+    if (item.small_image && item.small_image.url) image = item.small_image.url;
+    else if (item.thumbnail && item.thumbnail.url) image = item.thumbnail.url;
+    else if (item.image && item.image.url) image = item.image.url;
+
+    var url = '';
+    if (item.url_key) url = 'https://www.terminalx.com/' + item.url_key;
+    else if (item.url) url = item.url;
+
+    var originalPrice = 0, salePrice = null;
+    if (item.price_range && item.price_range.minimum_price) {
+      var minPrice = item.price_range.minimum_price;
+      originalPrice = (minPrice.regular_price && minPrice.regular_price.value) || 0;
+      var finalPrice = (minPrice.final_price && minPrice.final_price.value) || originalPrice;
+      if (finalPrice < originalPrice) salePrice = finalPrice;
+      else originalPrice = finalPrice;
+    } else if (item.price) {
+      originalPrice = typeof item.price === 'number' ? item.price : parseFloat(item.price) || 0;
+    }
+
+    products.push({
+      id: i + 1, name: name, image: image, url: url,
+      salePrice: salePrice, originalPrice: originalPrice
+    });
+  });
+
+  var totalCount = 0;
+  try { totalCount = apiData.data.listingSearch.total_count || products.length; } catch(e) { totalCount = products.length; }
+
+  return { products: products, site: 'Terminal X', total: products.length, totalHint: totalCount };
+}
+
+function findItemsArray(obj) {
+  if (!obj || typeof obj !== 'object') return [];
+  if (Array.isArray(obj) && obj.length > 0 && obj[0] && obj[0].name) return obj;
+  var keys = Object.keys(obj);
+  for (var i = 0; i < keys.length; i++) {
+    var val = obj[keys[i]];
+    if (Array.isArray(val) && val.length > 0 && val[0] && val[0].name) return val;
+    if (val && typeof val === 'object') {
+      var found = findItemsArray(val);
+      if (found.length > 0) return found;
+    }
+  }
+  return [];
+}
+
+// --- Generic HTML Scraping (for H&M, NEXT, ASOS, etc.) ---
 var SITE_CONFIGS = {
-  terminalx: { name: 'Terminal X', hostMatch: 'terminalx.com', selector: 'li[class*="listing-product"]', paginationParam: 'p', perPage: 20 },
   hm: { name: 'H&M', hostMatch: 'hm.com', selector: 'article[data-testid="product-card"], li.product-item, [class*="product-item"]', paginationParam: 'page', perPage: 36 },
   next: { name: 'NEXT', hostMatch: 'next.co.il', selector: '[class*="product" i], [class*="item" i]', paginationParam: 'p', perPage: 20 },
   asos: { name: 'ASOS', hostMatch: 'asos.com', selector: 'article[data-auto-id="productTile"], [data-auto-id="productTile"]', paginationParam: 'page', perPage: 72 }
@@ -25,19 +134,6 @@ function parsePrices(text) {
   return { salePrice: nums[0], originalPrice: nums[1] };
 }
 
-function detectSite(url) {
-  var keys = Object.keys(SITE_CONFIGS);
-  for (var i = 0; i < keys.length; i++) {
-    if (url.indexOf(SITE_CONFIGS[keys[i]].hostMatch) !== -1) return SITE_CONFIGS[keys[i]];
-  }
-  return null;
-}
-
-function detectTotal(html) {
-  var match = html.match(/(\d+)\s*(?:products|items|results|מוצרים|פריטים)/i);
-  return match ? parseInt(match[1]) : null;
-}
-
 function extractProduct($el, $) {
   var name = '';
   var nameEl = $el.find('h2, h3, h4, [class*="title" i], [class*="name" i]').first();
@@ -45,10 +141,6 @@ function extractProduct($el, $) {
   if (!name || name.length < 3) {
     var img = $el.find('img').first();
     if (img.length) name = (img.attr('alt') || '').trim();
-  }
-  if (!name || name.length < 3) {
-    var link = $el.find('a[title]').first();
-    if (link.length) name = (link.attr('title') || '').trim();
   }
   if (!name || name.length < 3 || name.length > 300) return null;
 
@@ -66,9 +158,7 @@ function extractProduct($el, $) {
   var url = linkEl.length ? (linkEl.attr('href') || '') : '';
 
   var priceText = '';
-  $el.find('[class*="price" i], [class*="Price"]').each(function() {
-    priceText += ' ' + $(this).text();
-  });
+  $el.find('[class*="price" i]').each(function() { priceText += ' ' + $(this).text(); });
   if (!priceText) {
     var cm = $el.text().match(/[₪$€£]\s*[\d,.]+|[\d,.]+\s*[₪$€£]/g);
     if (cm) priceText = cm.join(' ');
@@ -102,35 +192,40 @@ function extractFromHtml(html, siteConfig, baseUrl) {
     if (products.length >= 3) break;
   }
 
-  $('script[type="application/ld+json"]').each(function() {
-    try {
-      var data = JSON.parse($(this).html());
-      var items = [];
-      if (Array.isArray(data)) items = data;
-      else if (data['@type'] === 'ItemList' && data.itemListElement) items = data.itemListElement.map(function(e) { return e.item || e; });
-      else if (data['@graph']) items = data['@graph'];
-      items.forEach(function(item) {
-        if (!item || item['@type'] !== 'Product' || !item.name || seen[item.name]) return;
-        seen[item.name] = true;
-        var origPrice = 0;
-        if (item.offers) {
-          var offer = Array.isArray(item.offers) ? item.offers[0] : item.offers;
-          origPrice = parseFloat(offer.price || offer.lowPrice) || 0;
-        }
-        products.push({ name: item.name, image: (Array.isArray(item.image) ? item.image[0] : item.image) || '', url: item.url || '', salePrice: null, originalPrice: origPrice });
-      });
-    } catch(e) {}
-  });
-
   return products;
 }
 
-var HEADERS = {
-  'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
-  'Accept': 'text/html,application/xhtml+xml',
-  'Accept-Language': 'he-IL,he;q=0.9,en;q=0.8'
-};
+function detectSiteConfig(url) {
+  var keys = Object.keys(SITE_CONFIGS);
+  for (var i = 0; i < keys.length; i++) {
+    if (url.indexOf(SITE_CONFIGS[keys[i]].hostMatch) !== -1) return SITE_CONFIGS[keys[i]];
+  }
+  return null;
+}
 
+async function scrapeHtml(targetUrl, pageNum) {
+  var siteConfig = detectSiteConfig(targetUrl);
+  var fetchUrl = new URL(targetUrl);
+  if (pageNum) {
+    var pagParam = (siteConfig && siteConfig.paginationParam) || 'page';
+    fetchUrl.searchParams.set(pagParam, String(pageNum));
+  }
+
+  var response = await fetch(fetchUrl.toString(), { headers: HEADERS });
+  var html = await response.text();
+  var products = extractFromHtml(html, siteConfig, targetUrl);
+  products.forEach(function(p, i) { p.id = i + 1; });
+
+  var result = { products: products, site: siteConfig ? siteConfig.name : 'Unknown', total: products.length };
+  if (!pageNum) {
+    var totalMatch = html.match(/(\d+)\s*(?:products|items|results|מוצרים|פריטים)/i);
+    result.totalHint = totalMatch ? parseInt(totalMatch[1]) : null;
+    result.perPage = products.length;
+  }
+  return result;
+}
+
+// --- Main Handler ---
 module.exports = async function handler(req, res) {
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'GET, OPTIONS');
@@ -140,32 +235,16 @@ module.exports = async function handler(req, res) {
   if (!targetUrl) return res.status(400).json({ error: 'Missing url parameter' });
   try { new URL(targetUrl); } catch(e) { return res.status(400).json({ error: 'Invalid URL' }); }
 
-  var siteConfig = detectSite(targetUrl);
-  var pageNum = req.query.p ? parseInt(req.query.p) : null;
-
   try {
-    // Build the URL for the requested page
-    var fetchUrl = new URL(targetUrl);
-    if (pageNum) {
-      var pagParam = (siteConfig && siteConfig.paginationParam) || 'page';
-      fetchUrl.searchParams.set(pagParam, String(pageNum));
-    }
+    var result;
 
-    var response = await fetch(fetchUrl.toString(), { headers: HEADERS });
-    var html = await response.text();
-    var products = extractFromHtml(html, siteConfig, targetUrl);
-    products.forEach(function(p, i) { p.id = i + 1; });
-
-    var result = {
-      products: products,
-      site: siteConfig ? siteConfig.name : 'Unknown',
-      total: products.length
-    };
-
-    // Only detect total and perPage on page 1 (no p param)
-    if (!pageNum) {
-      result.totalHint = detectTotal(html);
-      result.perPage = products.length;
+    if (targetUrl.indexOf('terminalx.com') !== -1) {
+      // Terminal X: use direct API (gets 100% of products)
+      result = await scrapeTerminalX(targetUrl);
+    } else {
+      // Other sites: HTML scraping
+      var pageNum = req.query.p ? parseInt(req.query.p) : null;
+      result = await scrapeHtml(targetUrl, pageNum);
     }
 
     res.status(200).json(result);
