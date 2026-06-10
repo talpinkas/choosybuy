@@ -37,7 +37,7 @@ function detectTotal(html) {
   return match ? parseInt(match[1]) : null;
 }
 
-function extractProduct($el) {
+function extractProduct($el, $) {
   // Name: heading, img alt, link title, link text
   var name = '';
   var nameEl = $el.find('h2, h3, h4, [class*="title" i], [class*="name" i]').first();
@@ -60,10 +60,10 @@ function extractProduct($el) {
   var image = '';
   var bestScore = -999;
   $el.find('img').each(function() {
-    var src = cheerio(this).attr('src') || cheerio(this).attr('data-src') || '';
+    var src = $(this).attr('src') || $(this).attr('data-src') || '';
     if (!src || src.startsWith('data:')) return;
     var score = 0;
-    var alt = cheerio(this).attr('alt') || '';
+    var alt = $(this).attr('alt') || '';
     if (alt.length > 5) score += 500;
     if (/icon|badge|logo|flag|star|rating|choice|sprite/i.test(src)) score -= 1000;
     if (score > bestScore) { bestScore = score; image = src; }
@@ -76,7 +76,7 @@ function extractProduct($el) {
   // Price
   var priceText = '';
   $el.find('[class*="price" i], [class*="Price"]').each(function() {
-    priceText += ' ' + cheerio(this).text();
+    priceText += ' ' + $(this).text();
   });
   if (!priceText) {
     var allText = $el.text();
@@ -106,7 +106,7 @@ function extractFromHtml(html, siteConfig, baseUrl) {
     $(selectors[s]).each(function() {
       var $el = $(this);
       if ($el.children().length > 30) return;
-      var p = extractProduct($el);
+      var p = extractProduct($el, $);
       if (p && p.name && !seen[p.name]) {
         seen[p.name] = true;
         if (p.url && !p.url.startsWith('http')) {
