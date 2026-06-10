@@ -65,12 +65,18 @@ goBtn.addEventListener('click', function() {
       var seen = {};
       allProducts.forEach(function(p) { seen[p.name] = true; });
 
-      // Step 2: If there are more pages, fetch them in parallel
+      // Step 2: Fetch more pages in parallel
       var totalHint = data.totalHint;
       var perPage = data.perPage || allProducts.length;
+      var totalPages = 1;
 
-      if (totalHint && allProducts.length < totalHint && perPage > 0) {
-        var totalPages = Math.min(Math.ceil(totalHint / perPage), 15);
+      if (totalHint && perPage > 0) {
+        totalPages = Math.min(Math.ceil(totalHint / perPage), 15);
+      } else if (allProducts.length >= 3) {
+        totalPages = 10;
+      }
+
+      if (totalPages > 1) {
         loadingText.textContent = 'Loading more products...';
 
         var pageFetches = [];
