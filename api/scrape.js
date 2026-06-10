@@ -1,11 +1,18 @@
 // Choosy API — Scrapes product listing pages and returns product data as JSON.
 
+var cheerio = require('cheerio');
+
 var SITE_CONFIGS = {
-  terminalx: { name: 'Terminal X', hostMatch: 'terminalx.com', paginationParam: 'p', perPage: 20 },
-  hm: { name: 'H&M', hostMatch: 'hm.com', paginationParam: 'page', perPage: 36 },
-  next: { name: 'NEXT', hostMatch: 'next.co.il', paginationParam: 'p', perPage: 20 },
-  asos: { name: 'ASOS', hostMatch: 'asos.com', paginationParam: 'page', perPage: 72 }
+  terminalx: { name: 'Terminal X', hostMatch: 'terminalx.com', selector: 'li[class*="listing-product"]', paginationParam: 'p', perPage: 20 },
+  hm: { name: 'H&M', hostMatch: 'hm.com', selector: 'article[data-testid="product-card"], li.product-item, [class*="product-item"]', paginationParam: 'page', perPage: 36 },
+  next: { name: 'NEXT', hostMatch: 'next.co.il', selector: '[class*="product" i], [class*="item" i]', paginationParam: 'p', perPage: 20 },
+  asos: { name: 'ASOS', hostMatch: 'asos.com', selector: 'article[data-auto-id="productTile"], [data-auto-id="productTile"]', paginationParam: 'page', perPage: 72 }
 };
+
+var GENERIC_SELECTORS = [
+  '[class*="product" i]', '[class*="item" i]', '[class*="card" i]',
+  '[data-testid*="product" i]', '[data-product]', '[data-item-id]'
+];
 
 function parsePrices(text) {
   var matches = (text || '').match(/(\d[\d,]*\.?\d*)/g);
@@ -25,44 +32,99 @@ function detectSite(url) {
   return null;
 }
 
-function detectTotalFromHtml(html) {
+function detectTotal(html) {
   var match = html.match(/(\d+)\s*(?:products|items|results|מוצרים|פריטים)/i);
   return match ? parseInt(match[1]) : null;
 }
 
-// Fast regex-based extraction — no jsdom needed
-function extractProductsRegex(html, baseUrl) {
+function extractProduct($el) {
+  // Name: heading, img alt, link title, link text
+  var name = '';
+  var nameEl = $el.find('h2, h3, h4, [class*="title" i], [class*="name" i]').first();
+  if (nameEl.length) name = nameEl.text().trim();
+  if (!name || name.length < 3) {
+    var img = $el.find('img').first();
+    if (img.length) name = (img.attr('alt') || '').trim();
+  }
+  if (!name || name.length < 3) {
+    var link = $el.find('a[title]').first();
+    if (link.length) name = (link.attr('title') || '').trim();
+  }
+  if (!name || name.length < 3) {
+    var aText = $el.find('a').first();
+    if (aText.length) name = aText.text().trim();
+  }
+  if (!name || name.length < 3 || name.length > 300) return null;
+
+  // Image: pick best (skip badges/icons)
+  var image = '';
+  var bestScore = -999;
+  $el.find('img').each(function() {
+    var src = cheerio(this).attr('src') || cheerio(this).attr('data-src') || '';
+    if (!src || src.startsWith('data:')) return;
+    var score = 0;
+    var alt = cheerio(this).attr('alt') || '';
+    if (alt.length > 5) score += 500;
+    if (/icon|badge|logo|flag|star|rating|choice|sprite/i.test(src)) score -= 1000;
+    if (score > bestScore) { bestScore = score; image = src; }
+  });
+
+  // URL
+  var linkEl = $el.is('a') ? $el : $el.find('a[href]').first();
+  var url = linkEl.length ? (linkEl.attr('href') || '') : '';
+
+  // Price
+  var priceText = '';
+  $el.find('[class*="price" i], [class*="Price"]').each(function() {
+    priceText += ' ' + cheerio(this).text();
+  });
+  if (!priceText) {
+    var allText = $el.text();
+    var cm = allText.match(/[₪$€£]\s*[\d,.]+|[\d,.]+\s*[₪$€£]/g);
+    if (cm) priceText = cm.join(' ');
+  }
+  var prices = parsePrices(priceText);
+
+  // Skip elements without useful data
+  if (!prices.originalPrice && !image) return null;
+  // Skip container elements (too much text = probably not a product card)
+  if ($el.text().length > 1000) return null;
+
+  return { name: name, image: image, url: url, salePrice: prices.salePrice, originalPrice: prices.originalPrice || 0 };
+}
+
+function extractFromHtml(html, siteConfig, baseUrl) {
+  var $ = cheerio.load(html);
   var products = [];
   var seen = {};
 
-  // Strategy 1: Find product links with images and alt text (Terminal X pattern)
-  var linkPattern = /<a[^>]+href="([^"]*\/(?:product|item|p\/)[^"]*)"[^>]*>[\s\S]*?<img[^>]+alt="([^"]+)"[^>]+src="([^"]+)"[\s\S]*?<\/a>/gi;
-  var match;
-  while ((match = linkPattern.exec(html)) !== null) {
-    var url = match[1], name = match[2].trim(), image = match[3];
-    if (name && name.length > 3 && !seen[name]) {
-      seen[name] = true;
-      products.push({ name: name, image: image, url: url, salePrice: null, originalPrice: 0 });
-    }
-  }
+  // Try site-specific selector first
+  var selectors = siteConfig ? [siteConfig.selector] : [];
+  selectors = selectors.concat(GENERIC_SELECTORS);
 
-  // Strategy 2: Find img tags with alt text inside product-like containers
-  if (products.length < 3) {
-    var imgPattern = /<img[^>]+alt="([^"]{5,80})"[^>]+src="(https?:\/\/[^"]+(?:jpg|jpeg|png|webp)[^"]*)"[^>]*>/gi;
-    while ((match = imgPattern.exec(html)) !== null) {
-      var name = match[1].trim(), image = match[2];
-      if (name && !seen[name] && !/logo|icon|banner|sprite/i.test(image)) {
-        seen[name] = true;
-        products.push({ name: name, image: image, url: '', salePrice: null, originalPrice: 0 });
+  for (var s = 0; s < selectors.length; s++) {
+    $(selectors[s]).each(function() {
+      var $el = $(this);
+      if ($el.children().length > 30) return;
+      var p = extractProduct($el);
+      if (p && p.name && !seen[p.name]) {
+        seen[p.name] = true;
+        if (p.url && !p.url.startsWith('http')) {
+          try { p.url = new URL(p.url, baseUrl).toString(); } catch(e) {}
+        }
+        if (p.image && !p.image.startsWith('http')) {
+          try { p.image = new URL(p.image, baseUrl).toString(); } catch(e) {}
+        }
+        products.push(p);
       }
-    }
+    });
+    if (products.length >= 3) break;
   }
 
-  // Strategy 3: JSON-LD
-  var jsonLdPattern = /<script[^>]+type="application\/ld\+json"[^>]*>([\s\S]*?)<\/script>/gi;
-  while ((match = jsonLdPattern.exec(html)) !== null) {
+  // Also try JSON-LD
+  $('script[type="application/ld+json"]').each(function() {
     try {
-      var data = JSON.parse(match[1]);
+      var data = JSON.parse($(this).html());
       var items = [];
       if (Array.isArray(data)) items = data;
       else if (data['@type'] === 'ItemList' && data.itemListElement) items = data.itemListElement.map(function(e) { return e.item || e; });
@@ -81,25 +143,6 @@ function extractProductsRegex(html, baseUrl) {
         });
       });
     } catch(e) {}
-  }
-
-  // Extract prices from nearby price elements
-  products.forEach(function(p) {
-    if (p.originalPrice > 0) return;
-    var nameEsc = p.name.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-    var priceNearby = new RegExp(nameEsc + '[\\s\\S]{0,500}?([\\d,.]+)\\s*₪', 'i');
-    var pm = html.match(priceNearby);
-    if (pm) p.originalPrice = parseFloat(pm[1].replace(/,/g, '')) || 0;
-  });
-
-  // Resolve relative URLs
-  products.forEach(function(p) {
-    if (p.url && !p.url.startsWith('http')) {
-      try { p.url = new URL(p.url, baseUrl).toString(); } catch(e) {}
-    }
-    if (p.image && !p.image.startsWith('http')) {
-      try { p.image = new URL(p.image, baseUrl).toString(); } catch(e) {}
-    }
   });
 
   return products;
@@ -118,10 +161,7 @@ module.exports = async function handler(req, res) {
 
   var targetUrl = req.query.url;
   if (!targetUrl) return res.status(400).json({ error: 'Missing url parameter' });
-
-  try { new URL(targetUrl); } catch(e) {
-    return res.status(400).json({ error: 'Invalid URL' });
-  }
+  try { new URL(targetUrl); } catch(e) { return res.status(400).json({ error: 'Invalid URL' }); }
 
   var siteConfig = detectSite(targetUrl);
   var startTime = Date.now();
@@ -130,32 +170,31 @@ module.exports = async function handler(req, res) {
     var response = await fetch(targetUrl, { headers: HEADERS });
     var html = await response.text();
 
-    var allProducts = extractProductsRegex(html, targetUrl);
-    var totalHint = detectTotalFromHtml(html);
+    var allProducts = extractFromHtml(html, siteConfig, targetUrl);
+    var totalHint = detectTotal(html);
     var perPage = allProducts.length || (siteConfig ? siteConfig.perPage : 20);
 
-    // Fetch remaining pages — time-bounded to stay within Vercel's limit
+    // Fetch more pages — time-bounded
     var shouldFetchMore = (totalHint && allProducts.length < totalHint) || (!totalHint && allProducts.length >= 3);
     if (shouldFetchMore && perPage > 0) {
       var totalPages = totalHint ? Math.min(Math.ceil(totalHint / perPage), 15) : 10;
       var pagParam = (siteConfig && siteConfig.paginationParam) || 'page';
 
-      // Fetch in batches of 5 to avoid overwhelming the target site
       for (var batch = 0; batch < 3; batch++) {
-        if (Date.now() - startTime > 7000) break; // stop at 7s to leave time for response
+        if (Date.now() - startTime > 7000) break;
 
-        var batchStart = batch * 5 + 2;
-        var batchEnd = Math.min(batchStart + 5, totalPages + 1);
-        if (batchStart > totalPages) break;
+        var bStart = batch * 5 + 2;
+        var bEnd = Math.min(bStart + 5, totalPages + 1);
+        if (bStart > totalPages) break;
 
         var fetches = [];
-        for (var p = batchStart; p < batchEnd; p++) {
+        for (var p = bStart; p < bEnd; p++) {
           var pageUrl = new URL(targetUrl);
           pageUrl.searchParams.set(pagParam, String(p));
           fetches.push(
             fetch(pageUrl.toString(), { headers: HEADERS })
               .then(function(r) { return r.text(); })
-              .then(function(pageHtml) { return extractProductsRegex(pageHtml, targetUrl); })
+              .then(function(pageHtml) { return extractFromHtml(pageHtml, siteConfig, targetUrl); })
               .catch(function() { return []; })
           );
         }
@@ -163,8 +202,8 @@ module.exports = async function handler(req, res) {
         var pageResults = await Promise.all(fetches);
         var seen = {};
         allProducts.forEach(function(p) { seen[p.name] = true; });
-        pageResults.forEach(function(products) {
-          products.forEach(function(p) {
+        pageResults.forEach(function(prods) {
+          prods.forEach(function(p) {
             if (!seen[p.name]) { seen[p.name] = true; allProducts.push(p); }
           });
         });
