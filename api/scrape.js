@@ -1,4 +1,5 @@
 // Choosy API — Scrapes product listing pages and returns product data as JSON.
+// Supports single-page mode (?url=...&p=3) for parallel fetching from frontend.
 
 var cheerio = require('cheerio');
 
@@ -38,7 +39,6 @@ function detectTotal(html) {
 }
 
 function extractProduct($el, $) {
-  // Name: heading, img alt, link title, link text
   var name = '';
   var nameEl = $el.find('h2, h3, h4, [class*="title" i], [class*="name" i]').first();
   if (nameEl.length) name = nameEl.text().trim();
@@ -50,44 +50,31 @@ function extractProduct($el, $) {
     var link = $el.find('a[title]').first();
     if (link.length) name = (link.attr('title') || '').trim();
   }
-  if (!name || name.length < 3) {
-    var aText = $el.find('a').first();
-    if (aText.length) name = aText.text().trim();
-  }
   if (!name || name.length < 3 || name.length > 300) return null;
 
-  // Image: pick best (skip badges/icons)
-  var image = '';
-  var bestScore = -999;
+  var image = '', bestScore = -999;
   $el.find('img').each(function() {
     var src = $(this).attr('src') || $(this).attr('data-src') || '';
     if (!src || src.startsWith('data:')) return;
     var score = 0;
-    var alt = $(this).attr('alt') || '';
-    if (alt.length > 5) score += 500;
+    if (($(this).attr('alt') || '').length > 5) score += 500;
     if (/icon|badge|logo|flag|star|rating|choice|sprite/i.test(src)) score -= 1000;
     if (score > bestScore) { bestScore = score; image = src; }
   });
 
-  // URL
   var linkEl = $el.is('a') ? $el : $el.find('a[href]').first();
   var url = linkEl.length ? (linkEl.attr('href') || '') : '';
 
-  // Price
   var priceText = '';
   $el.find('[class*="price" i], [class*="Price"]').each(function() {
     priceText += ' ' + $(this).text();
   });
   if (!priceText) {
-    var allText = $el.text();
-    var cm = allText.match(/[₪$€£]\s*[\d,.]+|[\d,.]+\s*[₪$€£]/g);
+    var cm = $el.text().match(/[₪$€£]\s*[\d,.]+|[\d,.]+\s*[₪$€£]/g);
     if (cm) priceText = cm.join(' ');
   }
   var prices = parsePrices(priceText);
-
-  // Skip elements without useful data
   if (!prices.originalPrice && !image) return null;
-  // Skip container elements (too much text = probably not a product card)
   if ($el.text().length > 1000) return null;
 
   return { name: name, image: image, url: url, salePrice: prices.salePrice, originalPrice: prices.originalPrice || 0 };
@@ -95,10 +82,8 @@ function extractProduct($el, $) {
 
 function extractFromHtml(html, siteConfig, baseUrl) {
   var $ = cheerio.load(html);
-  var products = [];
-  var seen = {};
+  var products = [], seen = {};
 
-  // Try site-specific selector first
   var selectors = siteConfig ? [siteConfig.selector] : [];
   selectors = selectors.concat(GENERIC_SELECTORS);
 
@@ -109,19 +94,14 @@ function extractFromHtml(html, siteConfig, baseUrl) {
       var p = extractProduct($el, $);
       if (p && p.name && !seen[p.name]) {
         seen[p.name] = true;
-        if (p.url && !p.url.startsWith('http')) {
-          try { p.url = new URL(p.url, baseUrl).toString(); } catch(e) {}
-        }
-        if (p.image && !p.image.startsWith('http')) {
-          try { p.image = new URL(p.image, baseUrl).toString(); } catch(e) {}
-        }
+        if (p.url && !p.url.startsWith('http')) try { p.url = new URL(p.url, baseUrl).toString(); } catch(e) {}
+        if (p.image && !p.image.startsWith('http')) try { p.image = new URL(p.image, baseUrl).toString(); } catch(e) {}
         products.push(p);
       }
     });
     if (products.length >= 3) break;
   }
 
-  // Also try JSON-LD
   $('script[type="application/ld+json"]').each(function() {
     try {
       var data = JSON.parse($(this).html());
@@ -137,10 +117,7 @@ function extractFromHtml(html, siteConfig, baseUrl) {
           var offer = Array.isArray(item.offers) ? item.offers[0] : item.offers;
           origPrice = parseFloat(offer.price || offer.lowPrice) || 0;
         }
-        products.push({
-          name: item.name, image: (Array.isArray(item.image) ? item.image[0] : item.image) || '',
-          url: item.url || '', salePrice: null, originalPrice: origPrice
-        });
+        products.push({ name: item.name, image: (Array.isArray(item.image) ? item.image[0] : item.image) || '', url: item.url || '', salePrice: null, originalPrice: origPrice });
       });
     } catch(e) {}
   });
@@ -164,60 +141,34 @@ module.exports = async function handler(req, res) {
   try { new URL(targetUrl); } catch(e) { return res.status(400).json({ error: 'Invalid URL' }); }
 
   var siteConfig = detectSite(targetUrl);
-  var startTime = Date.now();
+  var pageNum = req.query.p ? parseInt(req.query.p) : null;
 
   try {
-    var response = await fetch(targetUrl, { headers: HEADERS });
-    var html = await response.text();
-
-    var allProducts = extractFromHtml(html, siteConfig, targetUrl);
-    var totalHint = detectTotal(html);
-    var perPage = allProducts.length || (siteConfig ? siteConfig.perPage : 20);
-
-    // Fetch more pages — time-bounded
-    var shouldFetchMore = (totalHint && allProducts.length < totalHint) || (!totalHint && allProducts.length >= 3);
-    if (shouldFetchMore && perPage > 0) {
-      var totalPages = totalHint ? Math.min(Math.ceil(totalHint / perPage), 15) : 10;
+    // Build the URL for the requested page
+    var fetchUrl = new URL(targetUrl);
+    if (pageNum) {
       var pagParam = (siteConfig && siteConfig.paginationParam) || 'page';
-
-      for (var batch = 0; batch < 3; batch++) {
-        if (Date.now() - startTime > 7000) break;
-
-        var bStart = batch * 5 + 2;
-        var bEnd = Math.min(bStart + 5, totalPages + 1);
-        if (bStart > totalPages) break;
-
-        var fetches = [];
-        for (var p = bStart; p < bEnd; p++) {
-          var pageUrl = new URL(targetUrl);
-          pageUrl.searchParams.set(pagParam, String(p));
-          fetches.push(
-            fetch(pageUrl.toString(), { headers: HEADERS })
-              .then(function(r) { return r.text(); })
-              .then(function(pageHtml) { return extractFromHtml(pageHtml, siteConfig, targetUrl); })
-              .catch(function() { return []; })
-          );
-        }
-
-        var pageResults = await Promise.all(fetches);
-        var seen = {};
-        allProducts.forEach(function(p) { seen[p.name] = true; });
-        pageResults.forEach(function(prods) {
-          prods.forEach(function(p) {
-            if (!seen[p.name]) { seen[p.name] = true; allProducts.push(p); }
-          });
-        });
-      }
+      fetchUrl.searchParams.set(pagParam, String(pageNum));
     }
 
-    allProducts.forEach(function(p, i) { p.id = i + 1; });
+    var response = await fetch(fetchUrl.toString(), { headers: HEADERS });
+    var html = await response.text();
+    var products = extractFromHtml(html, siteConfig, targetUrl);
+    products.forEach(function(p, i) { p.id = i + 1; });
 
-    res.status(200).json({
-      products: allProducts,
+    var result = {
+      products: products,
       site: siteConfig ? siteConfig.name : 'Unknown',
-      total: allProducts.length,
-      totalHint: totalHint
-    });
+      total: products.length
+    };
+
+    // Only detect total and perPage on page 1 (no p param)
+    if (!pageNum) {
+      result.totalHint = detectTotal(html);
+      result.perPage = products.length;
+    }
+
+    res.status(200).json(result);
 
   } catch(err) {
     res.status(500).json({ error: 'Failed to fetch products', details: err.message });

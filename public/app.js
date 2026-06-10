@@ -51,6 +51,7 @@ goBtn.addEventListener('click', function() {
   loadingText.textContent = 'Finding products...';
   track('scrape_started', { url: url });
 
+  // Step 1: Fetch page 1 to get products + total count
   fetch('/api/scrape?url=' + encodeURIComponent(url))
     .then(function(r) { return r.json(); })
     .then(function(data) {
@@ -59,8 +60,44 @@ goBtn.addEventListener('click', function() {
         setTimeout(function() { showScreen(landing); }, 2500);
         return;
       }
-      currentProducts = data.products;
-      startGame(data.products);
+
+      var allProducts = data.products;
+      var seen = {};
+      allProducts.forEach(function(p) { seen[p.name] = true; });
+
+      // Step 2: If there are more pages, fetch them in parallel
+      var totalHint = data.totalHint;
+      var perPage = data.perPage || allProducts.length;
+
+      if (totalHint && allProducts.length < totalHint && perPage > 0) {
+        var totalPages = Math.min(Math.ceil(totalHint / perPage), 15);
+        loadingText.textContent = 'Loading more products...';
+
+        var pageFetches = [];
+        for (var p = 2; p <= totalPages; p++) {
+          pageFetches.push(
+            fetch('/api/scrape?url=' + encodeURIComponent(url) + '&p=' + p)
+              .then(function(r) { return r.json(); })
+              .then(function(pageData) { return pageData.products || []; })
+              .catch(function() { return []; })
+          );
+        }
+
+        Promise.all(pageFetches).then(function(results) {
+          results.forEach(function(products) {
+            products.forEach(function(p) {
+              if (!seen[p.name]) { seen[p.name] = true; allProducts.push(p); }
+            });
+          });
+          allProducts.forEach(function(p, i) { p.id = i + 1; });
+          currentProducts = allProducts;
+          startGame(allProducts);
+        });
+
+      } else {
+        currentProducts = allProducts;
+        startGame(allProducts);
+      }
     })
     .catch(function(err) {
       loadingText.textContent = 'Something went wrong. Try again.';
