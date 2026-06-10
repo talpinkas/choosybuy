@@ -48,6 +48,7 @@ goBtn.addEventListener('click', function() {
   if (!url.startsWith('http')) url = 'https://' + url;
 
   showScreen(loadingScreen);
+  loadingText.textContent = 'Finding products...';
   track('scrape_started', { url: url });
 
   fetch('/api/scrape?url=' + encodeURIComponent(url))
