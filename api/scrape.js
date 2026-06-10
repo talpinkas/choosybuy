@@ -14,10 +14,29 @@ async function scrapeTerminalX(targetUrl) {
   var htmlRes = await fetch(targetUrl, { headers: HEADERS });
   var html = await htmlRes.text();
 
-  // Extract categoryId from HTML
-  var catMatch = html.match(/"categoryId"\s*:\s*"(\d+)"/);
-  if (!catMatch) catMatch = html.match(/category_id["\s:]+["'](\d+)["']/);
-  if (!catMatch) return { products: [], site: 'Terminal X', total: 0, error: 'Could not find categoryId' };
+  // Extract categoryId from HTML — try multiple patterns
+  var catMatch = html.match(/"categoryId"\s*:\s*"(\d+)"/)
+    || html.match(/categoryId"\s*:\s*"(\d+)"/)
+    || html.match(/categoryId=(\d+)/)
+    || html.match(/category_id"\s*:\s*"(\d+)"/)
+    || html.match(/category_id[=:](\d+)/)
+    || html.match(/"id"\s*:\s*"?(\d{4,6})"?\s*,\s*"name"/);
+  if (!catMatch) {
+    // Fallback to HTML scraping if categoryId not found
+    var $ = cheerio.load(html);
+    var products = [], seen = {};
+    $('li[class*="listing-product"]').each(function() {
+      var p = extractProduct($(this), $);
+      if (p && p.name && !seen[p.name]) {
+        seen[p.name] = true;
+        if (p.url && !p.url.startsWith('http')) try { p.url = new URL(p.url, targetUrl).toString(); } catch(e) {}
+        if (p.image && !p.image.startsWith('http')) try { p.image = new URL(p.image, targetUrl).toString(); } catch(e) {}
+        products.push(p);
+      }
+    });
+    products.forEach(function(p, i) { p.id = i + 1; });
+    return { products: products, site: 'Terminal X', total: products.length, perPage: products.length };
+  }
 
   var categoryId = catMatch[1];
 
