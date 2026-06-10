@@ -79,6 +79,9 @@ function startGame(products) {
   gameStartedAt = Date.now();
   pairShownAt = Date.now();
 
+  var countEl = document.getElementById('product-count');
+  if (countEl) countEl.textContent = products.length + ' products loaded';
+
   game = new ChoosingGame({
     products: products,
     querySelector: document.querySelector.bind(document)

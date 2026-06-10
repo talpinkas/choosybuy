@@ -81,6 +81,7 @@ body {
 }
 
 .header { text-align: center; margin-bottom: 10px; }
+.product-count { font-size: 11px; color: rgba(255,255,255,0.25); margin-top: 2px; }
 .title { font-size: 18px; font-weight: 700; color: #ff6b4a; letter-spacing: 0.5px; }
 
 .arena { display: flex; align-items: stretch; gap: 14px; width: 100%; max-width: 880px; margin-bottom: 12px; }
