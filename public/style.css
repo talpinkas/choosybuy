@@ -43,7 +43,9 @@ body {
   padding: 6px 14px; border-radius: 6px; font-size: 12px; font-weight: 500;
   background: rgba(255,255,255,0.06); color: rgba(255,255,255,0.5);
   border: 1px solid rgba(255,255,255,0.08);
+  text-decoration: none; transition: background 0.15s, color 0.15s, border-color 0.15s;
 }
+.site-badge:hover { background: rgba(255,107,74,0.1); color: #ff6b4a; border-color: rgba(255,107,74,0.3); }
 
 .free-note { font-size: 11px; color: rgba(255,255,255,0.2); }
 

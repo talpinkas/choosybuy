@@ -54,7 +54,7 @@ goBtn.addEventListener('click', function() {
     .then(function(r) { return r.json(); })
     .then(function(data) {
       if (!data.products || data.products.length < 2) {
-        loadingText.textContent = 'לא הצלחנו למצוא מספיק מוצרים. נסו לינק אחר.';
+        loadingText.textContent = 'Couldn\'t find enough products. Try a different link.';
         setTimeout(function() { showScreen(landing); }, 2500);
         return;
       }
@@ -62,7 +62,7 @@ goBtn.addEventListener('click', function() {
       startGame(data.products);
     })
     .catch(function(err) {
-      loadingText.textContent = 'שגיאה. נסו שוב.';
+      loadingText.textContent = 'Something went wrong. Try again.';
       setTimeout(function() { showScreen(landing); }, 2000);
     });
 });

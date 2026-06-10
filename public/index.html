@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="he" dir="rtl">
+<html lang="en" dir="ltr">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Choosy — לא לחפש, למצוא</title>
+  <title>Choosy — Don't browse, find.</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -12,40 +12,40 @@
   <div id="landing">
     <div class="hero">
       <h1 class="logo">Choosy</h1>
-      <p class="tagline">לא לחפש, למצוא.</p>
-      <p class="subtitle">מכירים את התחושה? מגלגלים עשרות מוצרים, מתלבטים, מתעייפים, ובסוף לא קונים.<br>Choosy עוזר לכם לבחור — מהר, בכיף, בלי שופינג פאטיג.</p>
+      <p class="tagline">Don't browse, find.</p>
+      <p class="subtitle">You know the feeling — scrolling through dozens of products, overwhelmed, exhausted, and ending up buying nothing.<br>Choosy helps you decide — fast, fun, no shopping fatigue.</p>
 
       <div class="url-box">
-        <input type="text" id="url-input" placeholder="הדביקו לינק לדף מוצרים..." dir="ltr">
-        <button id="go-btn">בוחרים!</button>
+        <input type="text" id="url-input" placeholder="Paste a product listing URL...">
+        <button id="go-btn">Let's go!</button>
       </div>
 
-      <p class="hint">פילטרו מוצרים באתר שאתם אוהבים, העתיקו את הלינק, והדביקו כאן.</p>
+      <p class="hint">Filter products on your favorite store, copy the page URL, and paste it here.</p>
 
       <div class="supported-sites">
-        <span class="site-badge">Terminal X</span>
-        <span class="site-badge">NEXT</span>
-        <span class="site-badge">H&M</span>
-        <span class="site-badge">ASOS</span>
+        <a class="site-badge" href="https://www.terminalx.com" target="_blank" rel="noopener">Terminal X</a>
+        <a class="site-badge" href="https://www.next.co.il" target="_blank" rel="noopener">NEXT</a>
+        <a class="site-badge" href="https://www2.hm.com" target="_blank" rel="noopener">H&M</a>
+        <a class="site-badge" href="https://www.asos.com" target="_blank" rel="noopener">ASOS</a>
       </div>
 
-      <p class="free-note">חינם לגמרי. בלי התקנות. בלי רישום.</p>
+      <p class="free-note">Completely free. No installs. No sign-up.</p>
     </div>
 
     <div class="how-it-works">
-      <h2>איך זה עובד?</h2>
+      <h2>How it works</h2>
       <div class="steps">
         <div class="step">
           <div class="step-num">1</div>
-          <p>נכנסים לאתר אופנה ומפלטרים את מה שמחפשים</p>
+          <p>Go to a fashion store and filter what you're looking for</p>
         </div>
         <div class="step">
           <div class="step-num">2</div>
-          <p>מעתיקים את הלינק של דף התוצאות</p>
+          <p>Copy the URL of the results page</p>
         </div>
         <div class="step">
           <div class="step-num">3</div>
-          <p>מדביקים ב-Choosy ובוחרים בין שניים עד שמוצאים</p>
+          <p>Paste it in Choosy and pick between two until you find the one</p>
         </div>
       </div>
     </div>
@@ -56,7 +56,7 @@
     <div class="loading-content">
       <h2 class="logo">Choosy</h2>
       <div class="spinner-large"></div>
-      <p id="loading-text">מחפש מוצרים...</p>
+      <p id="loading-text">Finding products...</p>
     </div>
   </div>
 
@@ -69,38 +69,38 @@
           <div class="streak-badge" id="streak-left"></div>
           <img id="img-left" src="" alt="">
           <div class="card-info"><h2 id="name-left"></h2><p class="price" id="price-left"></p></div>
-          <button class="choose-btn">בוחר/ת את זה</button>
+          <button class="choose-btn">Pick this</button>
         </div>
-        <div class="or-wrap"><span class="or-text">או</span></div>
+        <div class="or-wrap"><span class="or-text">or</span></div>
         <div class="card" id="card-right">
           <div class="streak-badge" id="streak-right"></div>
           <img id="img-right" src="" alt="">
           <div class="card-info"><h2 id="name-right"></h2><p class="price" id="price-right"></p></div>
-          <button class="choose-btn">בוחר/ת את זה</button>
+          <button class="choose-btn">Pick this</button>
         </div>
       </div>
       <div class="progress-wrap"><div class="progress-track"><div class="progress-fill" id="progress-fill"></div></div></div>
     </div>
 
     <div id="winner-screen" class="hidden">
-      <p class="winner-label">הבחירה שלך</p>
+      <p class="winner-label">Your pick</p>
       <img id="winner-img" src="" alt="">
       <h2 id="winner-name"></h2>
       <p class="winner-price" id="winner-price"></p>
       <div class="winner-actions">
-        <a id="buy-btn" class="btn btn-primary" href="#" target="_blank" rel="noopener">לצפייה במוצר</a>
-        <button id="keep-btn" class="btn btn-secondary">להמשיך להשוות</button>
-        <button id="restart-btn" class="btn btn-ghost">להתחיל מחדש</button>
+        <a id="buy-btn" class="btn btn-primary" href="#" target="_blank" rel="noopener">View product</a>
+        <button id="keep-btn" class="btn btn-secondary">Keep comparing</button>
+        <button id="restart-btn" class="btn btn-ghost">Start over</button>
       </div>
     </div>
 
-    <button id="back-btn" class="btn btn-ghost back-btn">← חזרה</button>
+    <button id="back-btn" class="btn btn-ghost back-btn">← Back</button>
   </div>
 
   <!-- Feedback -->
   <div id="feedback" class="hidden">
     <div class="feedback-content">
-      <h2>איך היה?</h2>
+      <h2>How was it?</h2>
       <div class="rating">
         <button class="rate-btn" data-rating="1">1</button>
         <button class="rate-btn" data-rating="2">2</button>
@@ -108,9 +108,9 @@
         <button class="rate-btn" data-rating="4">4</button>
         <button class="rate-btn" data-rating="5">5</button>
       </div>
-      <textarea id="feedback-text" placeholder="רוצים לשתף עוד משהו?" rows="3"></textarea>
-      <button id="send-feedback" class="btn btn-primary">שליחה</button>
-      <button id="skip-feedback" class="btn btn-ghost">דלג</button>
+      <textarea id="feedback-text" placeholder="Want to share anything else?" rows="3"></textarea>
+      <button id="send-feedback" class="btn btn-primary">Send</button>
+      <button id="skip-feedback" class="btn btn-ghost">Skip</button>
     </div>
   </div>
 
