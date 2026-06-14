@@ -1,0 +1,20 @@
+{
+  "catalog_id": "terminalx-boy-0-2-tops",
+  "site": "Terminal X",
+  "segment": { "gender": "boy", "age": "0-2", "category": "tops" },
+  "updated_at": "2026-06-14",
+  "products": [
+    { "id": "tx-1001", "title": "חולצת בייbי כותנה עם הדפס דינוזאור", "image": "https://placehold.co/400x500/cfe8e0/2e2a26?text=Dino+Tee", "price": 49.9, "sale_price": 34.9, "currency": "ILS", "url": "https://www.terminalx.com/p/tx-1001?utm_source=choosy", "brand": "Terminal X", "affiliate_ready": false },
+    { "id": "tx-1002", "title": "בגד גוף שרוול ארוך פסים", "image": "https://placehold.co/400x500/f6dfd0/2e2a26?text=Stripe+Body", "price": 39.9, "sale_price": null, "currency": "ILS", "url": "https://www.terminalx.com/p/tx-1002?utm_source=choosy", "brand": "Terminal X", "affiliate_ready": false },
+    { "id": "tx-1003", "title": "חולצת פולו תכלת לתינוק", "image": "https://placehold.co/400x500/d7e3f4/2e2a26?text=Polo", "price": 59.9, "sale_price": null, "currency": "ILS", "url": "https://www.terminalx.com/p/tx-1003?utm_source=choosy", "brand": "Terminal X", "affiliate_ready": false },
+    { "id": "tx-1004", "title": "טי-שירט עם כיתוב חמוד", "image": "https://placehold.co/400x500/fbe8a6/2e2a26?text=Cute+Tee", "price": 44.9, "sale_price": 29.9, "currency": "ILS", "url": "https://www.terminalx.com/p/tx-1004?utm_source=choosy", "brand": "Terminal X", "affiliate_ready": false },
+    { "id": "tx-1005", "title": "מארז 3 חולצות בייסיק", "image": "https://placehold.co/400x500/e0d7f4/2e2a26?text=3-Pack", "price": 89.9, "sale_price": 69.9, "currency": "ILS", "url": "https://www.terminalx.com/p/tx-1005?utm_source=choosy", "brand": "Terminal X", "affiliate_ready": false },
+    { "id": "tx-1006", "title": "חולצת סווט עם אוזניים", "image": "https://placehold.co/400x500/d0f0e0/2e2a26?text=Ears+Sweat", "price": 79.9, "sale_price": null, "currency": "ILS", "url": "https://www.terminalx.com/p/tx-1006?utm_source=choosy", "brand": "Terminal X", "affiliate_ready": false },
+    { "id": "tx-1007", "title": "בגד גוף עם צווארון רכוס", "image": "https://placehold.co/400x500/f4d7e3/2e2a26?text=Collar+Body", "price": 42.9, "sale_price": null, "currency": "ILS", "url": "https://www.terminalx.com/p/tx-1007?utm_source=choosy", "brand": "Terminal X", "affiliate_ready": false },
+    { "id": "tx-1008", "title": "חולצת כותנה אורגנית כתום", "image": "https://placehold.co/400x500/f6cfa6/2e2a26?text=Organic", "price": 54.9, "sale_price": 39.9, "currency": "ILS", "url": "https://www.terminalx.com/p/tx-1008?utm_source=choosy", "brand": "Terminal X", "affiliate_ready": false },
+    { "id": "tx-1009", "title": "טי-שירט עם הדפס חיות ספארי", "image": "https://placehold.co/400x500/cfe8e0/2e2a26?text=Safari", "price": 47.9, "sale_price": null, "currency": "ILS", "url": "https://www.terminalx.com/p/tx-1009?utm_source=choosy", "brand": "Terminal X", "affiliate_ready": false },
+    { "id": "tx-1010", "title": "חולצה משובצת עם כפתורים", "image": "https://placehold.co/400x500/d7e3f4/2e2a26?text=Plaid", "price": 64.9, "sale_price": 49.9, "currency": "ILS", "url": "https://www.terminalx.com/p/tx-1010?utm_source=choosy", "brand": "Terminal X", "affiliate_ready": false },
+    { "id": "tx-1011", "title": "בגד גוף עם הדפס ירח וכוכבים", "image": "https://placehold.co/400x500/e0d7f4/2e2a26?text=Moon", "price": 41.9, "sale_price": null, "currency": "ILS", "url": "https://www.terminalx.com/p/tx-1011?utm_source=choosy", "brand": "Terminal X", "affiliate_ready": false },
+    { "id": "tx-1012", "title": "חולצת חג חגיגית", "image": "https://placehold.co/400x500/fbe8a6/2e2a26?text=Holiday", "price": 69.9, "sale_price": 54.9, "currency": "ILS", "url": "https://www.terminalx.com/p/tx-1012?utm_source=choosy", "brand": "Terminal X", "affiliate_ready": false }
+  ]
+}
