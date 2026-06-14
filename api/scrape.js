@@ -9,41 +9,66 @@ var HEADERS = {
 };
 
 // --- Terminal X: Direct API ---
-async function scrapeTerminalX(targetUrl) {
+async function scrapeTerminalX(targetUrl, debug) {
   var urlObj = new URL(targetUrl);
+  var diag = {};
 
-  // Step 1: Resolve URL path to categoryId via GraphQL
-  var urlPath = urlObj.pathname.replace(/^\//, '').replace(/\/$/, '');
-  var categoryId = null;
-
+  // Step 1: Fetch the page HTML to capture session cookies + fe-version token
+  // (the listingSearch API returns empty results without a valid session)
+  var cookies = '';
+  var feVersion = '';
+  var html = '';
   try {
-    var gqlRes = await fetch('https://www.terminalx.com/graphql', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json', 'User-Agent': HEADERS['User-Agent'] },
-      body: JSON.stringify({ query: '{ urlResolver(url: "' + urlPath + '") { id type } }' })
-    });
-    var gqlData = await gqlRes.json();
-    if (gqlData.data && gqlData.data.urlResolver && gqlData.data.urlResolver.id) {
-      categoryId = String(gqlData.data.urlResolver.id);
+    var htmlRes = await fetch(targetUrl, { headers: HEADERS });
+    html = await htmlRes.text();
+    // Capture Set-Cookie headers
+    var setCookie = (htmlRes.headers.getSetCookie ? htmlRes.headers.getSetCookie() : []) || [];
+    if (setCookie.length === 0) {
+      var sc = htmlRes.headers.get('set-cookie');
+      if (sc) setCookie = [sc];
     }
-  } catch(e) {}
+    cookies = setCookie.map(function(c) { return c.split(';')[0]; }).join('; ');
+    // Extract fe-version from cookie or HTML
+    var feMatch = cookies.match(/fe-version=([a-f0-9]+)/i)
+      || html.match(/fe-version["'=:\s]+([a-f0-9]{20,})/i)
+      || html.match(/"version"\s*:\s*"([a-f0-9]{20,})"/i);
+    if (feMatch) feVersion = feMatch[1];
+  } catch(e) { diag.htmlError = e.message; }
 
-  // Fallback: try extracting from HTML
+  diag.cookiesFound = cookies ? cookies.length : 0;
+  diag.feVersion = feVersion || null;
+
+  // Step 2: Resolve categoryId — from HTML first (most reliable), then GraphQL
+  var categoryId = null;
+  var catMatch = html.match(/"categoryId"\s*:\s*"?(\d{4,7})"?/)
+    || html.match(/"category_id"\s*:\s*"?(\d{4,7})"?/)
+    || html.match(/categoryId["\s:=]+["']?(\d{4,7})/)
+    || html.match(/category_id["\s:=]+["']?(\d{4,7})/);
+  if (catMatch) categoryId = catMatch[1];
+
   if (!categoryId) {
+    // GraphQL urlResolver fallback
+    var urlPath = urlObj.pathname.replace(/^\//, '').replace(/\/$/, '');
     try {
-      var htmlRes = await fetch(targetUrl, { headers: HEADERS });
-      var html = await htmlRes.text();
-      var catMatch = html.match(/categoryId["\s:]+["']?(\d{4,6})["']?/)
-        || html.match(/category_id["\s:]+["']?(\d{4,6})["']?/);
-      if (catMatch) categoryId = catMatch[1];
-    } catch(e) {}
+      var gqlRes = await fetch('https://www.terminalx.com/graphql', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json', 'User-Agent': HEADERS['User-Agent'] },
+        body: JSON.stringify({ query: '{ urlResolver(url: "' + urlPath + '") { id type } }' })
+      });
+      var gqlData = await gqlRes.json();
+      if (gqlData.data && gqlData.data.urlResolver && gqlData.data.urlResolver.id) {
+        categoryId = String(gqlData.data.urlResolver.id);
+      }
+    } catch(e) { diag.gqlError = e.message; }
   }
+
+  diag.categoryId = categoryId;
 
   if (!categoryId) {
-    return { products: [], site: 'Terminal X', total: 0, error: 'Could not resolve category' };
+    return { products: [], site: 'Terminal X', total: 0, error: 'Could not resolve category', diag: diag };
   }
 
-  // Step 2: Build filter from URL query params
+  // Step 3: Build filter from URL query params
   var filter = { category_id: { eq: categoryId } };
   urlObj.searchParams.forEach(function(value, key) {
     if (key === 'p' || key === 'product_list_order') return;
@@ -55,14 +80,20 @@ async function scrapeTerminalX(targetUrl) {
     }
   });
 
-  // Step 2: Call the API with large pageSize to get everything
+  // Step 4: Call the API with the session headers (cookies + fe-version)
+  var apiHeaders = {
+    'Content-Type': 'application/json',
+    'Accept': 'application/json',
+    'User-Agent': HEADERS['User-Agent'],
+    'Referer': targetUrl,
+    'Origin': 'https://www.terminalx.com'
+  };
+  if (cookies) apiHeaders['Cookie'] = cookies;
+  if (feVersion) apiHeaders['X-Fe-Version'] = feVersion;
+
   var apiRes = await fetch('https://www.terminalx.com/a/listingSearch', {
     method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      'Accept': 'application/json',
-      'User-Agent': HEADERS['User-Agent']
-    },
+    headers: apiHeaders,
     body: JSON.stringify({
       listingSearchQuery: {
         categoryId: categoryId,
@@ -76,7 +107,12 @@ async function scrapeTerminalX(targetUrl) {
     })
   });
 
-  var apiData = await apiRes.json();
+  var apiText = await apiRes.text();
+  if (debug) {
+    return { debug: true, diag: diag, apiStatus: apiRes.status, apiRaw: apiText.substring(0, 1500) };
+  }
+  var apiData;
+  try { apiData = JSON.parse(apiText); } catch(e) { apiData = {}; }
 
   // Extract products from response
   var items = findItemsArray(apiData);
@@ -261,7 +297,7 @@ module.exports = async function handler(req, res) {
 
     if (targetUrl.indexOf('terminalx.com') !== -1) {
       // Terminal X: use direct API (gets 100% of products)
-      result = await scrapeTerminalX(targetUrl);
+      result = await scrapeTerminalX(targetUrl, req.query.debug === '1');
     } else {
       // Other sites: HTML scraping
       var pageNum = req.query.p ? parseInt(req.query.p) : null;
