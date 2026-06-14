@@ -1,186 +1,191 @@
-// Choosy Web App — Main application logic
+// Choosy Kids — app flow: welcome -> setup (3 clicks) -> loading -> game
 
 var MIXPANEL_TOKEN = 'd0151b0b7af8502ac4bbed6a650ae33a';
-var MIXPANEL_API = 'https://api-eu.mixpanel.com/track';
 var analyticsId = localStorage.getItem('choosy_id');
 if (!analyticsId) {
   analyticsId = 'web-' + Date.now() + '-' + Math.random().toString(36).substr(2, 9);
   localStorage.setItem('choosy_id', analyticsId);
 }
-
 function track(event, props) {
   var payload = [{ event: event, properties: Object.assign({
     token: MIXPANEL_TOKEN, distinct_id: analyticsId,
-    time: Math.floor(Date.now() / 1000), platform: 'web'
+    time: Math.floor(Date.now() / 1000), platform: 'web-kids'
   }, props || {}) }];
-  fetch(MIXPANEL_API, {
+  fetch('https://api-eu.mixpanel.com/track', {
     method: 'POST', headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(payload)
-  }).catch(function() {});
+  }).catch(function () {});
 }
 
-// --- Screens ---
-var landing = document.getElementById('landing');
-var loadingScreen = document.getElementById('loading');
-var gameContainer = document.getElementById('game-container');
-var feedbackScreen = document.getElementById('feedback');
-var urlInput = document.getElementById('url-input');
-var goBtn = document.getElementById('go-btn');
-var loadingText = document.getElementById('loading-text');
+// --- Categories per age band ---
+var CATEGORIES = {
+  '0-2': [
+    { key: 'tops', label: 'חולצות', emoji: '👕' },
+    { key: 'bodysuits', label: 'בגדי גוף', emoji: '🧸' },
+    { key: 'sets', label: 'מארזים', emoji: '🎁' }
+  ],
+  '2-8': [
+    { key: 'tops', label: 'טי-שירט', emoji: '👕' },
+    { key: 'bottoms', label: 'מכנסיים', emoji: '👖' },
+    { key: 'dresses', label: 'שמלות', emoji: '👗' }
+  ]
+};
 
-var game = null;
-var gameStartedAt = 0;
-var comparisons = 0;
-var pairShownAt = 0;
-var currentProducts = [];
+var screens = {
+  welcome: document.getElementById('welcome'),
+  setup: document.getElementById('setup'),
+  loading: document.getElementById('loading'),
+  game: document.getElementById('game-container')
+};
+function show(name) {
+  Object.keys(screens).forEach(function (k) { screens[k].classList.add('hidden'); });
+  screens[name].classList.remove('hidden');
+}
 
-function showScreen(screen) {
-  [landing, loadingScreen, gameContainer, feedbackScreen].forEach(function(s) {
-    s.classList.add('hidden');
+var selection = { gender: null, age: null, category: null, budget: null };
+var game = null, comparisons = 0, pairShownAt = 0, gameStartedAt = 0, currentProducts = [];
+
+// --- Welcome ---
+document.getElementById('start-btn').addEventListener('click', function () {
+  track('setup_started');
+  show('setup');
+  resetSetup();
+});
+
+// --- Back links ---
+document.querySelectorAll('[data-back]').forEach(function (b) {
+  b.addEventListener('click', function () { show(b.getAttribute('data-back')); });
+});
+
+function resetSetup() {
+  document.getElementById('step-who').classList.remove('hidden');
+  document.getElementById('step-what').classList.add('hidden');
+  document.getElementById('step-budget').classList.add('hidden');
+}
+
+// --- Step 1: who ---
+document.querySelectorAll('#step-who .choice').forEach(function (btn) {
+  btn.addEventListener('click', function () {
+    selection.gender = btn.getAttribute('data-gender');
+    selection.age = btn.getAttribute('data-age');
+    buildCategories();
+    document.getElementById('step-who').classList.add('hidden');
+    document.getElementById('step-what').classList.remove('hidden');
   });
-  screen.classList.remove('hidden');
+});
+
+// --- Step 2: what ---
+function buildCategories() {
+  var grid = document.getElementById('category-grid');
+  grid.innerHTML = '';
+  (CATEGORIES[selection.age] || CATEGORIES['0-2']).forEach(function (c) {
+    var b = document.createElement('button');
+    b.className = 'choice';
+    b.innerHTML = '<span class="choice-emoji">' + c.emoji + '</span>' + c.label;
+    b.addEventListener('click', function () {
+      selection.category = c.key;
+      document.getElementById('step-what').classList.add('hidden');
+      document.getElementById('step-budget').classList.remove('hidden');
+    });
+    grid.appendChild(b);
+  });
 }
 
-// --- Go Button ---
-goBtn.addEventListener('click', function() {
-  var url = urlInput.value.trim();
-  if (!url) { urlInput.focus(); return; }
-  if (!url.startsWith('http')) url = 'https://' + url;
+// --- Step 3: budget ---
+var slider = document.getElementById('budget-slider');
+slider.addEventListener('input', function () {
+  document.getElementById('budget-val').textContent = slider.value;
+});
+document.getElementById('play-btn').addEventListener('click', function () {
+  selection.budget = parseInt(slider.value);
+  startFlow();
+});
+document.getElementById('skip-budget').addEventListener('click', function () {
+  selection.budget = null;
+  startFlow();
+});
 
-  showScreen(loadingScreen);
-  loadingText.textContent = 'Finding products...';
-  track('scrape_started', { url: url });
-
-  // Step 1: Fetch page 1 to get products + total count
-  fetch('/api/scrape?url=' + encodeURIComponent(url))
-    .then(function(r) { return r.json(); })
-    .then(function(data) {
-      if (!data.products || data.products.length < 2) {
-        loadingText.textContent = 'Couldn\'t find enough products. Try a different link.';
-        setTimeout(function() { showScreen(landing); }, 2500);
+// --- Load pool + start game ---
+function startFlow() {
+  show('loading');
+  track('pool_requested', selection);
+  var q = '/api/get-pool?gender=' + selection.gender + '&age=' + selection.age + '&category=' + selection.category;
+  fetch(q)
+    .then(function (r) { return r.json(); })
+    .then(function (data) {
+      var products = data.products || [];
+      if (selection.budget) {
+        products = products.filter(function (p) {
+          var price = p.salePrice != null ? p.salePrice : p.originalPrice;
+          return price <= selection.budget;
+        });
+      }
+      if (products.length < 2) {
+        document.getElementById('loading-text').textContent = 'אין מספיק פריטים בקטגוריה הזו עדיין. נסו בחירה אחרת.';
+        setTimeout(function () { show('setup'); resetSetup(); }, 2500);
         return;
       }
-
-      var allProducts = data.products;
-      var seen = {};
-      allProducts.forEach(function(p) { seen[p.name] = true; });
-
-      // If there are more pages (non-API sites), fetch them in parallel
-      var totalHint = data.totalHint;
-      var perPage = data.perPage || allProducts.length;
-      var totalPages = 1;
-
-      if (totalHint && perPage > 0 && allProducts.length < totalHint) {
-        totalPages = Math.min(Math.ceil(totalHint / perPage), 15);
-      } else if (!totalHint && allProducts.length >= 3 && data.perPage) {
-        totalPages = 10;
-      }
-
-      if (totalPages > 1) {
-        loadingText.textContent = 'Loading more products...';
-
-        var pageFetches = [];
-        for (var p = 2; p <= totalPages; p++) {
-          pageFetches.push(
-            fetch('/api/scrape?url=' + encodeURIComponent(url) + '&p=' + p)
-              .then(function(r) { return r.json(); })
-              .then(function(pageData) { return pageData.products || []; })
-              .catch(function() { return []; })
-          );
-        }
-
-        Promise.all(pageFetches).then(function(results) {
-          results.forEach(function(products) {
-            products.forEach(function(p) {
-              if (!seen[p.name]) { seen[p.name] = true; allProducts.push(p); }
-            });
-          });
-          allProducts.forEach(function(p, i) { p.id = i + 1; });
-          currentProducts = allProducts;
-          startGame(allProducts);
-        });
-
-      } else {
-        currentProducts = allProducts;
-        startGame(allProducts);
-      }
+      currentProducts = products;
+      track('pool_loaded', { count: products.length });
+      startGame(products);
     })
-    .catch(function(err) {
-      loadingText.textContent = 'Something went wrong. Try again.';
-      setTimeout(function() { showScreen(landing); }, 2000);
+    .catch(function () {
+      document.getElementById('loading-text').textContent = 'משהו השתבש. ננסה שוב?';
+      setTimeout(function () { show('setup'); resetSetup(); }, 2500);
     });
-});
+}
 
-urlInput.addEventListener('keydown', function(e) {
-  if (e.key === 'Enter') goBtn.click();
-});
-
-// --- Game ---
 function startGame(products) {
-  showScreen(gameContainer);
+  show('game');
   comparisons = 0;
   gameStartedAt = Date.now();
   pairShownAt = Date.now();
-
-  var countEl = document.getElementById('product-count');
-  if (countEl) countEl.textContent = products.length + ' products loaded';
-
-  game = new ChoosingGame({
-    products: products,
-    querySelector: document.querySelector.bind(document)
-  });
-
+  game = new ChoosingGame({ products: products, querySelector: document.querySelector.bind(document) });
   game.init();
   track('game_started', { product_count: products.length });
 }
 
-document.getElementById('card-left').addEventListener('click', function() { handleChoose('left'); });
-document.getElementById('card-right').addEventListener('click', function() { handleChoose('right'); });
+document.getElementById('card-left').addEventListener('click', function () { handleChoose('left'); });
+document.getElementById('card-right').addEventListener('click', function () { handleChoose('right'); });
 
 function handleChoose(side) {
   if (!game) return;
-  var decisionMs = Date.now() - pairShownAt;
   comparisons++;
-  track('comparison_made', { decision_time_ms: decisionMs, comparison_number: comparisons });
-
+  track('comparison_made', { decision_time_ms: Date.now() - pairShownAt, comparison_number: comparisons });
   var loserSide = game.choose(side);
   if (loserSide) {
     pairShownAt = Date.now();
-    var badge = document.getElementById('streak-' + (side === 'left' ? 'left' : 'right'));
+    var badge = document.getElementById('streak-' + side);
     if (badge && game.streak >= 3) badge.classList.add('hot');
     var el = document.getElementById('card-' + loserSide);
     el.classList.remove('enter-left', 'enter-right');
     void el.offsetWidth;
     el.classList.add('enter-' + loserSide);
   } else {
+    // winner crowned — set brand on buy button
+    var w = game.currentWinner;
+    var brandEl = document.getElementById('buy-brand');
+    if (brandEl && w) brandEl.textContent = w.brand || 'חנות';
     track('game_completed', {
-      winner_name: game.currentWinner.name,
+      winner_name: w.name, brand: w.brand,
       total_comparisons: comparisons,
       time_spent_sec: Math.round((Date.now() - gameStartedAt) / 1000)
     });
   }
 }
 
-document.getElementById('keep-btn').addEventListener('click', function() {
+document.getElementById('keep-btn').addEventListener('click', function () {
   if (game) { game.keepChoosing(); pairShownAt = Date.now(); }
 });
-
-document.getElementById('restart-btn').addEventListener('click', function() {
+document.getElementById('restart-btn').addEventListener('click', function () {
   if (game) {
-    game.startOver();
-    comparisons = 0;
-    pairShownAt = Date.now();
-    gameStartedAt = Date.now();
+    game.startOver(); comparisons = 0; pairShownAt = Date.now(); gameStartedAt = Date.now();
     track('game_started', { product_count: currentProducts.length, is_restart: true });
   }
 });
-
-document.getElementById('buy-btn').addEventListener('click', function() {
+document.getElementById('buy-btn').addEventListener('click', function () {
   if (game && game.currentWinner) {
-    track('product_clicked', { product_name: game.currentWinner.name, product_url: game.currentWinner.url });
+    track('product_clicked', { product_name: game.currentWinner.name, brand: game.currentWinner.brand, product_url: game.currentWinner.url });
   }
 });
-
-document.getElementById('back-btn').addEventListener('click', function() {
-  showScreen(landing);
-});
+document.getElementById('exit-btn').addEventListener('click', function () { show('welcome'); });

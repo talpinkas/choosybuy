@@ -1,118 +1,113 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="he" dir="rtl">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Choosy — Don't browse, find.</title>
+  <title>Choosy — לבחור בגדים לילדים, בלי הסחרחורת</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <!-- Landing Screen -->
-  <div id="landing">
-    <div class="hero">
-      <h1 class="logo">Choosy</h1>
-      <p class="tagline">Don't browse, find.</p>
-      <p class="subtitle">You know the feeling — scrolling through dozens of products, overwhelmed, exhausted, and ending up buying nothing.<br>Choosy helps you decide — fast, fun, no shopping fatigue.</p>
+  <!-- ===== Welcome ===== -->
+  <section id="welcome" class="screen">
+    <div class="welcome-inner">
+      <div class="logo">Choosy</div>
+      <h1 class="hero-title">לבחור בגדים לילדים — בלי הסחרחורת</h1>
+      <p class="hero-sub">לגדל ילדים זה כבר מספיק החלטות. את בחירת הבגדים נעשה לכם פשוטה, מהירה ואפילו כיפית — לבד או יחד עם הילדים.</p>
+      <button class="btn-primary big" id="start-btn">בואו נתחיל</button>
+      <p class="reassure">חינם לגמרי · בלי הרשמה · קונים ישירות באתר שאתם מכירים</p>
 
-      <div class="url-box">
-        <input type="text" id="url-input" placeholder="Paste a product listing URL...">
-        <button id="go-btn">Let's go!</button>
-      </div>
-
-      <p class="hint">Filter products on your favorite store, copy the page URL, and paste it here.</p>
-
-      <div class="supported-sites">
-        <a class="site-badge" href="https://www.terminalx.com" target="_blank" rel="noopener">Terminal X</a>
-        <a class="site-badge" href="https://www.next.co.il" target="_blank" rel="noopener">NEXT</a>
-        <a class="site-badge" href="https://www2.hm.com" target="_blank" rel="noopener">H&M</a>
-        <a class="site-badge" href="https://www.asos.com" target="_blank" rel="noopener">ASOS</a>
-      </div>
-
-      <p class="free-note">Completely free. No installs. No sign-up.</p>
-    </div>
-
-    <div class="how-it-works">
-      <h2>How it works</h2>
-      <div class="steps">
-        <div class="step">
-          <div class="step-num">1</div>
-          <p>Go to a fashion store and filter what you're looking for</p>
-        </div>
-        <div class="step">
-          <div class="step-num">2</div>
-          <p>Copy the URL of the results page</p>
-        </div>
-        <div class="step">
-          <div class="step-num">3</div>
-          <p>Paste it in Choosy and pick between two until you find the one</p>
-        </div>
+      <div class="how">
+        <div class="how-step"><span class="how-num">1</span><p>בוחרים למי קונים</p></div>
+        <div class="how-step"><span class="how-num">2</span><p>מראים שני פריטים בכל פעם</p></div>
+        <div class="how-step"><span class="how-num">3</span><p>בוחרים את מי שאוהבים — עד המנצח</p></div>
       </div>
     </div>
-  </div>
+  </section>
 
-  <!-- Loading Screen -->
-  <div id="loading" class="hidden">
-    <div class="loading-content">
-      <h2 class="logo">Choosy</h2>
-      <div class="spinner-large"></div>
-      <p id="loading-text">Finding products...</p>
+  <!-- ===== Setup (3 clicks) ===== -->
+  <section id="setup" class="screen hidden">
+    <button class="back-link" data-back="welcome">→ חזרה</button>
+
+    <div class="setup-step" id="step-who">
+      <h2 class="setup-q">למי אנחנו קונים?</h2>
+      <div class="choice-grid">
+        <button class="choice" data-gender="boy" data-age="0-2"><span class="choice-emoji">👶</span>בן · 0-2</button>
+        <button class="choice" data-gender="girl" data-age="0-2"><span class="choice-emoji">👶</span>בת · 0-2</button>
+        <button class="choice" data-gender="boy" data-age="2-8"><span class="choice-emoji">🧒</span>בן · 2-8</button>
+        <button class="choice" data-gender="girl" data-age="2-8"><span class="choice-emoji">🧒</span>בת · 2-8</button>
+      </div>
     </div>
-  </div>
 
-  <!-- Game Screen -->
-  <div id="game-container" class="hidden" dir="ltr">
+    <div class="setup-step hidden" id="step-what">
+      <h2 class="setup-q">מה מחפשים?</h2>
+      <div class="choice-grid" id="category-grid"></div>
+    </div>
+
+    <div class="setup-step hidden" id="step-budget">
+      <h2 class="setup-q">תקציב? (אפשר לדלג)</h2>
+      <div class="budget-box">
+        <input type="range" id="budget-slider" min="20" max="300" step="10" value="300">
+        <p class="budget-label">עד <span id="budget-val">300</span> ₪</p>
+      </div>
+      <div class="budget-actions">
+        <button class="btn-primary" id="play-btn">מתחילים לבחור!</button>
+        <button class="btn-ghost" id="skip-budget">בלי הגבלת תקציב</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Loading ===== -->
+  <section id="loading" class="screen hidden">
+    <div class="loading-inner">
+      <div class="logo">Choosy</div>
+      <div class="spinner"></div>
+      <p id="loading-text">אוספים בשבילכם את הפריטים הכי חמודים...</p>
+    </div>
+  </section>
+
+  <!-- ===== Game ===== -->
+  <section id="game-container" class="screen hidden">
     <div id="game-screen">
-      <div class="header"><h1 class="title">Choosy</h1><p class="product-count" id="product-count"></p></div>
+      <div class="game-header">
+        <span class="game-logo">Choosy</span>
+        <p class="game-hint">איזה מהם אתם אוהבים יותר?</p>
+      </div>
       <div class="arena">
         <div class="card" id="card-left">
           <div class="streak-badge" id="streak-left"></div>
           <img id="img-left" src="" alt="">
           <div class="card-info"><h2 id="name-left"></h2><p class="price" id="price-left"></p></div>
-          <button class="choose-btn">Pick this</button>
+          <button class="choose-btn">בוחרים את זה</button>
         </div>
-        <div class="or-wrap"><span class="or-text">or</span></div>
+        <div class="or-wrap"><span class="or-text">או</span></div>
         <div class="card" id="card-right">
           <div class="streak-badge" id="streak-right"></div>
           <img id="img-right" src="" alt="">
           <div class="card-info"><h2 id="name-right"></h2><p class="price" id="price-right"></p></div>
-          <button class="choose-btn">Pick this</button>
+          <button class="choose-btn">בוחרים את זה</button>
         </div>
       </div>
       <div class="progress-wrap"><div class="progress-track"><div class="progress-fill" id="progress-fill"></div></div></div>
     </div>
 
     <div id="winner-screen" class="hidden">
-      <p class="winner-label">Your pick</p>
+      <p class="winner-label">מצאתם! זאת הבחירה שלכם</p>
       <img id="winner-img" src="" alt="">
       <h2 id="winner-name"></h2>
       <p class="winner-price" id="winner-price"></p>
       <div class="winner-actions">
-        <a id="buy-btn" class="btn btn-primary" href="#" target="_blank" rel="noopener">View product</a>
-        <button id="keep-btn" class="btn btn-secondary">Keep comparing</button>
-        <button id="restart-btn" class="btn btn-ghost">Start over</button>
+        <a id="buy-btn" class="btn-primary" href="#" target="_blank" rel="noopener">לקנייה ב-<span id="buy-brand">חנות</span></a>
+        <button id="keep-btn" class="btn-secondary">להמשיך לבחור</button>
+        <button id="restart-btn" class="btn-ghost">להתחיל מחדש</button>
       </div>
     </div>
 
-    <button id="back-btn" class="btn btn-ghost back-btn">← Back</button>
-  </div>
-
-  <!-- Feedback -->
-  <div id="feedback" class="hidden">
-    <div class="feedback-content">
-      <h2>How was it?</h2>
-      <div class="rating">
-        <button class="rate-btn" data-rating="1">1</button>
-        <button class="rate-btn" data-rating="2">2</button>
-        <button class="rate-btn" data-rating="3">3</button>
-        <button class="rate-btn" data-rating="4">4</button>
-        <button class="rate-btn" data-rating="5">5</button>
-      </div>
-      <textarea id="feedback-text" placeholder="Want to share anything else?" rows="3"></textarea>
-      <button id="send-feedback" class="btn btn-primary">Send</button>
-      <button id="skip-feedback" class="btn btn-ghost">Skip</button>
-    </div>
-  </div>
+    <button id="exit-btn" class="back-link corner">→ יציאה</button>
+  </section>
 
   <script src="game.js"></script>
   <script src="app.js"></script>
