@@ -38,28 +38,28 @@ async function scrapeTerminalX(targetUrl, debug) {
   diag.cookiesFound = cookies ? cookies.length : 0;
   diag.feVersion = feVersion || null;
 
-  // Step 2: Resolve categoryId — from HTML first (most reliable), then GraphQL
+  // Step 2: Resolve categoryId — GraphQL urlResolver FIRST (authoritative
+  // for the URL path), since HTML contains many nav category IDs.
   var categoryId = null;
-  var catMatch = html.match(/"categoryId"\s*:\s*"?(\d{4,7})"?/)
-    || html.match(/"category_id"\s*:\s*"?(\d{4,7})"?/)
-    || html.match(/categoryId["\s:=]+["']?(\d{4,7})/)
-    || html.match(/category_id["\s:=]+["']?(\d{4,7})/);
-  if (catMatch) categoryId = catMatch[1];
+  var urlPath = urlObj.pathname.replace(/^\//, '').replace(/\/$/, '');
+  try {
+    var gqlRes = await fetch('https://www.terminalx.com/graphql', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json', 'User-Agent': HEADERS['User-Agent'] },
+      body: JSON.stringify({ query: '{ urlResolver(url: "' + urlPath + '") { id type } }' })
+    });
+    var gqlData = await gqlRes.json();
+    diag.urlResolver = gqlData && gqlData.data ? gqlData.data.urlResolver : null;
+    if (gqlData.data && gqlData.data.urlResolver && gqlData.data.urlResolver.id) {
+      categoryId = String(gqlData.data.urlResolver.id);
+    }
+  } catch(e) { diag.gqlError = e.message; }
 
+  // Fallback: HTML regex (last resort)
   if (!categoryId) {
-    // GraphQL urlResolver fallback
-    var urlPath = urlObj.pathname.replace(/^\//, '').replace(/\/$/, '');
-    try {
-      var gqlRes = await fetch('https://www.terminalx.com/graphql', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json', 'User-Agent': HEADERS['User-Agent'] },
-        body: JSON.stringify({ query: '{ urlResolver(url: "' + urlPath + '") { id type } }' })
-      });
-      var gqlData = await gqlRes.json();
-      if (gqlData.data && gqlData.data.urlResolver && gqlData.data.urlResolver.id) {
-        categoryId = String(gqlData.data.urlResolver.id);
-      }
-    } catch(e) { diag.gqlError = e.message; }
+    var catMatch = html.match(/"categoryId"\s*:\s*"?(\d{4,7})"?/)
+      || html.match(/"category_id"\s*:\s*"?(\d{4,7})"?/);
+    if (catMatch) categoryId = catMatch[1];
   }
 
   diag.categoryId = categoryId;
@@ -154,19 +154,21 @@ async function scrapeTerminalX(targetUrl, debug) {
   return { products: products, site: 'Terminal X', total: products.length, totalHint: totalCount };
 }
 
+// Returns the LARGEST array of named objects in the response (the products
+// array — bigger than any categories/breadcrumb array).
 function findItemsArray(obj) {
-  if (!obj || typeof obj !== 'object') return [];
-  if (Array.isArray(obj) && obj.length > 0 && obj[0] && obj[0].name) return obj;
-  var keys = Object.keys(obj);
-  for (var i = 0; i < keys.length; i++) {
-    var val = obj[keys[i]];
-    if (Array.isArray(val) && val.length > 0 && val[0] && val[0].name) return val;
-    if (val && typeof val === 'object') {
-      var found = findItemsArray(val);
-      if (found.length > 0) return found;
+  var best = [];
+  function walk(o) {
+    if (!o || typeof o !== 'object') return;
+    if (Array.isArray(o)) {
+      if (o.length > best.length && o[0] && typeof o[0] === 'object' && o[0].name) best = o;
+      o.forEach(walk);
+      return;
     }
+    Object.keys(o).forEach(function(k) { walk(o[k]); });
   }
-  return [];
+  walk(obj);
+  return best;
 }
 
 // --- Generic HTML Scraping (for H&M, NEXT, ASOS, etc.) ---
