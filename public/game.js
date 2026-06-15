@@ -34,6 +34,7 @@ ChoosingGame.prototype.init = function () {
   this.rightProduct = this.queue.shift();
   this.currentWinner = null;
   this.streak = 0;
+  this.history = [];
   var gameScreen = this.$('#game-screen');
   var winnerScreen = this.$('#winner-screen');
   if (gameScreen) gameScreen.classList.remove('hidden');
@@ -44,6 +45,13 @@ ChoosingGame.prototype.init = function () {
 ChoosingGame.prototype.choose = function (side) {
   var winner = (side === 'left') ? this.leftProduct : this.rightProduct;
   var loserSide = (side === 'left') ? 'right' : 'left';
+
+  // Snapshot full state so the choice can be undone
+  this.history.push({
+    left: this.leftProduct, right: this.rightProduct,
+    winner: this.currentWinner, streak: this.streak,
+    queue: this.queue.slice()
+  });
 
   if (this.currentWinner && this.currentWinner.id === winner.id) {
     this.streak++;
@@ -62,6 +70,25 @@ ChoosingGame.prototype.choose = function (side) {
   this.render();
 
   return loserSide;
+};
+
+ChoosingGame.prototype.canUndo = function () {
+  return this.history && this.history.length > 0;
+};
+
+ChoosingGame.prototype.undo = function () {
+  if (!this.canUndo()) return false;
+  var s = this.history.pop();
+  this.leftProduct = s.left;
+  this.rightProduct = s.right;
+  this.currentWinner = s.winner;
+  this.streak = s.streak;
+  this.queue = s.queue;
+  var ws = this.$('#winner-screen'), gs = this.$('#game-screen');
+  if (ws) ws.classList.add('hidden');
+  if (gs) gs.classList.remove('hidden');
+  this.render();
+  return true;
 };
 
 ChoosingGame.prototype.renderStreak = function (side, product) {
@@ -127,6 +154,12 @@ ChoosingGame.prototype.showWinner = function (product) {
   var buyBtn = this.$('#buy-btn');
   if (buyBtn) {
     buyBtn.href = product.url || 'https://www.terminalx.com/';
+  }
+
+  // Winner image links to the product too
+  if (winnerImg) {
+    winnerImg.style.cursor = 'pointer';
+    winnerImg.onclick = function () { if (product.url) window.open(product.url, '_blank', 'noopener'); };
   }
 
   var keepBtn = this.$('#keep-btn');

@@ -189,17 +189,26 @@ function startGame(products) {
   pairShownAt = Date.now();
   game = new ChoosingGame({ products: products, querySelector: document.querySelector.bind(document) });
   game.init();
+  updateUndo();
   track('game_started', { product_count: products.length });
 }
 
 document.getElementById('card-left').addEventListener('click', function () { handleChoose('left'); });
 document.getElementById('card-right').addEventListener('click', function () { handleChoose('right'); });
 
+function updateUndo() {
+  var u = document.getElementById('undo-btn');
+  if (!u) return;
+  if (game && game.canUndo()) u.classList.remove('hidden');
+  else u.classList.add('hidden');
+}
+
 function handleChoose(side) {
   if (!game) return;
   comparisons++;
   track('comparison_made', { decision_time_ms: Date.now() - pairShownAt, comparison_number: comparisons });
   var loserSide = game.choose(side);
+  updateUndo();
   if (loserSide) {
     pairShownAt = Date.now();
     var badge = document.getElementById('streak-' + side);
@@ -224,5 +233,16 @@ document.getElementById('restart-btn').addEventListener('click', function () {
 });
 document.getElementById('buy-btn').addEventListener('click', function () {
   if (game && game.currentWinner) track('product_clicked', { product_name: game.currentWinner.name, brand: game.currentWinner.brand, product_url: game.currentWinner.url });
+});
+document.getElementById('winner-img').addEventListener('click', function () {
+  if (game && game.currentWinner) track('product_clicked', { product_name: game.currentWinner.name, brand: game.currentWinner.brand, product_url: game.currentWinner.url, via: 'image' });
+});
+document.getElementById('undo-btn').addEventListener('click', function () {
+  if (game && game.undo()) {
+    if (comparisons > 0) comparisons--;
+    pairShownAt = Date.now();
+    track('undo');
+    updateUndo();
+  }
 });
 document.getElementById('exit-btn').addEventListener('click', function () { show('welcome'); });
