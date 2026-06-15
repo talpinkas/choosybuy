@@ -191,3 +191,19 @@ just needs a builder that emits the same catalog format and registers its JSON i
 - After any change: `node --check` changed files, `node -e "require('./catalogs')"`
   to validate the registry, commit with a clear message, push.
 - Update this CLAUDE.md after significant changes.
+
+## Autonomy (how to operate here)
+
+Work autonomously and don't ask permission for routine work (reading, editing,
+running the build/probes, committing, pushing). **Proactively STOP and ask the
+user first** only before:
+- **Security** — installing dependencies/extensions, touching secrets or
+  credentials, changing auth, or sending project data to an external service.
+- **Spend** — anything that costs money or commits to a paid service (deploying to
+  paid infra, buying a domain/SaaS, publishing a package).
+- **Irreversible** — deleting files you didn't create, force-push, dropping data,
+  or rewriting shared git history.
+
+Permissions are configured in `.claude/settings.json` (committed: auto-allow
+node/git, deny reading secrets) so routine commands don't prompt. That's an
+optimization — this judgment rule is the real guardrail, not the settings.

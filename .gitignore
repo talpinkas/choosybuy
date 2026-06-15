@@ -1,0 +1,12 @@
+# Personal Claude Code settings (machine-local permission grants)
+.claude/settings.local.json
+
+# Browser-automation scratch (Playwright MCP)
+.playwright-mcp/
+
+# Dependencies
+node_modules/
+
+# OS / editor cruft
+.DS_Store
+Thumbs.db
