@@ -17,18 +17,25 @@ function track(event, props) {
   }).catch(function () {});
 }
 
-var CATEGORIES = {
-  '0-2': [
-    { key: 'tops', label: 'חולצות', emoji: '👕' },
-    { key: 'bodysuits', label: 'בגדי גוף', emoji: '🧸' },
-    { key: 'sets', label: 'מארזים', emoji: '🎁' }
-  ],
-  '2-8': [
-    { key: 'tops', label: 'טי-שירט', emoji: '👕' },
-    { key: 'bottoms', label: 'מכנסיים', emoji: '👖' },
-    { key: 'dresses', label: 'שמלות', emoji: '👗' }
-  ]
+// Category labels/emojis, and which categories exist per gender × age.
+// Keys + segments mirror the built Terminal X catalogs (catalogs/terminalx-*).
+var CAT_META = {
+  tops:      { label: 'חולצות',  emoji: '👕' },
+  bottoms:   { label: 'מכנסיים', emoji: '👖' },
+  bodysuits: { label: 'בגדי גוף', emoji: '🧸' },
+  dresses:   { label: 'שמלות',   emoji: '👗' },
+  swim:      { label: 'בגדי ים', emoji: '🩱' }
 };
+var SEGMENT_CATS = {
+  'boy|0-2':  ['tops', 'bodysuits', 'swim'],
+  'girl|0-2': ['tops', 'bodysuits', 'dresses', 'swim'],
+  'boy|2-8':  ['tops', 'bottoms', 'swim'],
+  'girl|2-8': ['tops', 'bottoms', 'dresses', 'swim']
+};
+function categoriesFor(gender, age) {
+  var keys = SEGMENT_CATS[gender + '|' + age] || SEGMENT_CATS['boy|0-2'];
+  return keys.map(function (k) { return { key: k, label: CAT_META[k].label, emoji: CAT_META[k].emoji }; });
+}
 
 // Representative swatch color per family (for the chip dot)
 var FAMILY_HEX = {
@@ -84,7 +91,7 @@ document.querySelectorAll('#step-who .choice').forEach(function (btn) {
 function buildCategories() {
   var grid = document.getElementById('category-grid');
   grid.innerHTML = '';
-  (CATEGORIES[selection.age] || CATEGORIES['0-2']).forEach(function (c) {
+  categoriesFor(selection.gender, selection.age).forEach(function (c) {
     var b = document.createElement('button');
     b.className = 'choice';
     b.innerHTML = '<span class="choice-emoji">' + c.emoji + '</span>' + c.label;
