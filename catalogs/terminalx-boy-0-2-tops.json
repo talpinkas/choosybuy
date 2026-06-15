@@ -6,30 +6,8 @@
     "age": "0-2",
     "category": "tops"
   },
-  "updated_at": "2026-06-14",
+  "updated_at": "2026-06-15",
   "products": [
-    {
-      "id": "tx-r657620001",
-      "title": "חולצה מכופתרת חגיגית",
-      "image": "https://media.terminalx.com/pub/media/catalog/product/cache/92af6b9c945798a7e3b64d91033084b3/r/6/r657620001-11779871504.jpg?image_type_mobile=webp_jpeg_like_70",
-      "price": 89.9,
-      "sale_price": null,
-      "currency": "ILS",
-      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r657620001?utm_source=choosy",
-      "brand": "Terminal X",
-      "affiliate_ready": false
-    },
-    {
-      "id": "tx-r723790005",
-      "title": "טישירט בשילוב הדפס",
-      "image": "https://media.terminalx.com/pub/media/catalog/product/cache/92af6b9c945798a7e3b64d91033084b3/r/7/r723790005-11781073006.jpg?image_type_mobile=webp_jpeg_like_70",
-      "price": 69.9,
-      "sale_price": 48.93,
-      "currency": "ILS",
-      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r723790005?utm_source=choosy",
-      "brand": "Terminal X",
-      "affiliate_ready": false
-    },
     {
       "id": "tx-r654270001",
       "title": "חולצה מכופתרת קצרה",
@@ -37,8 +15,10 @@
       "price": 79.9,
       "sale_price": null,
       "currency": "ILS",
-      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r654270001?utm_source=choosy",
+      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r654270001?color=8256&utm_source=choosy",
       "brand": "Terminal X",
+      "color": "חרדל",
+      "color_hex": "#dbbd36",
       "affiliate_ready": false
     },
     {
@@ -48,19 +28,10 @@
       "price": 49.9,
       "sale_price": null,
       "currency": "ILS",
-      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r373870008?utm_source=choosy",
+      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r373870008?color=7&utm_source=choosy",
       "brand": "Terminal X",
-      "affiliate_ready": false
-    },
-    {
-      "id": "tx-r727700004",
-      "title": "טישירט בשילוב הדפס מיקי מאוס",
-      "image": "https://media.terminalx.com/pub/media/catalog/product/cache/92af6b9c945798a7e3b64d91033084b3/r/7/r727700004-11781073304.jpg?image_type_mobile=webp_jpeg_like_70",
-      "price": 99.9,
-      "sale_price": 69.93,
-      "currency": "ILS",
-      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r727700004?utm_source=choosy",
-      "brand": "Terminal X",
+      "color": "אפור",
+      "color_hex": "#6b676b",
       "affiliate_ready": false
     },
     {
@@ -70,8 +41,49 @@
       "price": 44.9,
       "sale_price": null,
       "currency": "ILS",
-      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r297510006?utm_source=choosy",
+      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r297510006?color=9&utm_source=choosy",
       "brand": "Terminal X",
+      "color": "כחול",
+      "color_hex": "#3764d6",
+      "affiliate_ready": false
+    },
+    {
+      "id": "tx-r657620001",
+      "title": "חולצה מכופתרת חגיגית",
+      "image": "https://media.terminalx.com/pub/media/catalog/product/cache/92af6b9c945798a7e3b64d91033084b3/r/6/r657620001-11779871504.jpg?image_type_mobile=webp_jpeg_like_70",
+      "price": 89.9,
+      "sale_price": null,
+      "currency": "ILS",
+      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r657620001?color=407&utm_source=choosy",
+      "brand": "Terminal X",
+      "color": "בז'",
+      "color_hex": "#e0d9c0",
+      "affiliate_ready": false
+    },
+    {
+      "id": "tx-r723790005",
+      "title": "טישירט בשילוב הדפס",
+      "image": "https://media.terminalx.com/pub/media/catalog/product/cache/92af6b9c945798a7e3b64d91033084b3/r/7/r723790005-11781073006.jpg?image_type_mobile=webp_jpeg_like_70",
+      "price": 69.9,
+      "sale_price": null,
+      "currency": "ILS",
+      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r723790005?color=10&utm_source=choosy",
+      "brand": "Terminal X",
+      "color": "לבן",
+      "color_hex": "#ffffff",
+      "affiliate_ready": false
+    },
+    {
+      "id": "tx-r727700004",
+      "title": "טישירט בשילוב הדפס מיקי מאוס",
+      "image": "https://media.terminalx.com/pub/media/catalog/product/cache/92af6b9c945798a7e3b64d91033084b3/r/7/r727700004-11781073304.jpg?image_type_mobile=webp_jpeg_like_70",
+      "price": 99.9,
+      "sale_price": null,
+      "currency": "ILS",
+      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r727700004?color=6&utm_source=choosy",
+      "brand": "Terminal X",
+      "color": "ירוק",
+      "color_hex": "#37a31b",
       "affiliate_ready": false
     },
     {
@@ -81,8 +93,10 @@
       "price": 49.9,
       "sale_price": null,
       "currency": "ILS",
-      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r297590006?utm_source=choosy",
+      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r297590006?color=9&utm_source=choosy",
       "brand": "Terminal X",
+      "color": "כחול",
+      "color_hex": "#3764d6",
       "affiliate_ready": false
     },
     {
@@ -92,8 +106,10 @@
       "price": 49.9,
       "sale_price": null,
       "currency": "ILS",
-      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r653930001?utm_source=choosy",
+      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r653930001?color=41187&utm_source=choosy",
       "brand": "Terminal X",
+      "color": "חלב",
+      "color_hex": null,
       "affiliate_ready": false
     },
     {
@@ -101,10 +117,12 @@
       "title": "חולצת טי Houseso",
       "image": "https://media.terminalx.com/pub/media/catalog/product/cache/92af6b9c945798a7e3b64d91033084b3/r/8/r855430015-21780992386.jpg",
       "price": 79.9,
-      "sale_price": 59.9,
+      "sale_price": null,
       "currency": "ILS",
-      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r855430015?utm_source=choosy",
+      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r855430015?color=116&utm_source=choosy",
       "brand": "Terminal X",
+      "color": "צהוב",
+      "color_hex": "#ffff00",
       "affiliate_ready": false
     },
     {
@@ -112,21 +130,12 @@
       "title": "חולצת טי Acoco",
       "image": "https://media.terminalx.com/pub/media/catalog/product/cache/92af6b9c945798a7e3b64d91033084b3/r/7/r724410011-11780992386.jpg?image_type_mobile=webp_jpeg_like_70",
       "price": 69.9,
-      "sale_price": 48.93,
+      "sale_price": null,
       "currency": "ILS",
-      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r724410011?utm_source=choosy",
+      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r724410011?color=8&utm_source=choosy",
       "brand": "Terminal X",
-      "affiliate_ready": false
-    },
-    {
-      "id": "tx-r855420011",
-      "title": "טישירט בשילוב פאץ'",
-      "image": "https://media.terminalx.com/pub/media/catalog/product/cache/92af6b9c945798a7e3b64d91033084b3/r/8/r855420011-11781073304.jpg",
-      "price": 79.9,
-      "sale_price": 59.9,
-      "currency": "ILS",
-      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r855420011?utm_source=choosy",
-      "brand": "Terminal X",
+      "color": "ורוד",
+      "color_hex": "#f587d8",
       "affiliate_ready": false
     },
     {
@@ -136,30 +145,23 @@
       "price": 49.9,
       "sale_price": null,
       "currency": "ILS",
-      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r653970001?utm_source=choosy",
+      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r653970001?color=41187&utm_source=choosy",
       "brand": "Terminal X",
+      "color": "חלב",
+      "color_hex": null,
       "affiliate_ready": false
     },
     {
-      "id": "tx-r379080007",
-      "title": "גופייה בשילוב הדפס מיקי מאוס",
-      "image": "https://media.terminalx.com/pub/media/catalog/product/cache/92af6b9c945798a7e3b64d91033084b3/r/3/r379080007-11780815305.jpg?image_type_mobile=webp_jpeg_like_70",
-      "price": 44.9,
+      "id": "tx-r855420011",
+      "title": "טישירט בשילוב פאץ'",
+      "image": "https://media.terminalx.com/pub/media/catalog/product/cache/92af6b9c945798a7e3b64d91033084b3/r/8/r855420011-11781073304.jpg",
+      "price": 79.9,
       "sale_price": null,
       "currency": "ILS",
-      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r379080007?utm_source=choosy",
+      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r855420011?color=8&utm_source=choosy",
       "brand": "Terminal X",
-      "affiliate_ready": false
-    },
-    {
-      "id": "tx-r340590002",
-      "title": "חולצה בשילוב הדפס / בייבי בנים",
-      "image": "https://media.terminalx.com/pub/media/catalog/product/cache/92af6b9c945798a7e3b64d91033084b3/r/3/r340590002-11772026107.jpg?image_type_mobile=webp_jpeg_like_70",
-      "price": 59.9,
-      "sale_price": 35.94,
-      "currency": "ILS",
-      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r340590002?utm_source=choosy",
-      "brand": "Terminal X",
+      "color": "ורוד",
+      "color_hex": "#f587d8",
       "affiliate_ready": false
     },
     {
@@ -169,8 +171,36 @@
       "price": 79.9,
       "sale_price": null,
       "currency": "ILS",
-      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r369930006?utm_source=choosy",
+      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r369930006?color=9&utm_source=choosy",
       "brand": "Terminal X",
+      "color": "כחול",
+      "color_hex": "#3764d6",
+      "affiliate_ready": false
+    },
+    {
+      "id": "tx-r340590002",
+      "title": "חולצה בשילוב הדפס / בייבי בנים",
+      "image": "https://media.terminalx.com/pub/media/catalog/product/cache/92af6b9c945798a7e3b64d91033084b3/r/3/r340590002-11772026107.jpg?image_type_mobile=webp_jpeg_like_70",
+      "price": 59.9,
+      "sale_price": 35.94,
+      "currency": "ILS",
+      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r340590002?color=106&utm_source=choosy",
+      "brand": "Terminal X",
+      "color": "חום",
+      "color_hex": "#834a37",
+      "affiliate_ready": false
+    },
+    {
+      "id": "tx-r379080007",
+      "title": "גופייה בשילוב הדפס מיקי מאוס",
+      "image": "https://media.terminalx.com/pub/media/catalog/product/cache/92af6b9c945798a7e3b64d91033084b3/r/3/r379080007-11780815305.jpg?image_type_mobile=webp_jpeg_like_70",
+      "price": 44.9,
+      "sale_price": null,
+      "currency": "ILS",
+      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r379080007?color=22&utm_source=choosy",
+      "brand": "Terminal X",
+      "color": "שמנת",
+      "color_hex": "#f5f5d0",
       "affiliate_ready": false
     },
     {
@@ -180,8 +210,10 @@
       "price": 54.9,
       "sale_price": null,
       "currency": "ILS",
-      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r654010001?utm_source=choosy",
+      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r654010001?color=22050&utm_source=choosy",
       "brand": "Terminal X",
+      "color": "קרמל",
+      "color_hex": null,
       "affiliate_ready": false
     },
     {
@@ -191,8 +223,10 @@
       "price": 119.9,
       "sale_price": 69.9,
       "currency": "ILS",
-      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r859150021?utm_source=choosy",
+      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r859150021?color=467&utm_source=choosy",
       "brand": "Terminal X",
+      "color": "תכלת",
+      "color_hex": "#cff3ff",
       "affiliate_ready": false
     },
     {
@@ -202,8 +236,10 @@
       "price": 99.9,
       "sale_price": 69.9,
       "currency": "ILS",
-      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r862630005?utm_source=choosy",
+      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r862630005?color=10&utm_source=choosy",
       "brand": "Terminal X",
+      "color": "לבן",
+      "color_hex": "#ffffff",
       "affiliate_ready": false
     },
     {
@@ -213,8 +249,10 @@
       "price": 99.9,
       "sale_price": 69.93,
       "currency": "ILS",
-      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r723780015?utm_source=choosy",
+      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r723780015?color=116&utm_source=choosy",
       "brand": "Terminal X",
+      "color": "צהוב",
+      "color_hex": "#ffff00",
       "affiliate_ready": false
     },
     {
@@ -224,19 +262,10 @@
       "price": 69.9,
       "sale_price": null,
       "currency": "ILS",
-      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r569290002?utm_source=choosy",
+      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r569290002?color=106&utm_source=choosy",
       "brand": "Terminal X",
-      "affiliate_ready": false
-    },
-    {
-      "id": "tx-r569290004",
-      "title": "JAVI חולצת פולו",
-      "image": "https://media.terminalx.com/pub/media/catalog/product/cache/92af6b9c945798a7e3b64d91033084b3/r/5/r569290004-11781097304.jpg",
-      "price": 69.9,
-      "sale_price": null,
-      "currency": "ILS",
-      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r569290004?utm_source=choosy",
-      "brand": "Terminal X",
+      "color": "חום",
+      "color_hex": "#834a37",
       "affiliate_ready": false
     },
     {
@@ -246,19 +275,23 @@
       "price": 99.9,
       "sale_price": 59.9,
       "currency": "ILS",
-      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r858450005?utm_source=choosy",
+      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r858450005?color=10&utm_source=choosy",
       "brand": "Terminal X",
+      "color": "לבן",
+      "color_hex": "#ffffff",
       "affiliate_ready": false
     },
     {
-      "id": "tx-r723802023",
-      "title": "VOLCANO טישירט",
-      "image": "https://media.terminalx.com/pub/media/catalog/product/cache/92af6b9c945798a7e3b64d91033084b3/r/7/r723802023-21780834504.jpg?image_type_mobile=webp_jpeg_like_70",
-      "price": 79.9,
-      "sale_price": 49.9,
+      "id": "tx-r569290004",
+      "title": "JAVI חולצת פולו",
+      "image": "https://media.terminalx.com/pub/media/catalog/product/cache/92af6b9c945798a7e3b64d91033084b3/r/5/r569290004-11781097304.jpg",
+      "price": 69.9,
+      "sale_price": null,
       "currency": "ILS",
-      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r723802023?utm_source=choosy",
+      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r569290004?color=6&utm_source=choosy",
       "brand": "Terminal X",
+      "color": "ירוק",
+      "color_hex": "#37a31b",
       "affiliate_ready": false
     },
     {
@@ -268,8 +301,23 @@
       "price": 69.9,
       "sale_price": 49.9,
       "currency": "ILS",
-      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r855410005?utm_source=choosy",
+      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r855410005?color=10&utm_source=choosy",
       "brand": "Terminal X",
+      "color": "לבן",
+      "color_hex": "#ffffff",
+      "affiliate_ready": false
+    },
+    {
+      "id": "tx-r723802023",
+      "title": "VOLCANO טישירט",
+      "image": "https://media.terminalx.com/pub/media/catalog/product/cache/92af6b9c945798a7e3b64d91033084b3/r/7/r723802023-21780834504.jpg?image_type_mobile=webp_jpeg_like_70",
+      "price": 79.9,
+      "sale_price": 49.9,
+      "currency": "ILS",
+      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r723802023?color=8329&utm_source=choosy",
+      "brand": "Terminal X",
+      "color": "חאקי",
+      "color_hex": "#dfc6a4",
       "affiliate_ready": false
     },
     {
@@ -279,19 +327,10 @@
       "price": 119.9,
       "sale_price": 59.9,
       "currency": "ILS",
-      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r854960015?utm_source=choosy",
+      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r854960015?color=116&utm_source=choosy",
       "brand": "Terminal X",
-      "affiliate_ready": false
-    },
-    {
-      "id": "tx-r855030006",
-      "title": "חולצה MTUCTUC",
-      "image": "https://media.terminalx.com/pub/media/catalog/product/cache/92af6b9c945798a7e3b64d91033084b3/r/8/r855030006-11780557905.jpg?image_type_mobile=webp_jpeg_like_70",
-      "price": 79.9,
-      "sale_price": 49.9,
-      "currency": "ILS",
-      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r855030006?utm_source=choosy",
-      "brand": "Terminal X",
+      "color": "צהוב",
+      "color_hex": "#ffff00",
       "affiliate_ready": false
     },
     {
@@ -301,8 +340,23 @@
       "price": 69.9,
       "sale_price": 49.9,
       "currency": "ILS",
-      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r723810005?utm_source=choosy",
+      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r723810005?color=10&utm_source=choosy",
       "brand": "Terminal X",
+      "color": "לבן",
+      "color_hex": "#ffffff",
+      "affiliate_ready": false
+    },
+    {
+      "id": "tx-r855030006",
+      "title": "חולצה MTUCTUC",
+      "image": "https://media.terminalx.com/pub/media/catalog/product/cache/92af6b9c945798a7e3b64d91033084b3/r/8/r855030006-11780557905.jpg?image_type_mobile=webp_jpeg_like_70",
+      "price": 79.9,
+      "sale_price": 49.9,
+      "currency": "ILS",
+      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r855030006?color=9&utm_source=choosy",
+      "brand": "Terminal X",
+      "color": "כחול",
+      "color_hex": "#3764d6",
       "affiliate_ready": false
     },
     {
@@ -312,8 +366,10 @@
       "price": 69.9,
       "sale_price": 49.9,
       "currency": "ILS",
-      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r857720011?utm_source=choosy",
+      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r857720011?color=8&utm_source=choosy",
       "brand": "Terminal X",
+      "color": "ורוד",
+      "color_hex": "#f587d8",
       "affiliate_ready": false
     },
     {
@@ -323,8 +379,10 @@
       "price": 49.9,
       "sale_price": 34.93,
       "currency": "ILS",
-      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r723550005?utm_source=choosy",
+      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r723550005?color=10&utm_source=choosy",
       "brand": "Terminal X",
+      "color": "לבן",
+      "color_hex": "#ffffff",
       "affiliate_ready": false
     },
     {
@@ -334,8 +392,10 @@
       "price": 99.9,
       "sale_price": 69.9,
       "currency": "ILS",
-      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r601170021?utm_source=choosy",
+      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r601170021?color=467&utm_source=choosy",
       "brand": "Terminal X",
+      "color": "תכלת",
+      "color_hex": "#cff3ff",
       "affiliate_ready": false
     },
     {
@@ -345,8 +405,10 @@
       "price": 69.9,
       "sale_price": null,
       "currency": "ILS",
-      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r569290011?utm_source=choosy",
+      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r569290011?color=8&utm_source=choosy",
       "brand": "Terminal X",
+      "color": "ורוד",
+      "color_hex": "#f587d8",
       "affiliate_ready": false
     },
     {
@@ -356,8 +418,10 @@
       "price": 99.9,
       "sale_price": 59.94,
       "currency": "ILS",
-      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r569410005?utm_source=choosy",
+      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r569410005?color=10&utm_source=choosy",
       "brand": "Terminal X",
+      "color": "לבן",
+      "color_hex": "#ffffff",
       "affiliate_ready": false
     },
     {
@@ -367,8 +431,10 @@
       "price": 79.9,
       "sale_price": 47.94,
       "currency": "ILS",
-      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r723570005?utm_source=choosy",
+      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r723570005?color=10&utm_source=choosy",
       "brand": "Terminal X",
+      "color": "לבן",
+      "color_hex": "#ffffff",
       "affiliate_ready": false
     },
     {
@@ -378,8 +444,10 @@
       "price": 59.9,
       "sale_price": 49.9,
       "currency": "ILS",
-      "url": "https://www.terminalx.com/baby/baby-boys/shirts/w919860004?utm_source=choosy",
+      "url": "https://www.terminalx.com/baby/baby-boys/shirts/w919860004?color=6&utm_source=choosy",
       "brand": "Terminal X",
+      "color": "ירוק",
+      "color_hex": "#37a31b",
       "affiliate_ready": false
     },
     {
@@ -389,8 +457,10 @@
       "price": 39.9,
       "sale_price": null,
       "currency": "ILS",
-      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r267410009?utm_source=choosy",
+      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r267410009?color=21&utm_source=choosy",
       "brand": "Terminal X",
+      "color": "מולטי",
+      "color_hex": null,
       "affiliate_ready": false
     },
     {
@@ -400,8 +470,10 @@
       "price": 39.9,
       "sale_price": null,
       "currency": "ILS",
-      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r267410036?utm_source=choosy",
+      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r267410036?color=22050&utm_source=choosy",
       "brand": "Terminal X",
+      "color": "קרמל",
+      "color_hex": null,
       "affiliate_ready": false
     },
     {
@@ -411,8 +483,10 @@
       "price": 139,
       "sale_price": null,
       "currency": "ILS",
-      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r850710001?utm_source=choosy",
+      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r850710001?color=9&utm_source=choosy",
       "brand": "Terminal X",
+      "color": "כחול",
+      "color_hex": "#3764d6",
       "affiliate_ready": false
     },
     {
@@ -422,8 +496,10 @@
       "price": 44.9,
       "sale_price": null,
       "currency": "ILS",
-      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r379070013?utm_source=choosy",
+      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r379070013?color=70&utm_source=choosy",
       "brand": "Terminal X",
+      "color": "אדום",
+      "color_hex": "#d42020",
       "affiliate_ready": false
     },
     {
@@ -433,8 +509,10 @@
       "price": 129,
       "sale_price": null,
       "currency": "ILS",
-      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r850750001?utm_source=choosy",
+      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r850750001?color=106&utm_source=choosy",
       "brand": "Terminal X",
+      "color": "חום",
+      "color_hex": "#834a37",
       "affiliate_ready": false
     },
     {
@@ -444,8 +522,10 @@
       "price": 129,
       "sale_price": null,
       "currency": "ILS",
-      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r850760001?utm_source=choosy",
+      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r850760001?color=9&utm_source=choosy",
       "brand": "Terminal X",
+      "color": "כחול",
+      "color_hex": "#3764d6",
       "affiliate_ready": false
     },
     {
@@ -455,19 +535,10 @@
       "price": 129,
       "sale_price": null,
       "currency": "ILS",
-      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r850780001?utm_source=choosy",
+      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r850780001?color=7&utm_source=choosy",
       "brand": "Terminal X",
-      "affiliate_ready": false
-    },
-    {
-      "id": "tx-r726000004",
-      "title": "חולצה מכופתרת בשילוב הדפס קיצי",
-      "image": "https://media.terminalx.com/pub/media/catalog/product/cache/92af6b9c945798a7e3b64d91033084b3/r/7/r726000004-11779621605.jpg?image_type_mobile=webp_jpeg_like_70",
-      "price": 119.9,
-      "sale_price": 59.95,
-      "currency": "ILS",
-      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r726000004?utm_source=choosy",
-      "brand": "Terminal X",
+      "color": "אפור",
+      "color_hex": "#6b676b",
       "affiliate_ready": false
     },
     {
@@ -477,8 +548,23 @@
       "price": 44.9,
       "sale_price": null,
       "currency": "ILS",
-      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r379060010?utm_source=choosy",
+      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r379060010?color=5&utm_source=choosy",
       "brand": "Terminal X",
+      "color": "כתום",
+      "color_hex": "#ff9900",
+      "affiliate_ready": false
+    },
+    {
+      "id": "tx-r726000004",
+      "title": "חולצה מכופתרת בשילוב הדפס קיצי",
+      "image": "https://media.terminalx.com/pub/media/catalog/product/cache/92af6b9c945798a7e3b64d91033084b3/r/7/r726000004-11779621605.jpg?image_type_mobile=webp_jpeg_like_70",
+      "price": 119.9,
+      "sale_price": 59.95,
+      "currency": "ILS",
+      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r726000004?color=6&utm_source=choosy",
+      "brand": "Terminal X",
+      "color": "ירוק",
+      "color_hex": "#37a31b",
       "affiliate_ready": false
     },
     {
@@ -488,8 +574,10 @@
       "price": 49.9,
       "sale_price": null,
       "currency": "ILS",
-      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r373910027?utm_source=choosy",
+      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r373910027?color=2148&utm_source=choosy",
       "brand": "Terminal X",
+      "color": "כחול נייבי",
+      "color_hex": null,
       "affiliate_ready": false
     },
     {
@@ -499,8 +587,10 @@
       "price": 119.9,
       "sale_price": 69.9,
       "currency": "ILS",
-      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r724150005?utm_source=choosy",
+      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r724150005?color=10&utm_source=choosy",
       "brand": "Terminal X",
+      "color": "לבן",
+      "color_hex": "#ffffff",
       "affiliate_ready": false
     },
     {
@@ -510,8 +600,10 @@
       "price": 49.9,
       "sale_price": null,
       "currency": "ILS",
-      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r373940008?utm_source=choosy",
+      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r373940008?color=7&utm_source=choosy",
       "brand": "Terminal X",
+      "color": "אפור",
+      "color_hex": "#6b676b",
       "affiliate_ready": false
     },
     {
@@ -521,8 +613,10 @@
       "price": 119.9,
       "sale_price": null,
       "currency": "ILS",
-      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r261630007?utm_source=choosy",
+      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r261630007?color=22&utm_source=choosy",
       "brand": "Terminal X",
+      "color": "שמנת",
+      "color_hex": "#f5f5d0",
       "affiliate_ready": false
     },
     {
@@ -532,8 +626,10 @@
       "price": 49.9,
       "sale_price": null,
       "currency": "ILS",
-      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r373880030?utm_source=choosy",
+      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r373880030?color=2185&utm_source=choosy",
       "brand": "Terminal X",
+      "color": "אפור כהה",
+      "color_hex": "#4d4d4d",
       "affiliate_ready": false
     },
     {
@@ -543,63 +639,10 @@
       "price": 59.9,
       "sale_price": 35.94,
       "currency": "ILS",
-      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r340610009?utm_source=choosy",
+      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r340610009?color=21&utm_source=choosy",
       "brand": "Terminal X",
-      "affiliate_ready": false
-    },
-    {
-      "id": "tx-r654280001",
-      "title": "טישירט בגזרה נוחה",
-      "image": "https://media.terminalx.com/pub/media/catalog/product/cache/92af6b9c945798a7e3b64d91033084b3/r/6/r654280001-11777977618.jpg?image_type_mobile=webp_jpeg_like_70",
-      "price": 79.9,
-      "sale_price": null,
-      "currency": "ILS",
-      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r654280001?utm_source=choosy",
-      "brand": "Terminal X",
-      "affiliate_ready": false
-    },
-    {
-      "id": "tx-r764870001",
-      "title": "חולצה מכופתרת סרוגה",
-      "image": "https://media.terminalx.com/pub/media/catalog/product/cache/92af6b9c945798a7e3b64d91033084b3/r/7/r764870001-11777377903.jpg?image_type_mobile=webp_jpeg_like_70",
-      "price": 129.9,
-      "sale_price": null,
-      "currency": "ILS",
-      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r764870001?utm_source=choosy",
-      "brand": "Terminal X",
-      "affiliate_ready": false
-    },
-    {
-      "id": "tx-r727320030",
-      "title": "חולצה POLO SHIRT WAVE",
-      "image": "https://media.terminalx.com/pub/media/catalog/product/cache/92af6b9c945798a7e3b64d91033084b3/r/7/r727320030-11779096304.jpg?image_type_mobile=webp_jpeg_like_70",
-      "price": 79.9,
-      "sale_price": 49.9,
-      "currency": "ILS",
-      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r727320030?utm_source=choosy",
-      "brand": "Terminal X",
-      "affiliate_ready": false
-    },
-    {
-      "id": "tx-r267410032",
-      "title": "חולצת ריב חלקה / בייבי בנים",
-      "image": "https://media.terminalx.com/pub/media/catalog/product/cache/92af6b9c945798a7e3b64d91033084b3/r/2/r267410032-11772025989.jpg?image_type_mobile=webp_jpeg_like_70",
-      "price": 39.9,
-      "sale_price": null,
-      "currency": "ILS",
-      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r267410032?utm_source=choosy",
-      "brand": "Terminal X",
-      "affiliate_ready": false
-    },
-    {
-      "id": "tx-r267410652",
-      "title": "חולצת ריב חלקה / בייבי בנים",
-      "image": "https://media.terminalx.com/pub/media/catalog/product/cache/92af6b9c945798a7e3b64d91033084b3/r/2/r267410652-11772025989.jpg?image_type_mobile=webp_jpeg_like_70",
-      "price": 39.9,
-      "sale_price": null,
-      "currency": "ILS",
-      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r267410652?utm_source=choosy",
-      "brand": "Terminal X",
+      "color": "מולטי",
+      "color_hex": null,
       "affiliate_ready": false
     },
     {
@@ -609,8 +652,62 @@
       "price": 99.9,
       "sale_price": null,
       "currency": "ILS",
-      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r250860009?utm_source=choosy",
+      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r250860009?color=21&utm_source=choosy",
       "brand": "Terminal X",
+      "color": "מולטי",
+      "color_hex": null,
+      "affiliate_ready": false
+    },
+    {
+      "id": "tx-r654280001",
+      "title": "טישירט בגזרה נוחה",
+      "image": "https://media.terminalx.com/pub/media/catalog/product/cache/92af6b9c945798a7e3b64d91033084b3/r/6/r654280001-11777977618.jpg?image_type_mobile=webp_jpeg_like_70",
+      "price": 79.9,
+      "sale_price": null,
+      "currency": "ILS",
+      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r654280001?color=41187&utm_source=choosy",
+      "brand": "Terminal X",
+      "color": "חלב",
+      "color_hex": null,
+      "affiliate_ready": false
+    },
+    {
+      "id": "tx-r764870001",
+      "title": "חולצה מכופתרת סרוגה",
+      "image": "https://media.terminalx.com/pub/media/catalog/product/cache/92af6b9c945798a7e3b64d91033084b3/r/7/r764870001-11777377903.jpg?image_type_mobile=webp_jpeg_like_70",
+      "price": 129.9,
+      "sale_price": null,
+      "currency": "ILS",
+      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r764870001?color=22&utm_source=choosy",
+      "brand": "Terminal X",
+      "color": "שמנת",
+      "color_hex": "#f5f5d0",
+      "affiliate_ready": false
+    },
+    {
+      "id": "tx-r267410032",
+      "title": "חולצת ריב חלקה / בייבי בנים",
+      "image": "https://media.terminalx.com/pub/media/catalog/product/cache/92af6b9c945798a7e3b64d91033084b3/r/2/r267410032-11772025989.jpg?image_type_mobile=webp_jpeg_like_70",
+      "price": 39.9,
+      "sale_price": null,
+      "currency": "ILS",
+      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r267410032?color=9&utm_source=choosy",
+      "brand": "Terminal X",
+      "color": "כחול",
+      "color_hex": "#3764d6",
+      "affiliate_ready": false
+    },
+    {
+      "id": "tx-r267410652",
+      "title": "חולצת ריב חלקה / בייבי בנים",
+      "image": "https://media.terminalx.com/pub/media/catalog/product/cache/92af6b9c945798a7e3b64d91033084b3/r/2/r267410652-11772025989.jpg?image_type_mobile=webp_jpeg_like_70",
+      "price": 39.9,
+      "sale_price": null,
+      "currency": "ILS",
+      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r267410652?color=21&utm_source=choosy",
+      "brand": "Terminal X",
+      "color": "מולטי",
+      "color_hex": null,
       "affiliate_ready": false
     },
     {
@@ -620,8 +717,10 @@
       "price": 89.9,
       "sale_price": null,
       "currency": "ILS",
-      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r298428263?utm_source=choosy",
+      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r298428263?color=18218&utm_source=choosy",
       "brand": "Terminal X",
+      "color": "אבן",
+      "color_hex": "#b0aea0",
       "affiliate_ready": false
     },
     {
@@ -631,8 +730,10 @@
       "price": 109.9,
       "sale_price": null,
       "currency": "ILS",
-      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r656850001?utm_source=choosy",
+      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r656850001?color=41179&utm_source=choosy",
       "brand": "Terminal X",
+      "color": "שמנת ",
+      "color_hex": null,
       "affiliate_ready": false
     },
     {
@@ -642,8 +743,10 @@
       "price": 69.9,
       "sale_price": 48.93,
       "currency": "ILS",
-      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r724030006?utm_source=choosy",
+      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r724030006?color=9&utm_source=choosy",
       "brand": "Terminal X",
+      "color": "כחול",
+      "color_hex": "#3764d6",
       "affiliate_ready": false
     },
     {
@@ -653,8 +756,10 @@
       "price": 79.9,
       "sale_price": 49.9,
       "currency": "ILS",
-      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r724050002?utm_source=choosy",
+      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r724050002?color=106&utm_source=choosy",
       "brand": "Terminal X",
+      "color": "חום",
+      "color_hex": "#834a37",
       "affiliate_ready": false
     },
     {
@@ -664,19 +769,10 @@
       "price": 44.9,
       "sale_price": null,
       "currency": "ILS",
-      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r297740006?utm_source=choosy",
+      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r297740006?color=9&utm_source=choosy",
       "brand": "Terminal X",
-      "affiliate_ready": false
-    },
-    {
-      "id": "tx-r722820011",
-      "title": "חולצה SHIRT MYKONOS",
-      "image": "https://media.terminalx.com/pub/media/catalog/product/cache/92af6b9c945798a7e3b64d91033084b3/r/7/r722820011-11779096005.jpg?image_type_mobile=webp_jpeg_like_70",
-      "price": 119.9,
-      "sale_price": 69.9,
-      "currency": "ILS",
-      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r722820011?utm_source=choosy",
-      "brand": "Terminal X",
+      "color": "כחול",
+      "color_hex": "#3764d6",
       "affiliate_ready": false
     },
     {
@@ -686,8 +782,23 @@
       "price": 69.9,
       "sale_price": 49.9,
       "currency": "ILS",
-      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r722320006?utm_source=choosy",
+      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r722320006?color=9&utm_source=choosy",
       "brand": "Terminal X",
+      "color": "כחול",
+      "color_hex": "#3764d6",
+      "affiliate_ready": false
+    },
+    {
+      "id": "tx-r722820011",
+      "title": "חולצה SHIRT MYKONOS",
+      "image": "https://media.terminalx.com/pub/media/catalog/product/cache/92af6b9c945798a7e3b64d91033084b3/r/7/r722820011-11779096005.jpg?image_type_mobile=webp_jpeg_like_70",
+      "price": 119.9,
+      "sale_price": 69.9,
+      "currency": "ILS",
+      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r722820011?color=8&utm_source=choosy",
+      "brand": "Terminal X",
+      "color": "ורוד",
+      "color_hex": "#f587d8",
       "affiliate_ready": false
     },
     {
@@ -697,19 +808,23 @@
       "price": 99.9,
       "sale_price": 59.9,
       "currency": "ILS",
-      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r724040027?utm_source=choosy",
+      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r724040027?color=2148&utm_source=choosy",
       "brand": "Terminal X",
+      "color": "כחול נייבי",
+      "color_hex": null,
       "affiliate_ready": false
     },
     {
-      "id": "tx-r724060018",
-      "title": "חולצה T-SHIRT BLAZE",
-      "image": "https://media.terminalx.com/pub/media/catalog/product/cache/92af6b9c945798a7e3b64d91033084b3/r/7/r724060018-11779096303.jpg?image_type_mobile=webp_jpeg_like_70",
-      "price": 69.9,
+      "id": "tx-r727320030",
+      "title": "חולצה POLO SHIRT WAVE",
+      "image": "https://media.terminalx.com/pub/media/catalog/product/cache/92af6b9c945798a7e3b64d91033084b3/r/7/r727320030-11779096304.jpg?image_type_mobile=webp_jpeg_like_70",
+      "price": 79.9,
       "sale_price": 49.9,
       "currency": "ILS",
-      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r724060018?utm_source=choosy",
+      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r727320030?color=2185&utm_source=choosy",
       "brand": "Terminal X",
+      "color": "אפור כהה",
+      "color_hex": "#4d4d4d",
       "affiliate_ready": false
     },
     {
@@ -719,30 +834,23 @@
       "price": 44.9,
       "sale_price": null,
       "currency": "ILS",
-      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r297502075?utm_source=choosy",
+      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r297502075?color=8602&utm_source=choosy",
       "brand": "Terminal X",
+      "color": "אוף ווייט",
+      "color_hex": "#dbd7bc",
       "affiliate_ready": false
     },
     {
-      "id": "tx-r297600005",
-      "title": "חולצה עם הדפס",
-      "image": "https://media.terminalx.com/pub/media/catalog/product/cache/92af6b9c945798a7e3b64d91033084b3/r/2/r297600005-11779089735.jpg?image_type_mobile=webp_jpeg_like_70",
-      "price": 49.9,
-      "sale_price": null,
+      "id": "tx-r724060018",
+      "title": "חולצה T-SHIRT BLAZE",
+      "image": "https://media.terminalx.com/pub/media/catalog/product/cache/92af6b9c945798a7e3b64d91033084b3/r/7/r724060018-11779096303.jpg?image_type_mobile=webp_jpeg_like_70",
+      "price": 69.9,
+      "sale_price": 49.9,
       "currency": "ILS",
-      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r297600005?utm_source=choosy",
+      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r724060018?color=17762&utm_source=choosy",
       "brand": "Terminal X",
-      "affiliate_ready": false
-    },
-    {
-      "id": "tx-r724140005",
-      "title": "חולצה מכופתרת בשילוב הדפס עדין",
-      "image": "https://media.terminalx.com/pub/media/catalog/product/cache/92af6b9c945798a7e3b64d91033084b3/r/7/r724140005-11778655322.jpg?image_type_mobile=webp_jpeg_like_70",
-      "price": 119.9,
-      "sale_price": 69.9,
-      "currency": "ILS",
-      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r724140005?utm_source=choosy",
-      "brand": "Terminal X",
+      "color": "בז'",
+      "color_hex": "#d4c5a3",
       "affiliate_ready": false
     },
     {
@@ -752,8 +860,36 @@
       "price": 44.9,
       "sale_price": null,
       "currency": "ILS",
-      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r297530010?utm_source=choosy",
+      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r297530010?color=5&utm_source=choosy",
       "brand": "Terminal X",
+      "color": "כתום",
+      "color_hex": "#ff9900",
+      "affiliate_ready": false
+    },
+    {
+      "id": "tx-r297600005",
+      "title": "חולצה עם הדפס",
+      "image": "https://media.terminalx.com/pub/media/catalog/product/cache/92af6b9c945798a7e3b64d91033084b3/r/2/r297600005-11779089735.jpg?image_type_mobile=webp_jpeg_like_70",
+      "price": 49.9,
+      "sale_price": null,
+      "currency": "ILS",
+      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r297600005?color=10&utm_source=choosy",
+      "brand": "Terminal X",
+      "color": "לבן",
+      "color_hex": "#ffffff",
+      "affiliate_ready": false
+    },
+    {
+      "id": "tx-r724140005",
+      "title": "חולצה מכופתרת בשילוב הדפס עדין",
+      "image": "https://media.terminalx.com/pub/media/catalog/product/cache/92af6b9c945798a7e3b64d91033084b3/r/7/r724140005-11778655322.jpg?image_type_mobile=webp_jpeg_like_70",
+      "price": 119.9,
+      "sale_price": 69.9,
+      "currency": "ILS",
+      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r724140005?color=10&utm_source=choosy",
+      "brand": "Terminal X",
+      "color": "לבן",
+      "color_hex": "#ffffff",
       "affiliate_ready": false
     },
     {
@@ -763,8 +899,10 @@
       "price": 49.9,
       "sale_price": null,
       "currency": "ILS",
-      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r297610010?utm_source=choosy",
+      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r297610010?color=5&utm_source=choosy",
       "brand": "Terminal X",
+      "color": "כתום",
+      "color_hex": "#ff9900",
       "affiliate_ready": false
     },
     {
@@ -774,19 +912,10 @@
       "price": 49.9,
       "sale_price": null,
       "currency": "ILS",
-      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r373732907?utm_source=choosy",
+      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r373732907?color=19518&utm_source=choosy",
       "brand": "Terminal X",
-      "affiliate_ready": false
-    },
-    {
-      "id": "tx-r727320018",
-      "title": "חולצה POLO SHIRT WAVE",
-      "image": "https://media.terminalx.com/pub/media/catalog/product/cache/92af6b9c945798a7e3b64d91033084b3/r/7/r727320018-11779096304.jpg?image_type_mobile=webp_jpeg_like_70",
-      "price": 79.9,
-      "sale_price": 49.9,
-      "currency": "ILS",
-      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r727320018?utm_source=choosy",
-      "brand": "Terminal X",
+      "color": "ירוק אפונה",
+      "color_hex": "#639c5c",
       "affiliate_ready": false
     },
     {
@@ -796,19 +925,10 @@
       "price": 54.9,
       "sale_price": null,
       "currency": "ILS",
-      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r653950001?utm_source=choosy",
+      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r653950001?color=41179&utm_source=choosy",
       "brand": "Terminal X",
-      "affiliate_ready": false
-    },
-    {
-      "id": "tx-r722320005",
-      "title": "טופ T-SHIRT PANIB",
-      "image": "https://media.terminalx.com/pub/media/catalog/product/cache/92af6b9c945798a7e3b64d91033084b3/r/7/r722320005-11779096005.jpg?image_type_mobile=webp_jpeg_like_70",
-      "price": 69.9,
-      "sale_price": 49.9,
-      "currency": "ILS",
-      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r722320005?utm_source=choosy",
-      "brand": "Terminal X",
+      "color": "שמנת ",
+      "color_hex": null,
       "affiliate_ready": false
     },
     {
@@ -818,19 +938,36 @@
       "price": 39.9,
       "sale_price": null,
       "currency": "ILS",
-      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r267410004?utm_source=choosy",
+      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r267410004?color=6&utm_source=choosy",
       "brand": "Terminal X",
+      "color": "ירוק",
+      "color_hex": "#37a31b",
       "affiliate_ready": false
     },
     {
-      "id": "tx-r374040002",
-      "title": "חולצה חלקה",
-      "image": "https://media.terminalx.com/pub/media/catalog/product/cache/92af6b9c945798a7e3b64d91033084b3/r/3/r374040002-11779091243.jpg?image_type_mobile=webp_jpeg_like_70",
-      "price": 44.9,
-      "sale_price": null,
+      "id": "tx-r722320005",
+      "title": "טופ T-SHIRT PANIB",
+      "image": "https://media.terminalx.com/pub/media/catalog/product/cache/92af6b9c945798a7e3b64d91033084b3/r/7/r722320005-11779096005.jpg?image_type_mobile=webp_jpeg_like_70",
+      "price": 69.9,
+      "sale_price": 49.9,
       "currency": "ILS",
-      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r374040002?utm_source=choosy",
+      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r722320005?color=10&utm_source=choosy",
       "brand": "Terminal X",
+      "color": "לבן",
+      "color_hex": "#ffffff",
+      "affiliate_ready": false
+    },
+    {
+      "id": "tx-r727320018",
+      "title": "חולצה POLO SHIRT WAVE",
+      "image": "https://media.terminalx.com/pub/media/catalog/product/cache/92af6b9c945798a7e3b64d91033084b3/r/7/r727320018-11779096304.jpg?image_type_mobile=webp_jpeg_like_70",
+      "price": 79.9,
+      "sale_price": 49.9,
+      "currency": "ILS",
+      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r727320018?color=17762&utm_source=choosy",
+      "brand": "Terminal X",
+      "color": "בז'",
+      "color_hex": "#d4c5a3",
       "affiliate_ready": false
     },
     {
@@ -840,19 +977,23 @@
       "price": 39.9,
       "sale_price": null,
       "currency": "ILS",
-      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r267410006?utm_source=choosy",
+      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r267410006?color=9&utm_source=choosy",
       "brand": "Terminal X",
+      "color": "כחול",
+      "color_hex": "#3764d6",
       "affiliate_ready": false
     },
     {
-      "id": "tx-r374010026",
-      "title": "חולצה בהדפס מפרץ ההרפתקאות",
-      "image": "https://media.terminalx.com/pub/media/catalog/product/cache/92af6b9c945798a7e3b64d91033084b3/r/3/r374010026-11779091243.jpg?image_type_mobile=webp_jpeg_like_70",
-      "price": 49.9,
+      "id": "tx-r374040002",
+      "title": "חולצה חלקה",
+      "image": "https://media.terminalx.com/pub/media/catalog/product/cache/92af6b9c945798a7e3b64d91033084b3/r/3/r374040002-11779091243.jpg?image_type_mobile=webp_jpeg_like_70",
+      "price": 44.9,
       "sale_price": null,
       "currency": "ILS",
-      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r374010026?utm_source=choosy",
+      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r374040002?color=6&utm_source=choosy",
       "brand": "Terminal X",
+      "color": "ירוק",
+      "color_hex": "#37a31b",
       "affiliate_ready": false
     },
     {
@@ -862,8 +1003,23 @@
       "price": 49.9,
       "sale_price": null,
       "currency": "ILS",
-      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r297630005?utm_source=choosy",
+      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r297630005?color=10&utm_source=choosy",
       "brand": "Terminal X",
+      "color": "לבן",
+      "color_hex": "#ffffff",
+      "affiliate_ready": false
+    },
+    {
+      "id": "tx-r374010026",
+      "title": "חולצה בהדפס מפרץ ההרפתקאות",
+      "image": "https://media.terminalx.com/pub/media/catalog/product/cache/92af6b9c945798a7e3b64d91033084b3/r/3/r374010026-11779091243.jpg?image_type_mobile=webp_jpeg_like_70",
+      "price": 49.9,
+      "sale_price": null,
+      "currency": "ILS",
+      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r374010026?color=9048&utm_source=choosy",
+      "brand": "Terminal X",
+      "color": "אפור מלאנז'",
+      "color_hex": null,
       "affiliate_ready": false
     },
     {
@@ -873,8 +1029,10 @@
       "price": 59.9,
       "sale_price": null,
       "currency": "ILS",
-      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r370110005?utm_source=choosy",
+      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r370110005?color=10&utm_source=choosy",
       "brand": "Terminal X",
+      "color": "לבן",
+      "color_hex": "#ffffff",
       "affiliate_ready": false
     },
     {
@@ -884,8 +1042,10 @@
       "price": 44.9,
       "sale_price": null,
       "currency": "ILS",
-      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r379190027?utm_source=choosy",
+      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r379190027?color=2148&utm_source=choosy",
       "brand": "Terminal X",
+      "color": "כחול נייבי",
+      "color_hex": null,
       "affiliate_ready": false
     },
     {
@@ -895,8 +1055,10 @@
       "price": 44.9,
       "sale_price": null,
       "currency": "ILS",
-      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r379180005?utm_source=choosy",
+      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r379180005?color=10&utm_source=choosy",
       "brand": "Terminal X",
+      "color": "לבן",
+      "color_hex": "#ffffff",
       "affiliate_ready": false
     },
     {
@@ -906,8 +1068,10 @@
       "price": 89.9,
       "sale_price": null,
       "currency": "ILS",
-      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r656840001?utm_source=choosy",
+      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r656840001?color=41179&utm_source=choosy",
       "brand": "Terminal X",
+      "color": "שמנת ",
+      "color_hex": null,
       "affiliate_ready": false
     },
     {
@@ -917,8 +1081,10 @@
       "price": 54.9,
       "sale_price": null,
       "currency": "ILS",
-      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r654030001?utm_source=choosy",
+      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r654030001?color=41179&utm_source=choosy",
       "brand": "Terminal X",
+      "color": "שמנת ",
+      "color_hex": null,
       "affiliate_ready": false
     },
     {
@@ -928,8 +1094,10 @@
       "price": 49.9,
       "sale_price": null,
       "currency": "ILS",
-      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r373890006?utm_source=choosy",
+      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r373890006?color=9&utm_source=choosy",
       "brand": "Terminal X",
+      "color": "כחול",
+      "color_hex": "#3764d6",
       "affiliate_ready": false
     },
     {
@@ -939,19 +1107,10 @@
       "price": 49.9,
       "sale_price": null,
       "currency": "ILS",
-      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r373832075?utm_source=choosy",
+      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r373832075?color=8602&utm_source=choosy",
       "brand": "Terminal X",
-      "affiliate_ready": false
-    },
-    {
-      "id": "tx-r373852901",
-      "title": "חולצה ממותגת הוט ווילס",
-      "image": "https://media.terminalx.com/pub/media/catalog/product/cache/92af6b9c945798a7e3b64d91033084b3/r/3/r373852901-11778655013.jpg?image_type_mobile=webp_jpeg_like_70",
-      "price": 49.9,
-      "sale_price": null,
-      "currency": "ILS",
-      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r373852901?utm_source=choosy",
-      "brand": "Terminal X",
+      "color": "אוף ווייט",
+      "color_hex": "#dbd7bc",
       "affiliate_ready": false
     },
     {
@@ -961,8 +1120,23 @@
       "price": 49.9,
       "sale_price": null,
       "currency": "ILS",
-      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r373902906?utm_source=choosy",
+      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r373902906?color=19517&utm_source=choosy",
       "brand": "Terminal X",
+      "color": "רויאל כהה",
+      "color_hex": "#4257e3",
+      "affiliate_ready": false
+    },
+    {
+      "id": "tx-r373852901",
+      "title": "חולצה ממותגת הוט ווילס",
+      "image": "https://media.terminalx.com/pub/media/catalog/product/cache/92af6b9c945798a7e3b64d91033084b3/r/3/r373852901-11778655013.jpg?image_type_mobile=webp_jpeg_like_70",
+      "price": 49.9,
+      "sale_price": null,
+      "currency": "ILS",
+      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r373852901?color=19554&utm_source=choosy",
+      "brand": "Terminal X",
+      "color": "מנטה",
+      "color_hex": "#4fd68c",
       "affiliate_ready": false
     },
     {
@@ -972,8 +1146,10 @@
       "price": 49.9,
       "sale_price": null,
       "currency": "ILS",
-      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r373820013?utm_source=choosy",
+      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r373820013?color=70&utm_source=choosy",
       "brand": "Terminal X",
+      "color": "אדום",
+      "color_hex": "#d42020",
       "affiliate_ready": false
     },
     {
@@ -983,8 +1159,10 @@
       "price": 49.9,
       "sale_price": null,
       "currency": "ILS",
-      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r373932075?utm_source=choosy",
+      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r373932075?color=8602&utm_source=choosy",
       "brand": "Terminal X",
+      "color": "אוף ווייט",
+      "color_hex": "#dbd7bc",
       "affiliate_ready": false
     },
     {
@@ -994,30 +1172,10 @@
       "price": 49.9,
       "sale_price": null,
       "currency": "ILS",
-      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r373840027?utm_source=choosy",
+      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r373840027?color=2148&utm_source=choosy",
       "brand": "Terminal X",
-      "affiliate_ready": false
-    },
-    {
-      "id": "tx-r764770002",
-      "title": "חולצה בשילוב פשתן עם שרוולים",
-      "image": "https://media.terminalx.com/pub/media/catalog/product/cache/92af6b9c945798a7e3b64d91033084b3/r/7/r764770002-11778594851.jpg?image_type_mobile=webp_jpeg_like_70",
-      "price": 139.9,
-      "sale_price": null,
-      "currency": "ILS",
-      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r764770002?utm_source=choosy",
-      "brand": "Terminal X",
-      "affiliate_ready": false
-    },
-    {
-      "id": "tx-r766290002",
-      "title": "חולצת טישירט עם ארט",
-      "image": "https://media.terminalx.com/pub/media/catalog/product/cache/92af6b9c945798a7e3b64d91033084b3/r/7/r766290002-11778594494.jpg?image_type_mobile=webp_jpeg_like_70",
-      "price": 49.9,
-      "sale_price": null,
-      "currency": "ILS",
-      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r766290002?utm_source=choosy",
-      "brand": "Terminal X",
+      "color": "כחול נייבי",
+      "color_hex": null,
       "affiliate_ready": false
     },
     {
@@ -1027,8 +1185,36 @@
       "price": 139.9,
       "sale_price": null,
       "currency": "ILS",
-      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r764770001?utm_source=choosy",
+      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r764770001?color=10&utm_source=choosy",
       "brand": "Terminal X",
+      "color": "לבן",
+      "color_hex": "#ffffff",
+      "affiliate_ready": false
+    },
+    {
+      "id": "tx-r764770002",
+      "title": "חולצה בשילוב פשתן עם שרוולים",
+      "image": "https://media.terminalx.com/pub/media/catalog/product/cache/92af6b9c945798a7e3b64d91033084b3/r/7/r764770002-11778594851.jpg?image_type_mobile=webp_jpeg_like_70",
+      "price": 139.9,
+      "sale_price": null,
+      "currency": "ILS",
+      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r764770002?color=7&utm_source=choosy",
+      "brand": "Terminal X",
+      "color": "אפור",
+      "color_hex": "#6b676b",
+      "affiliate_ready": false
+    },
+    {
+      "id": "tx-r766290002",
+      "title": "חולצת טישירט עם ארט",
+      "image": "https://media.terminalx.com/pub/media/catalog/product/cache/92af6b9c945798a7e3b64d91033084b3/r/7/r766290002-11778594494.jpg?image_type_mobile=webp_jpeg_like_70",
+      "price": 49.9,
+      "sale_price": null,
+      "currency": "ILS",
+      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r766290002?color=9&utm_source=choosy",
+      "brand": "Terminal X",
+      "color": "כחול",
+      "color_hex": "#3764d6",
       "affiliate_ready": false
     },
     {
@@ -1038,8 +1224,10 @@
       "price": 119.9,
       "sale_price": 83.93,
       "currency": "ILS",
-      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r727310027?utm_source=choosy",
+      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r727310027?color=2148&utm_source=choosy",
       "brand": "Terminal X",
+      "color": "כחול נייבי",
+      "color_hex": null,
       "affiliate_ready": false
     },
     {
@@ -1049,8 +1237,10 @@
       "price": 79.9,
       "sale_price": 49.9,
       "currency": "ILS",
-      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r722850005?utm_source=choosy",
+      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r722850005?color=10&utm_source=choosy",
       "brand": "Terminal X",
+      "color": "לבן",
+      "color_hex": "#ffffff",
       "affiliate_ready": false
     },
     {
@@ -1060,8 +1250,10 @@
       "price": 89.9,
       "sale_price": null,
       "currency": "ILS",
-      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r656830001?utm_source=choosy",
+      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r656830001?color=41212&utm_source=choosy",
       "brand": "Terminal X",
+      "color": "לבן ",
+      "color_hex": null,
       "affiliate_ready": false
     },
     {
@@ -1071,8 +1263,10 @@
       "price": 179.9,
       "sale_price": 107.94,
       "currency": "ILS",
-      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r820910001?utm_source=choosy",
+      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r820910001?color=4&utm_source=choosy",
       "brand": "Terminal X",
+      "color": "שחור",
+      "color_hex": "#000000",
       "affiliate_ready": false
     },
     {
@@ -1082,8 +1276,10 @@
       "price": 54.9,
       "sale_price": null,
       "currency": "ILS",
-      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r262180002?utm_source=choosy",
+      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r262180002?color=106&utm_source=choosy",
       "brand": "Terminal X",
+      "color": "חום",
+      "color_hex": "#834a37",
       "affiliate_ready": false
     },
     {
@@ -1093,8 +1289,10 @@
       "price": 59.9,
       "sale_price": null,
       "currency": "ILS",
-      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r654240001?utm_source=choosy",
+      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r654240001?color=8256&utm_source=choosy",
       "brand": "Terminal X",
+      "color": "חרדל",
+      "color_hex": "#dbbd36",
       "affiliate_ready": false
     },
     {
@@ -1104,8 +1302,10 @@
       "price": 139.9,
       "sale_price": null,
       "currency": "ILS",
-      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r654390001?utm_source=choosy",
+      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r654390001?color=41201&utm_source=choosy",
       "brand": "Terminal X",
+      "color": "ג'ינס",
+      "color_hex": null,
       "affiliate_ready": false
     },
     {
@@ -1115,8 +1315,10 @@
       "price": 49.9,
       "sale_price": null,
       "currency": "ILS",
-      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r654230001?utm_source=choosy",
+      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r654230001?color=41187&utm_source=choosy",
       "brand": "Terminal X",
+      "color": "חלב",
+      "color_hex": null,
       "affiliate_ready": false
     },
     {
@@ -1126,8 +1328,10 @@
       "price": 59.9,
       "sale_price": 35.94,
       "currency": "ILS",
-      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r340600005?utm_source=choosy",
+      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r340600005?color=10&utm_source=choosy",
       "brand": "Terminal X",
+      "color": "לבן",
+      "color_hex": "#ffffff",
       "affiliate_ready": false
     },
     {
@@ -1137,8 +1341,10 @@
       "price": 59.9,
       "sale_price": 35.94,
       "currency": "ILS",
-      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r340582048?utm_source=choosy",
+      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r340582048?color=8975&utm_source=choosy",
       "brand": "Terminal X",
+      "color": "חום בהיר",
+      "color_hex": "#8f764b",
       "affiliate_ready": false
     },
     {
@@ -1148,8 +1354,10 @@
       "price": 59.9,
       "sale_price": 35.94,
       "currency": "ILS",
-      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r340670009?utm_source=choosy",
+      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r340670009?color=21&utm_source=choosy",
       "brand": "Terminal X",
+      "color": "מולטי",
+      "color_hex": null,
       "affiliate_ready": false
     },
     {
@@ -1159,8 +1367,10 @@
       "price": 149.9,
       "sale_price": 89.94,
       "currency": "ILS",
-      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r340720002?utm_source=choosy",
+      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r340720002?color=106&utm_source=choosy",
       "brand": "Terminal X",
+      "color": "חום",
+      "color_hex": "#834a37",
       "affiliate_ready": false
     },
     {
@@ -1170,8 +1380,10 @@
       "price": 59.9,
       "sale_price": null,
       "currency": "ILS",
-      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r654220001?utm_source=choosy",
+      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r654220001?color=41187&utm_source=choosy",
       "brand": "Terminal X",
+      "color": "חלב",
+      "color_hex": null,
       "affiliate_ready": false
     },
     {
@@ -1181,8 +1393,10 @@
       "price": 54.9,
       "sale_price": null,
       "currency": "ILS",
-      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r654250001?utm_source=choosy",
+      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r654250001?color=41187&utm_source=choosy",
       "brand": "Terminal X",
+      "color": "חלב",
+      "color_hex": null,
       "affiliate_ready": false
     },
     {
@@ -1192,8 +1406,10 @@
       "price": 59.9,
       "sale_price": 35.94,
       "currency": "ILS",
-      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r340650009?utm_source=choosy",
+      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r340650009?color=21&utm_source=choosy",
       "brand": "Terminal X",
+      "color": "מולטי",
+      "color_hex": null,
       "affiliate_ready": false
     },
     {
@@ -1203,8 +1419,10 @@
       "price": 119.9,
       "sale_price": null,
       "currency": "ILS",
-      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r653920001?utm_source=choosy",
+      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r653920001?color=41186&utm_source=choosy",
       "brand": "Terminal X",
+      "color": "אבן בהיר",
+      "color_hex": null,
       "affiliate_ready": false
     },
     {
@@ -1214,8 +1432,10 @@
       "price": 54.9,
       "sale_price": null,
       "currency": "ILS",
-      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r654050001?utm_source=choosy",
+      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r654050001?color=41187&utm_source=choosy",
       "brand": "Terminal X",
+      "color": "חלב",
+      "color_hex": null,
       "affiliate_ready": false
     },
     {
@@ -1225,8 +1445,10 @@
       "price": 44.9,
       "sale_price": null,
       "currency": "ILS",
-      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r653680003?utm_source=choosy",
+      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r653680003?color=41181&utm_source=choosy",
       "brand": "Terminal X",
+      "color": "צהוב בננה",
+      "color_hex": null,
       "affiliate_ready": false
     },
     {
@@ -1236,19 +1458,10 @@
       "price": 44.9,
       "sale_price": null,
       "currency": "ILS",
-      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r653680004?utm_source=choosy",
+      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r653680004?color=41182&utm_source=choosy",
       "brand": "Terminal X",
-      "affiliate_ready": false
-    },
-    {
-      "id": "tx-r653680002",
-      "title": "טישירט בשילוב הדפס בחזית",
-      "image": "https://media.terminalx.com/pub/media/catalog/product/cache/92af6b9c945798a7e3b64d91033084b3/r/6/r653680002-11777977616.jpg?image_type_mobile=webp_jpeg_like_70",
-      "price": 44.9,
-      "sale_price": null,
-      "currency": "ILS",
-      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r653680002?utm_source=choosy",
-      "brand": "Terminal X",
+      "color": "ירוק מרווה",
+      "color_hex": null,
       "affiliate_ready": false
     },
     {
@@ -1258,8 +1471,23 @@
       "price": 44.9,
       "sale_price": null,
       "currency": "ILS",
-      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r653680001?utm_source=choosy",
+      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r653680001?color=41179&utm_source=choosy",
       "brand": "Terminal X",
+      "color": "שמנת ",
+      "color_hex": null,
+      "affiliate_ready": false
+    },
+    {
+      "id": "tx-r653680002",
+      "title": "טישירט בשילוב הדפס בחזית",
+      "image": "https://media.terminalx.com/pub/media/catalog/product/cache/92af6b9c945798a7e3b64d91033084b3/r/6/r653680002-11777977616.jpg?image_type_mobile=webp_jpeg_like_70",
+      "price": 44.9,
+      "sale_price": null,
+      "currency": "ILS",
+      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r653680002?color=41180&utm_source=choosy",
+      "brand": "Terminal X",
+      "color": "נייבי ",
+      "color_hex": null,
       "affiliate_ready": false
     },
     {
@@ -1269,8 +1497,10 @@
       "price": 49.9,
       "sale_price": null,
       "currency": "ILS",
-      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r374032075?utm_source=choosy",
+      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r374032075?color=8602&utm_source=choosy",
       "brand": "Terminal X",
+      "color": "אוף ווייט",
+      "color_hex": "#dbd7bc",
       "affiliate_ready": false
     },
     {
@@ -1280,8 +1510,10 @@
       "price": 49.9,
       "sale_price": null,
       "currency": "ILS",
-      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r373862906?utm_source=choosy",
+      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r373862906?color=19517&utm_source=choosy",
       "brand": "Terminal X",
+      "color": "רויאל כהה",
+      "color_hex": "#4257e3",
       "affiliate_ready": false
     },
     {
@@ -1291,8 +1523,10 @@
       "price": 49.9,
       "sale_price": null,
       "currency": "ILS",
-      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r373922903?utm_source=choosy",
+      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r373922903?color=20290&utm_source=choosy",
       "brand": "Terminal X",
+      "color": "חול",
+      "color_hex": "#a68c62",
       "affiliate_ready": false
     },
     {
@@ -1302,19 +1536,10 @@
       "price": 59.9,
       "sale_price": 41.93,
       "currency": "ILS",
-      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r722390005?utm_source=choosy",
+      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r722390005?color=10&utm_source=choosy",
       "brand": "Terminal X",
-      "affiliate_ready": false
-    },
-    {
-      "id": "tx-r722330027",
-      "title": "טי שירט בהדפס",
-      "image": "https://media.terminalx.com/pub/media/catalog/product/cache/92af6b9c945798a7e3b64d91033084b3/r/7/r722330027-11777536786.jpg?image_type_mobile=webp_jpeg_like_70",
-      "price": 69.9,
-      "sale_price": 49.9,
-      "currency": "ILS",
-      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r722330027?utm_source=choosy",
-      "brand": "Terminal X",
+      "color": "לבן",
+      "color_hex": "#ffffff",
       "affiliate_ready": false
     },
     {
@@ -1324,8 +1549,23 @@
       "price": 69.9,
       "sale_price": 49.9,
       "currency": "ILS",
-      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r722340004?utm_source=choosy",
+      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r722340004?color=6&utm_source=choosy",
       "brand": "Terminal X",
+      "color": "ירוק",
+      "color_hex": "#37a31b",
+      "affiliate_ready": false
+    },
+    {
+      "id": "tx-r722330027",
+      "title": "טי שירט בהדפס",
+      "image": "https://media.terminalx.com/pub/media/catalog/product/cache/92af6b9c945798a7e3b64d91033084b3/r/7/r722330027-11777536786.jpg?image_type_mobile=webp_jpeg_like_70",
+      "price": 69.9,
+      "sale_price": 49.9,
+      "currency": "ILS",
+      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r722330027?color=2148&utm_source=choosy",
+      "brand": "Terminal X",
+      "color": "כחול נייבי",
+      "color_hex": null,
       "affiliate_ready": false
     },
     {
@@ -1335,8 +1575,10 @@
       "price": 49.9,
       "sale_price": null,
       "currency": "ILS",
-      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r245660002?utm_source=choosy",
+      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r245660002?color=106&utm_source=choosy",
       "brand": "Terminal X",
+      "color": "חום",
+      "color_hex": "#834a37",
       "affiliate_ready": false
     },
     {
@@ -1346,8 +1588,10 @@
       "price": 199.9,
       "sale_price": null,
       "currency": "ILS",
-      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r054430001?utm_source=choosy",
+      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r054430001?color=4&utm_source=choosy",
       "brand": "Terminal X",
+      "color": "שחור",
+      "color_hex": "#000000",
       "affiliate_ready": false
     },
     {
@@ -1357,8 +1601,10 @@
       "price": 59.9,
       "sale_price": 35.94,
       "currency": "ILS",
-      "url": "https://www.terminalx.com/baby/baby-boys/shirts/w822670009?utm_source=choosy",
+      "url": "https://www.terminalx.com/baby/baby-boys/shirts/w822670009?color=21&utm_source=choosy",
       "brand": "Terminal X",
+      "color": "מולטי",
+      "color_hex": null,
       "affiliate_ready": false
     },
     {
@@ -1368,8 +1614,10 @@
       "price": 54.9,
       "sale_price": 29.9,
       "currency": "ILS",
-      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r259202048?utm_source=choosy",
+      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r259202048?color=8975&utm_source=choosy",
       "brand": "Terminal X",
+      "color": "חום בהיר",
+      "color_hex": "#8f764b",
       "affiliate_ready": false
     },
     {
@@ -1379,8 +1627,10 @@
       "price": 49.9,
       "sale_price": null,
       "currency": "ILS",
-      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r374020026?utm_source=choosy",
+      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r374020026?color=9048&utm_source=choosy",
       "brand": "Terminal X",
+      "color": "אפור מלאנז'",
+      "color_hex": null,
       "affiliate_ready": false
     },
     {
@@ -1390,8 +1640,10 @@
       "price": 49.9,
       "sale_price": null,
       "currency": "ILS",
-      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r186190005?utm_source=choosy",
+      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r186190005?color=10&utm_source=choosy",
       "brand": "Terminal X",
+      "color": "לבן",
+      "color_hex": "#ffffff",
       "affiliate_ready": false
     },
     {
@@ -1401,8 +1653,10 @@
       "price": 49.9,
       "sale_price": null,
       "currency": "ILS",
-      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r186202066?utm_source=choosy",
+      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r186202066?color=8332&utm_source=choosy",
       "brand": "Terminal X",
+      "color": "אפור כחול",
+      "color_hex": null,
       "affiliate_ready": false
     },
     {
@@ -1412,8 +1666,10 @@
       "price": 49.9,
       "sale_price": null,
       "currency": "ILS",
-      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r186230005?utm_source=choosy",
+      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r186230005?color=10&utm_source=choosy",
       "brand": "Terminal X",
+      "color": "לבן",
+      "color_hex": "#ffffff",
       "affiliate_ready": false
     },
     {
@@ -1423,19 +1679,10 @@
       "price": 99.9,
       "sale_price": null,
       "currency": "ILS",
-      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r623980005?utm_source=choosy",
+      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r623980005?color=10&utm_source=choosy",
       "brand": "Terminal X",
-      "affiliate_ready": false
-    },
-    {
-      "id": "tx-r245690010",
-      "title": "חולצת טישירט בשילוב הדפס מלך האריות",
-      "image": "https://media.terminalx.com/pub/media/catalog/product/cache/92af6b9c945798a7e3b64d91033084b3/r/2/r245690010-11776664803.jpg?image_type_mobile=webp_jpeg_like_70",
-      "price": 49.9,
-      "sale_price": null,
-      "currency": "ILS",
-      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r245690010?utm_source=choosy",
-      "brand": "Terminal X",
+      "color": "לבן",
+      "color_hex": "#ffffff",
       "affiliate_ready": false
     },
     {
@@ -1445,8 +1692,23 @@
       "price": 49.9,
       "sale_price": null,
       "currency": "ILS",
-      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r245642075?utm_source=choosy",
+      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r245642075?color=8602&utm_source=choosy",
       "brand": "Terminal X",
+      "color": "אוף ווייט",
+      "color_hex": "#dbd7bc",
+      "affiliate_ready": false
+    },
+    {
+      "id": "tx-r245690010",
+      "title": "חולצת טישירט בשילוב הדפס מלך האריות",
+      "image": "https://media.terminalx.com/pub/media/catalog/product/cache/92af6b9c945798a7e3b64d91033084b3/r/2/r245690010-11776664803.jpg?image_type_mobile=webp_jpeg_like_70",
+      "price": 49.9,
+      "sale_price": null,
+      "currency": "ILS",
+      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r245690010?color=5&utm_source=choosy",
+      "brand": "Terminal X",
+      "color": "כתום",
+      "color_hex": "#ff9900",
       "affiliate_ready": false
     },
     {
@@ -1456,8 +1718,10 @@
       "price": 49.9,
       "sale_price": null,
       "currency": "ILS",
-      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r245600004?utm_source=choosy",
+      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r245600004?color=6&utm_source=choosy",
       "brand": "Terminal X",
+      "color": "ירוק",
+      "color_hex": "#37a31b",
       "affiliate_ready": false
     },
     {
@@ -1467,8 +1731,10 @@
       "price": 49.9,
       "sale_price": null,
       "currency": "ILS",
-      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r248848263?utm_source=choosy",
+      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r248848263?color=18218&utm_source=choosy",
       "brand": "Terminal X",
+      "color": "אבן",
+      "color_hex": "#b0aea0",
       "affiliate_ready": false
     },
     {
@@ -1478,8 +1744,10 @@
       "price": 49.9,
       "sale_price": null,
       "currency": "ILS",
-      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r245610027?utm_source=choosy",
+      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r245610027?color=2148&utm_source=choosy",
       "brand": "Terminal X",
+      "color": "כחול נייבי",
+      "color_hex": null,
       "affiliate_ready": false
     },
     {
@@ -1489,8 +1757,10 @@
       "price": 69.9,
       "sale_price": null,
       "currency": "ILS",
-      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r569290013?utm_source=choosy",
+      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r569290013?color=70&utm_source=choosy",
       "brand": "Terminal X",
+      "color": "אדום",
+      "color_hex": "#d42020",
       "affiliate_ready": false
     },
     {
@@ -1500,8 +1770,10 @@
       "price": 69.9,
       "sale_price": null,
       "currency": "ILS",
-      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r569290027?utm_source=choosy",
+      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r569290027?color=2148&utm_source=choosy",
       "brand": "Terminal X",
+      "color": "כחול נייבי",
+      "color_hex": null,
       "affiliate_ready": false
     },
     {
@@ -1511,8 +1783,10 @@
       "price": 99.9,
       "sale_price": 59.9,
       "currency": "ILS",
-      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r569380027?utm_source=choosy",
+      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r569380027?color=2148&utm_source=choosy",
       "brand": "Terminal X",
+      "color": "כחול נייבי",
+      "color_hex": null,
       "affiliate_ready": false
     },
     {
@@ -1522,8 +1796,10 @@
       "price": 69.9,
       "sale_price": 49.9,
       "currency": "ILS",
-      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r722310005?utm_source=choosy",
+      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r722310005?color=10&utm_source=choosy",
       "brand": "Terminal X",
+      "color": "לבן",
+      "color_hex": "#ffffff",
       "affiliate_ready": false
     },
     {
@@ -1533,8 +1809,10 @@
       "price": 69.9,
       "sale_price": 49.9,
       "currency": "ILS",
-      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r722840006?utm_source=choosy",
+      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r722840006?color=9&utm_source=choosy",
       "brand": "Terminal X",
+      "color": "כחול",
+      "color_hex": "#3764d6",
       "affiliate_ready": false
     },
     {
@@ -1544,8 +1822,10 @@
       "price": 99.9,
       "sale_price": null,
       "currency": "ILS",
-      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r250862048?utm_source=choosy",
+      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r250862048?color=8975&utm_source=choosy",
       "brand": "Terminal X",
+      "color": "חום בהיר",
+      "color_hex": "#8f764b",
       "affiliate_ready": false
     },
     {
@@ -1555,8 +1835,10 @@
       "price": 44.9,
       "sale_price": null,
       "currency": "ILS",
-      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r297490013?utm_source=choosy",
+      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r297490013?color=70&utm_source=choosy",
       "brand": "Terminal X",
+      "color": "אדום",
+      "color_hex": "#d42020",
       "affiliate_ready": false
     },
     {
@@ -1566,8 +1848,10 @@
       "price": 49.9,
       "sale_price": null,
       "currency": "ILS",
-      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r653890006?utm_source=choosy",
+      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r653890006?color=41183&utm_source=choosy",
       "brand": "Terminal X",
+      "color": "כחול שמיים",
+      "color_hex": null,
       "affiliate_ready": false
     },
     {
@@ -1577,8 +1861,10 @@
       "price": 49.9,
       "sale_price": null,
       "currency": "ILS",
-      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r654630003?utm_source=choosy",
+      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r654630003?color=41195&utm_source=choosy",
       "brand": "Terminal X",
+      "color": "אקווה כהה",
+      "color_hex": null,
       "affiliate_ready": false
     },
     {
@@ -1588,41 +1874,10 @@
       "price": 49.9,
       "sale_price": null,
       "currency": "ILS",
-      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r653890005?utm_source=choosy",
+      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r653890005?color=41196&utm_source=choosy",
       "brand": "Terminal X",
-      "affiliate_ready": false
-    },
-    {
-      "id": "tx-r654630001",
-      "title": "חולצה קצרה לבייבי בנים",
-      "image": "https://media.terminalx.com/pub/media/catalog/product/cache/92af6b9c945798a7e3b64d91033084b3/r/6/r654630001-11769066423.jpg?image_type_mobile=webp_jpeg_like_70",
-      "price": 49.9,
-      "sale_price": null,
-      "currency": "ILS",
-      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r654630001?utm_source=choosy",
-      "brand": "Terminal X",
-      "affiliate_ready": false
-    },
-    {
-      "id": "tx-r654630004",
-      "title": "חולצה קצרה לבייבי בנים",
-      "image": "https://media.terminalx.com/pub/media/catalog/product/cache/92af6b9c945798a7e3b64d91033084b3/r/6/r654630004-11769066423.jpg?image_type_mobile=webp_jpeg_like_70",
-      "price": 49.9,
-      "sale_price": null,
-      "currency": "ILS",
-      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r654630004?utm_source=choosy",
-      "brand": "Terminal X",
-      "affiliate_ready": false
-    },
-    {
-      "id": "tx-r654640003",
-      "title": "חולצה קצרה לבייבי בנים",
-      "image": "https://media.terminalx.com/pub/media/catalog/product/cache/92af6b9c945798a7e3b64d91033084b3/r/6/r654640003-11769066424.jpg?image_type_mobile=webp_jpeg_like_70",
-      "price": 49.9,
-      "sale_price": null,
-      "currency": "ILS",
-      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r654640003?utm_source=choosy",
-      "brand": "Terminal X",
+      "color": "כחול לילה",
+      "color_hex": null,
       "affiliate_ready": false
     },
     {
@@ -1632,8 +1887,36 @@
       "price": 49.9,
       "sale_price": null,
       "currency": "ILS",
-      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r245632075?utm_source=choosy",
+      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r245632075?color=8602&utm_source=choosy",
       "brand": "Terminal X",
+      "color": "אוף ווייט",
+      "color_hex": "#dbd7bc",
+      "affiliate_ready": false
+    },
+    {
+      "id": "tx-r654640003",
+      "title": "חולצה קצרה לבייבי בנים",
+      "image": "https://media.terminalx.com/pub/media/catalog/product/cache/92af6b9c945798a7e3b64d91033084b3/r/6/r654640003-11769066424.jpg?image_type_mobile=webp_jpeg_like_70",
+      "price": 49.9,
+      "sale_price": null,
+      "currency": "ILS",
+      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r654640003?color=41192&utm_source=choosy",
+      "brand": "Terminal X",
+      "color": "קרם מלאנז'",
+      "color_hex": null,
+      "affiliate_ready": false
+    },
+    {
+      "id": "tx-r654630001",
+      "title": "חולצה קצרה לבייבי בנים",
+      "image": "https://media.terminalx.com/pub/media/catalog/product/cache/92af6b9c945798a7e3b64d91033084b3/r/6/r654630001-11769066423.jpg?image_type_mobile=webp_jpeg_like_70",
+      "price": 49.9,
+      "sale_price": null,
+      "currency": "ILS",
+      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r654630001?color=41187&utm_source=choosy",
+      "brand": "Terminal X",
+      "color": "חלב",
+      "color_hex": null,
       "affiliate_ready": false
     },
     {
@@ -1643,8 +1926,23 @@
       "price": 44.9,
       "sale_price": null,
       "currency": "ILS",
-      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r297450007?utm_source=choosy",
+      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r297450007?color=22&utm_source=choosy",
       "brand": "Terminal X",
+      "color": "שמנת",
+      "color_hex": "#f5f5d0",
+      "affiliate_ready": false
+    },
+    {
+      "id": "tx-r654630004",
+      "title": "חולצה קצרה לבייבי בנים",
+      "image": "https://media.terminalx.com/pub/media/catalog/product/cache/92af6b9c945798a7e3b64d91033084b3/r/6/r654630004-11769066423.jpg?image_type_mobile=webp_jpeg_like_70",
+      "price": 49.9,
+      "sale_price": null,
+      "currency": "ILS",
+      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r654630004?color=41196&utm_source=choosy",
+      "brand": "Terminal X",
+      "color": "כחול לילה",
+      "color_hex": null,
       "affiliate_ready": false
     },
     {
@@ -1654,8 +1952,10 @@
       "price": 44.9,
       "sale_price": null,
       "currency": "ILS",
-      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r297770016?utm_source=choosy",
+      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r297770016?color=81&utm_source=choosy",
       "brand": "Terminal X",
+      "color": "טורקיז",
+      "color_hex": null,
       "affiliate_ready": false
     },
     {
@@ -1665,8 +1965,10 @@
       "price": 49.9,
       "sale_price": null,
       "currency": "ILS",
-      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r654640002?utm_source=choosy",
+      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r654640002?color=41183&utm_source=choosy",
       "brand": "Terminal X",
+      "color": "כחול שמיים",
+      "color_hex": null,
       "affiliate_ready": false
     },
     {
@@ -1676,8 +1978,10 @@
       "price": 49.9,
       "sale_price": null,
       "currency": "ILS",
-      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r654640001?utm_source=choosy",
+      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r654640001?color=8256&utm_source=choosy",
       "brand": "Terminal X",
+      "color": "חרדל",
+      "color_hex": "#dbbd36",
       "affiliate_ready": false
     },
     {
@@ -1687,8 +1991,10 @@
       "price": 44.9,
       "sale_price": null,
       "currency": "ILS",
-      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r297470016?utm_source=choosy",
+      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r297470016?color=81&utm_source=choosy",
       "brand": "Terminal X",
+      "color": "טורקיז",
+      "color_hex": null,
       "affiliate_ready": false
     },
     {
@@ -1698,8 +2004,10 @@
       "price": 49.9,
       "sale_price": null,
       "currency": "ILS",
-      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r653890002?utm_source=choosy",
+      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r653890002?color=8256&utm_source=choosy",
       "brand": "Terminal X",
+      "color": "חרדל",
+      "color_hex": "#dbbd36",
       "affiliate_ready": false
     },
     {
@@ -1709,30 +2017,10 @@
       "price": 69.9,
       "sale_price": null,
       "currency": "ILS",
-      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r764590006?utm_source=choosy",
+      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r764590006?color=2094&utm_source=choosy",
       "brand": "Terminal X",
-      "affiliate_ready": false
-    },
-    {
-      "id": "tx-r764590004",
-      "title": "חולצת טישירט לבייבי בנים",
-      "image": "https://media.terminalx.com/pub/media/catalog/product/cache/92af6b9c945798a7e3b64d91033084b3/r/7/r764590004-11774872509.jpg?image_type_mobile=webp_jpeg_like_70",
-      "price": 69.9,
-      "sale_price": null,
-      "currency": "ILS",
-      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r764590004?utm_source=choosy",
-      "brand": "Terminal X",
-      "affiliate_ready": false
-    },
-    {
-      "id": "tx-r764870002",
-      "title": "חולצת קרושה מכופתרת",
-      "image": "https://media.terminalx.com/pub/media/catalog/product/cache/92af6b9c945798a7e3b64d91033084b3/r/7/r764870002-11774872510.jpg?image_type_mobile=webp_jpeg_like_70",
-      "price": 129.9,
-      "sale_price": null,
-      "currency": "ILS",
-      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r764870002?utm_source=choosy",
-      "brand": "Terminal X",
+      "color": "מולטי 3",
+      "color_hex": null,
       "affiliate_ready": false
     },
     {
@@ -1742,8 +2030,10 @@
       "price": 69.9,
       "sale_price": null,
       "currency": "ILS",
-      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r764590001?utm_source=choosy",
+      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r764590001?color=18218&utm_source=choosy",
       "brand": "Terminal X",
+      "color": "אבן",
+      "color_hex": "#b0aea0",
       "affiliate_ready": false
     },
     {
@@ -1753,8 +2043,36 @@
       "price": 69.9,
       "sale_price": null,
       "currency": "ILS",
-      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r764590003?utm_source=choosy",
+      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r764590003?color=6&utm_source=choosy",
       "brand": "Terminal X",
+      "color": "ירוק",
+      "color_hex": "#37a31b",
+      "affiliate_ready": false
+    },
+    {
+      "id": "tx-r764590004",
+      "title": "חולצת טישירט לבייבי בנים",
+      "image": "https://media.terminalx.com/pub/media/catalog/product/cache/92af6b9c945798a7e3b64d91033084b3/r/7/r764590004-11774872509.jpg?image_type_mobile=webp_jpeg_like_70",
+      "price": 69.9,
+      "sale_price": null,
+      "currency": "ILS",
+      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r764590004?color=4&utm_source=choosy",
+      "brand": "Terminal X",
+      "color": "שחור",
+      "color_hex": "#000000",
+      "affiliate_ready": false
+    },
+    {
+      "id": "tx-r764870002",
+      "title": "חולצת קרושה מכופתרת",
+      "image": "https://media.terminalx.com/pub/media/catalog/product/cache/92af6b9c945798a7e3b64d91033084b3/r/7/r764870002-11774872510.jpg?image_type_mobile=webp_jpeg_like_70",
+      "price": 129.9,
+      "sale_price": null,
+      "currency": "ILS",
+      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r764870002?color=6&utm_source=choosy",
+      "brand": "Terminal X",
+      "color": "ירוק",
+      "color_hex": "#37a31b",
       "affiliate_ready": false
     },
     {
@@ -1764,8 +2082,10 @@
       "price": 49.9,
       "sale_price": 39.9,
       "currency": "ILS",
-      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r611650006?utm_source=choosy",
+      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r611650006?color=9&utm_source=choosy",
       "brand": "Terminal X",
+      "color": "כחול",
+      "color_hex": "#3764d6",
       "affiliate_ready": false
     },
     {
@@ -1775,8 +2095,10 @@
       "price": 79.9,
       "sale_price": 49.9,
       "currency": "ILS",
-      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r568340021?utm_source=choosy",
+      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r568340021?color=467&utm_source=choosy",
       "brand": "Terminal X",
+      "color": "תכלת",
+      "color_hex": "#cff3ff",
       "affiliate_ready": false
     },
     {
@@ -1786,8 +2108,10 @@
       "price": 79.9,
       "sale_price": 49.9,
       "currency": "ILS",
-      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r568340005?utm_source=choosy",
+      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r568340005?color=10&utm_source=choosy",
       "brand": "Terminal X",
+      "color": "לבן",
+      "color_hex": "#ffffff",
       "affiliate_ready": false
     },
     {
@@ -1797,8 +2121,10 @@
       "price": 79.9,
       "sale_price": 49.9,
       "currency": "ILS",
-      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r568380021?utm_source=choosy",
+      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r568380021?color=467&utm_source=choosy",
       "brand": "Terminal X",
+      "color": "תכלת",
+      "color_hex": "#cff3ff",
       "affiliate_ready": false
     },
     {
@@ -1808,8 +2134,10 @@
       "price": 69.9,
       "sale_price": 49.9,
       "currency": "ILS",
-      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r569350027?utm_source=choosy",
+      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r569350027?color=2148&utm_source=choosy",
       "brand": "Terminal X",
+      "color": "כחול נייבי",
+      "color_hex": null,
       "affiliate_ready": false
     },
     {
@@ -1819,8 +2147,10 @@
       "price": 89.9,
       "sale_price": null,
       "currency": "ILS",
-      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r657060001?utm_source=choosy",
+      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r657060001?color=41212&utm_source=choosy",
       "brand": "Terminal X",
+      "color": "לבן ",
+      "color_hex": null,
       "affiliate_ready": false
     },
     {
@@ -1830,8 +2160,10 @@
       "price": 49.9,
       "sale_price": null,
       "currency": "ILS",
-      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r653890003?utm_source=choosy",
+      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r653890003?color=41194&utm_source=choosy",
       "brand": "Terminal X",
+      "color": "חום אגוז",
+      "color_hex": null,
       "affiliate_ready": false
     },
     {
@@ -1841,8 +2173,10 @@
       "price": 49.9,
       "sale_price": null,
       "currency": "ILS",
-      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r653890007?utm_source=choosy",
+      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r653890007?color=41192&utm_source=choosy",
       "brand": "Terminal X",
+      "color": "קרם מלאנז'",
+      "color_hex": null,
       "affiliate_ready": false
     },
     {
@@ -1852,8 +2186,10 @@
       "price": 49.9,
       "sale_price": null,
       "currency": "ILS",
-      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r654630002?utm_source=choosy",
+      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r654630002?color=41194&utm_source=choosy",
       "brand": "Terminal X",
+      "color": "חום אגוז",
+      "color_hex": null,
       "affiliate_ready": false
     },
     {
@@ -1863,8 +2199,10 @@
       "price": 64.9,
       "sale_price": 29.9,
       "currency": "ILS",
-      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r259270008?utm_source=choosy",
+      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r259270008?color=7&utm_source=choosy",
       "brand": "Terminal X",
+      "color": "אפור",
+      "color_hex": "#6b676b",
       "affiliate_ready": false
     },
     {
@@ -1874,8 +2212,23 @@
       "price": 99.9,
       "sale_price": 59.94,
       "currency": "ILS",
-      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r250870005?utm_source=choosy",
+      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r250870005?color=10&utm_source=choosy",
       "brand": "Terminal X",
+      "color": "לבן",
+      "color_hex": "#ffffff",
+      "affiliate_ready": false
+    },
+    {
+      "id": "tx-r267670009",
+      "title": "חולצה בשילוב הדפס / בייבי בנים",
+      "image": "https://media.terminalx.com/pub/media/catalog/product/cache/92af6b9c945798a7e3b64d91033084b3/r/2/r267670009-11772025990.jpg?image_type_mobile=webp_jpeg_like_70",
+      "price": 49.9,
+      "sale_price": 29.94,
+      "currency": "ILS",
+      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r267670009?color=21&utm_source=choosy",
+      "brand": "Terminal X",
+      "color": "מולטי",
+      "color_hex": null,
       "affiliate_ready": false
     },
     {
@@ -1885,19 +2238,10 @@
       "price": 49.9,
       "sale_price": null,
       "currency": "ILS",
-      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r654210001?utm_source=choosy",
+      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r654210001?color=41187&utm_source=choosy",
       "brand": "Terminal X",
-      "affiliate_ready": false
-    },
-    {
-      "id": "tx-r267670009",
-      "title": "חולצה בשילוב הדפס / בייבי בנים",
-      "image": "https://media.terminalx.com/pub/media/catalog/product/cache/92af6b9c945798a7e3b64d91033084b3/r/2/r267670009-11772025990.jpg?image_type_mobile=webp_jpeg_like_70",
-      "price": 49.9,
-      "sale_price": null,
-      "currency": "ILS",
-      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r267670009?utm_source=choosy",
-      "brand": "Terminal X",
+      "color": "חלב",
+      "color_hex": null,
       "affiliate_ready": false
     },
     {
@@ -1907,8 +2251,10 @@
       "price": 59.9,
       "sale_price": null,
       "currency": "ILS",
-      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r657040002?utm_source=choosy",
+      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r657040002?color=41235&utm_source=choosy",
       "brand": "Terminal X",
+      "color": "כחול Malib",
+      "color_hex": null,
       "affiliate_ready": false
     },
     {
@@ -1918,19 +2264,10 @@
       "price": 59.9,
       "sale_price": null,
       "currency": "ILS",
-      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r657040001?utm_source=choosy",
+      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r657040001?color=41212&utm_source=choosy",
       "brand": "Terminal X",
-      "affiliate_ready": false
-    },
-    {
-      "id": "tx-r245688263",
-      "title": "חולצה עם הדפס",
-      "image": "https://media.terminalx.com/pub/media/catalog/product/cache/92af6b9c945798a7e3b64d91033084b3/r/2/r245688263-11773573621.jpg?image_type_mobile=webp_jpeg_like_70",
-      "price": 49.9,
-      "sale_price": null,
-      "currency": "ILS",
-      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r245688263?utm_source=choosy",
-      "brand": "Terminal X",
+      "color": "לבן ",
+      "color_hex": null,
       "affiliate_ready": false
     },
     {
@@ -1940,8 +2277,23 @@
       "price": 49.9,
       "sale_price": null,
       "currency": "ILS",
-      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r245670006?utm_source=choosy",
+      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r245670006?color=9&utm_source=choosy",
       "brand": "Terminal X",
+      "color": "כחול",
+      "color_hex": "#3764d6",
+      "affiliate_ready": false
+    },
+    {
+      "id": "tx-r245688263",
+      "title": "חולצה עם הדפס",
+      "image": "https://media.terminalx.com/pub/media/catalog/product/cache/92af6b9c945798a7e3b64d91033084b3/r/2/r245688263-11773573621.jpg?image_type_mobile=webp_jpeg_like_70",
+      "price": 49.9,
+      "sale_price": null,
+      "currency": "ILS",
+      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r245688263?color=18218&utm_source=choosy",
+      "brand": "Terminal X",
+      "color": "אבן",
+      "color_hex": "#b0aea0",
       "affiliate_ready": false
     },
     {
@@ -1951,8 +2303,10 @@
       "price": 49.9,
       "sale_price": null,
       "currency": "ILS",
-      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r245700027?utm_source=choosy",
+      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r245700027?color=2148&utm_source=choosy",
       "brand": "Terminal X",
+      "color": "כחול נייבי",
+      "color_hex": null,
       "affiliate_ready": false
     },
     {
@@ -1962,8 +2316,10 @@
       "price": 64.9,
       "sale_price": 29.9,
       "currency": "ILS",
-      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r265042075?utm_source=choosy",
+      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r265042075?color=10&utm_source=choosy",
       "brand": "Terminal X",
+      "color": "לבן",
+      "color_hex": "#ffffff",
       "affiliate_ready": false
     },
     {
@@ -1973,8 +2329,10 @@
       "price": 59.9,
       "sale_price": 35.94,
       "currency": "ILS",
-      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r340630009?utm_source=choosy",
+      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r340630009?color=21&utm_source=choosy",
       "brand": "Terminal X",
+      "color": "מולטי",
+      "color_hex": null,
       "affiliate_ready": false
     },
     {
@@ -1984,8 +2342,10 @@
       "price": 59.9,
       "sale_price": 29.9,
       "currency": "ILS",
-      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r262200008?utm_source=choosy",
+      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r262200008?color=7&utm_source=choosy",
       "brand": "Terminal X",
+      "color": "אפור",
+      "color_hex": "#6b676b",
       "affiliate_ready": false
     },
     {
@@ -1995,8 +2355,10 @@
       "price": 59.9,
       "sale_price": 29.9,
       "currency": "ILS",
-      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r262200005?utm_source=choosy",
+      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r262200005?color=10&utm_source=choosy",
       "brand": "Terminal X",
+      "color": "לבן",
+      "color_hex": "#ffffff",
       "affiliate_ready": false
     },
     {
@@ -2006,8 +2368,10 @@
       "price": 59.9,
       "sale_price": 35.94,
       "currency": "ILS",
-      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r340660005?utm_source=choosy",
+      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r340660005?color=10&utm_source=choosy",
       "brand": "Terminal X",
+      "color": "לבן",
+      "color_hex": "#ffffff",
       "affiliate_ready": false
     },
     {
@@ -2015,10 +2379,12 @@
       "title": "חולצת טישירט בשילוב הדפס לבייבי בנים",
       "image": "https://media.terminalx.com/pub/media/catalog/product/cache/92af6b9c945798a7e3b64d91033084b3/r/2/r267670005-11772552104.jpg?image_type_mobile=webp_jpeg_like_70",
       "price": 49.9,
-      "sale_price": null,
+      "sale_price": 29.94,
       "currency": "ILS",
-      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r267670005?utm_source=choosy",
+      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r267670005?color=10&utm_source=choosy",
       "brand": "Terminal X",
+      "color": "לבן",
+      "color_hex": "#ffffff",
       "affiliate_ready": false
     },
     {
@@ -2028,8 +2394,10 @@
       "price": 99.9,
       "sale_price": null,
       "currency": "ILS",
-      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r187340006?utm_source=choosy",
+      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r187340006?color=9&utm_source=choosy",
       "brand": "Terminal X",
+      "color": "כחול",
+      "color_hex": "#3764d6",
       "affiliate_ready": false
     },
     {
@@ -2039,8 +2407,10 @@
       "price": 199.9,
       "sale_price": 159.92,
       "currency": "ILS",
-      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r054452023?utm_source=choosy",
+      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r054452023?color=8329&utm_source=choosy",
       "brand": "Terminal X",
+      "color": "חאקי",
+      "color_hex": "#dfc6a4",
       "affiliate_ready": false
     },
     {
@@ -2050,8 +2420,10 @@
       "price": 99.9,
       "sale_price": null,
       "currency": "ILS",
-      "url": "https://www.terminalx.com/baby/baby-boys/shirts/z432540009?utm_source=choosy",
+      "url": "https://www.terminalx.com/baby/baby-boys/shirts/z432540009?color=21&utm_source=choosy",
       "brand": "Terminal X",
+      "color": "מולטי",
+      "color_hex": null,
       "affiliate_ready": false
     },
     {
@@ -2061,8 +2433,10 @@
       "price": 99.9,
       "sale_price": null,
       "currency": "ILS",
-      "url": "https://www.terminalx.com/baby/baby-boys/shirts/w475380025?utm_source=choosy",
+      "url": "https://www.terminalx.com/baby/baby-boys/shirts/w475380025?color=1582&utm_source=choosy",
       "brand": "Terminal X",
+      "color": "אפור בהיר",
+      "color_hex": "#b8b8b8",
       "affiliate_ready": false
     },
     {
@@ -2072,8 +2446,10 @@
       "price": 49.9,
       "sale_price": null,
       "currency": "ILS",
-      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r248832066?utm_source=choosy",
+      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r248832066?color=8332&utm_source=choosy",
       "brand": "Terminal X",
+      "color": "אפור כחול",
+      "color_hex": null,
       "affiliate_ready": false
     },
     {
@@ -2083,8 +2459,10 @@
       "price": 79.9,
       "sale_price": 55.93,
       "currency": "ILS",
-      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r000180009?utm_source=choosy",
+      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r000180009?color=21&utm_source=choosy",
       "brand": "Terminal X",
+      "color": "מולטי",
+      "color_hex": null,
       "affiliate_ready": false
     },
     {
@@ -2094,8 +2472,10 @@
       "price": 69.9,
       "sale_price": 41.94,
       "currency": "ILS",
-      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r568390027?utm_source=choosy",
+      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r568390027?color=2148&utm_source=choosy",
       "brand": "Terminal X",
+      "color": "כחול נייבי",
+      "color_hex": null,
       "affiliate_ready": false
     },
     {
@@ -2105,8 +2485,10 @@
       "price": 99.9,
       "sale_price": 59.9,
       "currency": "ILS",
-      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r569390013?utm_source=choosy",
+      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r569390013?color=70&utm_source=choosy",
       "brand": "Terminal X",
+      "color": "אדום",
+      "color_hex": "#d42020",
       "affiliate_ready": false
     },
     {
@@ -2116,8 +2498,10 @@
       "price": 79.9,
       "sale_price": null,
       "currency": "ILS",
-      "url": "https://www.terminalx.com/baby/baby-boys/shirts/w460900027?utm_source=choosy",
+      "url": "https://www.terminalx.com/baby/baby-boys/shirts/w460900027?color=2148&utm_source=choosy",
       "brand": "Terminal X",
+      "color": "כחול נייבי",
+      "color_hex": null,
       "affiliate_ready": false
     },
     {
@@ -2127,8 +2511,10 @@
       "price": 99.9,
       "sale_price": 69.9,
       "currency": "ILS",
-      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r569370021?utm_source=choosy",
+      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r569370021?color=467&utm_source=choosy",
       "brand": "Terminal X",
+      "color": "תכלת",
+      "color_hex": "#cff3ff",
       "affiliate_ready": false
     },
     {
@@ -2138,8 +2524,10 @@
       "price": 79.9,
       "sale_price": 55.93,
       "currency": "ILS",
-      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r000192012?utm_source=choosy",
+      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r000192012?color=8621&utm_source=choosy",
       "brand": "Terminal X",
+      "color": "כחול ג'ינס",
+      "color_hex": null,
       "affiliate_ready": false
     },
     {
@@ -2149,19 +2537,10 @@
       "price": 79.9,
       "sale_price": 59.9,
       "currency": "ILS",
-      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r569360025?utm_source=choosy",
+      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r569360025?color=1582&utm_source=choosy",
       "brand": "Terminal X",
-      "affiliate_ready": false
-    },
-    {
-      "id": "tx-r245720027",
-      "title": "חולצה עם הדפס / בייבי בנים",
-      "image": "https://media.terminalx.com/pub/media/catalog/product/cache/92af6b9c945798a7e3b64d91033084b3/r/2/r245720027-11770283203.jpg?image_type_mobile=webp_jpeg_like_70",
-      "price": 49.9,
-      "sale_price": null,
-      "currency": "ILS",
-      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r245720027?utm_source=choosy",
-      "brand": "Terminal X",
+      "color": "אפור בהיר",
+      "color_hex": "#b8b8b8",
       "affiliate_ready": false
     },
     {
@@ -2171,8 +2550,23 @@
       "price": 44.9,
       "sale_price": null,
       "currency": "ILS",
-      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r297480007?utm_source=choosy",
+      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r297480007?color=22&utm_source=choosy",
       "brand": "Terminal X",
+      "color": "שמנת",
+      "color_hex": "#f5f5d0",
+      "affiliate_ready": false
+    },
+    {
+      "id": "tx-r245720027",
+      "title": "חולצה עם הדפס / בייבי בנים",
+      "image": "https://media.terminalx.com/pub/media/catalog/product/cache/92af6b9c945798a7e3b64d91033084b3/r/2/r245720027-11770283203.jpg?image_type_mobile=webp_jpeg_like_70",
+      "price": 49.9,
+      "sale_price": null,
+      "currency": "ILS",
+      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r245720027?color=2148&utm_source=choosy",
+      "brand": "Terminal X",
+      "color": "כחול נייבי",
+      "color_hex": null,
       "affiliate_ready": false
     },
     {
@@ -2182,8 +2576,10 @@
       "price": 49.9,
       "sale_price": null,
       "currency": "ILS",
-      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r245650016?utm_source=choosy",
+      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r245650016?color=81&utm_source=choosy",
       "brand": "Terminal X",
+      "color": "טורקיז",
+      "color_hex": null,
       "affiliate_ready": false
     },
     {
@@ -2193,8 +2589,10 @@
       "price": 44.9,
       "sale_price": null,
       "currency": "ILS",
-      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r297722075?utm_source=choosy",
+      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r297722075?color=8602&utm_source=choosy",
       "brand": "Terminal X",
+      "color": "אוף ווייט",
+      "color_hex": "#dbd7bc",
       "affiliate_ready": false
     },
     {
@@ -2204,19 +2602,10 @@
       "price": 44.9,
       "sale_price": null,
       "currency": "ILS",
-      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r297760007?utm_source=choosy",
+      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r297760007?color=22&utm_source=choosy",
       "brand": "Terminal X",
-      "affiliate_ready": false
-    },
-    {
-      "id": "tx-r245732075",
-      "title": "חולצה ממותגת סמי הכבאי / בייבי בנים",
-      "image": "https://media.terminalx.com/pub/media/catalog/product/cache/92af6b9c945798a7e3b64d91033084b3/r/2/r245732075-11770283203.jpg?image_type_mobile=webp_jpeg_like_70",
-      "price": 49.9,
-      "sale_price": null,
-      "currency": "ILS",
-      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r245732075?utm_source=choosy",
-      "brand": "Terminal X",
+      "color": "שמנת",
+      "color_hex": "#f5f5d0",
       "affiliate_ready": false
     },
     {
@@ -2226,8 +2615,23 @@
       "price": 49.9,
       "sale_price": null,
       "currency": "ILS",
-      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r245620006?utm_source=choosy",
+      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r245620006?color=9&utm_source=choosy",
       "brand": "Terminal X",
+      "color": "כחול",
+      "color_hex": "#3764d6",
+      "affiliate_ready": false
+    },
+    {
+      "id": "tx-r245732075",
+      "title": "חולצה ממותגת סמי הכבאי / בייבי בנים",
+      "image": "https://media.terminalx.com/pub/media/catalog/product/cache/92af6b9c945798a7e3b64d91033084b3/r/2/r245732075-11770283203.jpg?image_type_mobile=webp_jpeg_like_70",
+      "price": 49.9,
+      "sale_price": null,
+      "currency": "ILS",
+      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r245732075?color=8602&utm_source=choosy",
+      "brand": "Terminal X",
+      "color": "אוף ווייט",
+      "color_hex": "#dbd7bc",
       "affiliate_ready": false
     },
     {
@@ -2237,8 +2641,10 @@
       "price": 99.9,
       "sale_price": 59.94,
       "currency": "ILS",
-      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r594880021?utm_source=choosy",
+      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r594880021?color=467&utm_source=choosy",
       "brand": "Terminal X",
+      "color": "תכלת",
+      "color_hex": "#cff3ff",
       "affiliate_ready": false
     },
     {
@@ -2248,8 +2654,10 @@
       "price": 139.9,
       "sale_price": 83.94,
       "currency": "ILS",
-      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r603450030?utm_source=choosy",
+      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r603450030?color=2185&utm_source=choosy",
       "brand": "Terminal X",
+      "color": "אפור כהה",
+      "color_hex": "#4d4d4d",
       "affiliate_ready": false
     },
     {
@@ -2259,8 +2667,10 @@
       "price": 99.9,
       "sale_price": 69.9,
       "currency": "ILS",
-      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r601170005?utm_source=choosy",
+      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r601170005?color=10&utm_source=choosy",
       "brand": "Terminal X",
+      "color": "לבן",
+      "color_hex": "#ffffff",
       "affiliate_ready": false
     },
     {
@@ -2270,8 +2680,10 @@
       "price": 79.9,
       "sale_price": 47.94,
       "currency": "ILS",
-      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r228390001?utm_source=choosy",
+      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r228390001?color=4&utm_source=choosy",
       "brand": "Terminal X",
+      "color": "שחור",
+      "color_hex": "#000000",
       "affiliate_ready": false
     },
     {
@@ -2281,8 +2693,10 @@
       "price": 79.9,
       "sale_price": null,
       "currency": "ILS",
-      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r466590001?utm_source=choosy",
+      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r466590001?color=4&utm_source=choosy",
       "brand": "Terminal X",
+      "color": "שחור",
+      "color_hex": "#000000",
       "affiliate_ready": false
     },
     {
@@ -2292,8 +2706,10 @@
       "price": 69.9,
       "sale_price": null,
       "currency": "ILS",
-      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r466600008?utm_source=choosy",
+      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r466600008?color=407&utm_source=choosy",
       "brand": "Terminal X",
+      "color": "בז'",
+      "color_hex": "#e0d9c0",
       "affiliate_ready": false
     },
     {
@@ -2303,8 +2719,10 @@
       "price": 69.9,
       "sale_price": null,
       "currency": "ILS",
-      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r466600018?utm_source=choosy",
+      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r466600018?color=9176&utm_source=choosy",
       "brand": "Terminal X",
+      "color": "חמרה",
+      "color_hex": "#ba5f48",
       "affiliate_ready": false
     },
     {
@@ -2314,8 +2732,10 @@
       "price": 69.9,
       "sale_price": null,
       "currency": "ILS",
-      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r466602015?utm_source=choosy",
+      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r466602015?color=9077&utm_source=choosy",
       "brand": "Terminal X",
+      "color": "ירוק זית",
+      "color_hex": null,
       "affiliate_ready": false
     },
     {
@@ -2325,8 +2745,10 @@
       "price": 69.9,
       "sale_price": null,
       "currency": "ILS",
-      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r466602066?utm_source=choosy",
+      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r466602066?color=9&utm_source=choosy",
       "brand": "Terminal X",
+      "color": "כחול",
+      "color_hex": "#3764d6",
       "affiliate_ready": false
     },
     {
@@ -2336,8 +2758,10 @@
       "price": 79.9,
       "sale_price": 55.93,
       "currency": "ILS",
-      "url": "https://www.terminalx.com/baby/baby-boys/shirts/w966338263?utm_source=choosy",
+      "url": "https://www.terminalx.com/baby/baby-boys/shirts/w966338263?color=18218&utm_source=choosy",
       "brand": "Terminal X",
+      "color": "אבן",
+      "color_hex": "#b0aea0",
       "affiliate_ready": false
     },
     {
@@ -2347,8 +2771,10 @@
       "price": 139.9,
       "sale_price": 97.93,
       "currency": "ILS",
-      "url": "https://www.terminalx.com/baby/baby-boys/shirts/w966820006?utm_source=choosy",
+      "url": "https://www.terminalx.com/baby/baby-boys/shirts/w966820006?color=9&utm_source=choosy",
       "brand": "Terminal X",
+      "color": "כחול",
+      "color_hex": "#3764d6",
       "affiliate_ready": false
     },
     {
@@ -2358,8 +2784,10 @@
       "price": 169.9,
       "sale_price": 118.93,
       "currency": "ILS",
-      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r000280002?utm_source=choosy",
+      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r000280002?color=106&utm_source=choosy",
       "brand": "Terminal X",
+      "color": "חום",
+      "color_hex": "#834a37",
       "affiliate_ready": false
     },
     {
@@ -2369,8 +2797,10 @@
       "price": 64.9,
       "sale_price": 38.94,
       "currency": "ILS",
-      "url": "https://www.terminalx.com/baby/baby-boys/shirts/w912760009?utm_source=choosy",
+      "url": "https://www.terminalx.com/baby/baby-boys/shirts/w912760009?color=21&utm_source=choosy",
       "brand": "Terminal X",
+      "color": "מולטי",
+      "color_hex": null,
       "affiliate_ready": false
     },
     {
@@ -2380,8 +2810,10 @@
       "price": 109.9,
       "sale_price": 76.93,
       "currency": "ILS",
-      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r000178263?utm_source=choosy",
+      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r000178263?color=18218&utm_source=choosy",
       "brand": "Terminal X",
+      "color": "אבן",
+      "color_hex": "#b0aea0",
       "affiliate_ready": false
     },
     {
@@ -2391,8 +2823,10 @@
       "price": 79.9,
       "sale_price": 39.95,
       "currency": "ILS",
-      "url": "https://www.terminalx.com/baby/baby-boys/shirts/z174286298?utm_source=choosy",
+      "url": "https://www.terminalx.com/baby/baby-boys/shirts/z174286298?color=18218&utm_source=choosy",
       "brand": "Terminal X",
+      "color": "אבן",
+      "color_hex": "#b0aea0",
       "affiliate_ready": false
     },
     {
@@ -2402,8 +2836,10 @@
       "price": 49.9,
       "sale_price": 29.94,
       "currency": "ILS",
-      "url": "https://www.terminalx.com/baby/baby-boys/shirts/w497020012?utm_source=choosy",
+      "url": "https://www.terminalx.com/baby/baby-boys/shirts/w497020012?color=100&utm_source=choosy",
       "brand": "Terminal X",
+      "color": "סגול",
+      "color_hex": "#941894",
       "affiliate_ready": false
     },
     {
@@ -2413,8 +2849,10 @@
       "price": 129.9,
       "sale_price": 77.94,
       "currency": "ILS",
-      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r304080008?utm_source=choosy",
+      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r304080008?color=7&utm_source=choosy",
       "brand": "Terminal X",
+      "color": "אפור",
+      "color_hex": "#6b676b",
       "affiliate_ready": false
     },
     {
@@ -2424,8 +2862,10 @@
       "price": 229.9,
       "sale_price": 68.97,
       "currency": "ILS",
-      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r200900027?utm_source=choosy",
+      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r200900027?color=2148&utm_source=choosy",
       "brand": "Terminal X",
+      "color": "כחול נייבי",
+      "color_hex": null,
       "affiliate_ready": false
     },
     {
@@ -2435,8 +2875,10 @@
       "price": 64.9,
       "sale_price": 38.94,
       "currency": "ILS",
-      "url": "https://www.terminalx.com/baby/baby-boys/shirts/w908820009?utm_source=choosy",
+      "url": "https://www.terminalx.com/baby/baby-boys/shirts/w908820009?color=21&utm_source=choosy",
       "brand": "Terminal X",
+      "color": "מולטי",
+      "color_hex": null,
       "affiliate_ready": false
     },
     {
@@ -2446,8 +2888,10 @@
       "price": 59.9,
       "sale_price": 35.94,
       "currency": "ILS",
-      "url": "https://www.terminalx.com/baby/baby-boys/shirts/w884570009?utm_source=choosy",
+      "url": "https://www.terminalx.com/baby/baby-boys/shirts/w884570009?color=21&utm_source=choosy",
       "brand": "Terminal X",
+      "color": "מולטי",
+      "color_hex": null,
       "affiliate_ready": false
     },
     {
@@ -2457,8 +2901,10 @@
       "price": 59.9,
       "sale_price": 35.94,
       "currency": "ILS",
-      "url": "https://www.terminalx.com/baby/baby-boys/shirts/w912670006?utm_source=choosy",
+      "url": "https://www.terminalx.com/baby/baby-boys/shirts/w912670006?color=9&utm_source=choosy",
       "brand": "Terminal X",
+      "color": "כחול",
+      "color_hex": "#3764d6",
       "affiliate_ready": false
     },
     {
@@ -2468,8 +2914,10 @@
       "price": 59.9,
       "sale_price": 35.94,
       "currency": "ILS",
-      "url": "https://www.terminalx.com/baby/baby-boys/shirts/w912670004?utm_source=choosy",
+      "url": "https://www.terminalx.com/baby/baby-boys/shirts/w912670004?color=6&utm_source=choosy",
       "brand": "Terminal X",
+      "color": "ירוק",
+      "color_hex": "#37a31b",
       "affiliate_ready": false
     },
     {
@@ -2479,8 +2927,10 @@
       "price": 179.9,
       "sale_price": 53.97,
       "currency": "ILS",
-      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r305160027?utm_source=choosy",
+      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r305160027?color=2148&utm_source=choosy",
       "brand": "Terminal X",
+      "color": "כחול נייבי",
+      "color_hex": null,
       "affiliate_ready": false
     },
     {
@@ -2490,8 +2940,10 @@
       "price": 69.9,
       "sale_price": 27.96,
       "currency": "ILS",
-      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r194680008?utm_source=choosy",
+      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r194680008?color=7&utm_source=choosy",
       "brand": "Terminal X",
+      "color": "אפור",
+      "color_hex": "#6b676b",
       "affiliate_ready": false
     },
     {
@@ -2501,8 +2953,10 @@
       "price": 89.9,
       "sale_price": 35.96,
       "currency": "ILS",
-      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r202450005?utm_source=choosy",
+      "url": "https://www.terminalx.com/baby/baby-boys/shirts/r202450005?color=10&utm_source=choosy",
       "brand": "Terminal X",
+      "color": "לבן",
+      "color_hex": "#ffffff",
       "affiliate_ready": false
     },
     {
@@ -2512,8 +2966,10 @@
       "price": 54.9,
       "sale_price": 29.9,
       "currency": "ILS",
-      "url": "https://www.terminalx.com/baby/baby-boys/shirts/w880070008?utm_source=choosy",
+      "url": "https://www.terminalx.com/baby/baby-boys/shirts/w880070008?color=7&utm_source=choosy",
       "brand": "Terminal X",
+      "color": "אפור",
+      "color_hex": "#6b676b",
       "affiliate_ready": false
     }
   ]

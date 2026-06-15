@@ -47,15 +47,25 @@
       <div class="choice-grid" id="category-grid"></div>
     </div>
 
-    <div class="setup-step hidden" id="step-budget">
-      <h2 class="setup-q">תקציב? (אפשר לדלג)</h2>
-      <div class="budget-box">
-        <input type="range" id="budget-slider" min="20" max="300" step="10" value="300">
-        <p class="budget-label">עד <span id="budget-val">300</span> ₪</p>
+    <div class="setup-step hidden" id="step-refine">
+      <h2 class="setup-q">עוד משהו שיעזור? <span class="setup-q-sub">(אפשר לדלג)</span></h2>
+
+      <div class="refine-block">
+        <p class="refine-label">צבעים מועדפים</p>
+        <div class="color-chips" id="color-chips"></div>
       </div>
+
+      <div class="refine-block">
+        <p class="refine-label">תקציב</p>
+        <div class="budget-box">
+          <input type="range" id="budget-slider" min="20" max="300" step="10" value="300">
+          <p class="budget-label">עד <span id="budget-val">300</span> ₪</p>
+        </div>
+      </div>
+
       <div class="budget-actions">
         <button class="btn-primary" id="play-btn">מתחילים לבחור!</button>
-        <button class="btn-ghost" id="skip-budget">בלי הגבלת תקציב</button>
+        <button class="btn-ghost" id="skip-refine">בלי סינון — הציגו הכל</button>
       </div>
     </div>
   </section>

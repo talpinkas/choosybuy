@@ -1,4 +1,4 @@
-// Choosy Kids — app flow: welcome -> setup (3 clicks) -> loading -> game
+// Choosy Kids — welcome -> who -> what -> refine (color+budget) -> game
 
 var MIXPANEL_TOKEN = 'd0151b0b7af8502ac4bbed6a650ae33a';
 var analyticsId = localStorage.getItem('choosy_id');
@@ -17,7 +17,6 @@ function track(event, props) {
   }).catch(function () {});
 }
 
-// --- Categories per age band ---
 var CATEGORIES = {
   '0-2': [
     { key: 'tops', label: 'חולצות', emoji: '👕' },
@@ -31,6 +30,13 @@ var CATEGORIES = {
   ]
 };
 
+// Representative swatch color per family (for the chip dot)
+var FAMILY_HEX = {
+  'שחור': '#2a2a2a', 'לבן': '#f1ece3', 'אפור': '#9a9a9a', 'כחול': '#2a4d8f',
+  'ירוק': '#4a7c47', 'ורוד': '#e89ab0', 'אדום': '#c0392b', 'צהוב': '#e8c84a',
+  'כתום': '#e08a3c', 'סגול': '#7d5ba6', 'חום': '#8a6240', 'מצויר': null, 'אחר': '#cfc7bb'
+};
+
 var screens = {
   welcome: document.getElementById('welcome'),
   setup: document.getElementById('setup'),
@@ -42,28 +48,28 @@ function show(name) {
   screens[name].classList.remove('hidden');
 }
 
-var selection = { gender: null, age: null, category: null, budget: null };
+var selection = { gender: null, age: null, category: null, budget: null, colors: [] };
+var poolProducts = [];
 var game = null, comparisons = 0, pairShownAt = 0, gameStartedAt = 0, currentProducts = [];
 
-// --- Welcome ---
 document.getElementById('start-btn').addEventListener('click', function () {
   track('setup_started');
   show('setup');
   resetSetup();
 });
 
-// --- Back links ---
 document.querySelectorAll('[data-back]').forEach(function (b) {
   b.addEventListener('click', function () { show(b.getAttribute('data-back')); });
 });
 
 function resetSetup() {
+  selection.colors = [];
   document.getElementById('step-who').classList.remove('hidden');
   document.getElementById('step-what').classList.add('hidden');
-  document.getElementById('step-budget').classList.add('hidden');
+  document.getElementById('step-refine').classList.add('hidden');
 }
 
-// --- Step 1: who ---
+// Step 1: who
 document.querySelectorAll('#step-who .choice').forEach(function (btn) {
   btn.addEventListener('click', function () {
     selection.gender = btn.getAttribute('data-gender');
@@ -74,7 +80,7 @@ document.querySelectorAll('#step-who .choice').forEach(function (btn) {
   });
 });
 
-// --- Step 2: what ---
+// Step 2: what
 function buildCategories() {
   var grid = document.getElementById('category-grid');
   grid.innerHTML = '';
@@ -84,55 +90,96 @@ function buildCategories() {
     b.innerHTML = '<span class="choice-emoji">' + c.emoji + '</span>' + c.label;
     b.addEventListener('click', function () {
       selection.category = c.key;
-      document.getElementById('step-what').classList.add('hidden');
-      document.getElementById('step-budget').classList.remove('hidden');
+      loadPoolThenRefine();
     });
     grid.appendChild(b);
   });
 }
 
-// --- Step 3: budget ---
+// After category: fetch the pool, then show color+budget refine
+function loadPoolThenRefine() {
+  show('loading');
+  track('pool_requested', { gender: selection.gender, age: selection.age, category: selection.category });
+  var q = '/api/get-pool?gender=' + selection.gender + '&age=' + selection.age + '&category=' + selection.category;
+  fetch(q).then(function (r) { return r.json(); }).then(function (data) {
+    poolProducts = data.products || [];
+    if (poolProducts.length < 2) {
+      document.getElementById('loading-text').textContent = 'אין מספיק פריטים בקטגוריה הזו עדיין. נסו בחירה אחרת.';
+      setTimeout(function () { show('setup'); resetSetup(); }, 2500);
+      return;
+    }
+    track('pool_loaded', { count: poolProducts.length });
+    buildColorChips();
+    show('setup');
+    document.getElementById('step-who').classList.add('hidden');
+    document.getElementById('step-what').classList.add('hidden');
+    document.getElementById('step-refine').classList.remove('hidden');
+  }).catch(function () {
+    document.getElementById('loading-text').textContent = 'משהו השתבש. ננסה שוב?';
+    setTimeout(function () { show('setup'); resetSetup(); }, 2500);
+  });
+}
+
+// Step 3: refine — color chips built from what's actually in the pool
+function buildColorChips() {
+  var counts = {};
+  poolProducts.forEach(function (p) {
+    var f = p.colorFamily || 'אחר';
+    counts[f] = (counts[f] || 0) + 1;
+  });
+  // Sort families by frequency, drop tiny "אחר" if others exist
+  var families = Object.keys(counts).sort(function (a, b) { return counts[b] - counts[a]; });
+  var wrap = document.getElementById('color-chips');
+  wrap.innerHTML = '';
+  selection.colors = [];
+  families.forEach(function (fam) {
+    var chip = document.createElement('button');
+    chip.className = 'color-chip';
+    chip.setAttribute('data-fam', fam);
+    var hex = FAMILY_HEX[fam];
+    var dot = fam === 'מצויר'
+      ? '<span class="chip-dot chip-multi"></span>'
+      : '<span class="chip-dot" style="background:' + (hex || '#ccc') + '"></span>';
+    chip.innerHTML = dot + fam;
+    chip.addEventListener('click', function () {
+      chip.classList.toggle('selected');
+      var i = selection.colors.indexOf(fam);
+      if (i === -1) selection.colors.push(fam); else selection.colors.splice(i, 1);
+    });
+    wrap.appendChild(chip);
+  });
+}
+
 var slider = document.getElementById('budget-slider');
 slider.addEventListener('input', function () {
   document.getElementById('budget-val').textContent = slider.value;
 });
 document.getElementById('play-btn').addEventListener('click', function () {
   selection.budget = parseInt(slider.value);
-  startFlow();
+  applyFiltersAndPlay();
 });
-document.getElementById('skip-budget').addEventListener('click', function () {
+document.getElementById('skip-refine').addEventListener('click', function () {
   selection.budget = null;
-  startFlow();
+  selection.colors = [];
+  applyFiltersAndPlay();
 });
 
-// --- Load pool + start game ---
-function startFlow() {
-  show('loading');
-  track('pool_requested', selection);
-  var q = '/api/get-pool?gender=' + selection.gender + '&age=' + selection.age + '&category=' + selection.category;
-  fetch(q)
-    .then(function (r) { return r.json(); })
-    .then(function (data) {
-      var products = data.products || [];
-      if (selection.budget) {
-        products = products.filter(function (p) {
-          var price = p.salePrice != null ? p.salePrice : p.originalPrice;
-          return price <= selection.budget;
-        });
-      }
-      if (products.length < 2) {
-        document.getElementById('loading-text').textContent = 'אין מספיק פריטים בקטגוריה הזו עדיין. נסו בחירה אחרת.';
-        setTimeout(function () { show('setup'); resetSetup(); }, 2500);
-        return;
-      }
-      currentProducts = products;
-      track('pool_loaded', { count: products.length });
-      startGame(products);
-    })
-    .catch(function () {
-      document.getElementById('loading-text').textContent = 'משהו השתבש. ננסה שוב?';
-      setTimeout(function () { show('setup'); resetSetup(); }, 2500);
-    });
+function applyFiltersAndPlay() {
+  var filtered = poolProducts.filter(function (p) {
+    if (selection.colors.length && selection.colors.indexOf(p.colorFamily) === -1) return false;
+    if (selection.budget) {
+      var price = p.salePrice != null ? p.salePrice : p.originalPrice;
+      if (price > selection.budget) return false;
+    }
+    return true;
+  });
+  if (filtered.length < 2) {
+    // too strict — fall back to the full pool
+    filtered = poolProducts.slice();
+  }
+  track('filters_applied', { colors: selection.colors.join(',') || 'all', budget: selection.budget || 0, result_count: filtered.length });
+  currentProducts = filtered;
+  startGame(filtered);
 }
 
 function startGame(products) {
@@ -162,15 +209,10 @@ function handleChoose(side) {
     void el.offsetWidth;
     el.classList.add('enter-' + loserSide);
   } else {
-    // winner crowned — set brand on buy button
     var w = game.currentWinner;
     var brandEl = document.getElementById('buy-brand');
     if (brandEl && w) brandEl.textContent = w.brand || 'חנות';
-    track('game_completed', {
-      winner_name: w.name, brand: w.brand,
-      total_comparisons: comparisons,
-      time_spent_sec: Math.round((Date.now() - gameStartedAt) / 1000)
-    });
+    track('game_completed', { winner_name: w.name, brand: w.brand, total_comparisons: comparisons, time_spent_sec: Math.round((Date.now() - gameStartedAt) / 1000) });
   }
 }
 
@@ -178,14 +220,9 @@ document.getElementById('keep-btn').addEventListener('click', function () {
   if (game) { game.keepChoosing(); pairShownAt = Date.now(); }
 });
 document.getElementById('restart-btn').addEventListener('click', function () {
-  if (game) {
-    game.startOver(); comparisons = 0; pairShownAt = Date.now(); gameStartedAt = Date.now();
-    track('game_started', { product_count: currentProducts.length, is_restart: true });
-  }
+  if (game) { game.startOver(); comparisons = 0; pairShownAt = Date.now(); gameStartedAt = Date.now(); track('game_started', { product_count: currentProducts.length, is_restart: true }); }
 });
 document.getElementById('buy-btn').addEventListener('click', function () {
-  if (game && game.currentWinner) {
-    track('product_clicked', { product_name: game.currentWinner.name, brand: game.currentWinner.brand, product_url: game.currentWinner.url });
-  }
+  if (game && game.currentWinner) track('product_clicked', { product_name: game.currentWinner.name, brand: game.currentWinner.brand, product_url: game.currentWinner.url });
 });
 document.getElementById('exit-btn').addEventListener('click', function () { show('welcome'); });

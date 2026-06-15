@@ -1,9 +1,28 @@
 // Choosy — Serve a product pool for the tournament.
-// GET /api/get-pool?gender=boy&age=0-2&category=tops&limit=60
+// GET /api/get-pool?gender=boy&age=0-2&category=tops&limit=80
 // Reads static catalog JSON (no external calls), filters by segment,
-// merges across sites, shuffles, returns game-ready products.
+// merges across sites, shuffles, returns game-ready products with color.
 
 var catalogs = require('../catalogs');
+
+// Map a raw Hebrew color label to a clean filter family (keyword-based).
+function colorFamily(label) {
+  if (!label) return null;
+  var l = String(label).trim();
+  if (/שחור/.test(l)) return 'שחור';
+  if (/לבן|חלב|שמנת|אוף ווייט|קרם/.test(l)) return 'לבן';
+  if (/אפור/.test(l)) return 'אפור';
+  if (/כחול|נייבי|תכלת|טורקיז|אקווה|רויאל|ג'ינס/.test(l)) return 'כחול';
+  if (/ירוק|חאקי|מנטה|זית/.test(l)) return 'ירוק';
+  if (/ורוד/.test(l)) return 'ורוד';
+  if (/אדום|חמרה|בורדו/.test(l)) return 'אדום';
+  if (/צהוב|חרדל|בננה/.test(l)) return 'צהוב';
+  if (/כתום|קרמל/.test(l)) return 'כתום';
+  if (/סגול|לילך/.test(l)) return 'סגול';
+  if (/חום|בז'|אבן|חול|אגוז/.test(l)) return 'חום';
+  if (/מולטי/.test(l)) return 'מצויר';
+  return 'אחר';
+}
 
 function shuffle(arr) {
   for (var i = arr.length - 1; i > 0; i--) {
@@ -21,9 +40,8 @@ module.exports = function handler(req, res) {
   var gender = req.query.gender || null;
   var age = req.query.age || null;
   var category = req.query.category || null;
-  var limit = parseInt(req.query.limit) || 60;
+  var limit = parseInt(req.query.limit) || 80;
 
-  // Match catalogs by the provided segment dimensions (any omitted dim = wildcard)
   var matching = catalogs.filter(function (c) {
     var s = c.segment || {};
     if (gender && s.gender !== gender) return false;
@@ -32,7 +50,6 @@ module.exports = function handler(req, res) {
     return true;
   });
 
-  // Merge products into game-ready shape
   var products = [];
   matching.forEach(function (c) {
     (c.products || []).forEach(function (p) {
@@ -45,6 +62,9 @@ module.exports = function handler(req, res) {
         salePrice: (p.sale_price != null && p.sale_price < p.price) ? p.sale_price : null,
         url: p.url,
         brand: p.brand || c.site,
+        color: p.color || '',
+        colorHex: p.color_hex || null,
+        colorFamily: colorFamily(p.color),
         affiliateReady: !!p.affiliate_ready
       });
     });
@@ -52,7 +72,6 @@ module.exports = function handler(req, res) {
 
   shuffle(products);
   if (products.length > limit) products = products.slice(0, limit);
-  // Re-id for the game engine
   products.forEach(function (p, i) { p.id = i + 1; });
 
   res.status(200).json({
