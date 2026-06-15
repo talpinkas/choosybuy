@@ -55,11 +55,15 @@ Catalogs are built from Terminal X's internal listing API. Key facts (verified):
   Body: `{ listingSearchOptions:{myBagSkus:[]},
   listingSearchQuery:{ categoryId, currentPage, filter:{category_id:{eq:categoryId}},
   includeAggregations:false, pageSize, sort:{default:true} } }`
-- **No session/cookies/fe-version needed.** A plain Node POST with a browser
-  `User-Agent` + `Origin`/`Referer` returns JSON 200. (Older notes about needing a
-  session, and `api/scrape.js`, predate this — the endpoint is open.)
-- **GraphQL `/graphql` does NOT work from Node** (404 / SPA HTML). So `urlResolver`
-  is unavailable server-side — resolve category IDs another way (see below).
+- **No session needed at low volume.** A plain Node POST with a browser
+  `User-Agent` + `Origin`/`Referer` returns JSON 200. `api/scrape.js` still
+  establishes a session (cookies + `X-Fe-Version` from the homepage) — that path
+  also works and is the safer choice at scale / if rate limits ever appear.
+- **GraphQL `/graphql` (`urlResolver`) needs the session headers.** It powered the
+  original catalog via `scrape.js` (POST + cookies + fe-version). A session-less POST
+  404s / returns SPA HTML — which is why the builder skips GraphQL entirely: it uses
+  known category IDs and verifies each by matching the response's
+  `categories[0].url_path` to the expected path.
 - **Response wrapper:** `data.elasticSearch` (handle `response.data.elasticSearch`
   as a fallback). Items: `elasticSearch.items[]`. Current category:
   `elasticSearch.categories[0]` → `{id, name, url_path, product_count}`.
@@ -83,10 +87,13 @@ Catalogs are built from Terminal X's internal listing API. Key facts (verified):
   resolved (table below). `build-catalogs.js` verifies each by checking that the
   API's returned `categories[0].url_path` matches the expected `txPath`.
 - **~20–35% of listed products have NO live page (404).** They come from
-  import/unpublished feeds and carry NO distinguishing field (identical
-  visibility/status/stock to live ones). The URL format does not help — they 404
-  in every form. The only fix is to **verify each product URL (HTTP HEAD) at build
-  time and drop the dead ones.** `build-catalogs.js` does this by default.
+  import/unpublished feeds and carry NO distinguishing field — empirically tested:
+  dead and live products have identical `visibility` (4), `status` (1), and
+  `stock_status2` (IN_STOCK). The URL format does not help — they 404 in every form
+  (category-path AND slug-only). The only reliable fix is to **verify each product
+  URL (HTTP HEAD) at build time and drop the dead ones.** `build-catalogs.js` does
+  this by default. (`hide_until` is the one field not yet exhaustively checked as a
+  possible cheap signal — a future optimization to avoid the HEAD pass.)
 
 ## Catalog format
 
