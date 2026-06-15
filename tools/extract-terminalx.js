@@ -47,7 +47,7 @@
       var fin = (mp.final_price && mp.final_price.value) || reg;
       var price = reg, sale = null; if (fin < reg) sale = fin; else price = fin;
       if (!price) return;
-      out.push({ id: 'tx-' + slug, title: name, image: img, price: price, sale_price: sale, currency: 'ILS', url: 'https://www.terminalx.com/' + (cp ? cp + '/' : '') + slug + '?utm_source=choosy', brand: 'Terminal X', affiliate_ready: false });
+      out.push({ id: 'tx-' + slug, title: name, image: img, price: price, sale_price: sale, currency: 'ILS', url: 'https://www.terminalx.com/' + (cp ? cp + '/' : '') + slug, brand: 'Terminal X', affiliate_ready: false });
     });
     var cat = { catalog_id: 'terminalx-' + SEGMENT.gender + '-' + SEGMENT.age + '-' + SEGMENT.category, site: 'Terminal X', segment: SEGMENT, updated_at: new Date().toISOString().slice(0, 10), products: out };
     try { copy(JSON.stringify(cat, null, 2)); } catch (e) {}

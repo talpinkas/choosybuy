@@ -126,12 +126,7 @@ ChoosingGame.prototype.showWinner = function (product) {
 
   var buyBtn = this.$('#buy-btn');
   if (buyBtn) {
-    if (product.url) {
-      var sep = product.url.indexOf('?') === -1 ? '?' : '&';
-      buyBtn.href = product.url + sep + 'utm_source=choosy';
-    } else {
-      buyBtn.href = 'https://www.terminalx.com/?utm_source=choosy';
-    }
+    buyBtn.href = product.url || 'https://www.terminalx.com/';
   }
 
   var keepBtn = this.$('#keep-btn');
