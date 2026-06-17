@@ -34,7 +34,11 @@ var SEGMENT_CATS = {
 };
 function categoriesFor(gender, age) {
   var keys = SEGMENT_CATS[gender + '|' + age] || SEGMENT_CATS['boy|0-2'];
-  return keys.map(function (k) { return { key: k, label: CAT_META[k].label, emoji: CAT_META[k].emoji }; });
+  return keys.map(function (k) {
+    var emoji = CAT_META[k].emoji;
+    if (k === 'swim' && gender === 'boy') emoji = '🩳'; // boys' swim trunks (🩱 one-piece reads feminine)
+    return { key: k, label: CAT_META[k].label, emoji: emoji };
+  });
 }
 
 // Representative swatch color per family (for the chip dot)
