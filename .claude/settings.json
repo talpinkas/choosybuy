@@ -12,7 +12,12 @@
       "Bash(git log:*)",
       "Bash(git show:*)",
       "Bash(git restore:*)",
-      "Bash(git stash:*)"
+      "Bash(git stash:*)",
+      "WebSearch",
+      "WebFetch",
+      "mcp__plugin_playwright_playwright__browser_snapshot",
+      "mcp__plugin_playwright_playwright__browser_take_screenshot",
+      "mcp__plugin_playwright_playwright__browser_console_messages"
     ],
     "deny": [
       "Read(./.env)",
