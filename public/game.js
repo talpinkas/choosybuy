@@ -130,6 +130,14 @@ ChoosingGame.prototype.render = function () {
   this.renderStreak('left', this.leftProduct);
   this.renderStreak('right', this.rightProduct);
 
+  // Preload the next challenger's image so the post-choice swap is instant.
+  // Without this the replaced card briefly shows the OLD image while the new
+  // one downloads (visible flicker, worse with external CDNs like NEXT).
+  if (this.queue.length && this.queue[0] && this.queue[0].image) {
+    if (!this._preload) this._preload = new Image();
+    this._preload.src = this.queue[0].image;
+  }
+
   var seen = this.allProducts.length - this.queue.length;
   var progressFill = this.$('#progress-fill');
   if (progressFill) {
