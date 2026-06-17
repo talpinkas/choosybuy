@@ -166,11 +166,30 @@ config (paths + IDs) is at the top of the file — to add/fix a segment, edit it
 To add a new Terminal X segment: find its `categoryId` from the category page HTML
 (`"url_path":"…","id":N`), add a row to `SEGMENTS`, run the builder.
 
-## Adding more stores (next phase)
+## Multi-store: NEXT (next.co.il) — second source (manual)
 
-`get-pool.js` already merges any catalogs that share a `segment`, so a new retailer
-just needs a builder that emits the same catalog format and registers its JSON in
-`catalogs/index.js`. Each new site: use its own API if it has one, else HTML scrape.
+`get-pool.js` merges any catalogs that share a `segment`, so a new retailer just
+needs catalog JSONs in the same format. TX has an open API; **NEXT does not** —
+next.co.il is behind **Akamai bot protection** (Node fetch is blocked/inconsistent),
+so NEXT catalogs are built **by hand from a real browser**:
+
+1. Open a NEXT kids category (e.g. `next.co.il/he/shop/boys/clothing/tops`), scroll
+   to load all products, and run the **console extractor** (paste in DevTools). It
+   reads each product tile (link → itemNumber, Hebrew title, price, color; image is
+   derived as `xcdn.next.co.uk/.../3_4Ratio/SearchINT/Lge/<ITEM>.jpg`) and
+   **downloads** `next-<path>.json` to Downloads. (Prices hide behind RTL marks
+   `‏` in the tile text — strip them before parsing. The product list/price
+   only fully render in a real, hydrated browser — automation/Node won't do.)
+2. `node tools/import-next.js <downloaded-json>` converts it: infers gender+category
+   from the NEXT path, **parses the Hebrew age range from each title and buckets into
+   0-2 / 2-8 by overlap** (NEXT mixes ages, e.g. "גיל 3 חודשים עד 7 שנים"), writes
+   `catalogs/next-<gender>-<age>-<category>.json`, and refreshes `catalogs/index.js`
+   (which now globs `terminalx-*` AND `next-*`).
+
+NEXT catalogs are static manual snapshots (no auto-refresh / no live-URL HEAD pass —
+the links are NEXT's own product hrefs, verified to resolve). Titles are Hebrew;
+`color_hex` is null (only a Hebrew color label, which `get-pool` maps to a family).
+Status: `boy/tops` imported; remaining kids categories pending more manual runs.
 
 ## Known issues / gotchas
 
