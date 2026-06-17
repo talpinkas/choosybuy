@@ -180,16 +180,20 @@ so NEXT catalogs are built **by hand from a real browser**:
    **downloads** `next-<path>.json` to Downloads. (Prices hide behind RTL marks
    `‏` in the tile text — strip them before parsing. The product list/price
    only fully render in a real, hydrated browser — automation/Node won't do.)
-2. `node tools/import-next.js <downloaded-json>` converts it: infers gender+category
-   from the NEXT path, **parses the Hebrew age range from each title and buckets into
-   0-2 / 2-8 by overlap** (NEXT mixes ages, e.g. "גיל 3 חודשים עד 7 שנים"), writes
-   `catalogs/next-<gender>-<age>-<category>.json`, and refreshes `catalogs/index.js`
-   (which now globs `terminalx-*` AND `next-*`).
+2. `node tools/import-next.js <downloaded-json>` converts it: infers gender(s)+category
+   from the NEXT path (a gender-less `baby` path → BOTH genders), **parses the Hebrew
+   age range from each title and buckets into 0-2 / 2-8 by overlap** (NEXT mixes ages,
+   e.g. "גיל 3 חודשים עד 7 שנים"), and writes `catalogs/next-<gender>-<age>-<category>.json`
+   **only for segments the app serves** (a `VALID` map mirrors app.js `SEGMENT_CATS` —
+   no 0-2 bottoms, no 2-8 bodysuits). Refreshes `catalogs/index.js` (globs `terminalx-*`
+   AND `next-*`).
 
 NEXT catalogs are static manual snapshots (no auto-refresh / no live-URL HEAD pass —
 the links are NEXT's own product hrefs, verified to resolve). Titles are Hebrew;
 `color_hex` is null (only a Hebrew color label, which `get-pool` maps to a family).
-Status: `boy/tops` imported; remaining kids categories pending more manual runs.
+Status: **full 14-segment coverage** (boy+girl × all categories, both age buckets),
+matching TX — live in production. To refresh prices/stock, re-extract a category
+in-browser and re-run the importer.
 
 ## Known issues / gotchas
 
