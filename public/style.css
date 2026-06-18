@@ -1,16 +1,19 @@
 /* Choosy Kids — warm, light, parent-friendly, RTL */
 :root {
-  --bg: #fbf7f2;
-  --surface: #ffffff;
-  --ink: #2e2a26;
-  --ink-soft: #7a736b;
-  --ink-faint: #b3aaa0;
+  --bg: #fbf5ea;
+  --surface: #fffaf2;
+  --ink: #33271e;
+  --ink-soft: #8a7b6b;
+  --ink-faint: #b3a797;
   --primary: #ce551f;
   --primary-dark: #a23a12;
+  --rust: #a23a12;
+  --mustard: #e0a33e;
+  --beige: #ebdcc2;
   --teal: #5bbfb5;
-  --line: #efe7dd;
+  --line: #eaddc8;
   --shadow: 0 6px 24px rgba(70,50,30,0.08);
-  --shadow-lift: 0 12px 32px rgba(70,50,30,0.14);
+  --shadow-lift: 0 12px 32px rgba(70,50,30,0.13);
   --radius: 18px;
 }
 
@@ -48,18 +51,25 @@ body {
 .logo { font-size: 38px; margin-bottom: 16px; }
 .o-ring { color: transparent; -webkit-text-stroke: 2.5px var(--primary); }
 
+/* Headings — Rubik display */
+.hero-title, .setup-q, .winner-label {
+  font-family: 'Rubik', 'Heebo', sans-serif;
+  font-weight: 800;
+}
+.accent { color: var(--primary); }
+
 /* --- Buttons --- */
 .btn-primary, .btn-secondary, .btn-ghost {
   font-family: inherit; font-weight: 700; cursor: pointer;
   border-radius: 14px; border: none; transition: transform .12s, box-shadow .15s, background .15s;
   padding: 14px 30px; font-size: 16px; text-decoration: none; display: inline-block; text-align: center;
 }
-.btn-primary { background: var(--primary); color: #fff; box-shadow: 0 4px 16px rgba(255,122,89,.35); }
+.btn-primary { background: var(--primary); color: #fff; box-shadow: 0 4px 16px rgba(206,85,31,.32); }
 .btn-primary:hover { background: var(--primary-dark); transform: translateY(-1px); }
 .btn-primary:active { transform: scale(.97); }
 .btn-primary.big { padding: 17px 48px; font-size: 18px; }
 .btn-secondary { background: #fff; color: var(--primary); border: 2px solid var(--primary); }
-.btn-secondary:hover { background: #fff6f3; }
+.btn-secondary:hover { background: #fdf1e6; }
 .btn-ghost { background: none; color: var(--ink-soft); padding: 10px 18px; font-weight: 500; }
 .btn-ghost:hover { color: var(--ink); }
 
@@ -90,7 +100,7 @@ body {
 .how-num {
   width: 38px; height: 38px; border-radius: 50%; background: #fff; color: var(--primary);
   display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 17px;
-  margin: 0 auto 10px; box-shadow: var(--shadow); border: 2px solid #ffe6dd;
+  margin: 0 auto 10px; box-shadow: var(--shadow); border: 2px solid #f2dcae;
 }
 .how-step p { font-size: 14px; color: var(--ink-soft); line-height: 1.4; }
 
@@ -121,7 +131,7 @@ body {
 }
 .color-chip:hover { border-color: var(--primary); }
 .color-chip:active { transform: scale(.96); }
-.color-chip.selected { border-color: var(--primary); background: #fff1ec; }
+.color-chip.selected { border-color: var(--primary); background: #fbeede; }
 .chip-dot { width: 16px; height: 16px; border-radius: 50%; border: 1px solid rgba(0,0,0,.12); flex-shrink: 0; }
 .chip-multi { background: conic-gradient(#ff6b4a,#e8c84a,#4a7c47,#2a4d8f,#7d5ba6,#ff6b4a); }
 
@@ -180,9 +190,9 @@ body {
 }
 .streak-badge.visible { opacity: 1; }
 .dot { width: 10px; height: 10px; border-radius: 50%; background: #ece2d6; transition: all .25s; }
-.dot.lit { background: var(--primary); box-shadow: 0 0 8px rgba(255,122,89,.6); }
+.dot.lit { background: var(--primary); box-shadow: 0 0 8px rgba(206,85,31,.55); }
 .streak-badge.hot .dot.lit { animation: flame .7s ease-in-out infinite alternate; }
-@keyframes flame { from { box-shadow: 0 0 6px rgba(255,122,89,.4); } to { box-shadow: 0 0 14px rgba(242,100,63,.9); transform: scale(1.18); } }
+@keyframes flame { from { box-shadow: 0 0 6px rgba(206,85,31,.4); } to { box-shadow: 0 0 14px rgba(162,58,18,.9); transform: scale(1.18); } }
 
 .progress-wrap { width: 100%; max-width: 300px; }
 .progress-track { width: 100%; height: 4px; background: #ece2d6; border-radius: 3px; overflow: hidden; }
@@ -193,7 +203,7 @@ body {
 .winner-label { font-size: 16px; font-weight: 800; color: var(--primary); margin-bottom: 16px; }
 #winner-img {
   width: clamp(220px, 40vh, 320px); height: clamp(220px, 40vh, 320px); object-fit: contain;
-  border-radius: var(--radius); border: 2px solid #ffe0d6; margin-bottom: 14px; background: #faf5ef; box-shadow: var(--shadow);
+  border-radius: var(--radius); border: 2px solid var(--beige); margin-bottom: 14px; background: #faf5ef; box-shadow: var(--shadow);
 }
 #winner-name { font-size: 18px; font-weight: 500; margin-bottom: 4px; }
 .winner-price { font-size: 24px; font-weight: 800; margin-bottom: 22px; }
