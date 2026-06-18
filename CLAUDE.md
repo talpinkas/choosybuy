@@ -247,17 +247,38 @@ that sold out since extraction (re-extract to refresh).
 More Shopify retailers, same patterns: **Keds** (`tools/build-keds.js`, pure-kids,
 Fox-style gender×age collections `בייבי-בנים`/`בייבי-בנות` → 0-2, `בנים`/`בנות` → 2-8;
 9 segments — no swim in its base collections) and **Glory Kids**
-(`tools/build-glory.js`, Shilav-style — empty `product_type`, so gender+category
-from the title and age from the Size option; skips out-of-range teen sizes).
+(`tools/build-glory.js`, **collection-based** — gender from the `בנים`/`בנות`
+collections, `בייבי` = unisex baby → both; category from the title, age from the
+Size option; skips out-of-range teen sizes).
 
 Live retailers: **Terminal X (Magento API) · NEXT (manual) · Shilav · Fox · Keds ·
 Glory Kids (all Shopify)** — up to 6 catalogs per segment, ~79 catalogs total.
 (Lucky Baby is also open Shopify but its titles are English — not added.)
 
+## Classification quality (color & gender) — `tools/audit-catalogs.js`
+
+Filtering is only as good as the per-product `color`/gender. After any rebuild run
+`node tools/audit-catalogs.js` — it reports color coverage, category title/catalog
+mismatches, and gender dual-listing (same product in boy AND girl) per retailer.
+
+- **Color** — every Shopify builder now reads the structured **`Color`/`צבע`
+  option** first, then falls back to the title. Coverage: TX/Keds/Glory 100%,
+  NEXT ~78%, Shilav ~37%, **Fox 0%** (no color option, titles lack color → its
+  items become family `null`/`אחר`, so they just never match a specific-color
+  chip — never a *wrong* color). `get-pool.js` `colorFamily()` maps the raw label
+  (Hebrew **and** English/codes + print descriptions) to a filter family; a
+  concrete base color wins over a print word. Empty color → `null` → treated as
+  `אחר` by both the chips and the filter (`app.js` uses `p.colorFamily || 'אחר'`).
+- **Gender** — collection-based builders (TX, NEXT path, Fox, Keds, Glory) are
+  clean (~0–8% dual). **Shilav has no gender source** (no gender collections/tags),
+  so its items default to unisex → BOTH; defensible for a baby-basics store (most
+  items genuinely unisex), and the only honest option without a signal.
+
 ## Known issues / gotchas
 
-- Color chips: now populated — every product carries `color`/`color_hex` from the
-  API. `get-pool.js` maps the Hebrew label to a `colorFamily` for the chips.
+- Color chips: populated — every product carries `color` (+ `color_hex` for TX);
+  `get-pool.js` maps the label to a `colorFamily`. See *Classification quality*
+  above for per-retailer coverage and the audit tool.
 - `api/scrape.js` + `tools/extract-terminalx.js` are legacy. `scrape.js`'s mapping
   reads `item.name`/`item.url_key` (null) so it returns nothing useful — not in the
   live flow.
