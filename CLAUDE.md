@@ -237,8 +237,15 @@ node tools/build-fox.js        # ~15s
 the full index without dropping the others. A new retailer just needs a builder
 that emits `<brand>-<gender>-<age>-<category>.json` in the standard format.
 
-Live retailers: **Terminal X (Magento API) · NEXT (manual) · Shilav (Shopify) ·
-Fox (Shopify)** — 4 catalogs per segment, 56 catalogs total.
+More Shopify retailers, same patterns: **Keds** (`tools/build-keds.js`, pure-kids,
+Fox-style gender×age collections `בייבי-בנים`/`בייבי-בנות` → 0-2, `בנים`/`בנות` → 2-8;
+9 segments — no swim in its base collections) and **Glory Kids**
+(`tools/build-glory.js`, Shilav-style — empty `product_type`, so gender+category
+from the title and age from the Size option; skips out-of-range teen sizes).
+
+Live retailers: **Terminal X (Magento API) · NEXT (manual) · Shilav · Fox · Keds ·
+Glory Kids (all Shopify)** — up to 6 catalogs per segment, ~79 catalogs total.
+(Lucky Baby is also open Shopify but its titles are English — not added.)
 
 ## Known issues / gotchas
 
