@@ -91,8 +91,8 @@ body {
 
 /* --- Welcome --- */
 .welcome-inner { max-width: 580px; text-align: center; }
-.hero-title { font-size: 34px; font-weight: 800; line-height: 1.2; margin-bottom: 14px; }
-.hero-sub { font-size: 17px; color: var(--ink-soft); line-height: 1.6; margin-bottom: 28px; }
+.hero-title { font-size: 40px; font-weight: 800; line-height: 1.15; margin-bottom: 16px; text-wrap: balance; }
+.hero-sub { font-size: 17px; color: var(--ink-soft); line-height: 1.65; margin: 0 auto 28px; max-width: 540px; text-wrap: pretty; }
 .reassure { font-size: 13px; color: var(--ink-faint); margin-top: 14px; }
 .trust-row { list-style: none; display: flex; flex-direction: column; gap: 10px; width: fit-content; margin: 22px auto 0; text-align: right; }
 .trust { display: flex; align-items: center; gap: 9px; font-size: 14.5px; font-weight: 500; color: var(--ink-soft); }
@@ -101,7 +101,7 @@ body {
   width: 19px; height: 19px; border-radius: 50%; background: var(--primary); color: #fff;
   font-size: 11px; font-weight: 800; flex-shrink: 0;
 }
-.privacy-note { font-size: 12px; color: var(--ink-faint); margin: 16px auto 0; max-width: 430px; line-height: 1.55; }
+.privacy-note { font-size: 12px; color: var(--ink-faint); margin: 16px auto 0; max-width: 430px; line-height: 1.55; text-wrap: pretty; }
 
 .how { display: flex; gap: 16px; margin-top: 48px; justify-content: center; }
 .how-step { flex: 1; max-width: 160px; }
@@ -110,11 +110,11 @@ body {
   display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 17px;
   margin: 0 auto 10px; box-shadow: var(--shadow); border: 2px solid #f2dcae;
 }
-.how-step p { font-size: 14px; color: var(--ink-soft); line-height: 1.4; }
+.how-step p { font-size: 14px; color: var(--ink-soft); line-height: 1.4; text-wrap: balance; }
 
 /* --- Setup --- */
 .setup-step { width: 100%; max-width: 560px; text-align: center; animation: fadeUp .3s ease; }
-.setup-q { font-size: 26px; font-weight: 800; margin-bottom: 28px; }
+.setup-q { font-size: 26px; font-weight: 800; margin-bottom: 28px; text-wrap: balance; }
 .choice-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
 .choice {
   background: var(--surface); border: 2px solid var(--line); border-radius: var(--radius);
@@ -229,5 +229,5 @@ body {
   .arena { flex-direction: column; }
   .or-wrap { justify-content: center; }
   .how { flex-direction: column; align-items: center; }
-  .hero-title { font-size: 28px; }
+  .hero-title { font-size: 31px; }
 }
