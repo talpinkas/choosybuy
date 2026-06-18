@@ -24,16 +24,27 @@ api/         Vercel serverless functions
   get-pool.js    GET /api/get-pool — serves a filtered, shuffled product pool
   scrape.js      OLD live scraper (Terminal X mapping is broken; not in the live flow)
 public/      Static frontend (vanilla JS, no framework, RTL Hebrew)
-  index.html     screens: welcome / setup / loading / game
+  index.html     screens: welcome / setup / loading / game (+ feedback modal & FAB)
   app.js         flow: who → what → refine(color+budget) → game; Mixpanel tracking
   game.js        ChoosingGame — tournament logic (Fisher-Yates, 5-win champion, undo)
+  feedback.js    anonymous feedback widget → Mixpanel (ease / would-buy / comment)
+  favicon.svg    burnt-orange "oo" brand mark
   style.css
 catalogs/    Static product catalogs (one JSON per segment) + index.js registry
 tools/
   build-catalogs.js     batch builder — fetches Terminal X, writes catalogs, refreshes index
+  build-{shilav,fox,keds,glory}.js  other-retailer builders (all Shopify)
+  import-next.js        NEXT importer (manual browser extraction → catalogs)
+  audit-catalogs.js     classification audit (color/gender/category sanity check)
+  preview-server.js     zero-dep local server (static + /api/get-pool in-process)
   extract-terminalx.js  OLD manual console extractor (superseded by build-catalogs.js)
+.claude/launch.json     local-preview config for the in-app preview panel
 vercel.json  { "framework": null }   package.json  (dep: cheerio, used only by scrape.js)
 ```
+
+Local preview: `node tools/preview-server.js` (or the in-app preview panel via
+`.claude/launch.json`) serves `public/` AND runs `/api/get-pool` in-process on
+http://localhost:5050 — the whole app (incl. the game) works locally, no Vercel CLI.
 
 ## Data flow
 
@@ -274,6 +285,28 @@ mismatches, and gender dual-listing (same product in boy AND girl) per retailer.
   so its items default to unisex → BOTH; defensible for a baby-basics store (most
   items genuinely unisex), and the only honest option without a signal.
 
+## Design & UX (the face-lift)
+
+Vintage-warm identity (RTL Hebrew). Tokens live in `public/style.css` `:root`.
+
+- **Logo** — `CHOOSY` wordmark in **Righteous** (retro geometric), burnt orange,
+  with the 2nd O rendered as a ring (the "oo" = two options, pick one — the
+  "2-not-3" idea living in the mark). All three logo spots are `<a href="/">` to
+  home. `favicon.svg` is the matching orange "oo" square.
+- **Type** — headings **Rubik 800** (Hebrew + Latin), body **Heebo** (both loaded
+  in `index.html`). `text-wrap: balance/pretty` on headings/paragraphs avoids
+  orphan words.
+- **Palette** — burnt orange `--primary #ce551f` (+ `--rust`, `--mustard`,
+  `--beige`), cream bg `#fbf5ea`, warm-white surfaces, brown ink. No old coral left.
+- **Landing reassurance** — the value line explains the method; a 4-item trust
+  checklist (free / no signup / no commitment, buy at the store you know /
+  anonymous, we don't sell your data) + a truthful privacy note (anonymous
+  analytics only — see Mixpanel gotcha below).
+- **Feedback** (`public/feedback.js`) — modal opened from a persistent FAB and a
+  winner-screen prompt: ease (1–5), would-buy (yes/maybe/no), optional free-text →
+  anonymous `feedback_submitted` Mixpanel event. The two closed questions ARE the
+  product KPIs (decision-ease + purchase intent). Esc / × / overlay close; thanks state.
+
 ## Known issues / gotchas
 
 - Color chips: populated — every product carries `color` (+ `color_hex` for TX);
@@ -284,6 +317,11 @@ mismatches, and gender dual-listing (same product in boy AND girl) per retailer.
   live flow.
 - Catalog freshness: catalogs are static snapshots. Re-run the builder to refresh
   prices/stock and prune newly-dead links.
+- **Mixpanel transport** — `track()` in `app.js` MUST post to `/track` as
+  `application/x-www-form-urlencoded` with a URL-encoded `data=` param. A JSON
+  content-type triggers a CORS preflight Mixpanel rejects, silently dropping EVERY
+  event — this had broken analytics entirely (capturing nothing) until fixed;
+  verified `{status:1}` from production. Don't "tidy" it back to JSON.
 
 ## Working conventions
 
