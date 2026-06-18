@@ -137,32 +137,6 @@
       "color": "",
       "color_hex": null,
       "affiliate_ready": false
-    },
-    {
-      "id": "fox-14991725953394",
-      "title": "בגד ים שני חלקים מיקי מאוס דיסני",
-      "image": "https://cdn.shopify.com/s/files/1/0638/8252/6908/files/9974092900-1.jpg?v=1773127273",
-      "price": 89.9,
-      "sale_price": null,
-      "currency": "ILS",
-      "url": "https://www.fox.co.il/products/9974092900",
-      "brand": "Fox",
-      "color": "",
-      "color_hex": null,
-      "affiliate_ready": false
-    },
-    {
-      "id": "fox-14984800207218",
-      "title": "בגד ים שני חלקים מיקי מאוס דיסני",
-      "image": "https://cdn.shopify.com/s/files/1/0638/8252/6908/files/9974086519-1.jpg?v=1771929775",
-      "price": 89.9,
-      "sale_price": null,
-      "currency": "ILS",
-      "url": "https://www.fox.co.il/products/9974086519",
-      "brand": "Fox",
-      "color": "",
-      "color_hex": null,
-      "affiliate_ready": false
     }
   ]
 }

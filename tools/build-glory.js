@@ -77,6 +77,7 @@ async function main() {
 
   var buckets = {}, kept = 0, skipCat = 0, skipAge = 0;
   all.forEach(function (p) {
+    if (!(p.variants || []).some(function (v) { return v.available === true; })) return; // out of stock
     var category = categoryOf((p.product_type || '') + ' ' + (p.title || ''));
     if (!category) { skipCat++; return; }
     var ages = agesFromSizes(sizeVals(p));

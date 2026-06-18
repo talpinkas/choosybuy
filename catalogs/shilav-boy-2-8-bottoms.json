@@ -22,19 +22,6 @@
       "affiliate_ready": false
     },
     {
-      "id": "shilav-8844923306153",
-      "title": "פיג'מה חולצה ומכנסיים במבי",
-      "image": "https://cdn.shopify.com/s/files/1/0666/5532/2281/files/XL-12600122449-A.jpg?v=1779105687",
-      "price": 89.9,
-      "sale_price": null,
-      "currency": "ILS",
-      "url": "https://www.shilav.co.il/products/%D7%A4%D7%99%D7%92%D7%9E%D7%94-%D7%97%D7%95%D7%9C%D7%A6%D7%94-%D7%A9-%D7%A7%D7%A6%D7%A8-%D7%95%D7%9E%D7%9B%D7%A0%D7%A1-%D7%90%D7%A8%D7%95%D7%9A-7",
-      "brand": "שילב",
-      "color": "",
-      "color_hex": null,
-      "affiliate_ready": false
-    },
-    {
       "id": "shilav-8844936413353",
       "title": "טייץ קצר לבן",
       "image": "https://cdn.shopify.com/s/files/1/0666/5532/2281/files/XL-12600578262-A.jpg?v=1777548781",
@@ -57,19 +44,6 @@
       "url": "https://www.shilav.co.il/products/%D7%98%D7%99%D7%99%D7%A5-%D7%A7%D7%A6%D7%A8-4",
       "brand": "שילב",
       "color": "אפור",
-      "color_hex": null,
-      "affiliate_ready": false
-    },
-    {
-      "id": "shilav-8844936478889",
-      "title": "טייץ קצר בז'",
-      "image": "https://cdn.shopify.com/s/files/1/0666/5532/2281/files/XL-12600578753-A.jpg?v=1777548837",
-      "price": 34.9,
-      "sale_price": null,
-      "currency": "ILS",
-      "url": "https://www.shilav.co.il/products/%D7%98%D7%99%D7%99%D7%A5-%D7%A7%D7%A6%D7%A8-5",
-      "brand": "שילב",
-      "color": "בז'",
       "color_hex": null,
       "affiliate_ready": false
     },
@@ -659,19 +633,6 @@
       "affiliate_ready": false
     },
     {
-      "id": "shilav-8844926484649",
-      "title": "סט חולצה ומכנסיים",
-      "image": "https://cdn.shopify.com/s/files/1/0666/5532/2281/files/XL-12600245263-A.jpg?v=1777548528",
-      "price": 139.9,
-      "sale_price": null,
-      "currency": "ILS",
-      "url": "https://www.shilav.co.il/products/%D7%A1%D7%98-%D7%97%D7%95%D7%9C%D7%A6%D7%94-%D7%95%D7%9E%D7%9B%D7%A0%D7%A1-24",
-      "brand": "שילב",
-      "color": "",
-      "color_hex": null,
-      "affiliate_ready": false
-    },
-    {
       "id": "shilav-8844936577193",
       "title": "טייץ 7/8",
       "image": "https://cdn.shopify.com/s/files/1/0666/5532/2281/files/XL-12600579263-A.jpg?v=1777548142",
@@ -906,19 +867,6 @@
       "affiliate_ready": false
     },
     {
-      "id": "shilav-8844943098025",
-      "title": "טייץ 3/4",
-      "image": "https://cdn.shopify.com/s/files/1/0666/5532/2281/files/XL-12600844977-A.jpg?v=1774856665",
-      "price": 49.9,
-      "sale_price": null,
-      "currency": "ILS",
-      "url": "https://www.shilav.co.il/products/%D7%98%D7%99%D7%99%D7%A5-3-12",
-      "brand": "שילב",
-      "color": "",
-      "color_hex": null,
-      "affiliate_ready": false
-    },
-    {
       "id": "shilav-8844942639273",
       "title": "טייץ 3/4",
       "image": "https://cdn.shopify.com/s/files/1/0666/5532/2281/files/XL-12600828248-A.jpg?v=1774856447",
@@ -926,19 +874,6 @@
       "sale_price": null,
       "currency": "ILS",
       "url": "https://www.shilav.co.il/products/%D7%98%D7%99%D7%99%D7%A5-3-10",
-      "brand": "שילב",
-      "color": "",
-      "color_hex": null,
-      "affiliate_ready": false
-    },
-    {
-      "id": "shilav-8844942147753",
-      "title": "מכנסיים",
-      "image": "https://cdn.shopify.com/s/files/1/0666/5532/2281/files/XL-12600812573-A.jpg?v=1774856278",
-      "price": 49.9,
-      "sale_price": null,
-      "currency": "ILS",
-      "url": "https://www.shilav.co.il/products/%D7%9E%D7%9B%D7%A0%D7%A1%D7%99%D7%99%D7%9D-42",
       "brand": "שילב",
       "color": "",
       "color_hex": null,
@@ -1010,19 +945,6 @@
       "affiliate_ready": false
     },
     {
-      "id": "shilav-8844926058665",
-      "title": "מכנסי פסים קצרים",
-      "image": "https://cdn.shopify.com/s/files/1/0666/5532/2281/files/XL-12600223263-A.jpg?v=1774855245",
-      "price": 89.9,
-      "sale_price": null,
-      "currency": "ILS",
-      "url": "https://www.shilav.co.il/products/%D7%9E%D7%9B%D7%A0%D7%A1%D7%99%D7%99%D7%9D-%D7%A7%D7%A6%D7%A8%D7%99%D7%9D-78",
-      "brand": "שילב",
-      "color": "",
-      "color_hex": null,
-      "affiliate_ready": false
-    },
-    {
       "id": "shilav-8844925993129",
       "title": "סט חולצה ומכנסיים פסים בז'",
       "image": "https://cdn.shopify.com/s/files/1/0666/5532/2281/files/XL-12600221651-A.jpg?v=1774855107",
@@ -1062,19 +984,6 @@
       "affiliate_ready": false
     },
     {
-      "id": "shilav-8844941394089",
-      "title": "סט גופיה ומכנסיים מג'ינס",
-      "image": "https://cdn.shopify.com/s/files/1/0666/5532/2281/files/XL-12600777564-A.jpg?v=1773662839",
-      "price": 159.9,
-      "sale_price": null,
-      "currency": "ILS",
-      "url": "https://www.shilav.co.il/products/%D7%A1%D7%98-%D7%97%D7%95%D7%9C%D7%A6%D7%94-%D7%95%D7%9E%D7%9B%D7%A0%D7%A1-26",
-      "brand": "שילב",
-      "color": "",
-      "color_hex": null,
-      "affiliate_ready": false
-    },
-    {
       "id": "shilav-8844941197481",
       "title": "מכנסי ג'ינס ארוכים",
       "image": "https://cdn.shopify.com/s/files/1/0666/5532/2281/files/XL-12600764564-A.jpg?v=1773651338",
@@ -1084,19 +993,6 @@
       "url": "https://www.shilav.co.il/products/%D7%9E%D7%9B%D7%A0%D7%A1%D7%99-%D7%92%D7%99%D7%A0%D7%A1-%D7%90%D7%A8%D7%95%D7%9B%D7%99%D7%9D-12",
       "brand": "שילב",
       "color": "",
-      "color_hex": null,
-      "affiliate_ready": false
-    },
-    {
-      "id": "shilav-8844941033641",
-      "title": "ג'קט ג'ינס חגיגי בגוון שמנת",
-      "image": "https://cdn.shopify.com/s/files/1/0666/5532/2281/files/12600759449_12600767449-A.jpg?v=1774791897",
-      "price": 149.9,
-      "sale_price": null,
-      "currency": "ILS",
-      "url": "https://www.shilav.co.il/products/%D7%96%D7%A7%D7%98-%D7%92%D7%99%D7%A0%D7%A1-5",
-      "brand": "שילב",
-      "color": "שמנת",
       "color_hex": null,
       "affiliate_ready": false
     },
@@ -1114,19 +1010,6 @@
       "affiliate_ready": false
     },
     {
-      "id": "shilav-8844941164713",
-      "title": "מכנסי ג'ינס ארוכים",
-      "image": "https://cdn.shopify.com/s/files/1/0666/5532/2281/files/12600754616_12600763564-A.jpg?v=1774791732",
-      "price": 99.9,
-      "sale_price": null,
-      "currency": "ILS",
-      "url": "https://www.shilav.co.il/products/%D7%9E%D7%9B%D7%A0%D7%A1%D7%99-%D7%92%D7%99%D7%A0%D7%A1-%D7%90%D7%A8%D7%95%D7%9B%D7%99%D7%9D-11",
-      "brand": "שילב",
-      "color": "",
-      "color_hex": null,
-      "affiliate_ready": false
-    },
-    {
       "id": "shilav-8844941131945",
       "title": "מכנסיים ארוכים בגוון שמנת",
       "image": "https://cdn.shopify.com/s/files/1/0666/5532/2281/files/12600759449_12600762449_12600767449-A.jpg?v=1774791897",
@@ -1136,19 +1019,6 @@
       "url": "https://www.shilav.co.il/products/%D7%9E%D7%9B%D7%A0%D7%A1%D7%99%D7%99%D7%9D-%D7%90%D7%A8%D7%95%D7%9B%D7%99%D7%9D-87",
       "brand": "שילב",
       "color": "שמנת",
-      "color_hex": null,
-      "affiliate_ready": false
-    },
-    {
-      "id": "shilav-8844941099177",
-      "title": "חצאית ג'ינס",
-      "image": "https://cdn.shopify.com/s/files/1/0666/5532/2281/files/XL-12600761564-A.jpg?v=1773574879",
-      "price": 79.9,
-      "sale_price": null,
-      "currency": "ILS",
-      "url": "https://www.shilav.co.il/products/%D7%97%D7%A6%D7%90%D7%99%D7%AA-7",
-      "brand": "שילב",
-      "color": "",
       "color_hex": null,
       "affiliate_ready": false
     },
@@ -1166,32 +1036,6 @@
       "affiliate_ready": false
     },
     {
-      "id": "shilav-8844940083369",
-      "title": "חולצת ג'ינס",
-      "image": "https://cdn.shopify.com/s/files/1/0666/5532/2281/files/XL-12600726564-A.jpg?v=1773570377",
-      "price": 139.9,
-      "sale_price": null,
-      "currency": "ILS",
-      "url": "https://www.shilav.co.il/products/%D7%97%D7%95%D7%9C%D7%A6%D7%94-%D7%9E%D7%9B%D7%95%D7%A4%D7%AA%D7%A8%D7%AA-%D7%A9%D7%A8%D7%95%D7%95%D7%9C-%D7%90%D7%A8%D7%95%D7%9A-6",
-      "brand": "שילב",
-      "color": "",
-      "color_hex": null,
-      "affiliate_ready": false
-    },
-    {
-      "id": "shilav-8844940050601",
-      "title": "מכנסי ג'ינס קצרים",
-      "image": "https://cdn.shopify.com/s/files/1/0666/5532/2281/files/XL-12600725564-A.jpg?v=1773569864",
-      "price": 79.9,
-      "sale_price": null,
-      "currency": "ILS",
-      "url": "https://www.shilav.co.il/products/%D7%9E%D7%9B%D7%A0%D7%A1%D7%99%D7%99%D7%9D-%D7%A7%D7%A6%D7%A8%D7%99%D7%9D-94",
-      "brand": "שילב",
-      "color": "",
-      "color_hex": null,
-      "affiliate_ready": false
-    },
-    {
       "id": "shilav-8844939952297",
       "title": "ג'קט ג'ינס",
       "image": "https://cdn.shopify.com/s/files/1/0666/5532/2281/files/12600708564_12600760564_12600750449_12600719564-A_1f8bee20-26be-4138-85cf-062dcc51568f.jpg?v=1774791918",
@@ -1199,32 +1043,6 @@
       "sale_price": null,
       "currency": "ILS",
       "url": "https://www.shilav.co.il/products/%D7%96%D7%A7%D7%98-%D7%92%D7%99%D7%A0%D7%A1-3",
-      "brand": "שילב",
-      "color": "",
-      "color_hex": null,
-      "affiliate_ready": false
-    },
-    {
-      "id": "shilav-8844939886761",
-      "title": "מכנסי ג'וגר דמוי ג'ינס",
-      "image": "https://cdn.shopify.com/s/files/1/0666/5532/2281/files/XL-12600716564-A_630f570d-e85f-46f3-acee-7617ba6f1704.jpg?v=1773569138",
-      "price": 89.9,
-      "sale_price": null,
-      "currency": "ILS",
-      "url": "https://www.shilav.co.il/products/%D7%9E%D7%9B%D7%A0%D7%A1%D7%99%D7%99%D7%9D-%D7%90%D7%A8%D7%95%D7%9B%D7%99%D7%9D-85",
-      "brand": "שילב",
-      "color": "",
-      "color_hex": null,
-      "affiliate_ready": false
-    },
-    {
-      "id": "shilav-8844939853993",
-      "title": "מגנסי ג'ינס בהירים",
-      "image": "https://cdn.shopify.com/s/files/1/0666/5532/2281/files/XL-12600715564-A.jpg?v=1773567285",
-      "price": 99.9,
-      "sale_price": null,
-      "currency": "ILS",
-      "url": "https://www.shilav.co.il/products/%D7%9E%D7%9B%D7%A0%D7%A1%D7%99%D7%99%D7%9D-%D7%90%D7%A8%D7%95%D7%9B%D7%99%D7%9D-84",
       "brand": "שילב",
       "color": "",
       "color_hex": null,
@@ -1257,19 +1075,6 @@
       "affiliate_ready": false
     },
     {
-      "id": "shilav-8844939722921",
-      "title": "מכנסי ג'ינס ארוכים",
-      "image": "https://cdn.shopify.com/s/files/1/0666/5532/2281/files/XL-12600712564-A.jpg?v=1773565796",
-      "price": 99.9,
-      "sale_price": null,
-      "currency": "ILS",
-      "url": "https://www.shilav.co.il/products/%D7%9E%D7%9B%D7%A0%D7%A1%D7%99%D7%99%D7%9D-%D7%90%D7%A8%D7%95%D7%9B%D7%99%D7%9D-82",
-      "brand": "שילב",
-      "color": "",
-      "color_hex": null,
-      "affiliate_ready": false
-    },
-    {
       "id": "shilav-8844939591849",
       "title": "מכנסיים ארוכים בגוון חרדל",
       "image": "https://cdn.shopify.com/s/files/1/0666/5532/2281/files/XL-12600709616-A.jpg?v=1773564924",
@@ -1290,19 +1095,6 @@
       "sale_price": null,
       "currency": "ILS",
       "url": "https://www.shilav.co.il/products/%D7%9E%D7%9B%D7%A0%D7%A1%D7%99%D7%99%D7%9D-%D7%90%D7%A8%D7%95%D7%9B%D7%99%D7%9D-86",
-      "brand": "שילב",
-      "color": "",
-      "color_hex": null,
-      "affiliate_ready": false
-    },
-    {
-      "id": "shilav-8844940935337",
-      "title": "חליפת חצאית",
-      "image": "https://cdn.shopify.com/s/files/1/0666/5532/2281/files/XL-12600757449-A.jpg?v=1773311696",
-      "price": 129.9,
-      "sale_price": null,
-      "currency": "ILS",
-      "url": "https://www.shilav.co.il/products/%D7%97%D7%9C%D7%99%D7%A4%D7%AA-%D7%97%D7%A6%D7%90%D7%99%D7%AA-9",
       "brand": "שילב",
       "color": "",
       "color_hex": null,
@@ -1396,19 +1188,6 @@
       "url": "https://www.shilav.co.il/products/%D7%9E%D7%9B%D7%A0%D7%A1%D7%99%D7%99%D7%9D-%D7%90%D7%A8%D7%95%D7%9B%D7%99%D7%9D-88",
       "brand": "שילב",
       "color": "ורוד בהיר",
-      "color_hex": null,
-      "affiliate_ready": false
-    },
-    {
-      "id": "shilav-8844929007785",
-      "title": "מכנסיים ארוכים",
-      "image": "https://cdn.shopify.com/s/files/1/0666/5532/2281/files/XL-12600344265-B_f83d85cd-3091-462f-bd3b-291a5b2eac54.jpg?v=1778654573",
-      "price": 99.9,
-      "sale_price": null,
-      "currency": "ILS",
-      "url": "https://www.shilav.co.il/products/%D7%9E%D7%9B%D7%A0%D7%A1%D7%99%D7%99%D7%9D-%D7%90%D7%A8%D7%95%D7%9B%D7%99%D7%9D-70",
-      "brand": "שילב",
-      "color": "",
       "color_hex": null,
       "affiliate_ready": false
     },
@@ -1634,19 +1413,6 @@
       "affiliate_ready": false
     },
     {
-      "id": "shilav-8844933824681",
-      "title": "מכנסיים ארוכים בגוון נייבי",
-      "image": "https://cdn.shopify.com/s/files/1/0666/5532/2281/files/XL-12600509255-A.jpg?v=1771330436",
-      "price": 54.9,
-      "sale_price": null,
-      "currency": "ILS",
-      "url": "https://www.shilav.co.il/products/%D7%9E%D7%9B%D7%A0%D7%A1%D7%99%D7%99%D7%9D-%D7%90%D7%A8%D7%95%D7%9B%D7%99%D7%9D-75",
-      "brand": "שילב",
-      "color": "נייבי",
-      "color_hex": null,
-      "affiliate_ready": false
-    },
-    {
       "id": "shilav-8844933890217",
       "title": "מכנסיים ארוכים בגוון אבן",
       "image": "https://cdn.shopify.com/s/files/1/0666/5532/2281/files/XL-12600509265-A.jpg?v=1771330403",
@@ -1695,45 +1461,6 @@
       "url": "https://www.shilav.co.il/products/%D7%9E%D7%9B%D7%A0%D7%A1%D7%99%D7%99%D7%9D-%D7%90%D7%A8%D7%95%D7%9B%D7%99%D7%9D-79",
       "brand": "שילב",
       "color": "קרמל",
-      "color_hex": null,
-      "affiliate_ready": false
-    },
-    {
-      "id": "shilav-8844934021289",
-      "title": "מכנסיים ארוכים בגוון ירוק מרווה",
-      "image": "https://cdn.shopify.com/s/files/1/0666/5532/2281/files/XL-12600509746-A.jpg?v=1771330222",
-      "price": 54.9,
-      "sale_price": null,
-      "currency": "ILS",
-      "url": "https://www.shilav.co.il/products/%D7%9E%D7%9B%D7%A0%D7%A1%D7%99%D7%99%D7%9D-%D7%90%D7%A8%D7%95%D7%9B%D7%99%D7%9D-80",
-      "brand": "שילב",
-      "color": "ירוק מרווה",
-      "color_hex": null,
-      "affiliate_ready": false
-    },
-    {
-      "id": "shilav-8844933791913",
-      "title": "מכנסיים קצרים מודפסים פסים כחול לבן",
-      "image": "https://cdn.shopify.com/s/files/1/0666/5532/2281/files/XL-12600508558-C.jpg?v=1771330033",
-      "price": 44.9,
-      "sale_price": null,
-      "currency": "ILS",
-      "url": "https://www.shilav.co.il/products/%D7%9E%D7%9B%D7%A0%D7%A1%D7%99%D7%99%D7%9D-%D7%A7%D7%A6%D7%A8%D7%99%D7%9D-%D7%9E%D7%95%D7%93%D7%A4%D7%A1%D7%99%D7%9D-10",
-      "brand": "שילב",
-      "color": "לבן",
-      "color_hex": null,
-      "affiliate_ready": false
-    },
-    {
-      "id": "shilav-8844933595305",
-      "title": "מכנסיים קצרים בגוון נייבי",
-      "image": "https://cdn.shopify.com/s/files/1/0666/5532/2281/files/XL-12600507255-A.jpg?v=1771851936",
-      "price": 44.9,
-      "sale_price": null,
-      "currency": "ILS",
-      "url": "https://www.shilav.co.il/products/%D7%9E%D7%9B%D7%A0%D7%A1%D7%99%D7%99%D7%9D-%D7%A7%D7%A6%D7%A8%D7%99%D7%9D-80",
-      "brand": "שילב",
-      "color": "נייבי",
       "color_hex": null,
       "affiliate_ready": false
     },
@@ -2089,19 +1816,6 @@
       "affiliate_ready": false
     },
     {
-      "id": "shilav-8687883911337",
-      "title": "מכנסיים ארוכים",
-      "image": "https://cdn.shopify.com/s/files/1/0666/5532/2281/files/XL-32600201392-A.jpg?v=1755419423",
-      "price": 59.9,
-      "sale_price": null,
-      "currency": "ILS",
-      "url": "https://www.shilav.co.il/products/%D7%9E%D7%9B%D7%A0%D7%A1%D7%99%D7%99%D7%9D-%D7%90%D7%A8%D7%95%D7%9B%D7%99%D7%9D-49",
-      "brand": "שילב",
-      "color": "",
-      "color_hex": null,
-      "affiliate_ready": false
-    },
-    {
       "id": "shilav-8687897215145",
       "title": "טייץ פרחוני ארוך",
       "image": "https://cdn.shopify.com/s/files/1/0666/5532/2281/files/XL-32600586977-A.jpg?v=1755419950",
@@ -2213,19 +1927,6 @@
       "sale_price": null,
       "currency": "ILS",
       "url": "https://www.shilav.co.il/products/%D7%9E%D7%9B%D7%A0%D7%A1%D7%99-%D7%98%D7%99%D7%99%D7%A5-%D7%90%D7%A8%D7%95%D7%9B%D7%99%D7%9D-%D7%9E%D7%95%D7%93%D7%A4%D7%A1%D7%99%D7%9D",
-      "brand": "שילב",
-      "color": "",
-      "color_hex": null,
-      "affiliate_ready": false
-    },
-    {
-      "id": "shilav-8410849312937",
-      "title": "כובע פטרייה ג'ינס כהה",
-      "image": "https://cdn.shopify.com/s/files/1/0666/5532/2281/files/XL-12500010564-A.jpg?v=1740481389",
-      "price": 49.9,
-      "sale_price": null,
-      "currency": "ILS",
-      "url": "https://www.shilav.co.il/products/%D7%9B%D7%95%D7%91%D7%A2-5",
       "brand": "שילב",
       "color": "",
       "color_hex": null,

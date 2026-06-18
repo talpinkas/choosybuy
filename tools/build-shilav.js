@@ -114,6 +114,7 @@ async function main() {
   var buckets = {}; // seg id -> products[]
   var stats = { skipNoCat: 0, kept: 0 };
   clothing.forEach(function (p) {
+    if (!(p.variants || []).some(function (v) { return v.available === true; })) return; // out of stock — skip
     var category = categoryOf(p.title);
     if (!category) { stats.skipNoCat++; return; }
     var v = (p.variants || [])[0] || {};

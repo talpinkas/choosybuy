@@ -69,6 +69,7 @@ async function main() {
     var prods = await fetchCollection(col.handle);
     var kept = 0;
     prods.forEach(function (p) {
+      if (!(p.variants || []).some(function (v) { return v.available === true; })) return; // out of stock
       var category = categoryOf((p.product_type || '') + ' ' + (p.title || ''));
       if (!category || !validSeg(col.gender, col.age, category)) return;
       var v = (p.variants || [])[0] || {};

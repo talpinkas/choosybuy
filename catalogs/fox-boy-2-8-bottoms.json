@@ -1320,58 +1320,6 @@
       "color": "",
       "color_hex": null,
       "affiliate_ready": false
-    },
-    {
-      "id": "fox-14682246283634",
-      "title": "מכנסי כדורסל",
-      "image": "https://cdn.shopify.com/s/files/1/0638/8252/6908/files/1_a2d7598b-df87-4409-b457-3ff79a9d6d56.jpg?v=1741700798",
-      "price": 79.9,
-      "sale_price": 39.95,
-      "currency": "ILS",
-      "url": "https://www.fox.co.il/products/%D7%9E%D7%9B%D7%A0%D7%A1%D7%99-%D7%9B%D7%93%D7%95%D7%A8%D7%A1%D7%9C-50",
-      "brand": "Fox",
-      "color": "",
-      "color_hex": null,
-      "affiliate_ready": false
-    },
-    {
-      "id": "fox-14774507438450",
-      "title": "מכנסי ג'ינס",
-      "image": "https://cdn.shopify.com/s/files/1/0638/8252/6908/files/6198111114-1.jpg?v=1755182513",
-      "price": 129.9,
-      "sale_price": 38.97,
-      "currency": "ILS",
-      "url": "https://www.fox.co.il/products/6198111114",
-      "brand": "Fox",
-      "color": "",
-      "color_hex": null,
-      "affiliate_ready": false
-    },
-    {
-      "id": "fox-14774507372914",
-      "title": "מכנסי פוטר",
-      "image": "https://cdn.shopify.com/s/files/1/0638/8252/6908/files/6135182998-1.jpg?v=1755441718",
-      "price": 129.9,
-      "sale_price": 38.97,
-      "currency": "ILS",
-      "url": "https://www.fox.co.il/products/6135182998",
-      "brand": "Fox",
-      "color": "",
-      "color_hex": null,
-      "affiliate_ready": false
-    },
-    {
-      "id": "fox-8545361592508",
-      "title": "ג'ינס ארוך",
-      "image": "https://cdn.shopify.com/s/files/1/0638/8252/6908/files/6191961158-1.jpg?v=1756651570",
-      "price": 129.9,
-      "sale_price": 29.9,
-      "currency": "ILS",
-      "url": "https://www.fox.co.il/products/%D7%9E%D7%9B%D7%A0%D7%A1%D7%99-%D7%92%D7%99%D7%A0%D7%A1-9",
-      "brand": "Fox",
-      "color": "",
-      "color_hex": null,
-      "affiliate_ready": false
     }
   ]
 }

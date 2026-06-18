@@ -237,6 +237,13 @@ node tools/build-fox.js        # ~15s
 the full index without dropping the others. A new retailer just needs a builder
 that emits `<brand>-<gender>-<age>-<category>.json` in the standard format.
 
+**Shippable / in-stock invariant:** every retailer is an **Israeli `.co.il` store**
+(ships in IL / pickup — no foreign/AliExpress sources). Every Shopify builder skips
+products with **no available variant** (`variant.available === true`) so we never
+show a sold-out item. TX's `listingSearch` only returns IN_STOCK items (+ the HEAD
+pass drops dead pages). NEXT is a manual snapshot — it may include the rare item
+that sold out since extraction (re-extract to refresh).
+
 More Shopify retailers, same patterns: **Keds** (`tools/build-keds.js`, pure-kids,
 Fox-style gender×age collections `בייבי-בנים`/`בייבי-בנות` → 0-2, `בנים`/`בנות` → 2-8;
 9 segments — no swim in its base collections) and **Glory Kids**
