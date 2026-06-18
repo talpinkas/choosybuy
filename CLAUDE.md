@@ -195,6 +195,31 @@ Status: **full 14-segment coverage** (boy+girl × all categories, both age bucke
 matching TX — live in production. To refresh prices/stock, re-extract a category
 in-browser and re-run the importer.
 
+## Multi-store: Shilav (shilav.co.il) — third source (Shopify, automated)
+
+Shilav runs on **Shopify with an open `/products.json`** (no bot block), so unlike
+NEXT it has a fully **automated, refreshable builder**:
+
+```
+node tools/build-shilav.js     # full 14-segment build, ~10s
+```
+
+- Paginates `/products.json` (250/page), keeps `product_type === "בגדי תינוקות וילדים"`
+  (Shilav also sells gear/textile/toys/furniture — those are dropped).
+- **category** ← Hebrew keyword in the title (tops/bottoms/bodysuits/dresses/swim;
+  no-match items like hats/gloves/socks are skipped).
+- **age** ← Shopify Size option values (`NB`/`0-3m`…`18-24m` → 0-2; `2Y`…`6Y` → 2-8;
+  spanning both → both buckets) — structured, no title parsing.
+- **gender** ← בנים/בנות in title; dresses → girl; otherwise unisex → BOTH genders
+  (most baby clothing). NOTE: "לבן" means *white*, not "for a boy" — don't use it.
+- price/sale ← `variant.price` / `compare_at_price`; image ← `images[0].src`;
+  url ← `/products/<handle>` (Hebrew handle, URL-encoded; verified to resolve).
+- Writes `catalogs/shilav-<gender>-<age>-<category>.json` only for app-valid segments;
+  `index.js` globs `terminalx-* + next-* + shilav-*`. `color_hex` null (color parsed
+  from the title when present, else ''). Titles are short/generic (Shilav's own names).
+
+Status: ~666 clothing items → full 14-segment coverage, merged with TX + NEXT.
+
 ## Known issues / gotchas
 
 - Color chips: now populated — every product carries `color`/`color_hex` from the
