@@ -177,7 +177,7 @@ document.getElementById('skip-refine').addEventListener('click', function () {
 
 function applyFiltersAndPlay() {
   var filtered = poolProducts.filter(function (p) {
-    if (selection.colors.length && selection.colors.indexOf(p.colorFamily) === -1) return false;
+    if (selection.colors.length && selection.colors.indexOf(p.colorFamily || 'אחר') === -1) return false;
     if (selection.budget) {
       var price = p.salePrice != null ? p.salePrice : p.originalPrice;
       if (price > selection.budget) return false;

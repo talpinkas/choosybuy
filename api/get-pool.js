@@ -6,21 +6,24 @@
 var catalogs = require('../catalogs');
 
 // Map a raw Hebrew color label to a clean filter family (keyword-based).
+// Map a raw color label (Hebrew or English, possibly a code or a print
+// description) to a clean filter family. Multi-store data is messy — a concrete
+// base color (checked first) wins over a print description.
 function colorFamily(label) {
   if (!label) return null;
-  var l = String(label).trim();
-  if (/שחור/.test(l)) return 'שחור';
-  if (/לבן|חלב|שמנת|אוף ווייט|קרם/.test(l)) return 'לבן';
-  if (/אפור/.test(l)) return 'אפור';
-  if (/כחול|נייבי|תכלת|טורקיז|אקווה|רויאל|ג'ינס/.test(l)) return 'כחול';
-  if (/ירוק|חאקי|מנטה|זית/.test(l)) return 'ירוק';
-  if (/ורוד/.test(l)) return 'ורוד';
-  if (/אדום|חמרה|בורדו/.test(l)) return 'אדום';
-  if (/צהוב|חרדל|בננה/.test(l)) return 'צהוב';
-  if (/כתום|קרמל/.test(l)) return 'כתום';
-  if (/סגול|לילך/.test(l)) return 'סגול';
-  if (/חום|בז'|אבן|חול|אגוז/.test(l)) return 'חום';
-  if (/מולטי/.test(l)) return 'מצויר';
+  var l = String(label).toLowerCase();
+  if (/שחור|black|noir|onyx/.test(l)) return 'שחור';
+  if (/אפור|gr[ae]y|מלאנ|מלנ|מאלנ|מרנגו|marengo|בטון|פחם|silver|כסף|smoke|אפר\b|graphite|ash/.test(l)) return 'אפור';
+  if (/לבן|white|חלב|שמנת|אוף.?ווייט|off.?white|קרם|cream|ecru|שנהב|ivory|ניטרלי|natural|נוד|nude/.test(l)) return 'לבן';
+  if (/כחול|blue|נייב|navy|תכלת|תכול|טורקיז|turquoise|אקווה|aqua|רויאל|royal|ג'ינס|denim|indigo|cobalt|פטרול|petrol|שמיים|sky|midnight|teal/.test(l)) return 'כחול';
+  if (/ירוק|green|חאקי|khaki|מנטה|mint|זית|olive|ליים|lime|ירקרק|spruce|\bfir\b|sage|emerald|forest|פיסטוק/.test(l)) return 'ירוק';
+  if (/ורוד|pink|פוקסיה|fuchsia|רוז\b|rose|סלמון|salmon|מג'נטה|magenta|blush/.test(l)) return 'ורוד';
+  if (/אדום|red|בורדו|bordeaux|bordo|חמרה|maroon|wine|יין|cherry|דובדבן|crimson|scarlet/.test(l)) return 'אדום';
+  if (/צהוב|yellow|זהב|gold|חרדל|mustard|בננה|banana|לימון|lemon/.test(l)) return 'צהוב';
+  if (/כתום|orange|קרמל|caramel|טרקוטה|terracotta|אפרסק|peach|נחושת|copper/.test(l)) return 'כתום';
+  if (/סגול|purple|לילך|lilac|violet|plum|שזיף|לבנדר|lavender/.test(l)) return 'סגול';
+  if (/חום|brown|בז'|beige|לאטה|latte|מוקה|mocha|קפה|coffee|אגוז|אבן|חול|sand|טאופ|taupe|camel|קאמל|שוקולד|chocolate|\btan\b/.test(l)) return 'חום';
+  if (/מולטי|multi|צבעוני|פרחוני|floral|הדפס|print|פסים|stripe|משבצ|check|דמויות|מצויר|דוגמ|pattern|פאטרן|דינוזאור|חיות|ספארי|פירות|graphic|כיתוב|דפוס|פסטל|pastel|רקמ|embroid|מיקי|מינ?י|מארוול|marvel|disney|דיסני/.test(l)) return 'מצויר';
   return 'אחר';
 }
 
