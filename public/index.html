@@ -121,13 +121,56 @@
         <button id="keep-btn" class="btn-secondary">להמשיך לבחור</button>
         <button id="restart-btn" class="btn-ghost">להתחיל מחדש</button>
       </div>
+      <button id="winner-feedback" class="btn-ghost winner-fb">איך הייתה החוויה? ספרו לנו »</button>
     </div>
 
     <button id="exit-btn" class="back-link corner">→ יציאה</button>
     <button id="undo-btn" class="undo-btn hidden">↶ ביטול הבחירה האחרונה</button>
   </section>
 
+  <!-- Feedback -->
+  <button id="feedback-fab" class="feedback-fab" aria-label="שליחת פידבק">פידבק</button>
+  <div id="feedback-modal" class="feedback-overlay hidden">
+    <div class="feedback-card" role="dialog" aria-modal="true" aria-labelledby="fb-title">
+      <button id="fb-close" class="fb-close" aria-label="סגירה">&times;</button>
+      <div id="fb-form">
+        <h2 id="fb-title" class="fb-title">איך היה?</h2>
+        <p class="fb-intro">נשמח לכל פידבק כדי להשתפר — הכל אנונימי.</p>
+        <div class="fb-q">
+          <p class="fb-label">כמה היה קל לבחור?</p>
+          <div class="fb-scale" id="fb-ease">
+            <button data-val="1">1</button>
+            <button data-val="2">2</button>
+            <button data-val="3">3</button>
+            <button data-val="4">4</button>
+            <button data-val="5">5</button>
+          </div>
+          <div class="fb-scale-ends"><span>קשה</span><span>קל מאוד</span></div>
+        </div>
+        <div class="fb-q">
+          <p class="fb-label">הייתם קונים ככה?</p>
+          <div class="fb-choices" id="fb-buy">
+            <button data-val="yes">כן, בדיוק</button>
+            <button data-val="maybe">אולי</button>
+            <button data-val="no">לא</button>
+          </div>
+        </div>
+        <div class="fb-q">
+          <p class="fb-label">מה היית משפר? <span class="fb-opt">(רשות)</span></p>
+          <textarea id="fb-comment" rows="3" placeholder="כתבו לנו..."></textarea>
+        </div>
+        <button id="fb-submit" class="btn-primary">שליחה</button>
+      </div>
+      <div id="fb-thanks" class="fb-thanks hidden">
+        <div class="fb-thanks-mark">✓</div>
+        <p class="fb-thanks-title">תודה!</p>
+        <p class="fb-thanks-sub">הפידבק שלך עוזר לנו להשתפר.</p>
+      </div>
+    </div>
+  </div>
+
   <script src="game.js"></script>
   <script src="app.js"></script>
+  <script src="feedback.js"></script>
 </body>
 </html>

@@ -225,9 +225,69 @@ body {
 .enter-left { animation: slideLeft .22s ease-out; }
 .enter-right { animation: slideRight .22s ease-out; }
 
+/* --- Feedback widget --- */
+.feedback-fab {
+  position: fixed; bottom: 16px; left: 16px; z-index: 40;
+  background: var(--surface); color: var(--ink-soft); border: 1.5px solid var(--line);
+  border-radius: 30px; padding: 9px 16px; font-family: inherit; font-size: 14px; font-weight: 600;
+  cursor: pointer; box-shadow: var(--shadow); transition: border-color .15s, color .15s, transform .1s;
+}
+.feedback-fab:hover { border-color: var(--primary); color: var(--primary); }
+.feedback-fab:active { transform: scale(.95); }
+.winner-fb { margin-top: 6px; font-size: 14px; }
+
+.feedback-overlay {
+  position: fixed; inset: 0; z-index: 50; background: rgba(51,39,30,.45);
+  display: flex; align-items: center; justify-content: center; padding: 20px;
+}
+.feedback-card {
+  background: var(--surface); border-radius: 20px; padding: 30px 26px 26px; max-width: 420px; width: 100%;
+  box-shadow: var(--shadow-lift); position: relative; max-height: 90vh; overflow-y: auto; text-align: right;
+  animation: fadeUp .25s ease;
+}
+.fb-close {
+  position: absolute; top: 12px; left: 14px; background: none; border: none; font-size: 26px;
+  color: var(--ink-faint); cursor: pointer; line-height: 1; padding: 4px;
+}
+.fb-close:hover { color: var(--ink); }
+.fb-title { font-family: 'Rubik','Heebo',sans-serif; font-weight: 800; font-size: 24px; margin-bottom: 6px; }
+.fb-intro { font-size: 14px; color: var(--ink-soft); margin-bottom: 22px; }
+.fb-q { margin-bottom: 20px; }
+.fb-label { font-size: 15px; font-weight: 700; color: var(--ink); margin-bottom: 10px; }
+.fb-opt { font-weight: 500; color: var(--ink-faint); font-size: 13px; }
+.fb-scale { display: flex; gap: 8px; }
+.fb-scale button {
+  flex: 1; aspect-ratio: 1 / 1; border: 2px solid var(--line); background: var(--bg); border-radius: 12px;
+  font-family: inherit; font-size: 16px; font-weight: 700; color: var(--ink-soft); cursor: pointer; transition: all .12s;
+}
+.fb-scale button:hover { border-color: var(--primary); }
+.fb-scale button.selected { background: var(--primary); color: #fff; border-color: var(--primary); }
+.fb-scale-ends { display: flex; justify-content: space-between; margin-top: 6px; font-size: 12px; color: var(--ink-faint); }
+.fb-choices { display: flex; gap: 8px; }
+.fb-choices button {
+  flex: 1; border: 2px solid var(--line); background: var(--bg); border-radius: 12px; padding: 11px 6px;
+  font-family: inherit; font-size: 14px; font-weight: 600; color: var(--ink); cursor: pointer; transition: all .12s;
+}
+.fb-choices button:hover { border-color: var(--primary); }
+.fb-choices button.selected { background: var(--primary); color: #fff; border-color: var(--primary); }
+#fb-comment {
+  width: 100%; border: 2px solid var(--line); border-radius: 12px; padding: 12px; font-family: inherit;
+  font-size: 14px; color: var(--ink); resize: vertical; background: var(--bg);
+}
+#fb-comment:focus { outline: none; border-color: var(--primary); }
+#fb-submit { width: 100%; margin-top: 4px; }
+.fb-thanks { text-align: center; padding: 26px 10px; }
+.fb-thanks-mark {
+  width: 56px; height: 56px; border-radius: 50%; background: var(--primary); color: #fff;
+  font-size: 28px; display: flex; align-items: center; justify-content: center; margin: 0 auto 16px;
+}
+.fb-thanks-title { font-family: 'Rubik','Heebo',sans-serif; font-weight: 800; font-size: 22px; margin-bottom: 6px; }
+.fb-thanks-sub { font-size: 15px; color: var(--ink-soft); }
+
 @media (max-width: 600px) {
   .arena { flex-direction: column; }
   .or-wrap { justify-content: center; }
   .how { flex-direction: column; align-items: center; }
   .hero-title { font-size: 31px; }
+  .feedback-fab { bottom: 12px; left: 12px; padding: 8px 14px; font-size: 13px; }
 }
