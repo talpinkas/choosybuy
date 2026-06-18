@@ -17,7 +17,7 @@
       "currency": "ILS",
       "url": "https://keds.co.il/products/k162610_black",
       "brand": "Keds",
-      "color": "",
+      "color": "שחור",
       "color_hex": null,
       "affiliate_ready": false
     },
@@ -30,7 +30,7 @@
       "currency": "ILS",
       "url": "https://keds.co.il/products/k162611_navy",
       "brand": "Keds",
-      "color": "",
+      "color": "נייבי",
       "color_hex": null,
       "affiliate_ready": false
     },
@@ -43,7 +43,7 @@
       "currency": "ILS",
       "url": "https://keds.co.il/products/k162610_melange",
       "brand": "Keds",
-      "color": "",
+      "color": "מלאנג'",
       "color_hex": null,
       "affiliate_ready": false
     },
@@ -56,7 +56,7 @@
       "currency": "ILS",
       "url": "https://keds.co.il/products/k162610_steel",
       "brand": "Keds",
-      "color": "",
+      "color": "כחול אפור",
       "color_hex": null,
       "affiliate_ready": false
     },
@@ -69,7 +69,7 @@
       "currency": "ILS",
       "url": "https://keds.co.il/products/k162610_beige",
       "brand": "Keds",
-      "color": "",
+      "color": "בז'",
       "color_hex": null,
       "affiliate_ready": false
     },
@@ -82,7 +82,7 @@
       "currency": "ILS",
       "url": "https://keds.co.il/products/k162611_black",
       "brand": "Keds",
-      "color": "",
+      "color": "שחור",
       "color_hex": null,
       "affiliate_ready": false
     },
@@ -95,7 +95,7 @@
       "currency": "ILS",
       "url": "https://keds.co.il/products/k162611_lt-petrol",
       "brand": "Keds",
-      "color": "",
+      "color": "פטרול בהיר",
       "color_hex": null,
       "affiliate_ready": false
     },
@@ -108,7 +108,7 @@
       "currency": "ILS",
       "url": "https://keds.co.il/products/k162611_lt-olive",
       "brand": "Keds",
-      "color": "",
+      "color": "זית בהיר",
       "color_hex": null,
       "affiliate_ready": false
     },
@@ -121,7 +121,7 @@
       "currency": "ILS",
       "url": "https://keds.co.il/products/kd62920gra",
       "brand": "Keds",
-      "color": "",
+      "color": "אפור",
       "color_hex": null,
       "affiliate_ready": false
     },
@@ -134,7 +134,7 @@
       "currency": "ILS",
       "url": "https://keds.co.il/products/kd62392_latte",
       "brand": "Keds",
-      "color": "",
+      "color": "לאטה",
       "color_hex": null,
       "affiliate_ready": false
     },
@@ -147,7 +147,7 @@
       "currency": "ILS",
       "url": "https://keds.co.il/products/kd62225_latte",
       "brand": "Keds",
-      "color": "",
+      "color": "לאטה",
       "color_hex": null,
       "affiliate_ready": false
     },
@@ -160,7 +160,7 @@
       "currency": "ILS",
       "url": "https://keds.co.il/products/kd62225_melange",
       "brand": "Keds",
-      "color": "",
+      "color": "מלנג'",
       "color_hex": null,
       "affiliate_ready": false
     },
@@ -173,7 +173,7 @@
       "currency": "ILS",
       "url": "https://keds.co.il/products/kd62224_latte",
       "brand": "Keds",
-      "color": "",
+      "color": "לאטה",
       "color_hex": null,
       "affiliate_ready": false
     },
@@ -186,7 +186,7 @@
       "currency": "ILS",
       "url": "https://keds.co.il/products/kd62303",
       "brand": "Keds",
-      "color": "",
+      "color": "ליים",
       "color_hex": null,
       "affiliate_ready": false
     },
@@ -199,7 +199,7 @@
       "currency": "ILS",
       "url": "https://keds.co.il/products/k342154_denim",
       "brand": "Keds",
-      "color": "",
+      "color": "ג'ינס",
       "color_hex": null,
       "affiliate_ready": false
     },
@@ -212,7 +212,7 @@
       "currency": "ILS",
       "url": "https://keds.co.il/products/k342153_black",
       "brand": "Keds",
-      "color": "",
+      "color": "שחור",
       "color_hex": null,
       "affiliate_ready": false
     },
@@ -225,7 +225,7 @@
       "currency": "ILS",
       "url": "https://keds.co.il/products/k342153_denim",
       "brand": "Keds",
-      "color": "",
+      "color": "ג'ינס בהיר",
       "color_hex": null,
       "affiliate_ready": false
     },
@@ -238,7 +238,7 @@
       "currency": "ILS",
       "url": "https://keds.co.il/products/k342139_beige",
       "brand": "Keds",
-      "color": "",
+      "color": "בז'",
       "color_hex": null,
       "affiliate_ready": false
     },
@@ -251,7 +251,7 @@
       "currency": "ILS",
       "url": "https://keds.co.il/products/k342139_denim",
       "brand": "Keds",
-      "color": "",
+      "color": "ג'ינס",
       "color_hex": null,
       "affiliate_ready": false
     },
@@ -264,7 +264,7 @@
       "currency": "ILS",
       "url": "https://keds.co.il/products/kd82526bl-jns",
       "brand": "Keds",
-      "color": "",
+      "color": "ג'ינס שחור",
       "color_hex": null,
       "affiliate_ready": false
     },
@@ -277,7 +277,7 @@
       "currency": "ILS",
       "url": "https://keds.co.il/products/k342154_lt-denim",
       "brand": "Keds",
-      "color": "",
+      "color": "ג'ינס בהיר",
       "color_hex": null,
       "affiliate_ready": false
     },
@@ -290,7 +290,7 @@
       "currency": "ILS",
       "url": "https://keds.co.il/products/k342154_black",
       "brand": "Keds",
-      "color": "",
+      "color": "שחור",
       "color_hex": null,
       "affiliate_ready": false
     },
@@ -303,7 +303,7 @@
       "currency": "ILS",
       "url": "https://keds.co.il/products/kd82525jns",
       "brand": "Keds",
-      "color": "",
+      "color": "ג'ינס כחול",
       "color_hex": null,
       "affiliate_ready": false
     },
@@ -316,7 +316,7 @@
       "currency": "ILS",
       "url": "https://keds.co.il/products/kd82525bl",
       "brand": "Keds",
-      "color": "",
+      "color": "שחור",
       "color_hex": null,
       "affiliate_ready": false
     },
@@ -329,7 +329,7 @@
       "currency": "ILS",
       "url": "https://keds.co.il/products/k342124_mocha",
       "brand": "Keds",
-      "color": "",
+      "color": "מוקה",
       "color_hex": null,
       "affiliate_ready": false
     },
@@ -342,7 +342,7 @@
       "currency": "ILS",
       "url": "https://keds.co.il/products/kd82323_black",
       "brand": "Keds",
-      "color": "",
+      "color": "שחור",
       "color_hex": null,
       "affiliate_ready": false
     },
@@ -355,7 +355,7 @@
       "currency": "ILS",
       "url": "https://keds.co.il/products/kd82526jns",
       "brand": "Keds",
-      "color": "",
+      "color": "ג'ינס כחול",
       "color_hex": null,
       "affiliate_ready": false
     },
@@ -368,7 +368,7 @@
       "currency": "ILS",
       "url": "https://keds.co.il/products/k352119_beige",
       "brand": "Keds",
-      "color": "",
+      "color": "בז'",
       "color_hex": null,
       "affiliate_ready": false
     },
@@ -381,7 +381,7 @@
       "currency": "ILS",
       "url": "https://keds.co.il/products/k352119_steel",
       "brand": "Keds",
-      "color": "",
+      "color": "טורקיז כהה",
       "color_hex": null,
       "affiliate_ready": false
     },
@@ -394,7 +394,7 @@
       "currency": "ILS",
       "url": "https://keds.co.il/products/k352119_black",
       "brand": "Keds",
-      "color": "",
+      "color": "שחור",
       "color_hex": null,
       "affiliate_ready": false
     },
@@ -407,7 +407,7 @@
       "currency": "ILS",
       "url": "https://keds.co.il/products/k352119_camel",
       "brand": "Keds",
-      "color": "",
+      "color": "קאמל",
       "color_hex": null,
       "affiliate_ready": false
     },
@@ -420,7 +420,7 @@
       "currency": "ILS",
       "url": "https://keds.co.il/products/k352120_denim",
       "brand": "Keds",
-      "color": "",
+      "color": "ג'ינס",
       "color_hex": null,
       "affiliate_ready": false
     },
@@ -433,7 +433,7 @@
       "currency": "ILS",
       "url": "https://keds.co.il/products/k352120_black",
       "brand": "Keds",
-      "color": "",
+      "color": "שחור",
       "color_hex": null,
       "affiliate_ready": false
     },
@@ -446,7 +446,7 @@
       "currency": "ILS",
       "url": "https://keds.co.il/products/kd23703",
       "brand": "Keds",
-      "color": "",
+      "color": "לבן",
       "color_hex": null,
       "affiliate_ready": false
     },
@@ -459,7 +459,7 @@
       "currency": "ILS",
       "url": "https://keds.co.il/products/kd45501",
       "brand": "Keds",
-      "color": "",
+      "color": "לבן",
       "color_hex": null,
       "affiliate_ready": false
     }

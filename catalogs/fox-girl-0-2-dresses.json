@@ -139,19 +139,6 @@
       "affiliate_ready": false
     },
     {
-      "id": "fox-15047515701618",
-      "title": "שמלה עם פסים",
-      "image": "https://cdn.shopify.com/s/files/1/0638/8252/6908/files/3585193999-1.jpg?v=1779101115",
-      "price": 49.9,
-      "sale_price": null,
-      "currency": "ILS",
-      "url": "https://www.fox.co.il/products/3585193999",
-      "brand": "Fox",
-      "color": "",
-      "color_hex": null,
-      "affiliate_ready": false
-    },
-    {
       "id": "fox-15043639542130",
       "title": "מארז 2 שמלות עם הדפס",
       "image": "https://cdn.shopify.com/s/files/1/0638/8252/6908/files/3580123940-1.jpg?v=1778474353",
@@ -159,6 +146,19 @@
       "sale_price": null,
       "currency": "ILS",
       "url": "https://www.fox.co.il/products/3580123940",
+      "brand": "Fox",
+      "color": "",
+      "color_hex": null,
+      "affiliate_ready": false
+    },
+    {
+      "id": "fox-15047515701618",
+      "title": "שמלה עם פסים",
+      "image": "https://cdn.shopify.com/s/files/1/0638/8252/6908/files/3585193999-1.jpg?v=1779101115",
+      "price": 49.9,
+      "sale_price": null,
+      "currency": "ILS",
+      "url": "https://www.fox.co.il/products/3585193999",
       "brand": "Fox",
       "color": "",
       "color_hex": null,
@@ -230,32 +230,6 @@
       "affiliate_ready": false
     },
     {
-      "id": "fox-14956995019122",
-      "title": "שמלת טטרה עם כתפיות",
-      "image": "https://cdn.shopify.com/s/files/1/0638/8252/6908/files/3558600100-1.jpg?v=1773837793",
-      "price": 79.9,
-      "sale_price": null,
-      "currency": "ILS",
-      "url": "https://www.fox.co.il/products/3558600100",
-      "brand": "Fox",
-      "color": "",
-      "color_hex": null,
-      "affiliate_ready": false
-    },
-    {
-      "id": "fox-15000338760050",
-      "title": "שמלה עם הדפס",
-      "image": "https://cdn.shopify.com/s/files/1/0638/8252/6908/files/3585489400-1.jpg?v=1773660236",
-      "price": 39.9,
-      "sale_price": null,
-      "currency": "ILS",
-      "url": "https://www.fox.co.il/products/3585489400",
-      "brand": "Fox",
-      "color": "",
-      "color_hex": null,
-      "affiliate_ready": false
-    },
-    {
       "id": "fox-15051835539826",
       "title": "מארז 2 שמלות ממותגות סנופי",
       "image": "https://cdn.shopify.com/s/files/1/0638/8252/6908/files/3580193802-1.jpg?v=1779887143",
@@ -263,6 +237,19 @@
       "sale_price": null,
       "currency": "ILS",
       "url": "https://www.fox.co.il/products/3580193802",
+      "brand": "Fox",
+      "color": "",
+      "color_hex": null,
+      "affiliate_ready": false
+    },
+    {
+      "id": "fox-14956995019122",
+      "title": "שמלת טטרה עם כתפיות",
+      "image": "https://cdn.shopify.com/s/files/1/0638/8252/6908/files/3558600100-1.jpg?v=1773837793",
+      "price": 79.9,
+      "sale_price": null,
+      "currency": "ILS",
+      "url": "https://www.fox.co.il/products/3558600100",
       "brand": "Fox",
       "color": "",
       "color_hex": null,
@@ -347,6 +334,19 @@
       "affiliate_ready": false
     },
     {
+      "id": "fox-15000338760050",
+      "title": "שמלה עם הדפס",
+      "image": "https://cdn.shopify.com/s/files/1/0638/8252/6908/files/3585489400-1.jpg?v=1773660236",
+      "price": 39.9,
+      "sale_price": null,
+      "currency": "ILS",
+      "url": "https://www.fox.co.il/products/3585489400",
+      "brand": "Fox",
+      "color": "",
+      "color_hex": null,
+      "affiliate_ready": false
+    },
+    {
       "id": "fox-14957466747250",
       "title": "מארז 2 שמלות עם הדפס",
       "image": "https://cdn.shopify.com/s/files/1/0638/8252/6908/files/3580299400-1.jpg?v=1777987695",
@@ -412,19 +412,6 @@
       "affiliate_ready": false
     },
     {
-      "id": "fox-14956995051890",
-      "title": "שמלת טטרה עם כתפיות",
-      "image": "https://cdn.shopify.com/s/files/1/0638/8252/6908/files/3558603899-1.jpg?v=1773837554",
-      "price": 79.9,
-      "sale_price": null,
-      "currency": "ILS",
-      "url": "https://www.fox.co.il/products/3558603899",
-      "brand": "Fox",
-      "color": "",
-      "color_hex": null,
-      "affiliate_ready": false
-    },
-    {
       "id": "fox-15005995336050",
       "title": "שמלה עם הדפס",
       "image": "https://cdn.shopify.com/s/files/1/0638/8252/6908/files/3585181401-1.jpg?v=1773909837",
@@ -432,6 +419,19 @@
       "sale_price": null,
       "currency": "ILS",
       "url": "https://www.fox.co.il/products/3585181401",
+      "brand": "Fox",
+      "color": "",
+      "color_hex": null,
+      "affiliate_ready": false
+    },
+    {
+      "id": "fox-14956995051890",
+      "title": "שמלת טטרה עם כתפיות",
+      "image": "https://cdn.shopify.com/s/files/1/0638/8252/6908/files/3558603899-1.jpg?v=1773837554",
+      "price": 79.9,
+      "sale_price": null,
+      "currency": "ILS",
+      "url": "https://www.fox.co.il/products/3558603899",
       "brand": "Fox",
       "color": "",
       "color_hex": null,
@@ -490,19 +490,6 @@
       "affiliate_ready": false
     },
     {
-      "id": "fox-14836888895858",
-      "title": "שמלת בנות פרחונית",
-      "image": "https://cdn.shopify.com/s/files/1/0638/8252/6908/files/3558473909-1.jpg?v=1771223459",
-      "price": 89.9,
-      "sale_price": null,
-      "currency": "ILS",
-      "url": "https://www.fox.co.il/products/3558473909",
-      "brand": "Fox",
-      "color": "",
-      "color_hex": null,
-      "affiliate_ready": false
-    },
-    {
       "id": "fox-14934244983154",
       "title": "שמלה עם הדפס לבבות",
       "image": "https://cdn.shopify.com/s/files/1/0638/8252/6908/files/3585110100-1.jpg?v=1771162482",
@@ -510,6 +497,19 @@
       "sale_price": null,
       "currency": "ILS",
       "url": "https://www.fox.co.il/products/3585110100",
+      "brand": "Fox",
+      "color": "",
+      "color_hex": null,
+      "affiliate_ready": false
+    },
+    {
+      "id": "fox-14836888895858",
+      "title": "שמלת בנות פרחונית",
+      "image": "https://cdn.shopify.com/s/files/1/0638/8252/6908/files/3558473909-1.jpg?v=1771223459",
+      "price": 89.9,
+      "sale_price": null,
+      "currency": "ILS",
+      "url": "https://www.fox.co.il/products/3558473909",
       "brand": "Fox",
       "color": "",
       "color_hex": null,

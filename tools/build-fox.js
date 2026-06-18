@@ -50,7 +50,15 @@ function categoryOf(s) {
   return null;
 }
 var COLORS = ['שמנת', 'לבן', 'שחור', 'אפור', 'ורוד', 'כחול', 'תכלת', 'נייבי', 'ירוק', 'אדום', 'צהוב', 'סגול', 'חום', 'בז\'', 'כתום', 'חרדל', 'זית', 'מולטי', 'צבעוני'];
-function colorOf(title) { for (var i = 0; i < COLORS.length; i++) if (title.indexOf(COLORS[i]) !== -1) return COLORS[i]; return ''; }
+function colorOf(p) {
+  var opts = p.options || [];
+  for (var k = 0; k < opts.length; k++) {
+    if (/צבע|colou?r/i.test(opts[k].name) && (opts[k].values || []).length) {
+      var ov = String(opts[k].values[0]).trim(); if (ov && !/default/i.test(ov)) return ov;
+    }
+  }
+  var title = p.title || ''; for (var i = 0; i < COLORS.length; i++) if (title.indexOf(COLORS[i]) !== -1) return COLORS[i]; return '';
+}
 
 async function fetchCollection(handle) {
   var all = [];
@@ -95,7 +103,7 @@ async function main() {
         image: img,
         price: cmp > cur ? cmp : cur, sale_price: cmp > cur ? cur : null, currency: 'ILS',
         url: SITE + '/products/' + encodeURIComponent(p.handle),
-        brand: 'Fox', color: colorOf(p.title || ''), color_hex: null, affiliate_ready: false
+        brand: 'Fox', color: colorOf(p), color_hex: null, affiliate_ready: false
       };
       (buckets[id] = buckets[id] || []).push(prod);
       kept++;

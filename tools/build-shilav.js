@@ -71,7 +71,14 @@ function agesFromSizes(values) {
   return out.length ? out : ['0-2', '2-8'];
 }
 var COLORS = ['שמנת', 'לבן', 'שחור', 'אפור', 'ורוד', 'כחול', 'תכלת', 'נייבי', 'ירוק', 'אדום', 'צהוב', 'סגול', 'חום', 'בז\'', 'כתום', 'חרדל', 'זית', 'קאמל', 'מולטי', 'צבעוני'];
-function colorOf(title) {
+function colorOf(p) {
+  var opts = p.options || [];
+  for (var k = 0; k < opts.length; k++) {
+    if (/צבע|colou?r/i.test(opts[k].name) && (opts[k].values || []).length) {
+      var ov = String(opts[k].values[0]).trim(); if (ov && !/default/i.test(ov)) return ov;
+    }
+  }
+  var title = p.title || '';
   var m = title.match(/בגוון\s+([^,()]{2,12})/);
   if (m) return m[1].trim();
   for (var i = 0; i < COLORS.length; i++) if (title.indexOf(COLORS[i]) !== -1) return COLORS[i];
@@ -131,7 +138,7 @@ async function main() {
       image: img,
       price: price, sale_price: sale, currency: 'ILS',
       url: SITE + '/products/' + encodeURIComponent(p.handle),
-      brand: 'שילב', color: colorOf(p.title), color_hex: null, affiliate_ready: false
+      brand: 'שילב', color: colorOf(p), color_hex: null, affiliate_ready: false
     };
     var ages = agesFromSizes(sizeValues(p));
     var genders = gendersOf(p.title, category);
