@@ -11,9 +11,11 @@ function track(event, props) {
     token: MIXPANEL_TOKEN, distinct_id: analyticsId,
     time: Math.floor(Date.now() / 1000), platform: 'web-kids'
   }, props || {}) }];
+  // Mixpanel /track needs a "simple" request (form-urlencoded `data=`) — JSON
+  // content-type triggers a CORS preflight it rejects, silently dropping events.
   fetch('https://api-eu.mixpanel.com/track', {
-    method: 'POST', headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(payload)
+    method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+    body: 'data=' + encodeURIComponent(JSON.stringify(payload))
   }).catch(function () {});
 }
 
