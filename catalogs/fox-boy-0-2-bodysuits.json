@@ -1,0 +1,51 @@
+{
+  "catalog_id": "fox-boy-0-2-bodysuits",
+  "site": "Fox",
+  "segment": {
+    "gender": "boy",
+    "age": "0-2",
+    "category": "bodysuits"
+  },
+  "updated_at": "2026-06-18",
+  "products": [
+    {
+      "id": "fox-14934246523250",
+      "title": "אוברול ג'ינס",
+      "image": "https://cdn.shopify.com/s/files/1/0638/8252/6908/files/6198141114-1.jpg?v=1768294182",
+      "price": 129.9,
+      "sale_price": null,
+      "currency": "ILS",
+      "url": "https://www.fox.co.il/products/6198141114",
+      "brand": "Fox",
+      "color": "",
+      "color_hex": null,
+      "affiliate_ready": false
+    },
+    {
+      "id": "fox-14934246195570",
+      "title": "אוברול ג'ינס",
+      "image": "https://cdn.shopify.com/s/files/1/0638/8252/6908/files/6196352415-1.jpg?v=1771238776",
+      "price": 129.9,
+      "sale_price": null,
+      "currency": "ILS",
+      "url": "https://www.fox.co.il/products/6196352415",
+      "brand": "Fox",
+      "color": "",
+      "color_hex": null,
+      "affiliate_ready": false
+    },
+    {
+      "id": "fox-14843166196082",
+      "title": "אוברול ג'ינס קצר",
+      "image": "https://cdn.shopify.com/s/files/1/0638/8252/6908/files/3198321116-1.jpg?v=1770896235",
+      "price": 129.9,
+      "sale_price": null,
+      "currency": "ILS",
+      "url": "https://www.fox.co.il/products/3198321116",
+      "brand": "Fox",
+      "color": "",
+      "color_hex": null,
+      "affiliate_ready": false
+    }
+  ]
+}

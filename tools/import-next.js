@@ -63,7 +63,7 @@ function agesFor(title) {
 function cleanTitle(t) { return String(t || '').replace(/\s*[-–—]\s*$/, '').replace(/\s+/g, ' ').trim(); }
 
 function refreshIndex() {
-  var files = fs.readdirSync(CAT_DIR).filter(function (f) { return /^(terminalx|next)-.*\.json$/.test(f); }).sort();
+  var files = fs.readdirSync(CAT_DIR).filter(function (f) { return /\.json$/.test(f); }).sort();
   var body = '// Choosy catalogs registry — AUTO-GENERATED (terminalx-* + next-*).\n' +
     '// require() with a static path is bundled reliably by Vercel.\n\n' +
     'module.exports = [\n' + files.map(function (f) { return "  require('./" + f + "')"; }).join(',\n') + '\n];\n';

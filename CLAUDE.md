@@ -214,11 +214,31 @@ node tools/build-shilav.js     # full 14-segment build, ~10s
   (most baby clothing). NOTE: "לבן" means *white*, not "for a boy" — don't use it.
 - price/sale ← `variant.price` / `compare_at_price`; image ← `images[0].src`;
   url ← `/products/<handle>` (Hebrew handle, URL-encoded; verified to resolve).
-- Writes `catalogs/shilav-<gender>-<age>-<category>.json` only for app-valid segments;
-  `index.js` globs `terminalx-* + next-* + shilav-*`. `color_hex` null (color parsed
-  from the title when present, else ''). Titles are short/generic (Shilav's own names).
+- Writes `catalogs/shilav-<gender>-<age>-<category>.json` only for app-valid segments.
+  `color_hex` null (color parsed from the title when present, else ''). Titles are
+  short/generic (Shilav's own names).
 
 Status: ~666 clothing items → full 14-segment coverage, merged with TX + NEXT.
+
+## Multi-store: Fox (fox.co.il) — fourth source (Shopify, automated)
+
+Also Shopify with an open `/products.json`, but a multi-department brand — so
+`tools/build-fox.js` fetches the 4 gender×age **kids collections** directly:
+`בייבי-בנים`/`בייבי-בנות` → 0-2, `boys`/`בנות-1` → 2-8 (gender+age come from the
+collection). category ← `product_type` + title; shoes/accessories skipped.
+price/sale/image/url/color same shape as Shilav. ~1230 items → full 14 segments.
+
+```
+node tools/build-fox.js        # ~15s
+```
+
+**Registry note:** all four builders' `refreshIndex` now globs **every
+`catalogs/*.json`** (not a per-prefix list), so running any one builder rebuilds
+the full index without dropping the others. A new retailer just needs a builder
+that emits `<brand>-<gender>-<age>-<category>.json` in the standard format.
+
+Live retailers: **Terminal X (Magento API) · NEXT (manual) · Shilav (Shopify) ·
+Fox (Shopify)** — 4 catalogs per segment, 56 catalogs total.
 
 ## Known issues / gotchas
 

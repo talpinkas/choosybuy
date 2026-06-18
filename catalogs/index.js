@@ -1,7 +1,21 @@
-// Choosy catalogs registry — AUTO-GENERATED (terminalx-* + next-* + shilav-*).
+// Choosy catalogs registry — AUTO-GENERATED (every catalogs/*.json).
 // require() with a static path is bundled reliably by Vercel.
 
 module.exports = [
+  require('./fox-boy-0-2-bodysuits.json'),
+  require('./fox-boy-0-2-swim.json'),
+  require('./fox-boy-0-2-tops.json'),
+  require('./fox-boy-2-8-bottoms.json'),
+  require('./fox-boy-2-8-swim.json'),
+  require('./fox-boy-2-8-tops.json'),
+  require('./fox-girl-0-2-bodysuits.json'),
+  require('./fox-girl-0-2-dresses.json'),
+  require('./fox-girl-0-2-swim.json'),
+  require('./fox-girl-0-2-tops.json'),
+  require('./fox-girl-2-8-bottoms.json'),
+  require('./fox-girl-2-8-dresses.json'),
+  require('./fox-girl-2-8-swim.json'),
+  require('./fox-girl-2-8-tops.json'),
   require('./next-boy-0-2-bodysuits.json'),
   require('./next-boy-0-2-swim.json'),
   require('./next-boy-0-2-tops.json'),

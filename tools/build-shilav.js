@@ -97,7 +97,7 @@ async function fetchAll() {
 }
 
 function refreshIndex() {
-  var files = fs.readdirSync(CAT_DIR).filter(function (f) { return /^(terminalx|next|shilav)-.*\.json$/.test(f); }).sort();
+  var files = fs.readdirSync(CAT_DIR).filter(function (f) { return /\.json$/.test(f); }).sort();
   var body = '// Choosy catalogs registry — AUTO-GENERATED (terminalx-* + next-* + shilav-*).\n' +
     '// require() with a static path is bundled reliably by Vercel.\n\n' +
     'module.exports = [\n' + files.map(function (f) { return "  require('./" + f + "')"; }).join(',\n') + '\n];\n';
