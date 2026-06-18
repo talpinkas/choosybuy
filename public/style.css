@@ -24,7 +24,6 @@ body {
   background: var(--bg);
   color: var(--ink);
   min-height: 100vh;
-  direction: rtl;
 }
 
 .hidden { display: none !important; }
@@ -77,9 +76,9 @@ body {
   background: none; border: none; color: var(--ink-soft); font-family: inherit;
   font-size: 15px; font-weight: 500; cursor: pointer; padding: 8px;
 }
-.back-link.corner { position: absolute; top: 18px; right: 18px; }
+.back-link.corner { position: absolute; top: 18px; inset-inline-start: 18px; }
 .undo-btn {
-  position: absolute; top: 16px; left: 18px;
+  position: absolute; top: 16px; inset-inline-end: 18px;
   background: var(--surface); border: 1.5px solid var(--line); border-radius: 30px;
   padding: 8px 16px; font-family: inherit; font-size: 14px; font-weight: 600;
   color: var(--ink-soft); cursor: pointer; box-shadow: var(--shadow);
@@ -94,7 +93,7 @@ body {
 .hero-title { font-size: 40px; font-weight: 800; line-height: 1.15; margin-bottom: 16px; text-wrap: balance; }
 .hero-sub { font-size: 17px; color: var(--ink-soft); line-height: 1.65; margin: 0 auto 28px; max-width: 540px; text-wrap: pretty; }
 .reassure { font-size: 13px; color: var(--ink-faint); margin-top: 14px; }
-.trust-row { list-style: none; display: flex; flex-direction: column; gap: 10px; width: fit-content; margin: 22px auto 0; text-align: right; }
+.trust-row { list-style: none; display: flex; flex-direction: column; gap: 10px; width: fit-content; margin: 22px auto 0; text-align: start; }
 .trust { display: flex; align-items: center; gap: 9px; font-size: 14.5px; font-weight: 500; color: var(--ink-soft); }
 .trust::before {
   content: "✓"; display: inline-flex; align-items: center; justify-content: center;
@@ -128,7 +127,7 @@ body {
 
 .setup-q-sub { font-size: 15px; font-weight: 500; color: var(--ink-faint); }
 .refine-block { margin-bottom: 22px; }
-.refine-label { font-size: 15px; font-weight: 700; color: var(--ink-soft); margin-bottom: 10px; text-align: right; }
+.refine-label { font-size: 15px; font-weight: 700; color: var(--ink-soft); margin-bottom: 10px; text-align: start; }
 
 .color-chips { display: flex; flex-wrap: wrap; gap: 9px; justify-content: center; }
 .color-chip {
@@ -225,9 +224,19 @@ body {
 .enter-left { animation: slideLeft .22s ease-out; }
 .enter-right { animation: slideRight .22s ease-out; }
 
+/* --- Language toggle --- */
+.lang-toggle {
+  position: fixed; bottom: 16px; inset-inline-start: 16px; z-index: 40;
+  background: var(--surface); color: var(--ink-soft); border: 1.5px solid var(--line);
+  border-radius: 30px; padding: 8px 14px; font-family: inherit; font-size: 13px; font-weight: 700;
+  cursor: pointer; box-shadow: var(--shadow); transition: border-color .15s, color .15s, transform .1s; min-width: 42px;
+}
+.lang-toggle:hover { border-color: var(--primary); color: var(--primary); }
+.lang-toggle:active { transform: scale(.95); }
+
 /* --- Feedback widget --- */
 .feedback-fab {
-  position: fixed; bottom: 16px; left: 16px; z-index: 40;
+  position: fixed; bottom: 16px; inset-inline-end: 16px; z-index: 40;
   background: var(--surface); color: var(--ink-soft); border: 1.5px solid var(--line);
   border-radius: 30px; padding: 9px 16px; font-family: inherit; font-size: 14px; font-weight: 600;
   cursor: pointer; box-shadow: var(--shadow); transition: border-color .15s, color .15s, transform .1s;
@@ -242,11 +251,11 @@ body {
 }
 .feedback-card {
   background: var(--surface); border-radius: 20px; padding: 30px 26px 26px; max-width: 420px; width: 100%;
-  box-shadow: var(--shadow-lift); position: relative; max-height: 90vh; overflow-y: auto; text-align: right;
+  box-shadow: var(--shadow-lift); position: relative; max-height: 90vh; overflow-y: auto; text-align: start;
   animation: fadeUp .25s ease;
 }
 .fb-close {
-  position: absolute; top: 12px; left: 14px; background: none; border: none; font-size: 26px;
+  position: absolute; top: 12px; inset-inline-end: 14px; background: none; border: none; font-size: 26px;
   color: var(--ink-faint); cursor: pointer; line-height: 1; padding: 4px;
 }
 .fb-close:hover { color: var(--ink); }
@@ -289,5 +298,6 @@ body {
   .or-wrap { justify-content: center; }
   .how { flex-direction: column; align-items: center; }
   .hero-title { font-size: 31px; }
-  .feedback-fab { bottom: 12px; left: 12px; padding: 8px 14px; font-size: 13px; }
+  .feedback-fab { bottom: 12px; inset-inline-end: 12px; padding: 8px 14px; font-size: 13px; }
+  .lang-toggle { bottom: 12px; inset-inline-start: 12px; }
 }

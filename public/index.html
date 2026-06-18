@@ -12,67 +12,69 @@
 </head>
 <body>
 
+  <button id="lang-toggle" class="lang-toggle" aria-label="Switch language / שינוי שפה">EN</button>
+
   <!-- ===== Welcome ===== -->
   <section id="welcome" class="screen">
     <div class="welcome-inner">
       <a href="/" class="logo" aria-label="CHOOSY — דף הבית">CHO<span class="o-ring">O</span>SY</a>
-      <h1 class="hero-title">לא לחפש, <span class="accent">למצוא</span></h1>
-      <p class="hero-sub">יש לנו כבר מספיק החלטות בחיים. אולי בגלל זה בכל פעם שמתחילים לקנות בגדים ברשת, הראש מתחיל להסתובב מרוב אפשרויות. במקום להשוות וללכת לאיבוד בין עשרות פריטים — נראה לכם <span class="accent">שניים</span> בכל פעם, אתם תבחרו את מה שתאהבו, עד שנשאר מוצר אחד מנצח. קל, מהיר, וכיף.</p>
-      <button class="btn-primary big" id="start-btn">בואו נתחיל</button>
+      <h1 class="hero-title" data-i18n-html="hero_title">לא לחפש, <span class="accent">למצוא</span></h1>
+      <p class="hero-sub" data-i18n-html="hero_sub">יש לנו כבר מספיק החלטות בחיים. אולי בגלל זה בכל פעם שמתחילים לקנות בגדים ברשת, הראש מתחיל להסתובב מרוב אפשרויות. במקום להשוות וללכת לאיבוד בין עשרות פריטים — נראה לכם <span class="accent">שניים</span> בכל פעם, אתם תבחרו את מה שתאהבו, עד שנשאר מוצר אחד מנצח. קל, מהיר, וכיף.</p>
+      <button class="btn-primary big" id="start-btn" data-i18n="start">בואו נתחיל</button>
       <ul class="trust-row">
-        <li class="trust">חינם לגמרי</li>
-        <li class="trust">בלי הרשמה, בלי פרטים אישיים</li>
-        <li class="trust">בלי התחייבות — קונים ישירות בחנות שאתם מכירים</li>
-        <li class="trust">אנונימי · לא מוכרים את המידע שלכם</li>
+        <li class="trust" data-i18n="trust_free">חינם לגמרי</li>
+        <li class="trust" data-i18n="trust_nosignup">בלי הרשמה, בלי פרטים אישיים</li>
+        <li class="trust" data-i18n="trust_nocommit">בלי התחייבות — קונים ישירות בחנות שאתם מכירים</li>
+        <li class="trust" data-i18n="trust_anon">אנונימי · לא מוכרים את המידע שלכם</li>
       </ul>
-      <p class="privacy-note">המידע נשמר אנונימי ומשמש רק כדי לשפר את החוויה —<br>בלי שם, בלי מייל, בלי מכירה לאף אחד.</p>
+      <p class="privacy-note" data-i18n-html="privacy_note">המידע נשמר אנונימי ומשמש רק כדי לשפר את החוויה —<br>בלי שם, בלי מייל, בלי מכירה לאף אחד.</p>
 
       <div class="how">
-        <div class="how-step"><span class="how-num">1</span><p>בוחרים למי ומה קונים</p></div>
-        <div class="how-step"><span class="how-num">2</span><p>בוחרים בין שני פריטים בכל פעם</p></div>
-        <div class="how-step"><span class="how-num">3</span><p>בוחרים את מה שאוהבים — עד המנצח</p></div>
+        <div class="how-step"><span class="how-num">1</span><p data-i18n="how_1">בוחרים למי ומה קונים</p></div>
+        <div class="how-step"><span class="how-num">2</span><p data-i18n="how_2">בוחרים בין שני פריטים בכל פעם</p></div>
+        <div class="how-step"><span class="how-num">3</span><p data-i18n="how_3">בוחרים את מה שאוהבים — עד המנצח</p></div>
       </div>
     </div>
   </section>
 
   <!-- ===== Setup (3 clicks) ===== -->
   <section id="setup" class="screen hidden">
-    <button class="back-link" data-back="welcome">→ חזרה</button>
+    <button class="back-link" data-back="welcome" data-i18n="back">→ חזרה</button>
 
     <div class="setup-step" id="step-who">
-      <h2 class="setup-q">למי אנחנו קונים?</h2>
+      <h2 class="setup-q" data-i18n="q_who">למי אנחנו קונים?</h2>
       <div class="choice-grid">
-        <button class="choice" data-gender="boy" data-age="0-2"><span class="choice-emoji">👶</span>בן · 0-2</button>
-        <button class="choice" data-gender="girl" data-age="0-2"><span class="choice-emoji">👶</span>בת · 0-2</button>
-        <button class="choice" data-gender="boy" data-age="2-8"><span class="choice-emoji">🧒</span>בן · 2-8</button>
-        <button class="choice" data-gender="girl" data-age="2-8"><span class="choice-emoji">🧒</span>בת · 2-8</button>
+        <button class="choice" data-gender="boy" data-age="0-2"><span class="choice-emoji">👶</span><span data-i18n="choice_boy_02">בן · 0-2</span></button>
+        <button class="choice" data-gender="girl" data-age="0-2"><span class="choice-emoji">👶</span><span data-i18n="choice_girl_02">בת · 0-2</span></button>
+        <button class="choice" data-gender="boy" data-age="2-8"><span class="choice-emoji">🧒</span><span data-i18n="choice_boy_28">בן · 2-8</span></button>
+        <button class="choice" data-gender="girl" data-age="2-8"><span class="choice-emoji">🧒</span><span data-i18n="choice_girl_28">בת · 2-8</span></button>
       </div>
     </div>
 
     <div class="setup-step hidden" id="step-what">
-      <h2 class="setup-q">מה מחפשים?</h2>
+      <h2 class="setup-q" data-i18n="q_what">מה מחפשים?</h2>
       <div class="choice-grid" id="category-grid"></div>
     </div>
 
     <div class="setup-step hidden" id="step-refine">
-      <h2 class="setup-q">עוד משהו שיעזור? <span class="setup-q-sub">(אפשר לדלג)</span></h2>
+      <h2 class="setup-q" data-i18n-html="q_refine">עוד משהו שיעזור? <span class="setup-q-sub">(אפשר לדלג)</span></h2>
 
       <div class="refine-block">
-        <p class="refine-label">צבעים מועדפים</p>
+        <p class="refine-label" data-i18n="label_colors">צבעים מועדפים</p>
         <div class="color-chips" id="color-chips"></div>
       </div>
 
       <div class="refine-block">
-        <p class="refine-label">תקציב</p>
+        <p class="refine-label" data-i18n="label_budget">תקציב</p>
         <div class="budget-box">
           <input type="range" id="budget-slider" min="20" max="300" step="10" value="300">
-          <p class="budget-label">עד <span id="budget-val">300</span> ₪</p>
+          <p class="budget-label"><span data-i18n="budget_upto">עד</span> <span id="budget-val">300</span> ₪</p>
         </div>
       </div>
 
       <div class="budget-actions">
-        <button class="btn-primary" id="play-btn">מתחילים לבחור!</button>
-        <button class="btn-ghost" id="skip-refine">בלי סינון — הציגו הכל</button>
+        <button class="btn-primary" id="play-btn" data-i18n="play">מתחילים לבחור!</button>
+        <button class="btn-ghost" id="skip-refine" data-i18n="skip">בלי סינון — הציגו הכל</button>
       </div>
     </div>
   </section>
@@ -82,7 +84,7 @@
     <div class="loading-inner">
       <a href="/" class="logo" aria-label="CHOOSY — דף הבית">CHO<span class="o-ring">O</span>SY</a>
       <div class="spinner"></div>
-      <p id="loading-text">אוספים בשבילכם את הפריטים הכי חמודים...</p>
+      <p id="loading-text" data-i18n="loading_default">אוספים בשבילכם את הפריטים הכי חמודים...</p>
     </div>
   </section>
 
@@ -91,53 +93,53 @@
     <div id="game-screen">
       <div class="game-header">
         <a href="/" class="game-logo" aria-label="CHOOSY — דף הבית">CHO<span class="o-ring">O</span>SY</a>
-        <p class="game-hint">איזה מהם אתם אוהבים יותר?</p>
+        <p class="game-hint" data-i18n="game_hint">איזה מהם אתם אוהבים יותר?</p>
       </div>
       <div class="arena">
         <div class="card" id="card-left">
           <div class="streak-badge" id="streak-left"></div>
           <img id="img-left" src="" alt="">
           <div class="card-info"><h2 id="name-left"></h2><p class="price" id="price-left"></p></div>
-          <button class="choose-btn">בוחרים את זה</button>
+          <button class="choose-btn" data-i18n="choose">בוחרים את זה</button>
         </div>
-        <div class="or-wrap"><span class="or-text">או</span></div>
+        <div class="or-wrap"><span class="or-text" data-i18n="or">או</span></div>
         <div class="card" id="card-right">
           <div class="streak-badge" id="streak-right"></div>
           <img id="img-right" src="" alt="">
           <div class="card-info"><h2 id="name-right"></h2><p class="price" id="price-right"></p></div>
-          <button class="choose-btn">בוחרים את זה</button>
+          <button class="choose-btn" data-i18n="choose">בוחרים את זה</button>
         </div>
       </div>
       <div class="progress-wrap"><div class="progress-track"><div class="progress-fill" id="progress-fill"></div></div></div>
     </div>
 
     <div id="winner-screen" class="hidden">
-      <p class="winner-label">מצאתם! זאת הבחירה שלכם</p>
+      <p class="winner-label" data-i18n="winner_label">מצאתם! זאת הבחירה שלכם</p>
       <img id="winner-img" src="" alt="">
       <h2 id="winner-name"></h2>
       <p class="winner-price" id="winner-price"></p>
       <div class="winner-actions">
-        <a id="buy-btn" class="btn-primary" href="#" target="_blank" rel="noopener">לקנייה ב-<span id="buy-brand">חנות</span></a>
-        <button id="keep-btn" class="btn-secondary">להמשיך לבחור</button>
-        <button id="restart-btn" class="btn-ghost">להתחיל מחדש</button>
+        <a id="buy-btn" class="btn-primary" href="#" target="_blank" rel="noopener"><span data-i18n="buy_prefix">לקנייה ב-</span><span id="buy-brand">חנות</span></a>
+        <button id="keep-btn" class="btn-secondary" data-i18n="keep">להמשיך לבחור</button>
+        <button id="restart-btn" class="btn-ghost" data-i18n="restart">להתחיל מחדש</button>
       </div>
-      <button id="winner-feedback" class="btn-ghost winner-fb">איך הייתה החוויה? ספרו לנו »</button>
+      <button id="winner-feedback" class="btn-ghost winner-fb" data-i18n="winner_fb">איך הייתה החוויה? ספרו לנו »</button>
     </div>
 
-    <button id="exit-btn" class="back-link corner">→ יציאה</button>
-    <button id="undo-btn" class="undo-btn hidden">↶ ביטול הבחירה האחרונה</button>
+    <button id="exit-btn" class="back-link corner" data-i18n="exit">→ יציאה</button>
+    <button id="undo-btn" class="undo-btn hidden" data-i18n="undo">↶ ביטול הבחירה האחרונה</button>
   </section>
 
   <!-- Feedback -->
-  <button id="feedback-fab" class="feedback-fab" aria-label="שליחת פידבק">פידבק</button>
+  <button id="feedback-fab" class="feedback-fab" aria-label="שליחת פידבק" data-i18n="fab">פידבק</button>
   <div id="feedback-modal" class="feedback-overlay hidden">
     <div class="feedback-card" role="dialog" aria-modal="true" aria-labelledby="fb-title">
       <button id="fb-close" class="fb-close" aria-label="סגירה">&times;</button>
       <div id="fb-form">
-        <h2 id="fb-title" class="fb-title">איך היה?</h2>
-        <p class="fb-intro">נשמח לכל פידבק כדי להשתפר — הכל אנונימי.</p>
+        <h2 id="fb-title" class="fb-title" data-i18n="fb_title">איך היה?</h2>
+        <p class="fb-intro" data-i18n="fb_intro">נשמח לכל פידבק כדי להשתפר — הכל אנונימי.</p>
         <div class="fb-q">
-          <p class="fb-label">כמה היה קל לבחור?</p>
+          <p class="fb-label" data-i18n="fb_q_ease">כמה היה קל לבחור?</p>
           <div class="fb-scale" id="fb-ease">
             <button data-val="1">1</button>
             <button data-val="2">2</button>
@@ -145,30 +147,31 @@
             <button data-val="4">4</button>
             <button data-val="5">5</button>
           </div>
-          <div class="fb-scale-ends"><span>קשה</span><span>קל מאוד</span></div>
+          <div class="fb-scale-ends"><span data-i18n="fb_end_hard">קשה</span><span data-i18n="fb_end_easy">קל מאוד</span></div>
         </div>
         <div class="fb-q">
-          <p class="fb-label">הייתם קונים ככה?</p>
+          <p class="fb-label" data-i18n="fb_q_buy">הייתם קונים ככה?</p>
           <div class="fb-choices" id="fb-buy">
-            <button data-val="yes">כן, בדיוק</button>
-            <button data-val="maybe">אולי</button>
-            <button data-val="no">לא</button>
+            <button data-val="yes" data-i18n="fb_buy_yes">כן, בדיוק</button>
+            <button data-val="maybe" data-i18n="fb_buy_maybe">אולי</button>
+            <button data-val="no" data-i18n="fb_buy_no">לא</button>
           </div>
         </div>
         <div class="fb-q">
-          <p class="fb-label">מה היית משפר? <span class="fb-opt">(רשות)</span></p>
-          <textarea id="fb-comment" rows="3" placeholder="כתבו לנו..."></textarea>
+          <p class="fb-label" data-i18n-html="fb_q_improve">מה היית משפר? <span class="fb-opt">(רשות)</span></p>
+          <textarea id="fb-comment" rows="3" placeholder="כתבו לנו..." data-i18n-ph="fb_ph"></textarea>
         </div>
-        <button id="fb-submit" class="btn-primary">שליחה</button>
+        <button id="fb-submit" class="btn-primary" data-i18n="fb_submit">שליחה</button>
       </div>
       <div id="fb-thanks" class="fb-thanks hidden">
         <div class="fb-thanks-mark">✓</div>
-        <p class="fb-thanks-title">תודה!</p>
-        <p class="fb-thanks-sub">הפידבק שלך עוזר לנו להשתפר.</p>
+        <p class="fb-thanks-title" data-i18n="fb_thanks_title">תודה!</p>
+        <p class="fb-thanks-sub" data-i18n="fb_thanks_sub">הפידבק שלך עוזר לנו להשתפר.</p>
       </div>
     </div>
   </div>
 
+  <script src="i18n.js"></script>
   <script src="game.js"></script>
   <script src="app.js"></script>
   <script src="feedback.js"></script>
