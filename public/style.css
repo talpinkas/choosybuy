@@ -5,8 +5,8 @@
   --ink: #2e2a26;
   --ink-soft: #7a736b;
   --ink-faint: #b3aaa0;
-  --primary: #ff7a59;
-  --primary-dark: #f2643f;
+  --primary: #ce551f;
+  --primary-dark: #a23a12;
   --teal: #5bbfb5;
   --line: #efe7dd;
   --shadow: 0 6px 24px rgba(70,50,30,0.08);
@@ -37,11 +37,16 @@ body {
 }
 
 .logo, .game-logo {
-  font-weight: 800;
+  font-family: 'Righteous', system-ui, sans-serif;
   color: var(--primary);
-  letter-spacing: -0.5px;
+  letter-spacing: 1.5px;
+  text-decoration: none;
+  display: inline-block;
+  transition: opacity .15s;
 }
-.logo { font-size: 34px; margin-bottom: 16px; }
+.logo:hover, .game-logo:hover { opacity: .82; }
+.logo { font-size: 38px; margin-bottom: 16px; }
+.o-ring { color: transparent; -webkit-text-stroke: 2.5px var(--primary); }
 
 /* --- Buttons --- */
 .btn-primary, .btn-secondary, .btn-ghost {
