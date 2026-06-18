@@ -27,6 +27,7 @@ public/      Static frontend (vanilla JS, no framework, RTL Hebrew)
   index.html     screens: welcome / setup / loading / game (+ feedback modal & FAB)
   app.js         flow: who → what → refine(color+budget) → game; Mixpanel tracking
   game.js        ChoosingGame — tournament logic (Fisher-Yates, 5-win champion, undo)
+  i18n.js        Hebrew/English toggle (data-i18n dict; product data stays Hebrew)
   feedback.js    anonymous feedback widget → Mixpanel (ease / would-buy / comment)
   favicon.svg    burnt-orange "oo" brand mark
   style.css
@@ -306,6 +307,13 @@ Vintage-warm identity (RTL Hebrew). Tokens live in `public/style.css` `:root`.
   winner-screen prompt: ease (1–5), would-buy (yes/maybe/no), optional free-text →
   anonymous `feedback_submitted` Mixpanel event. The two closed questions ARE the
   product KPIs (decision-ease + purchase intent). Esc / × / overlay close; thanks state.
+- **i18n** (`public/i18n.js`) — Hebrew (default) / English toggle. Static text uses
+  `data-i18n` / `-html` / `-ph`; dynamic JS strings (categories, color-family chip
+  names, errors, brand fallback) call `t(key)`. Persists in localStorage and flips
+  `<html dir>` rtl↔ltr — so use logical CSS (`inset-inline-*`, `text-align: start`),
+  NOT left/right, and never re-add `body{direction:rtl}` (it overrides `<html dir>`
+  and freezes the page RTL). Product names/colors are NOT translated (live Hebrew
+  catalog data from Israeli stores).
 
 ## Known issues / gotchas
 
