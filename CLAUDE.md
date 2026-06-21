@@ -227,8 +227,10 @@ node tools/build-shilav.js     # full 14-segment build, ~10s
   no-match items like hats/gloves/socks are skipped).
 - **age** ← Shopify Size option values (`NB`/`0-3m`…`18-24m` → 0-2; `2Y`…`6Y` → 2-8;
   spanning both → both buckets) — structured, no title parsing.
-- **gender** ← בנים/בנות in title; dresses → girl; otherwise unisex → BOTH genders
-  (most baby clothing). NOTE: "לבן" means *white*, not "for a boy" — don't use it.
+- **gender** ← בנים/בנות in title; dresses **and skirts (חצאית)** → girl; otherwise
+  unisex → BOTH genders (most baby clothing). NOTE: "לבן" means *white*, not "for a
+  boy" — don't use it. (The חצאית→girl rule was added 2026-06-21 after skirts were
+  found showing to boys; a skirt is never shown to a boy.)
 - price/sale ← `variant.price` / `compare_at_price`; image ← `images[0].src`;
   url ← `/products/<handle>` (Hebrew handle, URL-encoded; verified to resolve).
 - Writes `catalogs/shilav-<gender>-<age>-<category>.json` only for app-valid segments.
@@ -283,13 +285,27 @@ mismatches, and gender dual-listing (same product in boy AND girl) per retailer.
   NEXT ~78%, Shilav ~37%, **Fox 0%** (no color option, titles lack color → its
   items become family `null`/`אחר`, so they just never match a specific-color
   chip — never a *wrong* color). `get-pool.js` `colorFamily()` maps the raw label
-  (Hebrew **and** English/codes + print descriptions) to a filter family; a
-  concrete base color wins over a print word. Empty color → `null` → treated as
-  `אחר` by both the chips and the filter (`app.js` uses `p.colorFamily || 'אחר'`).
+  (Hebrew **and** English/codes + print descriptions) to a filter family. It picks
+  the base-color family whose keyword appears **left-most** in the label (the
+  dominant color leads, e.g. "בז'/חום בעיטור דובדבן" → חום, not אדום), so a
+  print/accent word can no longer override the base color; `מצויר` (print) and
+  denim are fallbacks only when no real base color is present (so "ג'ינס שחור"
+  stays שחור). Empty color → `null` → treated as `אחר` by both the chips and the
+  filter (`app.js` uses `p.colorFamily || 'אחר'`). **Don't revert this to the old
+  fixed-priority order** — that let a cherry/print word turn a beige item red
+  (the "red shirt" filter bug, fixed 2026-06-21).
 - **Gender** — collection-based builders (TX, NEXT path, Fox, Keds, Glory) are
   clean (~0–8% dual). **Shilav has no gender source** (no gender collections/tags),
   so its items default to unisex → BOTH; defensible for a baby-basics store (most
-  items genuinely unisex), and the only honest option without a signal.
+  items genuinely unisex), and the only honest option without a signal — except
+  skirts (חצאית), which are forced to girl (see Shilav section).
+- **Audit-tool noise** — `audit-catalogs.js`'s category check is a rough
+  title-keyword heuristic, so most "mismatches" are false positives: TX
+  "dresses←bottoms" are skirts (correctly in `dresses-skirts`) and NEXT
+  "swim←bottoms/tops" are trunks/rash-guards. `KW.swim` now also matches
+  `שחיי|גלישה|וסט פריחה` and `KW.dresses` matches `חצאית`, which cut the reported
+  mismatches from 467 → ~112 (the remainder are mostly TX's own taxonomy: ~13
+  overalls/shirts filed under `bottoms`, a known, low-impact issue, not yet fixed).
 
 ## Design & UX (the face-lift)
 

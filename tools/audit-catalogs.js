@@ -22,7 +22,10 @@ Object.keys(bySite).forEach(function (s) { var b = bySite[s]; console.log('  ' +
 
 // ---- 2. CATEGORY mismatch: title strongly indicates a different category ----
 var KW = {
-  swim: /בגד[יי]?\s*ים/, dresses: /שמל|טוניק/,
+  // swim also covers trunks (מכנסי שחייה) & rash guards (חולצת גלישה / וסט פריחה);
+  // dresses also covers skirts (חצאית) - both live in swim/dresses catalogs and
+  // were the main source of false-positive "mismatch" noise.
+  swim: /בגד[יי]?\s*ים|שחיי|גלישה|וסט\s*פריחה/, dresses: /שמל|טוניק|חצאית/,
   bodysuits: /בגד[יי]?\s*גוף|אוברול|בייביגרו|רומפר|סרבל/,
   bottoms: /מכנס|חצאית|טייץ|ג'ינס|שורט|ברמודה|לגינ/,
   tops: /חולצ|גופי|פוטר|סווטשירט|מקטורן|סריג|\bטופ\b|טישרט/

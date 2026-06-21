@@ -13,7 +13,8 @@
 //   products that match none — hats, gloves, socks — are skipped).
 // - age       ← Shopify Size option values (NB / 0-3m..18-24m → 0-2; 2Y..6Y → 2-8;
 //   spanning both → both buckets).
-// - gender    ← בנים/בנות in the title; dresses → girl; otherwise unisex → BOTH.
+// - gender    ← בנים/בנות in the title; dresses & skirts (חצאית) → girl;
+//   otherwise unisex → BOTH.
 // - price/sale ← variant.price / compare_at_price (compare_at>price = on sale).
 // - image ← images[0].src; url ← /products/<handle>.
 // Writes catalogs/shilav-<gender>-<age>-<category>.json only for app-valid
@@ -48,11 +49,12 @@ function categoryOf(title) {
   if (/חולצ|טישרט|טי-?שירט|גופ[יי]|סווטשירט|סווט שירט|סריג|טופ|חזיי|מקטורן/.test(t)) return 'tops';
   return null;
 }
-// gender(s): explicit בנים/בנות wins; dresses are girls; else unisex -> both
+// gender(s): explicit בנים/בנות wins; dresses & skirts are girls; else unisex -> both
 function gendersOf(title, category) {
   if (/בנות|לבנות/.test(title)) return ['girl'];
   if (/בנים|לבנים/.test(title)) return ['boy'];
   if (category === 'dresses') return ['girl'];
+  if (/חצאית/.test(title)) return ['girl']; // a skirt is a girls' item, never show to boys
   return ['boy', 'girl'];
 }
 // Shopify size values -> age buckets
