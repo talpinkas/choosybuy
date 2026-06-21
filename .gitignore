@@ -13,3 +13,6 @@ Thumbs.db
 
 # Push credentials (PAT) — local only, never commit
 .secrets/
+
+# Pilot participant data (names) — never commit to the public repo
+private/
