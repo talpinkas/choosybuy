@@ -33,7 +33,10 @@ bundled list; always explain the *implication* of each option; Hebrew is fine, b
   pilot KPIs** — decision-ease (1–5) and purchase-intent (would-buy yes/maybe/no). (See the Mixpanel
   transport gotcha in `CLAUDE.md` — never "tidy" the tracking call back to JSON.)
 - **Done recently:** i18n (he/en toggle), vintage design face-lift, branded share preview (Open Graph),
-  mobile one-screen fit.
+  mobile one-screen fit. **W3 catalog classification fixed & deployed (2026-06-21):** the "red shirt"
+  colour bug (print/accent word overriding the base colour) and a gender bug (Shilav skirts shown to
+  boys) are fixed and verified live; see CLAUDE.md "Classification quality". An explainer-video brief
+  for the CMO is in `docs/W1-explainer-video-brief.md`.
 - **Monetization groundwork:** affiliate research was already started (Admitad investigated; catalogs
   carry an `affiliate_ready: false` flag). Not yet wired.
 - **Phase:** **soft launch** to a small, focused parent audience (WhatsApp groups + a friends/parents
@@ -76,8 +79,10 @@ Push them in parallel where independent; only serialize true dependencies.
   shippable in Israel. Bad filtering during the pilot makes the product look broken.
 - **Done when:** the classification audit is clean (or known-issues are documented), and there's a
   repeatable refresh routine.
-- **Next:** run a full classification audit (the user already hit a real bug — a "red 2–8 shirt" filter
-  returning a different color/gender). Parallelize: one pass per retailer.
+- **Status (2026-06-21):** the "red 2–8 shirt" bug is FIXED (colour now picks the left-most/leading
+  family in `get-pool.js`; Shilav skirts forced to girl). Audit noise cut 467→~112 false positives.
+  Remaining, low-impact: ~13 TX items (overalls/shirts) filed under `bottoms` by TX's own taxonomy.
+- **Next:** decide whether to fix the ~13 TX category items; otherwise W3 is in good shape.
 - **Agent:** `catalog-engineer` · **Tools/tooling:** `tools/audit-catalogs.js`, the per-retailer builders.
 
 ### W4 — Monetization (affiliates)
@@ -152,6 +157,17 @@ Bash(git -C:*)            mcp__plugin_playwright_playwright__*
 ```
 Keep the `deny` list (`.env`, `*.pem`, `secrets*`) intact. The fastest path: run the
 `/fewer-permission-prompts` skill, which proposes an allow-list from the transcripts.
+
+**Git push from the Cowork sandbox (Linux):** the Windows machine pushes via Git Credential Manager +
+OS keyring — NOT portable to the sandbox, and the GitHub MCP connector can't drive its OAuth here
+(`does not support dynamic client registration`). The working path is a **fine-grained PAT** (repo:
+`talpinkas/choosybuy`, Contents: read/write) wired to a git credential `store` helper:
+`git config --global credential.helper store` then write
+`https://talpinkas:<PAT>@github.com` to `~/.git-credentials` (chmod 600). The sandbox is **ephemeral**,
+so this resets each session — re-add the PAT (or have the user paste it) to push autonomously again.
+Note: writing files via the editor tool can desync the shell mount for that file; if a committed file
+looks truncated in `git diff`, rebuild it from `git show HEAD:<file>` and re-stage, or write via the
+shell directly.
 
 ---
 
