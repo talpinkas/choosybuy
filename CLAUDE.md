@@ -359,7 +359,10 @@ Vintage-warm identity (RTL Hebrew). Tokens live in `public/style.css` `:root`.
 - Verify, don't assume — check real state before acting; don't claim "works" until
   observed working.
 - After any change: `node --check` changed files, `node -e "require('./catalogs')"`
-  to validate the registry, commit with a clear message, push.
+  to validate the registry, commit with a clear message, push. **Pushing is autonomous**
+  (don't ask). If `git push` isn't authenticated in a fresh sandbox, run
+  `bash tools/load-push-token.sh` first — it loads the PAT from `.secrets/gh-token`
+  (gitignored, persists on disk).
 - Update this CLAUDE.md after significant changes.
 
 ## Autonomy (how to operate here)
@@ -377,3 +380,11 @@ user first** only before:
 Permissions are configured in `.claude/settings.json` (committed: auto-allow
 node/git, deny reading secrets) so routine commands don't prompt. That's an
 optimization — this judgment rule is the real guardrail, not the settings.
+
+**Git push is pre-approved (2026-06-21, the user's explicit standing instruction):**
+pushing to `main` and the resulting Vercel deploy are routine — do them without asking.
+Auth in the ephemeral Cowork sandbox: run `bash tools/load-push-token.sh`, which loads
+the fine-grained PAT from the gitignored `.secrets/gh-token` (repo: `talpinkas/choosybuy`,
+Contents: read/write). Only if that file is missing (sandbox wiped AND not yet reloaded,
+or the token was rotated/revoked) ask the user to re-add the PAT — that is the one case
+where pushing needs them.
