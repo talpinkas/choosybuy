@@ -3,6 +3,11 @@
 Keep this file current. Update it after any significant change — it is the
 first thing to read in a new session.
 
+> **Pilot phase — read `HANDOVER.md` alongside this file.** CLAUDE.md is the
+> technical source of truth (architecture, catalogs, data flow). `HANDOVER.md`
+> holds the current phase, the five workstreams, the subagent roster
+> (`.claude/agents/`), and the agentic/parallel/lean operating model.
+
 ## What this is
 
 **ChoosyBuy** (choosybuy.com) is a web app. Repo: `talpinkas/choosybuy`, branch `main`.
