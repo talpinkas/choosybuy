@@ -324,6 +324,8 @@ Vintage-warm identity (RTL Hebrew). Tokens live in `public/style.css` `:root`.
   checklist (free / no signup / no commitment, buy at the store you know /
   anonymous, we don't sell your data) + a truthful privacy note (anonymous
   analytics only — see Mixpanel gotcha below).
+- **Duel screen** — product cards are fully clickable (no separate button). Each card has `role=button`, `tabindex=0`, and keyboard support (Enter/Space). A `tap_hint` line beneath `game_hint` reads "טאפ על מה שאוהבים". Each card shows the brand name in a subtle `.card-brand` element. Post-winner actions: **keep** ("המנצח ממשיך להתמודד") keeps the winner competing against remaining items in the same pool; **restart** ("ערבב הכל מחדש") reshuffles the same pool from scratch (neither goes back to setup — use the exit button for that).
+- **Bug fix (2026-06-24)** — `ChoosingGame.choose()` now carries a `_choosing` boolean guard that blocks re-entrant calls. A rapid double-tap on mobile could call `choose()` twice before the first completed, skipping a product. Guard releases after 80ms; an additional check rejects `choose()` calls while the winner screen is visible.
 - **Feedback** (`public/feedback.js`) — modal opened from a persistent FAB and a
   winner-screen prompt: ease (1–5), would-buy (yes/maybe/no), optional free-text →
   anonymous `feedback_submitted` Mixpanel event. The two closed questions ARE the
