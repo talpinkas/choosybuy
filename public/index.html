@@ -22,7 +22,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;700;800&family=Righteous&family=Rubik:wght@500;800&display=swap" rel="stylesheet">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="style.css?v=2">
+  <link rel="stylesheet" href="style.css?v=3">
 </head>
 <body>
 
@@ -108,20 +108,27 @@
       <div class="game-header">
         <a href="/" class="game-logo" aria-label="CHOOSY — דף הבית">CHO<span class="o-ring">O</span>SY</a>
         <p class="game-hint" data-i18n="game_hint">איזה מהם אתם אוהבים יותר?</p>
+        <p class="tap-hint" data-i18n="tap_hint">טאפ על מה שאוהבים</p>
       </div>
       <div class="arena">
-        <div class="card" id="card-left">
+        <div class="card" id="card-left" role="button" tabindex="0" aria-label="בחירת פריט שמאלי">
           <div class="streak-badge" id="streak-left"></div>
           <img id="img-left" src="" alt="">
-          <div class="card-info"><h2 id="name-left"></h2><p class="price" id="price-left"></p></div>
-          <button class="choose-btn" data-i18n="choose">בוחרים את זה</button>
+          <div class="card-info">
+            <h2 id="name-left"></h2>
+            <p class="card-brand" id="brand-left"></p>
+            <p class="price" id="price-left"></p>
+          </div>
         </div>
         <div class="or-wrap"><span class="or-text" data-i18n="or">או</span></div>
-        <div class="card" id="card-right">
+        <div class="card" id="card-right" role="button" tabindex="0" aria-label="בחירת פריט ימיני">
           <div class="streak-badge" id="streak-right"></div>
           <img id="img-right" src="" alt="">
-          <div class="card-info"><h2 id="name-right"></h2><p class="price" id="price-right"></p></div>
-          <button class="choose-btn" data-i18n="choose">בוחרים את זה</button>
+          <div class="card-info">
+            <h2 id="name-right"></h2>
+            <p class="card-brand" id="brand-right"></p>
+            <p class="price" id="price-right"></p>
+          </div>
         </div>
       </div>
       <div class="progress-wrap"><div class="progress-track"><div class="progress-fill" id="progress-fill"></div></div></div>
@@ -134,8 +141,8 @@
       <p class="winner-price" id="winner-price"></p>
       <div class="winner-actions">
         <a id="buy-btn" class="btn-primary" href="#" target="_blank" rel="noopener"><span data-i18n="buy_prefix">לקנייה ב-</span><span id="buy-brand">חנות</span></a>
-        <button id="keep-btn" class="btn-secondary" data-i18n="keep">להמשיך לבחור</button>
-        <button id="restart-btn" class="btn-ghost" data-i18n="restart">להתחיל מחדש</button>
+        <button id="keep-btn" class="btn-secondary" data-i18n="keep">המנצח ממשיך להתמודד</button>
+        <button id="restart-btn" class="btn-ghost" data-i18n="restart">ערבב הכל מחדש</button>
       </div>
       <button id="winner-feedback" class="btn-ghost winner-fb" data-i18n="winner_fb">איך הייתה החוויה? ספרו לנו »</button>
     </div>

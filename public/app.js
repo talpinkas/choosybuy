@@ -260,3 +260,11 @@ document.getElementById('undo-btn').addEventListener('click', function () {
   }
 });
 document.getElementById('exit-btn').addEventListener('click', function () { show('welcome'); });
+
+// Keyboard support for card selection (Enter or Space fires the same handler as click)
+document.getElementById('card-left').addEventListener('keydown', function (e) {
+  if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); handleChoose('left'); }
+});
+document.getElementById('card-right').addEventListener('keydown', function (e) {
+  if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); handleChoose('right'); }
+});

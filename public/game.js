@@ -10,6 +10,7 @@ function ChoosingGame(options) {
   this.rightProduct = null;
   this.currentWinner = null;
   this.streak = 0;
+  this._choosing = false; // guard against double-tap / re-entrant choose()
 }
 
 ChoosingGame.prototype.shuffle = function (arr) {
@@ -35,6 +36,7 @@ ChoosingGame.prototype.init = function () {
   this.currentWinner = null;
   this.streak = 0;
   this.history = [];
+  this._choosing = false;
   var gameScreen = this.$('#game-screen');
   var winnerScreen = this.$('#winner-screen');
   if (gameScreen) gameScreen.classList.remove('hidden');
@@ -43,6 +45,14 @@ ChoosingGame.prototype.init = function () {
 };
 
 ChoosingGame.prototype.choose = function (side) {
+  // Guard: reject if already processing a choice (double-tap on mobile) or
+  // if the winner screen is visible (card click should be inert then).
+  if (this._choosing) return null;
+  var gs = this.$('#game-screen');
+  if (gs && gs.classList.contains('hidden')) return null;
+
+  this._choosing = true;
+
   var winner = (side === 'left') ? this.leftProduct : this.rightProduct;
   var loserSide = (side === 'left') ? 'right' : 'left';
 
@@ -62,12 +72,18 @@ ChoosingGame.prototype.choose = function (side) {
 
   if (this.streak >= this.streakGoal || this.queue.length === 0) {
     this.showWinner(winner);
+    this._choosing = false;
     return null;
   }
 
   var next = this.queue.shift();
   if (side === 'left') { this.rightProduct = next; } else { this.leftProduct = next; }
   this.render();
+
+  // Release guard after a short delay so the enter-animation can't be
+  // interrupted by a rapid second tap on the same frame.
+  var self = this;
+  setTimeout(function () { self._choosing = false; }, 80);
 
   return loserSide;
 };
@@ -84,6 +100,7 @@ ChoosingGame.prototype.undo = function () {
   this.currentWinner = s.winner;
   this.streak = s.streak;
   this.queue = s.queue;
+  this._choosing = false;
   var ws = this.$('#winner-screen'), gs = this.$('#game-screen');
   if (ws) ws.classList.add('hidden');
   if (gs) gs.classList.remove('hidden');
@@ -115,16 +132,20 @@ ChoosingGame.prototype.renderStreak = function (side, product) {
 ChoosingGame.prototype.render = function () {
   var imgLeft = this.$('#img-left');
   var nameLeft = this.$('#name-left');
+  var brandLeft = this.$('#brand-left');
   var priceLeft = this.$('#price-left');
   if (imgLeft) imgLeft.src = this.leftProduct.image;
   if (nameLeft) nameLeft.textContent = this.leftProduct.name;
+  if (brandLeft) brandLeft.textContent = this.leftProduct.brand || '';
   if (priceLeft) priceLeft.innerHTML = this.priceHTML(this.leftProduct);
 
   var imgRight = this.$('#img-right');
   var nameRight = this.$('#name-right');
+  var brandRight = this.$('#brand-right');
   var priceRight = this.$('#price-right');
   if (imgRight) imgRight.src = this.rightProduct.image;
   if (nameRight) nameRight.textContent = this.rightProduct.name;
+  if (brandRight) brandRight.textContent = this.rightProduct.brand || '';
   if (priceRight) priceRight.innerHTML = this.priceHTML(this.rightProduct);
 
   this.renderStreak('left', this.leftProduct);
@@ -183,6 +204,7 @@ ChoosingGame.prototype.keepChoosing = function () {
   this.rightProduct = next;
   this.currentWinner = null;
   this.streak = 0;
+  this._choosing = false;
   var winnerScreen = this.$('#winner-screen');
   var gameScreen = this.$('#game-screen');
   if (winnerScreen) winnerScreen.classList.add('hidden');
