@@ -16,3 +16,6 @@ Thumbs.db
 
 # Pilot participant data (names) — never commit to the public repo
 private/
+
+# Raw scrape dumps (local only)
+data/
