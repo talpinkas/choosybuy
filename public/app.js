@@ -250,7 +250,9 @@ function buildVibeChips() {
 function setChipState(chip, count, selected) {
   var c = chip.querySelector('.chip-count');
   if (c) c.textContent = count;
-  chip.classList.toggle('disabled', count < POOL_FLOOR && !selected);
+  // Color/style are multi-select — never freeze them, even at low counts.
+  // The user can combine several, and a too-narrow result falls back safely at play time.
+  chip.classList.remove('disabled');
 }
 
 function updateToggle(key, sel, count) {
