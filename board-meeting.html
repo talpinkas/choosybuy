@@ -1,0 +1,453 @@
+<!doctype html>
+<html dir="rtl" lang="he">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Choosy — ישיבת הנהלה</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700;800;900&family=Heebo:wght@300;400;500;700&display=swap');
+:root{
+  --primary:#ce551f; --rust:#a23c12; --mustard:#e0a93b; --beige:#e9dcc4;
+  --cream:#fbf5ea; --surface:#fffaf1; --ink:#3a2a1a; --muted:#7a6a55; --line:#e6d9c2;
+  --good:#4a7a45; --warn:#c98a2b; --bad:#bb4d2c; --info:#3f6f8f;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%}
+body{font-family:'Heebo',sans-serif;background:#2a1d12;color:var(--ink);overflow:hidden}
+#deck{height:100vh;width:100vw;position:relative}
+.slide{position:absolute;inset:0;padding:46px 60px 70px;background:var(--cream);
+  opacity:0;visibility:hidden;transition:opacity .35s ease;overflow:auto;display:flex;flex-direction:column}
+.slide.on{opacity:1;visibility:visible}
+h1,h2,h3{font-family:'Rubik',sans-serif;line-height:1.12;text-wrap:balance}
+.kic{display:inline-block;font-family:'Rubik';font-weight:800;color:var(--primary);font-size:13px;letter-spacing:.5px;
+  border:1.5px solid var(--primary);border-radius:20px;padding:3px 14px;margin-bottom:16px}
+.title-wrap{height:100%;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center}
+.logo{font-family:'Rubik';font-weight:900;font-size:30px;color:var(--primary);letter-spacing:1px}
+.logo .o2{display:inline-block;width:.62em;height:.62em;border:.16em solid var(--primary);border-radius:50%;vertical-align:baseline}
+h1.big{font-size:62px;font-weight:900;color:var(--ink);margin:8px 0}
+h1.big em{color:var(--primary);font-style:normal}
+.sub{font-size:20px;color:var(--muted);max-width:760px;margin-top:6px}
+h2.head{font-size:34px;font-weight:800;color:var(--ink);margin-bottom:4px}
+.head-sub{font-size:16px;color:var(--muted);margin-bottom:22px}
+.meta-row{margin-top:30px;display:flex;gap:30px;color:var(--muted);font-size:15px}
+.meta-row b{color:var(--ink)}
+/* timeline */
+.tl{display:flex;align-items:stretch;gap:0;margin-top:18px;flex-wrap:wrap}
+.tl .step{flex:1;min-width:130px;position:relative;padding:0 6px}
+.tl .dot{width:16px;height:16px;border-radius:50%;background:var(--primary);margin:0 auto 10px;position:relative}
+.tl .step:not(:last-child) .dot::after{content:'';position:absolute;top:50%;right:-50%;width:100%;height:3px;background:var(--beige);transform:translateY(-50%);z-index:0}
+.tl .dot{z-index:1}
+.tl .lab{text-align:center;font-family:'Rubik';font-weight:700;font-size:14px;color:var(--ink)}
+.tl .desc{text-align:center;font-size:11.5px;color:var(--muted);margin-top:3px}
+.tl .step.now .dot{background:var(--mustard);box-shadow:0 0 0 5px rgba(224,169,59,.25)}
+/* stat cards */
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:8px}
+.stat{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:18px}
+.stat .n{font-family:'Rubik';font-weight:900;font-size:40px;color:var(--primary);line-height:1}
+.stat .l{font-size:13.5px;color:var(--muted);margin-top:6px}
+.stat.alt .n{color:var(--rust)}
+.twocol{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:14px}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:18px 20px}
+.panel h3{font-size:17px;font-weight:800;color:var(--ink);margin-bottom:10px;display:flex;align-items:center;gap:8px}
+.bar{display:flex;align-items:center;gap:10px;margin:7px 0;font-size:13px}
+.bar .name{width:120px;color:var(--ink)}
+.bar .track{flex:1;height:12px;background:var(--beige);border-radius:6px;overflow:hidden}
+.bar .fill{height:100%;background:var(--primary);border-radius:6px}
+.bar .v{width:42px;text-align:left;color:var(--muted);font-size:12px}
+/* role grid */
+.role-grid{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:auto auto;gap:14px;margin-top:6px;flex:1}
+.q{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:15px 18px}
+.q h3{font-size:14px;font-weight:800;letter-spacing:.3px;margin-bottom:9px;text-transform:uppercase}
+.q.was h3{color:var(--info)} .q.learn h3{color:var(--mustard)}
+.q.rec h3{color:var(--good)} .q.dec h3{color:var(--bad)}
+.q ul{list-style:none}
+.q li{font-size:13.5px;line-height:1.5;color:var(--ink);padding-right:16px;position:relative;margin-bottom:6px}
+.q li::before{content:'';position:absolute;right:0;top:8px;width:6px;height:6px;border-radius:50%;background:var(--primary)}
+.q.dec li::before{background:var(--bad)}
+.role-head{display:flex;align-items:center;gap:14px;margin-bottom:14px}
+.role-badge{width:52px;height:52px;border-radius:13px;background:var(--primary);color:#fff;display:flex;align-items:center;justify-content:center;
+  font-family:'Rubik';font-weight:800;font-size:13px;text-align:center;line-height:1.05}
+.role-head .who{font-family:'Rubik';font-weight:800;font-size:22px;color:var(--ink)}
+.role-head .what{font-size:14px;color:var(--muted)}
+/* readiness */
+.ready{display:flex;flex-direction:column;gap:11px;margin-top:6px}
+.rrow{display:grid;grid-template-columns:200px 1fr 120px;align-items:center;gap:14px;background:var(--surface);
+  border:1px solid var(--line);border-radius:12px;padding:12px 16px}
+.rrow .area{font-family:'Rubik';font-weight:700;font-size:15px}
+.rrow .track{height:14px;background:var(--beige);border-radius:7px;overflow:hidden}
+.rrow .fill{height:100%;border-radius:7px}
+.rrow .st{font-size:12.5px;font-weight:700;text-align:left}
+.pill{font-size:11px;font-weight:700;padding:2px 9px;border-radius:10px;display:inline-block}
+.p-good{background:#e3efe0;color:var(--good)} .p-warn{background:#f6ecd6;color:var(--warn)} .p-bad{background:#f6ddd2;color:var(--bad)}
+/* decisions */
+.decs{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:6px;flex:1}
+.dec-card{background:var(--surface);border:1px solid var(--line);border-right:5px solid var(--primary);border-radius:12px;padding:14px 18px}
+.dec-card .num{font-family:'Rubik';font-weight:900;color:var(--primary);font-size:15px}
+.dec-card .qz{font-weight:700;font-size:15.5px;color:var(--ink);margin:3px 0 8px}
+.dec-card .opts{font-size:12.5px;color:var(--muted);line-height:1.5}
+.dec-card .opts b{color:var(--ink)}
+.rec-tag{display:inline-block;background:#e3efe0;color:var(--good);font-size:11px;font-weight:700;padding:1px 8px;border-radius:8px;margin-top:7px}
+/* plan */
+.plan{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:8px;flex:1}
+.col{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px 18px}
+.col h3{font-size:17px;font-weight:800;margin-bottom:4px}
+.col .when{font-size:12px;color:var(--muted);margin-bottom:12px}
+.col.now{border-top:4px solid var(--primary)} .col.next{border-top:4px solid var(--mustard)} .col.later{border-top:4px solid var(--info)}
+.task{font-size:13px;line-height:1.45;padding:8px 0;border-bottom:1px dashed var(--line);display:flex;gap:8px}
+.task:last-child{border:0}
+.task .o{font-size:10.5px;font-weight:700;color:#fff;background:var(--muted);border-radius:6px;padding:1px 6px;white-space:nowrap;height:fit-content}
+.task .o.eng{background:var(--info)} .task .o.prod{background:var(--primary)} .task .o.data{background:var(--rust)} .task .o.gtm{background:var(--mustard)} .task .o.ops{background:#6a5acd}
+/* nav */
+#nav{position:fixed;bottom:0;right:0;left:0;height:52px;background:rgba(42,29,18,.96);display:flex;align-items:center;
+  justify-content:space-between;padding:0 22px;z-index:50}
+#dots{display:flex;gap:7px}
+#dots .d{width:9px;height:9px;border-radius:50%;background:#6b5841;cursor:pointer;transition:.2s}
+#dots .d.on{background:var(--mustard);transform:scale(1.3)}
+.nctl{display:flex;align-items:center;gap:14px;color:#e9dcc4;font-size:13px;font-family:'Rubik'}
+.nctl button{background:var(--primary);color:#fff;border:0;border-radius:8px;width:34px;height:30px;font-size:16px;cursor:pointer}
+.nctl button:disabled{opacity:.3;cursor:default}
+.brand-foot{position:absolute;top:46px;left:60px;font-family:'Rubik';font-weight:900;color:var(--primary);font-size:15px;opacity:.5}
+.note{font-size:12px;color:var(--muted);margin-top:10px;font-style:italic}
+.callout{background:#f6ecd6;border:1px solid var(--mustard);border-radius:12px;padding:12px 16px;margin-top:12px;font-size:13.5px;color:var(--rust)}
+.callout b{color:var(--rust)}
+</style>
+</head>
+<body>
+<div id="deck">
+
+<!-- 1 TITLE -->
+<section class="slide on">
+  <div class="title-wrap">
+    <div class="logo">CH<span class="o2"></span><span class="o2"></span>SY</div>
+    <div class="kic" style="margin-top:18px">ישיבת הנהלה · Q2 2026</div>
+    <h1 class="big">איפה אנחנו, מה <em>למדנו</em>,<br>ולאן עכשיו</h1>
+    <p class="sub">סקירת מצב, דיווח מכל בעל תפקיד, והחלטות לקבלת תוכנית פעולה לשבוע הבא.</p>
+    <div class="meta-row">
+      <span><b>מוצר:</b> Choosy Kids</span>
+      <span><b>שלב:</b> פיילוט, אתר יחיד (NEXT)</span>
+      <span><b>מנחה:</b> ל-CEO</span>
+      <span><b>תאריך:</b> 25.6.2026</span>
+    </div>
+  </div>
+</section>
+
+<!-- 2 JOURNEY -->
+<section class="slide">
+  <div class="brand-foot">CHOOSY</div>
+  <div class="kic">מבט-על</div>
+  <h2 class="head">המסע עד כה</h2>
+  <p class="head-sub">משיטה לרעיון, מרעיון למוצר, וממוצר למנוע לומד.</p>
+  <div class="tl">
+    <div class="step"><div class="dot"></div><div class="lab">תוסף Chrome</div><div class="desc">הניצוץ הראשוני של "2-לא-3"</div></div>
+    <div class="step"><div class="dot"></div><div class="lab">אתר Choosy</div><div class="desc">choosybuy.com, וניל JS, עברית RTL</div></div>
+    <div class="step"><div class="dot"></div><div class="lab">פיילוט סגור</div><div class="desc">~19 הורים, פידבק ו-Mixpanel</div></div>
+    <div class="step"><div class="dot"></div><div class="lab">חידוד ערך</div><div class="desc">דפוס קנייה 2, קנייה ממוקדת</div></div>
+    <div class="step"><div class="dot"></div><div class="lab">אתר יחיד</div><div class="desc">מחקר ובחירת NEXT לפיילוט</div></div>
+    <div class="step"><div class="dot"></div><div class="lab">קטלוג עשיר</div><div class="desc">9,132 מוצרים, 36 סגמנטים</div></div>
+    <div class="step now"><div class="dot"></div><div class="lab">סיווג AI חזותי</div><div class="desc">batch רץ עכשיו, מנקה ומעשיר</div></div>
+    <div class="step"><div class="dot"></div><div class="lab">מנוע לומד</div><div class="desc">היעד, המלצה שמתכנסת מהר</div></div>
+  </div>
+  <div class="callout"><b>התובנה המכוננת:</b> כל דו-קרב בטורניר הוא תווית-העדפה נקייה. Choosy אינו מסנן, הוא מנוע איסוף-העדפות, והדלק המושלם ל-AI שלומד טעם.</div>
+</section>
+
+<!-- 3 STATUS NUMBERS -->
+<section class="slide">
+  <div class="brand-foot">CHOOSY</div>
+  <div class="kic">תמונת מצב</div>
+  <h2 class="head">היכן אנחנו במספרים</h2>
+  <p class="head-sub">נכון להיום, אחרי שבוע אינטנסיבי של בניית קטלוג וניקויו.</p>
+  <div class="stats">
+    <div class="stat"><div class="n">9,132</div><div class="l">מוצרים בקטלוג NEXT (מ-~600 בתחילת השבוע)</div></div>
+    <div class="stat"><div class="n">36</div><div class="l">סגמנטים, 31 מהם ≥50 פריטים</div></div>
+    <div class="stat alt"><div class="n">~19</div><div class="l">הורים בקוהורט הפיילוט</div></div>
+    <div class="stat alt"><div class="n">2</div><div class="l">KPI ליבה, קלות-החלטה וכוונת-קנייה</div></div>
+  </div>
+  <div class="twocol">
+    <div class="panel">
+      <h3>איכות הקטלוג</h3>
+      <div class="bar"><div class="name">כיסוי צבע</div><div class="track"><div class="fill" style="width:83%"></div></div><div class="v">83%</div></div>
+      <div class="bar"><div class="name">סגמנטים ≥50</div><div class="track"><div class="fill" style="width:86%"></div></div><div class="v">31/36</div></div>
+      <div class="bar"><div class="name">קונפליקטי קטגוריה</div><div class="track"><div class="fill" style="width:2%"></div></div><div class="v">~0</div></div>
+      <div class="bar"><div class="name">דיוק מגדר (לפני AI)</div><div class="track"><div class="fill" style="width:70%;background:var(--warn)"></div></div><div class="v">חלקי</div></div>
+      <p class="note">דיוק המגדר הוא הפער הפתוח, ובדיוק מה ש-batch הסיווג החזותי מתקן עכשיו.</p>
+    </div>
+    <div class="panel">
+      <h3>מקורות נתונים שנכבשו</h3>
+      <div class="bar"><div class="name">NEXT (אקמאי)</div><div class="track"><div class="fill" style="width:95%"></div></div><div class="v">חי</div></div>
+      <div class="bar"><div class="name">חילוץ דרך Chrome</div><div class="track"><div class="fill" style="width:100%"></div></div><div class="v">עובד</div></div>
+      <div class="bar"><div class="name">סיווג חזותי (AI)</div><div class="track"><div class="fill" style="width:55%;background:var(--mustard)"></div></div><div class="v">batch</div></div>
+      <div class="bar"><div class="name">מנוע המלצה</div><div class="track"><div class="fill" style="width:12%;background:var(--info)"></div></div><div class="v">מחקר</div></div>
+      <p class="note">מחקר המנוע הושלם ותוכנית הפעולה כתובה. המימוש טרם החל.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 4 READINESS -->
+<section class="slide">
+  <div class="brand-foot">CHOOSY</div>
+  <div class="kic">הערכה</div>
+  <h2 class="head">בשלות לפיילוט הרחב</h2>
+  <p class="head-sub">מה מוכן, מה בעבודה, ומה עוד לא התחיל.</p>
+  <div class="ready">
+    <div class="rrow"><div class="area">קטלוג (רוחב ועומק)</div><div class="track"><div class="fill" style="width:90%;background:var(--good)"></div></div><div class="st"><span class="pill p-good">כמעט מוכן</span></div></div>
+    <div class="rrow"><div class="area">סיווג ואיכות נתונים</div><div class="track"><div class="fill" style="width:55%;background:var(--warn)"></div></div><div class="st"><span class="pill p-warn">בעבודה (AI)</span></div></div>
+    <div class="rrow"><div class="area">חווית משחק (UX)</div><div class="track"><div class="fill" style="width:80%;background:var(--good)"></div></div><div class="st"><span class="pill p-good">תוקנה</span></div></div>
+    <div class="rrow"><div class="area">מסר ו-onboarding (דפוס 2)</div><div class="track"><div class="fill" style="width:35%;background:var(--bad)"></div></div><div class="st"><span class="pill p-bad">פער פתוח</span></div></div>
+    <div class="rrow"><div class="area">מנוע המלצה לומד</div><div class="track"><div class="fill" style="width:15%;background:var(--info)"></div></div><div class="st"><span class="pill p-warn">תוכנן</span></div></div>
+    <div class="rrow"><div class="area">קוהורט ומדידה (Mixpanel)</div><div class="track"><div class="fill" style="width:85%;background:var(--good)"></div></div><div class="st"><span class="pill p-good">מוכן</span></div></div>
+  </div>
+  <div class="callout"><b>השורה התחתונה:</b> התשתית (קטלוג, מדידה, UX) כמעט בשלה. שני הפערים האמיתיים לפני הרחבת הפיילוט, <b>איכות הסיווג</b> (נסגר השבוע) ו<b>המסר שמסביר מתי להשתמש</b> (החלטה מולך).</div>
+</section>
+
+<!-- 5 CPO -->
+<section class="slide">
+  <div class="brand-foot">CHOOSY</div>
+  <div class="role-head">
+    <div class="role-badge">CPO<br>מוצר</div>
+    <div><div class="who">מנהל/ת המוצר</div><div class="what">דפוס הקנייה, הצעת הערך, ותובנות הפיילוט</div></div>
+  </div>
+  <div class="role-grid">
+    <div class="q was"><h3>מה היה</h3><ul>
+      <li>פיילוט סגור עם ~7 הורים שנתנו פידבק עמוק (קולי, אנונימי).</li>
+      <li>חידדנו את הצעת הערך, Choosy הוא ל<b>קנייה ממוקדת</b> (דפוס 2, יותר מדי אופציות אחרי סינון), לא לגלישה.</li>
+      <li>הוטמעו תיקוני UX מהפידבק, ותוקן באג דאבל-טאפ.</li>
+    </ul></div>
+    <div class="q learn"><h3>מה למדנו</h3><ul>
+      <li>השיטה מהדהדת, אבל <b>חייבים להסביר מתי</b> להשתמש בה. בלי זה היוזר לא "מתחבר".</li>
+      <li>איכות הקטלוג היא תנאי-סף לאמון, סיווג שגוי שובר את החוויה מיד.</li>
+      <li>שני ה-KPI (קלות-החלטה, כוונת-קנייה) הם בדיוק מדדי המוצר.</li>
+    </ul></div>
+    <div class="q rec"><h3>המלצות</h3><ul>
+      <li>לנעוץ את ה-onboarding והמסר לדפוס-2 לפני הרחבת הקוהורט.</li>
+      <li>לסגור קטלוג, ואז להביא את המנוע שמממש את ההבטחה "מגיעים למתאים מהר".</li>
+      <li>להרחיב קוהורט רק כשהחוויה מספרת את הסיפור לבד.</li>
+    </ul></div>
+    <div class="q dec"><h3>החלטות שצריך ממך</h3><ul>
+      <li>סדר עדיפויות, מסר/onboarding מול מנוע, מה קודם?</li>
+      <li>מתי מרחיבים את הקוהורט?</li>
+    </ul></div>
+  </div>
+</section>
+
+<!-- 6 CTO -->
+<section class="slide">
+  <div class="brand-foot">CHOOSY</div>
+  <div class="role-head">
+    <div class="role-badge">CTO<br>הנדסה</div>
+    <div><div class="who">הנדסה ותשתית</div><div class="what">קטלוג, חילוץ, סיווג, ויסודות המנוע</div></div>
+  </div>
+  <div class="role-grid">
+    <div class="q was"><h3>מה היה</h3><ul>
+      <li>נבנה צינור קטלוג מלא, מ-~600 ל-9,132 מוצרים בשבוע.</li>
+      <li>נשבר מחסום אקמאי של NEXT (דפדפן אמיתי דרך CDP, סריקה עדינה, checkpoint).</li>
+      <li>סיווג מבוסס-כללים, תיקון "החולצה האדומה", ומעבר לסיווג חזותי ב-AI.</li>
+    </ul></div>
+    <div class="q learn"><h3>מה למדנו</h3><ul>
+      <li>סיווג מבוסס-טקסט <b>הגיע לתקרה</b>, מגדר נמצא בתמונה, לא בכותרת.</li>
+      <li>קרוסלות "מומלצים" של NEXT מזהמות קטגוריות דלילות, מקור הטעויות.</li>
+      <li>אקמאי דורש מחזורי-IP, סריקה מקטעית והמשך-אוטומטי.</li>
+    </ul></div>
+    <div class="q rec"><h3>המלצות</h3><ul>
+      <li>לסיים סיווג חזותי, אודיט, ולפרוס.</li>
+      <li>לבנות את המנוע בשלבים, Elo ראשון, אז אמבדינג, אז חוצה-משתמשים.</li>
+      <li>להוסיף תיקון קרוסלות לסקרייפר לרענונים עתידיים.</li>
+    </ul></div>
+    <div class="q dec"><h3>החלטות שצריך ממך</h3><ul>
+      <li>מתי לפרוס את קטלוג NEXT לאוויר (עכשיו או עם המנוע)?</li>
+      <li>להשקיע במנוע (שלב A) עכשיו, או אחרי עוד דאטא מהפיילוט?</li>
+    </ul></div>
+  </div>
+</section>
+
+<!-- 7 DATA/ML -->
+<section class="slide">
+  <div class="brand-foot">CHOOSY</div>
+  <div class="role-head">
+    <div class="role-badge">DATA<br>AI/ML</div>
+    <div><div class="who">נתונים ולמידת מכונה</div><div class="what">מנוע ההמלצה, האמבדינג, והסיווג החזותי</div></div>
+  </div>
+  <div class="role-grid">
+    <div class="q was"><h3>מה היה</h3><ul>
+      <li>מחקר עומק (2 מסלולים מקבילים), דו-קרבים, Elo/Bradley-Terry, BPR/Two-Tower, FashionCLIP.</li>
+      <li>נכתבה תוכנית פעולה מלאה למנוע לומד בשלבים.</li>
+      <li>הופעל סיווג חזותי שמשמש גם כמנקה-קטלוג וגם כיסוד למנוע.</li>
+    </ul></div>
+    <div class="q learn"><h3>מה למדנו</h3><ul>
+      <li>הטורניר הוא מנוע איסוף-העדפות, כל דו-קרב הוא תווית אימון.</li>
+      <li>המסלול, Elo + בחירת-זוג אקטיבית (בלי תשתית) ואז prior חוצה-משתמשים.</li>
+      <li>"אקראי קשה לניצוח", חובה A/B לפני השקעה במתוחכם.</li>
+    </ul></div>
+    <div class="q rec"><h3>המלצות</h3><ul>
+      <li>לבנות שלב A במנוע בתוך הפיילוט, ולמדוד "דו-קרבים-עד-מנצח".</li>
+      <li>לתעד אירועי-דו-קרב כדאטא אימון מהיום הראשון.</li>
+      <li>לדחות ML כבד, להתחיל בלב ובזול.</li>
+    </ul></div>
+    <div class="q dec"><h3>החלטות שצריך ממך</h3><ul>
+      <li>לתעדף את שלב A של המנוע בפיילוט הנוכחי?</li>
+      <li>תקציב ל-AI שוטף (סיווג/אמבדינג), זניח (~דולרים), לאשר עקרונית?</li>
+    </ul></div>
+  </div>
+</section>
+
+<!-- 8 CMO -->
+<section class="slide">
+  <div class="brand-foot">CHOOSY</div>
+  <div class="role-head">
+    <div class="role-badge">CMO<br>GTM</div>
+    <div><div class="who">שיווק ופיילוט</div><div class="what">גיוס הקוהורט, איסוף פידבק, ונכסי שיווק</div></div>
+  </div>
+  <div class="role-grid">
+    <div class="q was"><h3>מה היה</h3><ul>
+      <li>גויס קוהורט סגור (~19 הורים, בעיקר אמהות, ללא תמריץ, פידבק קולי בוואטסאפ).</li>
+      <li>אומת ש-Mixpanel קולט אירועים, סונתז מסמך תובנות מרכזי.</li>
+      <li>נוסה סרטון הסבר ב-AI, ננטש (פיגומי תשלום וחסימות בטיחות).</li>
+    </ul></div>
+    <div class="q learn"><h3>מה למדנו</h3><ul>
+      <li>איסוף פידבק קולי אנונימי עובד ומפיק תובנות עשירות.</li>
+      <li>הפקת וידאו ב-AI עוד לא בשלה לצרכים שלנו, להמנע מהנדסת-יתר.</li>
+      <li>המסר חייב להעביר "מתי זה בשבילך" (דפוס 2).</li>
+    </ul></div>
+    <div class="q rec"><h3>המלצות</h3><ul>
+      <li>נכס שיווקי פשוט (לא הסרטון המורכב), שמדגים את ההקלה.</li>
+      <li>להרחיב קוהורט אחרי שהקטלוג והמנוע מוכנים.</li>
+      <li>לחדד copy של onboarding יחד עם המוצר.</li>
+    </ul></div>
+    <div class="q dec"><h3>החלטות שצריך ממך</h3><ul>
+      <li>גישת הנכס השיווקי, פשוט ומהיר או להמתין?</li>
+      <li>תזמון הרחבת הקוהורט.</li>
+    </ul></div>
+  </div>
+</section>
+
+<!-- 9 CHIEF OF STAFF / AI OPS -->
+<section class="slide">
+  <div class="brand-foot">CHOOSY</div>
+  <div class="role-head">
+    <div class="role-badge" style="background:#6a5acd">OPS<br>AI</div>
+    <div><div class="who">תפעול ה-AI ויעילות העבודה</div><div class="what">ניהול העבודה ב-Cowork, והמעבר מ-Claude Code</div></div>
+  </div>
+  <div class="role-grid">
+    <div class="q was"><h3>מה היה</h3><ul>
+      <li>נוהלו במקביל מספר וורקסטרימים, ובוצע מעבר מ-Claude Code ל-Cowork לפני ~ימים.</li>
+      <li>שימוש בסוכני-משנה מקבילים, push אוטונומי, ועבודה מונחית-skills.</li>
+      <li>אומצה גישת validate-live ואז batch אסינכרוני.</li>
+    </ul></div>
+    <div class="q learn"><h3>מה למדנו</h3><ul>
+      <li><b>מה עבד:</b> מחקר מקבילי, ולידציה-חיה שתפסה באגים מוקדם, אוטונומיה, נקודות בקרה.</li>
+      <li><b>הכאב:</b> כפילות קבצים בין הדיסק לסביבת-העבודה (mount) גרמה ל<b>אובדן דאטא אמיתי</b> והרבה עיכובים.</li>
+      <li>תלות בהרצה מקומית אצלך (אקמאי, מפתחות) יצרה הרבה הלוך-ושוב ידני.</li>
+    </ul></div>
+    <div class="q rec"><h3>המלצות</h3><ul>
+      <li>מקור-אמת יחיד לקבצי דאטא, לא לכתוב בחזרה קבצים גדולים מהסנדבוקס.</li>
+      <li>batch/אסינכרוני כברירת מחדל למשימות כבדות (כמו עכשיו).</li>
+      <li>לקבץ הוראות-הרצה למקבצים, checkpointing לכל תהליך ארוך.</li>
+    </ul></div>
+    <div class="q dec"><h3>החלטות שצריך ממך</h3><ul>
+      <li>כמה להשקיע בהקשחת התהליך מול קצב פיצ'רים?</li>
+      <li>קצב עבודה, סשנים ממוקדים מול רצף ארוך?</li>
+    </ul></div>
+  </div>
+</section>
+
+<!-- 10 DECISIONS -->
+<section class="slide">
+  <div class="brand-foot">CHOOSY</div>
+  <div class="kic">על שולחן ה-CEO</div>
+  <h2 class="head">ההחלטות שצריך לקבל היום</h2>
+  <p class="head-sub">חמש הכרעות שיגדירו את תוכנית השבוע.</p>
+  <div class="decs">
+    <div class="dec-card"><div class="num">החלטה 1</div><div class="qz">פריסת קטלוג NEXT</div>
+      <div class="opts"><b>א.</b> לפרוס עכשיו (ערך מיידי, משנה בסיס-מדידה). <b>ב.</b> לפרוס יחד עם המנוע (פחות שיבוש).</div>
+      <span class="rec-tag">נטיית הצוות, ב</span></div>
+    <div class="dec-card"><div class="num">החלטה 2</div><div class="qz">מנוע שלב A עכשיו?</div>
+      <div class="opts"><b>א.</b> לבנות Elo + זיווג-חכם בפיילוט עכשיו. <b>ב.</b> להמתין לעוד דאטא.</div>
+      <span class="rec-tag">נטיית הצוות, א</span></div>
+    <div class="dec-card"><div class="num">החלטה 3</div><div class="qz">מסר/onboarding מול מנוע</div>
+      <div class="opts"><b>א.</b> מסר קודם (זול, סוגר פער הבנה). <b>ב.</b> מנוע קודם (ערך עמוק יותר).</div>
+      <span class="rec-tag">נטיית הצוות, במקביל</span></div>
+    <div class="dec-card"><div class="num">החלטה 4</div><div class="qz">הרחבת הקוהורט</div>
+      <div class="opts"><b>א.</b> אחרי סגירת קטלוג+מסר. <b>ב.</b> מיד, להגדלת דאטא.</div>
+      <span class="rec-tag">נטיית הצוות, א</span></div>
+    <div class="dec-card"><div class="num">החלטה 5</div><div class="qz">הקשחת תהליך העבודה</div>
+      <div class="opts"><b>א.</b> לאמץ מקור-אמת + batch-first עכשיו. <b>ב.</b> להמשיך כרגיל.</div>
+      <span class="rec-tag">נטיית הצוות, א</span></div>
+    <div class="dec-card" style="border-right-color:var(--mustard)"><div class="num" style="color:var(--mustard)">תקציב</div><div class="qz">AI שוטף</div>
+      <div class="opts">סיווג + אמבדינג = <b>~דולרים בודדים</b> חד-פעמי. לאשר עקרונית הוצאה זניחה שכזו ללא אישור פר-פעם?</div>
+      </div>
+  </div>
+</section>
+
+<!-- 11 PLAN -->
+<section class="slide">
+  <div class="brand-foot">CHOOSY</div>
+  <div class="kic">תוצר הישיבה</div>
+  <h2 class="head">תוכנית השבוע הבא</h2>
+  <p class="head-sub">בכפוף להחלטות שלמעלה. כל משימה עם בעל-תפקיד אחראי.</p>
+  <div class="plan">
+    <div class="col now"><h3>עכשיו</h3><div class="when">היום ומחר</div>
+      <div class="task"><span class="o data">DATA</span>לסיים batch סיווג, ולמזג</div>
+      <div class="task"><span class="o eng">ENG</span>לבנות מחדש קטלוג + דוח איכות</div>
+      <div class="task"><span class="o prod">PROD</span>לאשר קטלוג ויזואלית</div>
+      <div class="task"><span class="o ops">OPS</span>לעגן מקור-אמת לדאטא</div>
+    </div>
+    <div class="col next"><h3>אחר כך</h3><div class="when">השבוע</div>
+      <div class="task"><span class="o eng">ENG</span>אמבדינג FashionCLIP (דמיון)</div>
+      <div class="task"><span class="o eng">ENG</span>מנוע שלב A, Elo + זיווג-חכם</div>
+      <div class="task"><span class="o prod">PROD</span>onboarding/מסר לדפוס-2</div>
+      <div class="task"><span class="o eng">ENG</span>החלטת פריסה ולקראתה</div>
+    </div>
+    <div class="col later"><h3>בהמשך</h3><div class="when">שבוע הבא+</div>
+      <div class="task"><span class="o prod">PROD</span>פילטור עשיר (צבע/מוטיב/סגנון)</div>
+      <div class="task"><span class="o data">DATA</span>A/B, זיווג-חכם מול אקראי</div>
+      <div class="task"><span class="o gtm">GTM</span>נכס שיווקי פשוט + הרחבת קוהורט</div>
+      <div class="task"><span class="o data">DATA</span>warm-start prior מהדו-קרבים</div>
+    </div>
+  </div>
+  <div class="callout"><b>הגדרת הצלחה לשבוע:</b> קטלוג נקי ומאומת באוויר או מוכן-לפריסה, שלב A של המנוע בבנייה, ומסר דפוס-2 מנוסח, הכל מאחורי החלטות ברורות שהתקבלו היום.</div>
+</section>
+
+<!-- 12 CLOSE -->
+<section class="slide">
+  <div class="title-wrap">
+    <div class="logo">CH<span class="o2"></span><span class="o2"></span>SY</div>
+    <h1 class="big" style="margin-top:20px">שתי אופציות.<br><em>בחירה אחת.</em> כל פעם.</h1>
+    <p class="sub">זה המוצר, וזו גם הישיבה, נצמצם להחלטות הנכונות, ונצא לדרך.</p>
+    <div class="meta-row"><span>מוכנים להכריע ולבנות את השבוע.</span></div>
+  </div>
+</section>
+
+</div>
+
+<div id="nav">
+  <div id="dots"></div>
+  <div class="nctl">
+    <button id="prev">‹</button>
+    <span id="counter">1 / 12</span>
+    <button id="next">›</button>
+  </div>
+</div>
+
+<script>
+const slides=[...document.querySelectorAll('.slide')];
+const dots=document.getElementById('dots');
+let cur=0;
+slides.forEach((_,i)=>{const d=document.createElement('div');d.className='d'+(i===0?' on':'');d.onclick=()=>go(i);dots.appendChild(d);});
+const dotEls=[...dots.children];
+function go(n){cur=Math.max(0,Math.min(slides.length-1,n));
+  slides.forEach((s,i)=>s.classList.toggle('on',i===cur));
+  dotEls.forEach((d,i)=>d.classList.toggle('on',i===cur));
+  document.getElementById('counter').textContent=(cur+1)+' / '+slides.length;
+  document.getElementById('prev').disabled=cur===0;
+  document.getElementById('next').disabled=cur===slides.length-1;
+  slides[cur].scrollTop=0;
+}
+document.getElementById('next').onclick=()=>go(cur+1);
+document.getElementById('prev').onclick=()=>go(cur-1);
+document.addEventListener('keydown',e=>{
+  if(e.key==='ArrowLeft'||e.key==='ArrowDown'||e.key===' ')go(cur+1);
+  if(e.key==='ArrowRight'||e.key==='ArrowUp')go(cur-1);
+});
+go(0);
+</script>
+</body>
+</html>

@@ -73,9 +73,16 @@
     <div class="setup-step hidden" id="step-refine">
       <h2 class="setup-q" data-i18n-html="q_refine">עוד משהו שיעזור? <span class="setup-q-sub">(אפשר לדלג)</span></h2>
 
+      <p class="few-note hidden" id="few-note" data-i18n="few_items">נמצאו מעט פריטים — נרחיב כדי לתת לכם בחירה טובה</p>
+
       <div class="refine-block">
         <p class="refine-label" data-i18n="label_colors">צבעים מועדפים</p>
         <div class="color-chips" id="color-chips"></div>
+      </div>
+
+      <div class="refine-block hidden" id="vibe-block">
+        <p class="refine-label" data-i18n="label_vibe">סגנון</p>
+        <div class="color-chips" id="vibe-chips"></div>
       </div>
 
       <div class="refine-block">
@@ -83,6 +90,15 @@
         <div class="budget-box">
           <input type="range" id="budget-slider" min="20" max="300" step="10" value="300">
           <p class="budget-label"><span data-i18n="budget_upto">עד</span> <span id="budget-val">300</span> ₪</p>
+        </div>
+      </div>
+
+      <div class="refine-block">
+        <p class="refine-label" data-i18n="label_more">עוד</p>
+        <div class="toggle-list">
+          <button class="filter-toggle" id="t-sale"><span data-i18n="filter_sale">רק במבצע</span><span class="chip-count"></span></button>
+          <button class="filter-toggle" id="t-multipack"><span data-i18n="filter_multipack">רק מארזים</span><span class="chip-count"></span></button>
+          <button class="filter-toggle" id="t-nosets"><span data-i18n="filter_nosets">בלי סטים</span><span class="chip-count"></span></button>
         </div>
       </div>
 

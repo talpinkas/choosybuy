@@ -19,3 +19,4 @@ private/
 
 # Raw scrape dumps (local only)
 data/
+next-catalog-check.html

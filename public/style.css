@@ -142,6 +142,38 @@ body {
 .chip-dot { width: 16px; height: 16px; border-radius: 50%; border: 1px solid rgba(0,0,0,.12); flex-shrink: 0; }
 .chip-multi { background: conic-gradient(#ff6b4a,#e8c84a,#4a7c47,#2a4d8f,#7d5ba6,#ff6b4a); }
 
+/* --- Category grouping (clothing / shoes / accessories) --- */
+.choice-grid.grouped { display: block; }
+.cat-group { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 18px; }
+.cat-group-label {
+  font-size: 14px; font-weight: 700; color: var(--rust, var(--primary)); text-align: start;
+  margin: 4px 2px 10px; display: flex; align-items: center; gap: 9px;
+}
+.cat-group-label::after { content: ""; flex: 1; height: 1px; background: var(--line); }
+
+/* --- Adaptive filter affordances (counts, disabled, toggles) --- */
+.chip-count { font-size: 12px; font-weight: 600; color: var(--ink-faint); margin-inline-start: 4px; }
+.chip-count:empty { display: none; }
+.color-chip.selected .chip-count { color: var(--primary); }
+.color-chip.disabled,
+.filter-toggle.disabled { opacity: .42; cursor: not-allowed; filter: grayscale(.35); }
+.toggle-list { display: flex; flex-wrap: wrap; gap: 9px; justify-content: center; }
+.filter-toggle {
+  display: flex; align-items: center; gap: 7px; padding: 8px 14px; border-radius: 30px;
+  background: var(--surface); border: 2px solid var(--line); font-family: inherit;
+  font-size: 14px; font-weight: 600; color: var(--ink); cursor: pointer;
+  transition: border-color .15s, background .15s, transform .1s;
+}
+.filter-toggle:hover { border-color: var(--primary); }
+.filter-toggle:active { transform: scale(.96); }
+.filter-toggle.on { border-color: var(--primary); background: var(--primary); color: #fff; }
+.filter-toggle.on .chip-count { color: rgba(255,255,255,.85); }
+.few-note {
+  background: #fbeede; border: 1px solid var(--mustard, #dbbd36); border-radius: 14px;
+  padding: 10px 14px; font-size: 13.5px; font-weight: 600; color: var(--rust, var(--ink));
+  text-align: center; margin-bottom: 16px;
+}
+
 .budget-box { background: var(--surface); border-radius: var(--radius); padding: 22px 28px; box-shadow: var(--shadow); }
 #budget-slider { width: 100%; accent-color: var(--primary); }
 .budget-label { font-size: 19px; font-weight: 700; margin-top: 12px; }

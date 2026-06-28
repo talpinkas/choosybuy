@@ -40,24 +40,65 @@ function categoryOf(name) {
   if (hasTop) return 'tops';
   return 'tops';
 }
+// Accessories sub-types (2-8 only). Anything not matched is archived (not written).
+const ACC_SUB = [
+  ['hats', /כובע|טורבן|כומתה|מצחי|ברט|\bhat\b|\bcap\b|beanie/i],
+  ['socks', /גרב|קרסולי|גרביונ|טייץ|\bsock|tights/i],
+  ['bags', /תיק|ילקוט|קלמר|\bbag\b|backpack|מזוודה/i],
+  ['sunglasses', /משקפ|sunglass/i]
+];
+function accSub(name) { for (const [k, re] of ACC_SUB) if (re.test(name)) return k; return null; }
+// An outfit-set dissolves into the garment categories its title names.
+function setGarments(name) {
+  const out = [];
+  if (/חולצ|טי\b|גופי|סווט|טופ|פולו|סריג/.test(name)) out.push('tops');
+  if (/מכנס|שורט|טייץ|לגינ|ברמודה/.test(name)) out.push('bottoms');
+  if (/שמל|חצאית/.test(name)) out.push('dresses');
+  return out.length ? [...new Set(out)] : ['tops'];
+}
+// Resolve a raw category to the list of output categories + whether it's a set.
+function resolveCats(cat, name) {
+  if (cat === 'sets') return { cats: setGarments(name), isSet: true };
+  if (cat === 'accessories') { const s = accSub(name); return { cats: s ? [s] : [], isSet: false }; }
+  return { cats: [cat], isSet: false };
+}
 function packOf(name) { const m = String(name).match(/מארז\s*של\s*(\d+)/); return m ? +m[1] : (/מארז/.test(name) ? 2 : 1); }
-function colorOf(name) { const m = String(name).match(/^\s*(?:בצבע|צבע)\s+([^\-–]+?)\s*[-–]/); return m ? m[1].replace(/\s+/g, ' ').trim() : ''; }
+function colorOf(name) { const m = String(name).match(/^\s*(?:בצבע|צבע)?\s*([^\-–]{1,40}?)\s*[-–]\s/); return m ? m[1].replace(/\s+/g, ' ').trim() : ''; }
 function cleanTitle(n) { return String(n || '').replace(/^\s*(?:בצבע|צבע)\s+[^\-–]+[-–]\s*/, '').replace(/\s+/g, ' ').trim(); }
 
 // age range in name -> ['0-2'] / ['2-8'] / both ; teen-only (>8 only) -> []
-function agesFor(name) {
-  let m = String(name).match(/(\d+)\s*(חודשים|חודש|שנים|שנה|שנ)?\s*(?:עד|-|–|‏)\s*(\d+)\s*(חודשים|חודש|שנים|שנה|שנ)?/);
-  if (!m) {
-    const cm = String(name).match(/(\d{2,3})\s*[-–]?\s*(\d{2,3})?\s*cm/i);
-    if (cm) { const lo = +cm[1], hi = cm[2] ? +cm[2] : +cm[1]; const o = []; if (lo <= 98) o.push('0-2'); if (hi >= 92) o.push('2-8'); return o.length ? o : ['2-8']; }
-    return ['2-8']; // unknown -> kids bucket (conservative; QA reviews)
-  }
-  const yr = (v, u) => (/חודש/.test(u || '') ? +v / 12 : +v);
-  let a = yr(m[1], m[2] || m[4] || 'שנים'), b = yr(m[3], m[4] || m[2] || 'שנים');
+// Parses Hebrew AND English age strings (NEXT mixes both, e.g. "0-18mths",
+// "3 months to 7 years", "גיל 3 חודשים עד 7 שנים"), single ages, cm sizing,
+// and newborn labels. Months/years are normalised to years before bucketing.
+const AGE_UNIT = 'חודשים|חודש|שנים|שנה|שנ|months?|mths?|mos?|mo|yrs?|years?|y';
+function toYears(v, unit) {
+  // months get a hair shaved off so an upper bound of exactly 24m reads as <2y
+  // (a "0-24 months" item is a baby item, not a 2-8 kids item).
+  return /חודש|month|mth|mos?\b|\bmo\b/i.test(unit || '') ? (+v / 12 - 0.001) : +v;
+}
+function bucketize(a, b) {
   const lo = Math.min(a, b), hi = Math.max(a, b), out = [];
-  if (lo <= 2) out.push('0-2');
-  if (lo < 8 && hi >= 2) out.push('2-8');         // overlaps the 2-8 kids bucket
-  return out;                                      // may be [] for teen-only items -> dropped
+  if (lo < 2) out.push('0-2');                 // range reaches into the baby years
+  if (hi >= 2 && lo < 8) out.push('2-8');      // range reaches into the kids years
+  return out;                                  // may be [] (teen-only) -> dropped upstream
+}
+function agesFor(name) {
+  const s = String(name);
+  // explicit range: "<n><unit?> <sep> <n><unit?>"  (sep = עד / to / hyphen)
+  let m = s.match(new RegExp('(\\d+)\\s*(' + AGE_UNIT + ')?\\s*(?:עד|to|[-–‏])\\s*(\\d+)\\s*(' + AGE_UNIT + ')?', 'i'));
+  if (m) {
+    const u1 = m[2] || m[4] || 'שנים', u2 = m[4] || m[2] || 'שנים';
+    return bucketize(toYears(m[1], u1), toYears(m[3], u2));
+  }
+  // cm sizing
+  const cm = s.match(/(\d{2,3})\s*[-–]?\s*(\d{2,3})?\s*cm/i);
+  if (cm) { const lo = +cm[1], hi = cm[2] ? +cm[2] : +cm[1]; const o = []; if (lo <= 98) o.push('0-2'); if (hi >= 92) o.push('2-8'); return o.length ? o : ['2-8']; }
+  // single age: "(3 months)" / "גיל 6 חודשים" / "5 years"
+  const sm = s.match(new RegExp('(\\d+)\\s*(' + AGE_UNIT + ')\\b', 'i'));
+  if (sm) { const y = toYears(sm[1], sm[2]); return bucketize(y, y); }
+  // no number, but a newborn/baby-only label -> 0-2
+  if (/newborn|new born|\bNB\b|תינוק|בייבי|מארז לידה/i.test(s)) return ['0-2'];
+  return ['2-8']; // truly unknown -> kids bucket (conservative; QA reviews)
 }
 function gendersFor(g, name) {
   if (g === 'boy') return ['boy'];
@@ -69,35 +110,43 @@ function gendersFor(g, name) {
 function validSeg(g, a, c) {
   if (c === 'bodysuits') return a === '0-2';
   if (c === 'dresses') return g === 'girl';
+  if (c === 'hats' || c === 'socks' || c === 'bags' || c === 'sunglasses') return a === '2-8';
   return true;
 }
 
 const data = JSON.parse(fs.readFileSync(SRC, 'utf8'));
+let CLS = {};
+try { CLS = JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'data', 'classifications.json'), 'utf8')); console.log('using vision classifications: ' + Object.keys(CLS).length); } catch (e) {}
 const products = data.products || [];
 console.log('source: ' + SRC + ' | raw: ' + products.length);
 
 const buckets = {};
-let dropped = 0, teen = 0;
+let dropped = 0, teen = 0, archived = 0;
 const seen = {};
 products.forEach(p => {
   if (!p.name || p.max == null || seen[p.id]) { if (seen[p.id]) return; dropped++; return; }
   seen[p.id] = true;
-  const cat = p.cat || categoryOf(p.name);   // section hint (footwear/swim) wins over name guess
+  const _cls = CLS[p.id];
+  if (_cls && _cls.kids === false) { dropped++; return; }
+  const rawCat = (_cls && _cls.category) ? _cls.category : (p.cat || categoryOf(p.name));   // section hint (footwear/swim) wins over name guess
+  const { cats, isSet } = resolveCats(rawCat, p.name);   // sets -> garment cats; accessories -> sub-type or archived
+  if (!cats.length) { archived++; return; }               // archived accessory (baby-care/gloves/hair/belt/other)
   const ages = agesFor(p.name);
   if (!ages.length) { teen++; return; }            // teen-only, out of pilot scope
-  const genders = gendersFor(p.gender, p.name);
+  const genders = (_cls && _cls.gender) ? (_cls.gender === 'unisex' ? ['boy', 'girl'] : [_cls.gender]) : gendersFor(p.gender, p.name);
   const pack = packOf(p.name);
   const prod = {
     id: 'next-' + p.id, title: cleanTitle(p.name), image: p.image,
     price: p.max, sale_price: (p.min != null && p.min < p.max) ? p.min : null, currency: 'ILS',
-    url: p.url, brand: 'NEXT', color: colorOf(p.name), color_hex: null,
-    pack: pack, in_pack: pack > 1, affiliate_ready: false
+    url: p.url, brand: 'NEXT', color: (_cls && _cls.color) ? _cls.color : colorOf(p.name), color_hex: null,
+    pattern: (_cls && _cls.pattern) || '', theme: (_cls && _cls.theme) || '', style: (_cls && _cls.style) || '', color2: (_cls && _cls.color2) || '',
+    pack: pack, in_pack: pack > 1, is_set: isSet, affiliate_ready: false
   };
-  genders.forEach(g => ages.forEach(a => {
-    if (!validSeg(g, a, cat)) return;
-    const cid = 'next-' + g + '-' + a + '-' + cat;
+  genders.forEach(g => ages.forEach(a => cats.forEach(c => {
+    if (!validSeg(g, a, c)) return;
+    const cid = 'next-' + g + '-' + a + '-' + c;
     (buckets[cid] = buckets[cid] || []).push(prod);
-  }));
+  })));
 });
 
 // SINGLE-SITE: wipe ALL existing catalog json, write only NEXT
@@ -116,6 +165,6 @@ fs.writeFileSync(path.join(CAT_DIR, 'index.js'),
   '// Choosy catalogs registry — AUTO-GENERATED (NEXT single-site pilot).\n\nmodule.exports = [\n' +
   files.map(f => "  require('./" + f + "')").join(',\n') + '\n];\n');
 
-console.log('teen-only dropped: ' + teen + ' | bad dropped: ' + dropped);
+console.log('teen-only dropped: ' + teen + ' | archived (accessories): ' + archived + ' | bad dropped: ' + dropped);
 console.log('written ' + written.length + ' catalogs:\n  ' + written.join(' | '));
 console.log('index.js registers ' + files.length + ' catalogs');

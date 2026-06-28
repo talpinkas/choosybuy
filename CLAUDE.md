@@ -3,6 +3,8 @@
 Keep this file current. Update it after any significant change — it is the
 first thing to read in a new session.
 
+> **Current live state (2026-06-25): read `STATE.md` first.** Current run, locked decisions, and next steps.
+
 > **Pilot phase — read `HANDOVER.md` alongside this file.** CLAUDE.md is the
 > technical source of truth (architecture, catalogs, data flow). `HANDOVER.md`
 > holds the current phase, the five workstreams, the subagent roster

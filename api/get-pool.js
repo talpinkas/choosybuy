@@ -83,6 +83,10 @@ module.exports = function handler(req, res) {
         color: p.color || '',
         colorHex: p.color_hex || null,
         colorFamily: colorFamily(p.color),
+        style: p.style || '',
+        inPack: !!p.in_pack,
+        isSet: !!p.is_set,
+        sale: (p.sale_price != null && p.sale_price < p.price),
         affiliateReady: !!p.affiliate_ready
       });
     });
