@@ -35,10 +35,12 @@ The real risk is not filter count, it's pool size after filtering. A "2-not-3"
 tournament to a 5-win champion needs variety or it feels repetitive.
 
 - **Floor = 8 items** to start a tournament; **12+ is comfortable.**
-- Any filter value (color, vibe, multipack, "no sets") that would drop the result
-  **below 8 is shown with a live count and disabled** (e.g. "מארזים (3)" greyed) —
-  not silently hidden. Transparent, teaches the user, keeps trust. Applies to
-  **all** filters uniformly, not just multipack/sets.
+- **Every filter value shows a live count** (e.g. "ורוד 4", "מארזים 3"). Counts
+  manage expectations, so nothing is frozen — the user may pick any value even at
+  low counts (revised 2026-06-28 per CEO: counts on the buttons make disabling
+  unnecessary, and multi-select lets users combine). Toggles are hidden only when
+  their count is literally 0 (nothing to offer). A too-narrow result falls back to
+  the full pool at play time (the < 2 safety net).
 - **Auto-relax for thin base cells:** if category + budget alone already returns
   < 8 (real cases: מכנסיים בת 2-8 = 33, בגדי ים בן 0-2 = 19, משקפי שמש = 20),
   prompt to widen ("נמצאו 5 — להרחיב תקציב?") instead of showing a dead pool.

@@ -261,8 +261,8 @@ function updateToggle(key, sel, count) {
   var c = el.querySelector('.chip-count');
   if (c) c.textContent = count;
   el.classList.toggle('on', !!sel);
-  el.classList.toggle('disabled', count < POOL_FLOOR && !sel);
-  el.classList.toggle('hidden', count === 0 && !sel); // truly empty -> hide; thin -> show greyed
+  el.classList.remove('disabled');                    // count is shown -> let the user decide, even at low counts
+  el.classList.toggle('hidden', count === 0 && !sel); // only hide when there's truly nothing to offer
 }
 
 // Recompute every filter value's count + disabled/selected state against the current selection.
