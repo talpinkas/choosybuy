@@ -91,7 +91,10 @@ body {
 /* --- Welcome --- */
 .welcome-inner { max-width: 580px; text-align: center; }
 .hero-title { font-size: 40px; font-weight: 800; line-height: 1.15; margin-bottom: 16px; text-wrap: balance; }
-.hero-sub { font-size: 17px; color: var(--ink-soft); line-height: 1.65; margin: 0 auto 28px; max-width: 540px; text-wrap: pretty; }
+.hero-sub { font-size: 17px; color: var(--ink-soft); line-height: 1.6; margin: 0 auto 16px; max-width: 460px; text-wrap: pretty; }
+.hero-anim { margin: 4px auto 18px; display: flex; justify-content: center; width: 100%; }
+.exp-frame { border: none; display: block; aspect-ratio: 9 / 16; height: min(56vh, 500px); max-width: 86vw; border-radius: 20px; box-shadow: var(--shadow-lift); background: var(--bg); }
+.trust-line { font-size: 13.5px; color: var(--ink-faint); margin-top: 12px; text-wrap: balance; }
 .reassure { font-size: 13px; color: var(--ink-faint); margin-top: 14px; }
 .trust-row { list-style: none; display: flex; flex-direction: column; gap: 10px; width: fit-content; margin: 22px auto 0; text-align: start; }
 .trust { display: flex; align-items: center; gap: 9px; font-size: 14.5px; font-weight: 500; color: var(--ink-soft); }
