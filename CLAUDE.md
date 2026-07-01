@@ -4,6 +4,15 @@ Keep this file current. Update it after any significant change — it is the
 first thing to read in a new session.
 
 > **Current live state (2026-06-25): read `STATE.md` first.** Current run, locked decisions, and next steps.
+>
+> **IMPORTANT (2026-07-02): the pilot runs on NEXT ONLY — 36 next-* catalogs built
+> by the vision pipeline (scrape-next → classify-vision → import-next-data).** The
+> multi-retailer sections below (Terminal X, Shilav, Fox, Keds, Glory) describe
+> infrastructure that is PAUSED, not deleted — kept for the post-pilot expansion.
+> Do not treat the 6-retailer/79-catalog state as current.
+>
+> **Org, decisions, and authority: `docs/org.md` (who does what) and
+> `docs/decision-log.md` (every locked decision + the open-decisions queue).**
 
 > **Pilot phase — read `HANDOVER.md` alongside this file.** CLAUDE.md is the
 > technical source of truth (architecture, catalogs, data flow). `HANDOVER.md`
@@ -359,7 +368,10 @@ Vintage-warm identity (RTL Hebrew). Tokens live in `public/style.css` `:root`.
 ## Working conventions
 
 - Hebrew, RTL in UI copy. Avoid English words inside a Hebrew sentence (breaks
-  rendering); English code/API terms are fine.
+  rendering). In CHAT replies to Tal: mixed Hebrew-English is his style, keep
+  English inline, render with the bidi protocol (RLM + LRI/PDI invisible
+  controls, alignment follows the line's first word, no markdown lists in
+  Hebrew). Full rule: tal-system/C-core/editorial-rules.md.
 - Verify, don't assume — check real state before acting; don't claim "works" until
   observed working.
 - After any change: `node --check` changed files, `node -e "require('./catalogs')"`
